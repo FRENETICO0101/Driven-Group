@@ -1,74 +1,321 @@
-# Takashi - Driven Academy Project
+# Driven Group - Real Estate Platform
 
-![Driven Academy](https://img.shields.io/badge/Driven_Academy-Executive_Training-0a0a0a?style=for-the-badge&logoColor=f5f5f7)
-![Project Status](https://img.shields.io/badge/Status-Fase_1_Completada-success?style=for-the-badge)
+![Driven Group](https://img.shields.io/badge/Driven_Group-Real_Estate_Premium-0a0a0a?style=for-the-badge&logoColor=f5f5f7)
+![Project Status](https://img.shields.io/badge/Status-Fase_1_Architecture-blue?style=for-the-badge)
 
-**Plataforma interactiva** para la formación ejecutiva, el desarrollo de liderazgo y mentoring estratégico con integración de inteligencia artificial ("Tutor IA").
+**Plataforma premium de Real Estate** enfocada en experiencia digital de alto nivel, con módulo de inversión inmobiliaria, galería interactiva de propiedades y captura de leads de calidad.
 
 ---
 
 ## 🏗️ Stack Tecnológico
 
-El ecosistema principal del proyecto está construido utilizando las siguientes herramientas de vanguardia:
+El ecosistema del proyecto está construido con herramientas modernas y escalables:
 
-- **Frontend:** Next.js 15 (App Router), React 19, Tailwind CSS v4.
-- **Base de Datos:** PostgreSQL.
-- **ORM:** Prisma.
-- **Diseño & UI:** Glassmorphism, Material Symbols, Tipografía Inter. Estética Dark Mode Ejecutiva (Tonos carbón, obsidiana y acentos dorados/ámbar).
-- **IA (Próximamente):** Gemini / LangChain / Pinecone (Base Vectorial) para el Tutor de Inteligencia Artificial ("Driven Tutor").
+- **Frontend:** Next.js 16 (App Router), React 19, TypeScript 5, Tailwind CSS v4
+- **Backend:** Next.js API Routes, Server Actions, Next Auth (próximo)
+- **Base de Datos:** PostgreSQL
+- **ORM:** Prisma 7 con tipo-seguridad completa
+- **Validación:** Zod para schemas y formularios
+- **UI/UX:** Glassmorphism, Material Symbols, Dark Mode ejecutivo
+- **Deployment:** Ready for Vercel, adaptable a otros platforms
 
-## 📂 Arquitectura de UI Inicial
+---
 
-La Fase 1 abarca el traslado del diseño (`Mockups`) a código nativo en Next.js con Tailwind CSS:
+## 📂 Arquitectura de Rutas
 
-1. `src/app/page.tsx`: **Landing Page Principal.** Catálogo público de programas de Liderazgo y Finanzas con efecto interactivo.
-2. `src/app/dashboard/page.tsx`: **Portal del Estudiante.** Seguimiento de insignias de progreso, cursos y XP.
-3. `src/app/course/page.tsx`: **Plataforma Educativa Interactive.** Visualizador del curso con índice lateral y panel de chat flotante del IA Tutor Integrado.
+Estructura moderna con grouping de rutas por dominio:
+
+### Marketing (Público)
+- `(marketing)/` - Sección pública del sitio
+  - `/` - Landing page premium
+  - `/real-estate` - Listado de propiedades
+  - `/real-estate/[slug]` - Detalle de propiedad
+  - `/about` - Quiénes somos
+  - `/contact` - Formulario de contacto
+  - `/academy` - Redirect a Hotmart (próximo)
+
+### Platform (Autenticado)
+- `(platform)/` - Sección privada / admin
+  - `/admin` - Dashboard administrativo
+  - `/admin/properties` - Gestión de propiedades CRUD
+  - `/inquiries` - Gestión de leads y consultas
+
+### API
+- `/api/health` - Health check
+- `/api/properties` - CRUD de propiedades (próximo)
+- `/api/inquiries` - Crear/listar consultas (próximo)
+- `/api/auth/[...nextauth]` - Autenticación (próximo)
+
+---
 
 ## 🚀 Instalación y Despliegue Local
 
-Para levantar el nodo de desarrollo frontal del proyecto localmente:
+### Requisitos
+- Node.js 18+ 
+- PostgreSQL 14+
+- npm o yarn
+
+### Pasos
 
 ```bash
-# Navegar a la carpeta fuente del proyecto
-cd source/
+# 1. Clonar repositorio
+git clone https://github.com/FRENETICO0101/Driven-Group.git
+cd Driven-Group
 
-# Instalar dependencias mediante NPM
+# 2. Instalar dependencias
 npm install
 
-# Iniciar servidor de pruebas y desarrollo
+# 3. Configurar variables de entorno
+cp .env.example .env.local
+# Editar .env.local con tu DATABASE_URL
+
+# 4. Generar cliente Prisma
+npx prisma generate
+
+# 5. Ejecutar migraciones (primera vez)
+npx prisma migrate dev --name init_real_estate_schema
+
+# 6. (Opcional) Abrir Prisma Studio para ver datos
+npx prisma studio
+
+# 7. Iniciar servidor de desarrollo
 npm run dev
 ```
 
-Una vez que el servidor se esté ejecutando en local, la plataforma estará disponible en el puerto 3000 de tu red: [http://localhost:3000](http://localhost:3000)
+La aplicación estará disponible en: [http://localhost:3000](http://localhost:3000)
 
-## 🗄️ Esquema Base Próximo (Fase 2)
+---
 
-Se requiere inicializar y levantar correctamente el esquema `.env` con las variables de base de datos (`DATABASE_URL`) apuntando al servidor relacional con PostgreSQL.
+## 🗄️ Base de Datos
 
+### Schema Prisma
+El modelo de datos incluye:
+
+**Modelos principales:**
+- `User` - Usuarios (Admin, Agente, Viewer)
+- `Property` - Propiedades inmobiliarias
+- `PropertyImage` - Galería de imágenes
+- `Inquiry` - Consultas/Leads de clientes
+- `CRMInteraction` - Historial de interacciones (future CRM)
+
+**Migraciones:**
 ```bash
-# Generar migraciones del esquema
-npx prisma migrate dev --name init
+# Ver todas las migraciones
+ls prisma/migrations/
 
-# Interfaz gráfica de administración
-npx prisma studio
+# Crear nueva migración
+npx prisma migrate dev --name nombre_migracion
+
+# Resetear BD (⚠️ solo desarrollo)
+npx prisma migrate reset
+```
+
+### Variables de Entorno (.env.local)
+
+```env
+# Database
+DATABASE_URL="postgresql://user:password@localhost:5432/driven_group_dev"
+
+# Authentication (Next Phase)
+NEXTAUTH_SECRET="generate-a-strong-secret-here"
+NEXTAUTH_URL="http://localhost:3000"
+
+# API Configuration
+NEXT_PUBLIC_API_URL="http://localhost:3000/api"
 ```
 
 ---
 
-## 📈 Release Notes: Resumen Fase 1 (v0.1.0-alpha)
-* **Objetivo:** Prototipado inicial, inyección de diseño, entorno Next.js y ecosistema de variables.
-* **Logros:**
-  - Inicialización de Next.js v15 y Tailwind CSS v4.
-  - Implementación del sistema Dark Mode / Glassmorphism de la academia.
-  - Migración a React de las 3 pantallas clave: Landing, Dashboard de Estudiantes y Plataforma de Cursos.
-  - Inserción de imágenes de cobertura de curso generadas por IA.
-  - Esquema preliminar de `Prisma` activado.
-  - Repositorio limpio (`.gitignore`) de dependencias pesadas de diseño.
+## 📊 Estructura de Carpetas
+
+```
+src/
+├── app/                           # Next.js App Router
+│   ├── (marketing)/              # Rutas públicas
+│   │   ├── layout.tsx
+│   │   ├── page.tsx              # Landing
+│   │   ├── real-estate/
+│   │   ├── about/
+│   │   └── contact/
+│   ├── (platform)/               # Rutas privadas
+│   │   ├── layout.tsx
+│   │   ├── admin/
+│   │   └── inquiries/
+│   ├── api/                      # API Routes
+│   │   ├── health/route.ts
+│   │   ├── properties/route.ts
+│   │   └── inquiries/route.ts
+│   └── layout.tsx
+│
+├── components/                    # Componentes React
+│   ├── marketing/                # Landing components
+│   ├── real-estate/              # RE components
+│   ├── leads/                    # Lead capture
+│   ├── admin/                    # Admin UI
+│   ├── layout/                   # Layout compartido
+│   ├── ui/                       # Base UI (sin lógica)
+│   └── shared/                   # Compartidos
+│
+├── lib/                          # Utilidades
+│   ├── types.ts                  # TypeScript types
+│   ├── validation.ts             # Zod schemas
+│   ├── utils.ts                  # Helpers
+│   ├── api.ts                    # API client
+│   └── prisma.ts                 # Prisma singleton
+│
+├── server/                       # Server-side logic
+│   ├── actions/                  # Server actions
+│   └── services/                 # Business logic
+│
+├── hooks/                        # Custom React hooks
+├── styles/                       # CSS global
+└── middleware.ts                 # Next.js middleware
+```
 
 ---
 
-```text
+## 🔄 Fases de Desarrollo
+
+### ✅ Fase 1 (Actual): Arquitectura Base
+- [x] Refactorización Academy → Real Estate
+- [x] Rutas agrupadas (marketing)/(platform)
+- [x] Schema Prisma para Real Estate
+- [x] Stack completo con dependencias
+- [x] Componentes base UI extraídos
+- [ ] API routes básicas
+- [ ] Autenticación base
+
+### ⏳ Fase 2: Landing + Real Estate Core
+- [ ] Landing premium finalizado
+- [ ] Listado de propiedades con filtros
+- [ ] Página de detalle de propiedad
+- [ ] Galería interactiva
+- [ ] Sistema de favoritos
+
+### ⏳ Fase 3: Lead Capture
+- [ ] Formulario de consultas
+- [ ] Email integration
+- [ ] Validación y persistencia
+- [ ] Notificaciones a agentes
+- [ ] CRM ready architecture
+
+### ⏳ Fase 4: Polish & Deploy
+- [ ] Responsive design completo
+- [ ] Performance optimization
+- [ ] Testing (vitest)
+- [ ] QA
+- [ ] Deploy a producción
+
+---
+
+## 🛠️ Desarrollo
+
+### Scripts
+
+```bash
+# Desarrollo
+npm run dev                    # Start dev server
+
+# Build & Deploy
+npm run build                  # Build para producción
+npm run start                  # Start production server
+
+# Database
+npm run prisma:generate       # Generate Prisma client
+npm run prisma:migrate        # Run migrations
+npm run prisma:studio         # Open Prisma Studio
+
+# Linting
+npm run lint                  # Run ESLint
+```
+
+### Estándares de Código
+
+- **TypeScript:** Strict mode obligatorio
+- **Componentes:** Functional + Hooks
+- **Naming:** camelCase para JS, kebab-case para CSS
+- **Tipos:** Usar Zod para validación de schemas
+- **API:** RESTful routes en `/api`
+
+---
+
+## 📝 API Endpoints (Próximo)
+
+### Properties
+```
+GET    /api/properties              # Listar propiedades
+POST   /api/properties              # Crear propiedad
+GET    /api/properties/[id]         # Obtener detalle
+PUT    /api/properties/[id]         # Actualizar
+DELETE /api/properties/[id]         # Eliminar
+```
+
+### Inquiries
+```
+POST   /api/inquiries               # Crear consulta
+GET    /api/inquiries               # Listar (admin)
+PUT    /api/inquiries/[id]          # Actualizar estado
+```
+
+### Health
+```
+GET    /api/health                  # Estado de la app
+```
+
+---
+
+## 🔐 Seguridad
+
+- [x] TypeScript strict mode
+- [x] Environment variables (.env.local)
+- [x] SQL injection prevention (Prisma)
+- [ ] CSRF protection (Next Auth)
+- [ ] Rate limiting
+- [ ] Content Security Policy
+
+---
+
+## 📚 Tecnologías & Librerías
+
+| Categoría | Librería | Versión |
+|-----------|----------|---------|
+| Framework | Next.js | 16.1.6 |
+| React | React | 19.2.3 |
+| Language | TypeScript | ^5 |
+| Styling | Tailwind CSS | ^4 |
+| ORM | Prisma | 7.8.0 |
+| Validation | Zod | ^3.22.0 |
+| Forms | React Hook Form | ^7.48.0 |
+
+---
+
+## 🚨 Status Actual
+
+**Nivel:** 25% - Arquitectura base completada  
+**Focus:** Refactor Academy → Real Estate ✅  
+**Próximo:** API routes y Real Estate core  
+
+---
+
+## 👥 Equipo & Contribución
+
+Desarrollado por **Babel Solutions** para **Driven Group**
+
+---
+
+## 📄 Licencia
+
+Comercial - Todos los derechos reservados © 2026 Driven Group
+
+---
+
+## 📞 Soporte
+
+Para soporte técnico o preguntas:
+- Email: tech@drivengroup.com
+- Documentación: [Docs](https://docs.drivengroup.com)
+
+```
                _ 
               / \ 
              (   )
@@ -80,12 +327,6 @@ npx prisma studio
        (   |   |   |   )
       /_\_/_\_/_\_/_\_/_\
      =====================
-           B A B E L
-           SOLUTIONS
-   
-     @project Takashi - Driven Academy
-     @engineered_by Babel Solutions Team
+        DRIVEN GROUP
+       Real Estate Platform
 ```
-
-*Desarrollado bajo licencia comercial exclusiva.*
-*Copyright © 2026. Todos los derechos reservados.*

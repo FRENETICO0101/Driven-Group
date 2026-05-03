@@ -4,31 +4,198 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
+
+// ============================================
+// USERS & AUTHENTICATION
+// ============================================
 
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
-  name      String?
-  role      Role     @default(STUDENT)
-  courses   Course[] @relation("UserCourses")
+  password  String?  // Para admin
+  name      String
+  role      Role     @default(VIEWER)
+  
+  // Relations
+  properties    Property[]    @relation("AgentProperties")
+  inquiries     Inquiry[]     @relation("InquiryAgent")
+  interactions  CRMInteraction[] @relation("InteractionAgent")
+  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-model Course {
-  id          String   @id @default(uuid())
-  title       String
-  description String?
-  price       Float?
-  students    User[]   @relation("UserCourses")
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+enum Role {
+  VIEWER      // Cliente público
+  AGENT       // Agente inmobiliario
+  ADMIN       // Administrador
 }
 
-enum Role {
-  STUDENT
-  ADMIN
-  MENTOR
+// ============================================
+// REAL ESTATE CORE
+// ============================================
+
+model Property {
+  id        String   @id @default(uuid())
+  
+  // Basic Info
+  title     String
+  slug      String   @unique
+  description String?
+  price     Float
+  
+  // Location
+  address   String
+  city      String
+  state     String
+  zipCode   String
+  latitude  Float?
+  longitude Float?
+  
+  // Details
+  bedrooms    Int
+  bathrooms   Float
+  squareFeet  Float
+  lotSize     Float?
+  yearBuilt   Int?
+  
+  // Property Type
+  type      PropertyType @default(RESIDENTIAL)
+  status    PropertyStatus @default(ACTIVE)
+  
+  // Features
+  amenities String[]  // JSON array: pool, garage, garden, etc
+  features  String?   // Detailed features
+  
+  // Media
+  images    PropertyImage[]
+  
+  // Relations
+  agent     User      @relation("AgentProperties", fields: [agentId], references: [id])
+  agentId   String
+  inquiries Inquiry[] @relation("PropertyInquiries")
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([agentId])
+  @@index([city])
+  @@index([status])
+}
+
+enum PropertyType {
+  RESIDENTIAL
+  COMMERCIAL
+  LAND
+  MIXED_USE
+}
+
+enum PropertyStatus {
+  ACTIVE
+  SOLD
+  PENDING
+  INACTIVE
+}
+
+model PropertyImage {
+  id        String   @id @default(uuid())
+  
+  url       String
+  alt       String?
+  order     Int      @default(0)
+  
+  property  Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId String
+  
+  createdAt DateTime @default(now())
+  
+  @@index([propertyId])
+}
+
+// ============================================
+// LEADS & INQUIRIES
+// ============================================
+
+model Inquiry {
+  id        String   @id @default(uuid())
+  
+  // Lead Info
+  name      String
+  email     String
+  phone     String
+  message   String?
+  
+  // Lead Source
+  source    LeadSource @default(WEBSITE)
+  
+  // Relations
+  property  Property  @relation("PropertyInquiries", fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId String
+  
+  agent     User?     @relation("InquiryAgent", fields: [agentId], references: [id])
+  agentId   String?
+  
+  // Status
+  status    InquiryStatus @default(NEW)
+  
+  // Notes (para futuro CRM)
+  notes     String?
+  
+  interactions CRMInteraction[] @relation("InteractionInquiry")
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([propertyId])
+  @@index([status])
+  @@index([email])
+}
+
+enum LeadSource {
+  WEBSITE
+  PHONE
+  WHATSAPP
+  FORM_POPUP
+  EMAIL
+}
+
+enum InquiryStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  NEGOTIATING
+  CLOSED
+  LOST
+}
+
+// ============================================
+// FUTURE: CRM & AUTOMATION
+// ============================================
+
+model CRMInteraction {
+  id        String   @id @default(uuid())
+  
+  inquiry   Inquiry  @relation("InteractionInquiry", fields: [inquiryId], references: [id], onDelete: Cascade)
+  inquiryId String
+  
+  type      InteractionType
+  content   String
+  
+  agent     User     @relation("InteractionAgent", fields: [agentId], references: [id])
+  agentId   String
+  
+  createdAt DateTime @default(now())
+  
+  @@index([inquiryId])
+  @@index([agentId])
+}
+
+enum InteractionType {
+  CALL
+  EMAIL
+  WHATSAPP
+  MEETING
+  PROPOSAL
 }
