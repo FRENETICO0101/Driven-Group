@@ -3,13 +3,13 @@ import { PropertyCard } from "@/components/real-estate/PropertyCard";
 const featuredProperties = [
   {
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop",
-    imageAlt: "Penthouse Luxury",
+    imageAlt: "Skyline Penthouse",
     badge: "Destacado",
     badgeFeatured: true,
     price: "$950.000",
-    title: "Penthouse Premium",
-    subtitle: "Dpto. 4 amb • 180 m² • Balcón con vista panorámica",
-    description: "Penthouse de lujo con vistas a la ciudad, acabados premium y amenities de clase mundial.",
+    title: "Skyline Penthouse",
+    subtitle: "4 ambientes • 180 m² • Vistas panorámicas",
+    description: "Residencia de ensueño con vistas sobre la ciudad. Donde la arquitectura y el lujo convergen.",
     features: [
       { icon: "bed", label: "4 Dorm" },
       { icon: "bathroom", label: "2,5 Baños" },
@@ -17,13 +17,13 @@ const featuredProperties = [
   },
   {
     image: "https://images.unsplash.com/photo-1570129477492-45a003537e1f?w=400&h=300&fit=crop",
-    imageAlt: "Casa Moderna",
-    badge: "Nuevo",
+    imageAlt: "Oceanfront Residences",
+    badge: "Colección Exclusiva",
     badgeFeatured: false,
     price: "$650.000",
-    title: "Casa Contemporánea",
-    subtitle: "Casa 5 amb • 320 m² • Piscina y jardín",
-    description: "Casa moderna con diseño minimalista, espacios abiertos y zona de entretenimiento.",
+    title: "Oceanfront Residences",
+    subtitle: "5 ambientes • 320 m² • Entretenimiento",
+    description: "Residencia contemporánea con espacios diseñados para vivir y crear. Minimalismo sofisticado.",
     features: [
       { icon: "bed", label: "5 Dorm" },
       { icon: "bathroom", label: "3 Baños" },
@@ -31,13 +31,13 @@ const featuredProperties = [
   },
   {
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop",
-    imageAlt: "Oficina Premium",
+    imageAlt: "Brickell Executive Complex",
     badge: "Oportunidad",
     badgeFeatured: false,
     price: "$1.2M",
-    title: "Espacio Comercial",
-    subtitle: "Oficina • 450 m² • Zona ejecutiva",
-    description: "Espacio comercial de lujo en zona financiera, ideal para oficinas corporativas.",
+    title: "Brickell Executive Complex",
+    subtitle: "Espacio comercial • 450 m² • Zona céntrica",
+    description: "Espacio corporativo de excelencia en ubicación estratégica. Diseñado para empresas que aspiran.",
     features: [
       { icon: "aspect_ratio", label: "450 m²" },
       { icon: "location_on", label: "Centro" },
@@ -50,16 +50,16 @@ export function FeaturedProperties() {
     <section className="py-24 max-w-7xl mx-auto px-6">
       <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
         <div>
-          <h2 className="text-4xl font-black text-primary/90">Propiedades Destacadas</h2>
+          <h2 className="text-4xl font-black text-primary/90">Investment Opportunities</h2>
           <p className="text-slate-400 text-lg max-w-xl">
-            Selección exclusiva de propiedades premium en ubicaciones codiciadas con potencial de inversión.
+            Carteras seleccionadas para inversionistas que buscan consolidar su patrimonio en ubicaciones de excelencia.
           </p>
         </div>
         <a
           className="text-primary/80 font-bold flex items-center gap-2 group hover:text-primary transition-colors"
           href="/real-estate"
         >
-          Ver todas las propiedades
+          Ver todas las oportunidades
           <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
         </a>
       </div>

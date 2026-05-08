@@ -7,11 +7,10 @@ export function CTASection() {
         </div>
         <div className="max-w-2xl relative z-10">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            ¿Buscas invertir en Real Estate Premium?
+            Transforma tu visión en inversión
           </h2>
           <p className="text-white/70 text-lg mb-8 font-medium">
-            Conectate con nuestros expertos para encontrar la propiedad perfecta que se adapte a tus objetivos de
-            inversión.
+            Conecta con asesores especializados en patrimonio inmobiliario corporativo. Diseñamos estrategias que perduran.
           </p>
           <div className="flex flex-wrap gap-4">
             <a
@@ -20,9 +19,6 @@ export function CTASection() {
             >
               Agendar Consulta
             </a>
-            <button className="bg-white/5 border-2 border-white/20 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-white/10 transition-colors">
-              Descargar Catálogo
-            </button>
           </div>
         </div>
       </div>

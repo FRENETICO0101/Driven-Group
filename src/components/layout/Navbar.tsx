@@ -18,10 +18,13 @@ export function Navbar() {
           </div>
           <div className="hidden md:flex items-center gap-8 text-slate-300">
             <a className="text-sm font-medium hover:text-primary transition-colors" href="/real-estate">
-              Propiedades
+              Portfolio
             </a>
             <a className="text-sm font-medium hover:text-primary transition-colors" href="/about">
-              Nosotros
+              El Grupo
+            </a>
+            <a className="text-sm font-medium hover:text-primary transition-colors" href="/academy">
+              Academy
             </a>
             <a className="text-sm font-medium hover:text-primary transition-colors" href="/contact">
               Contacto
@@ -29,16 +32,8 @@ export function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-6">
-          <div className="hidden lg:flex items-center bg-white/5 rounded-lg px-3 py-1.5 border border-white/10">
-            <span className="material-symbols-outlined text-slate-400 text-xl">search</span>
-            <input
-              className="bg-transparent border-none focus:ring-0 text-sm placeholder:text-slate-500 w-48 text-white outline-none"
-              placeholder="Buscar propiedades..."
-              type="text"
-            />
-          </div>
           <button className="quartz-button px-6 py-2.5 rounded-lg font-bold text-sm transition-all">
-            Iniciar sesión
+            Agendar Consulta
           </button>
         </div>
       </div>
