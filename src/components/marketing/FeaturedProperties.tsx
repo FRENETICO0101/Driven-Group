@@ -1,51 +1,14 @@
+import type { Property } from "@/lib/types";
+import { formatPropertyPrice, formatPropertySubtitle, getPropertyBadge } from "@/lib/property-utils";
 import { PropertyCard } from "@/components/real-estate/PropertyCard";
 
-const featuredProperties = [
-  {
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop",
-    imageAlt: "Skyline Penthouse",
-    badge: "Destacado",
-    badgeFeatured: true,
-    price: "$950.000",
-    title: "Skyline Penthouse",
-    subtitle: "4 ambientes • 180 m² • Vistas panorámicas",
-    description: "Residencia de ensueño con vistas sobre la ciudad. Donde la arquitectura y el lujo convergen.",
-    features: [
-      { icon: "bed", label: "4 Dorm" },
-      { icon: "bathroom", label: "2,5 Baños" },
-    ],
-  },
-  {
-    image: "https://images.unsplash.com/photo-1570129477492-45a003537e1f?w=400&h=300&fit=crop",
-    imageAlt: "Oceanfront Residences",
-    badge: "Colección Exclusiva",
-    badgeFeatured: false,
-    price: "$650.000",
-    title: "Oceanfront Residences",
-    subtitle: "5 ambientes • 320 m² • Entretenimiento",
-    description: "Residencia contemporánea con espacios diseñados para vivir y crear. Minimalismo sofisticado.",
-    features: [
-      { icon: "bed", label: "5 Dorm" },
-      { icon: "bathroom", label: "3 Baños" },
-    ],
-  },
-  {
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop",
-    imageAlt: "Brickell Executive Complex",
-    badge: "Oportunidad",
-    badgeFeatured: false,
-    price: "$1.2M",
-    title: "Brickell Executive Complex",
-    subtitle: "Espacio comercial • 450 m² • Zona céntrica",
-    description: "Espacio corporativo de excelencia en ubicación estratégica. Diseñado para empresas que aspiran.",
-    features: [
-      { icon: "aspect_ratio", label: "450 m²" },
-      { icon: "location_on", label: "Centro" },
-    ],
-  },
-];
+const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop";
 
-export function FeaturedProperties() {
+interface FeaturedPropertiesProps {
+  properties: Property[];
+}
+
+export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
   return (
     <section className="py-24 max-w-7xl mx-auto px-6">
       <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
@@ -64,11 +27,38 @@ export function FeaturedProperties() {
         </a>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {featuredProperties.map((property) => (
-          <PropertyCard key={property.title} {...property} />
-        ))}
-      </div>
+      {properties.length === 0 ? (
+        <p className="text-slate-500 text-center py-16">Próximamente nuevas oportunidades de inversión.</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {properties.map((property) => {
+            const badge = getPropertyBadge(property.type);
+            const primaryImage = property.images?.[0];
+            const features = [];
+            if (property.bedrooms > 0)
+              features.push({ icon: "bed", label: `${property.bedrooms} Dorm` });
+            if (property.bathrooms > 0)
+              features.push({ icon: "bathroom", label: `${property.bathrooms} Baños` });
+            if (features.length === 0)
+              features.push({ icon: "aspect_ratio", label: `${property.squareFeet} m²` });
+
+            return (
+              <PropertyCard
+                key={property.id}
+                image={primaryImage?.url ?? FALLBACK_IMAGE}
+                imageAlt={primaryImage?.alt ?? property.title}
+                badge={badge.label}
+                badgeFeatured={badge.featured}
+                price={formatPropertyPrice(property.price)}
+                title={property.title}
+                subtitle={formatPropertySubtitle(property)}
+                description={property.description ?? ""}
+                features={features}
+              />
+            );
+          })}
+        </div>
+      )}
     </section>
   );
 }

@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Ruben\\\\Desktop\\\\Projects\\\\DrivenGroup-Fase1\\\\Driven-Group\" -Recurse -Filter \"*seed*\" -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object FullName)",
+      "Bash(findstr prisma *)",
+      "Bash(node -e \"const {PrismaClient} = require\\('@prisma/client'\\); console.log\\(Object.keys\\(new PrismaClient\\({datasourceUrl: 'postgresql://x:x@localhost/x'}\\).constructor\\)\\)\")",
+      "Bash(git stash *)",
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(npx prisma *)",
+      "Bash(npm uninstall *)",
+      "Bash(del \"c:\\\\Users\\\\Ruben\\\\Desktop\\\\Projects\\\\DrivenGroup-Fase1\\\\Driven-Group\\\\prisma.config.ts\")",
+      "Bash(netstat -ano)",
+      "Bash(findstr :3000)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Name \"node\" -Force -ErrorAction SilentlyContinue)",
+      "Bash(PRISMA_USER_CONSENT_FOR_DANGEROUS_AI_ACTION=\"si\" npx prisma migrate reset --force)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
+    ]
+  }
+}
