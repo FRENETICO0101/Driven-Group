@@ -4,6 +4,7 @@ import { getAllProperties, getAvailableCities } from "@/server/services/property
 import { PropertyListingHero } from "@/components/real-estate/PropertyListingHero";
 import { PropertyFilters } from "@/components/real-estate/PropertyFilters";
 import { PropertyGrid } from "@/components/real-estate/PropertyGrid";
+import { PropertyListingSkeleton } from "@/components/loading/PropertyListingSkeleton";
 
 export const dynamic = "force-dynamic";
 
@@ -67,13 +68,7 @@ async function ListingContent({ searchParams }: PageProps) {
 export default function RealEstatePage(props: PageProps) {
   return (
     <main className="min-h-screen bg-black">
-      <Suspense
-        fallback={
-          <div className="min-h-screen flex items-center justify-center">
-            <div className="text-slate-500 text-sm">Cargando portafolio...</div>
-          </div>
-        }
-      >
+      <Suspense fallback={<PropertyListingSkeleton />}>
         <ListingContent searchParams={props.searchParams} />
       </Suspense>
     </main>
