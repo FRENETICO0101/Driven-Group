@@ -21,7 +21,11 @@
       "Bash(git commit *)",
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Ruben\\\\Desktop\\\\Projects\\\\DrivenGroup-Fase1\\\\Driven-Group\\\\src\\\\app\" -Directory)",
       "Bash(curl -s http://localhost:3000/real-estate/torre-corporativa-miami)",
-      "Bash(pkill -f \"npm run dev\")"
+      "Bash(pkill -f \"npm run dev\")",
+      "Bash(findstr \"env\")",
+      "Bash(npx tsc *)",
+      "Bash(npx playwright *)",
+      "PowerShell(git add -A)"
     ]
   }
 }

@@ -10,7 +10,7 @@ Evoluciona de sitio inmobiliario tradicional hacia **ecosistema estratégico de 
 
 # Estado Actual
 
-**Progreso:** 75%
+**Progreso:** 85%
 
 **Completado:**
 - Arquitectura modular frontend + shared UI
@@ -21,11 +21,18 @@ Evoluciona de sitio inmobiliario tradicional hacia **ecosistema estratégico de 
 - Dynamic property detail page con SSR
 - Lead persistence workflow: PropertyCTA → createLeadAction → PostgreSQL
 - Validación Zod + error handling en formularios
+- **🔒 Production Hardening Completo:**
+  - SEO metadata + OpenGraph para todas las rutas
+  - robots.txt + sitemap.xml
+  - Error boundaries premium (listing + detail)
+  - Loading skeletons + empty states
+  - Image optimization (Next.js Image)
+  - Accessibility basics (semantic HTML, focus states, aria-labels)
+  - Environment security (.env.example, .gitignore refinado)
+  - TypeScript strict mode + build validation
 
 **En Progreso:**
-- Consolidación contenido premium
-- Visual polish responsive
-- Property listing page (/real-estate)
+- Property listing page (/real-estate) con filtros
 
 **Pendiente:**
 - Admin CRUD
@@ -33,7 +40,7 @@ Evoluciona de sitio inmobiliario tradicional hacia **ecosistema estratégico de 
 - Analytics
 - Deployment
 
-**Próxima fase:** Polish visual + Admin panel + Deployment
+**Próxima fase:** Property listing filters + Admin panel + Deployment
 
 ---
 
@@ -191,11 +198,11 @@ Pequeños, descriptivos, específicos por dominio:
 - Mantenibilidad
 
 ## Prioridades inmediatas (próximos sprints)
-1. **Property listing page** - /real-estate con filtros básicos
-2. **Visual polish** - Responsive refinement y consistencia
-3. **Admin CRUD** - Gestión de propiedades
-4. **Email notifications** - Notificaciones a agentes
-5. **QA & deployment** - Testing y go-live
+1. **Property listing page** - /real-estate con filtros funcionales
+2. **Admin CRUD** - Panel de gestión de propiedades
+3. **Email notifications** - Notificaciones a agentes sobre leads
+4. **Visual polish final** - Refinement responsive y consistencia
+5. **QA & deployment** - Testing E2E y go-live
 
 ---
 
