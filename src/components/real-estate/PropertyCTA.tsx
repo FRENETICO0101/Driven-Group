@@ -1,27 +1,48 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { createLeadAction } from '@/server/actions/lead.actions';
 import type { Property } from '@/lib/types';
+
+type FormState = 'idle' | 'form' | 'loading' | 'success' | 'error';
 
 interface PropertyCTAProps {
   property: Property;
 }
 
+const INPUT_CLASS =
+  'w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary/50 disabled:opacity-50 disabled:cursor-not-allowed';
+
 export function PropertyCTA({ property }: PropertyCTAProps) {
-  const [showForm, setShowForm] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [state, setState] = useState<FormState>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const agentInfo = property.agent;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsLoading(true);
-    // Implementación futura: enviar formulario al servidor
-    setTimeout(() => {
-      setIsLoading(false);
-      setShowForm(false);
-    }, 500);
-  };
+    setState('loading');
+    setErrorMsg('');
 
-  const agentInfo = property.agent;
+    const data = new FormData(e.currentTarget);
+
+    const result = await createLeadAction({
+      name: data.get('name') as string,
+      email: data.get('email') as string,
+      phone: data.get('phone') as string,
+      message: data.get('message') as string || undefined,
+      propertyId: property.id,
+    });
+
+    if (result.success) {
+      setState('success');
+      formRef.current?.reset();
+    } else {
+      setState('error');
+      setErrorMsg(result.error ?? 'Error al enviar la consulta');
+    }
+  };
 
   return (
     <div className="glass-card border border-slate-700/30 rounded-xl p-8 space-y-6">
@@ -32,49 +53,81 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
         </p>
       </div>
 
-      {!showForm ? (
+      {state === 'idle' && (
         <button
-          onClick={() => setShowForm(true)}
+          onClick={() => setState('form')}
           className="w-full quartz-button py-3 rounded-lg font-semibold transition-transform hover:scale-105"
         >
           Solicitar Información
         </button>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-4">
+      )}
+
+      {state === 'success' && (
+        <div className="py-4 text-center space-y-2">
+          <p className="text-white font-semibold">Consulta recibida</p>
+          <p className="text-slate-400 text-sm">
+            Un asesor se pondrá en contacto en las próximas 24 horas.
+          </p>
+          <button
+            onClick={() => setState('idle')}
+            className="text-primary/70 hover:text-primary text-sm transition-colors mt-2"
+          >
+            Enviar otra consulta
+          </button>
+        </div>
+      )}
+
+      {(state === 'form' || state === 'loading' || state === 'error') && (
+        <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
           <input
+            name="name"
             type="text"
             placeholder="Nombre completo"
             required
-            className="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary/50"
+            disabled={state === 'loading'}
+            className={INPUT_CLASS}
           />
           <input
+            name="email"
             type="email"
             placeholder="Email"
             required
-            className="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary/50"
+            disabled={state === 'loading'}
+            className={INPUT_CLASS}
           />
           <input
+            name="phone"
             type="tel"
             placeholder="Teléfono"
-            className="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary/50"
+            required
+            disabled={state === 'loading'}
+            className={INPUT_CLASS}
           />
           <textarea
+            name="message"
             placeholder="Mensaje (opcional)"
             rows={3}
-            className="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary/50"
+            disabled={state === 'loading'}
+            className={INPUT_CLASS}
           />
+
+          {state === 'error' && (
+            <p className="text-red-400 text-sm">{errorMsg}</p>
+          )}
+
           <div className="flex gap-3">
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={state === 'loading'}
               className="flex-1 quartz-button py-3 rounded-lg font-semibold transition-all disabled:opacity-50"
             >
-              {isLoading ? 'Enviando...' : 'Enviar'}
+              {state === 'loading' ? 'Enviando...' : 'Enviar'}
             </button>
             <button
               type="button"
-              onClick={() => setShowForm(false)}
-              className="flex-1 bg-slate-800/50 border border-slate-700 text-white py-3 rounded-lg font-semibold transition-colors hover:bg-slate-700"
+              disabled={state === 'loading'}
+              onClick={() => { setState('idle'); setErrorMsg(''); }}
+              className="flex-1 bg-slate-800/50 border border-slate-700 text-white py-3 rounded-lg font-semibold transition-colors hover:bg-slate-700 disabled:opacity-50"
             >
               Cancelar
             </button>
@@ -86,7 +139,10 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
         <p className="text-slate-400 text-sm mb-2">Contacto directo:</p>
         <div className="space-y-1">
           <p className="text-white font-semibold">{agentInfo.name}</p>
-          <a href={`mailto:${agentInfo.email}`} className="text-primary/70 hover:text-primary text-sm">
+          <a
+            href={`mailto:${agentInfo.email}`}
+            className="text-primary/70 hover:text-primary text-sm transition-colors"
+          >
             {agentInfo.email}
           </a>
         </div>
