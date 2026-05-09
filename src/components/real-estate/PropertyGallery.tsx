@@ -22,8 +22,8 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
   const selected = images[selectedIndex];
 
   return (
-    <div className="space-y-4">
-      <div className="relative h-[500px] overflow-hidden rounded-xl">
+    <div className="space-y-3 sm:space-y-4">
+      <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] overflow-hidden rounded-lg sm:rounded-xl">
         <img
           src={selected.url}
           alt={selected.alt || title}
@@ -32,12 +32,12 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
       </div>
 
       {images.length > 1 && (
-        <div className="flex gap-3 overflow-x-auto pb-2">
+        <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 px-1">
           {images.map((image, idx) => (
             <button
               key={image.id}
               onClick={() => setSelectedIndex(idx)}
-              className={`flex-shrink-0 h-24 w-24 rounded-lg overflow-hidden transition-all border-2 ${
+              className={`flex-shrink-0 h-20 sm:h-24 w-20 sm:w-24 rounded-lg overflow-hidden transition-all border-2 ${
                 idx === selectedIndex
                   ? 'border-primary/80'
                   : 'border-slate-700 opacity-60 hover:opacity-100'
