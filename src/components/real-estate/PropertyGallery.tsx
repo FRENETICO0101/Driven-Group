@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import type { PropertyImage } from '@/lib/types';
 
@@ -24,10 +25,13 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
   return (
     <div className="space-y-3 sm:space-y-4">
       <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] overflow-hidden rounded-lg sm:rounded-xl">
-        <img
+        <Image
           src={selected.url}
           alt={selected.alt || title}
           className="w-full h-full object-cover"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+          priority={selectedIndex === 0}
         />
       </div>
 
@@ -43,10 +47,12 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
                   : 'border-slate-700 opacity-60 hover:opacity-100'
               }`}
             >
-              <img
+              <Image
                 src={image.url}
                 alt={image.alt || title}
                 className="w-full h-full object-cover"
+                fill
+                sizes="100px"
               />
             </button>
           ))}
