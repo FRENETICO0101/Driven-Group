@@ -17,7 +17,8 @@
       "PowerShell(Stop-Process -Name \"node\" -Force -ErrorAction SilentlyContinue)",
       "Bash(PRISMA_USER_CONSENT_FOR_DANGEROUS_AI_ACTION=\"si\" npx prisma migrate reset --force)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git commit *)"
     ]
   }
 }
