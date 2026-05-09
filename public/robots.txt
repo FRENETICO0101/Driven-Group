@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /real-estate
+Disallow: /admin
+Disallow: /api
+Disallow: /_next
+Disallow: /private
+
+Sitemap: https://drivengroup.com/sitemap.xml
