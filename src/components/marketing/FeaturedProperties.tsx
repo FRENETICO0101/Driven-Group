@@ -10,27 +10,27 @@ interface FeaturedPropertiesProps {
 
 export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
   return (
-    <section className="py-24 max-w-7xl mx-auto px-6">
-      <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+    <section className="py-16 sm:py-20 md:py-24 max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 sm:mb-16 gap-4 sm:gap-6">
         <div>
-          <h2 className="text-4xl font-black text-primary/90">Investment Opportunities</h2>
-          <p className="text-slate-400 text-lg max-w-xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-primary/90 mb-2">Investment Opportunities</h2>
+          <p className="text-slate-400 text-base sm:text-lg max-w-xl">
             Carteras seleccionadas para inversionistas que buscan consolidar su patrimonio en ubicaciones de excelencia.
           </p>
         </div>
         <a
-          className="text-primary/80 font-bold flex items-center gap-2 group hover:text-primary transition-colors"
+          className="text-primary/80 font-bold flex items-center gap-2 group hover:text-primary transition-colors whitespace-nowrap text-sm sm:text-base"
           href="/real-estate"
         >
-          Ver todas las oportunidades
-          <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+          Ver todas
+          <span className="material-symbols-outlined transition-transform group-hover:translate-x-1 text-base">arrow_forward</span>
         </a>
       </div>
 
       {properties.length === 0 ? (
         <p className="text-slate-500 text-center py-16">Próximamente nuevas oportunidades de inversión.</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {properties.map((property) => {
             const badge = getPropertyBadge(property.type);
             const primaryImage = property.images?.[0];
