@@ -1,10 +1,10 @@
 export function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-white/5 bg-black/90 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 w-full border-b border-white/5 bg-black/90 backdrop-blur-md" aria-label="Navegación principal">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
         <div className="flex items-center gap-4 sm:gap-10">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="size-6 sm:size-8 text-primary/90 shrink-0">
+          <a href="/" className="flex items-center gap-2 sm:gap-3 focus:outline-none focus:ring-2 focus:ring-primary rounded">
+            <div className="size-6 sm:size-8 text-primary/90 shrink-0" aria-hidden="true">
               <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                 <path
                   clipRule="evenodd"
@@ -15,7 +15,7 @@ export function Navbar() {
               </svg>
             </div>
             <h2 className="text-base sm:text-xl font-black tracking-tight uppercase text-white">Driven Group</h2>
-          </div>
+          </a>
           <div className="hidden md:flex items-center gap-6 lg:gap-8 text-slate-300">
             <a className="text-sm font-medium hover:text-primary transition-colors" href="/real-estate">
               Portfolio

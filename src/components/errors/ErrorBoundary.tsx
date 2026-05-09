@@ -14,7 +14,7 @@ export function ErrorBoundary({
   description = "Estamos trabajando para solucionar este problema.",
 }: ErrorBoundaryProps) {
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4">
+    <div className="min-h-screen bg-black flex items-center justify-center px-4" role="alert">
       <div className="text-center max-w-md">
         <h1 className="text-4xl font-light text-slate-100 mb-4">{title}</h1>
         <p className="text-slate-400 mb-8 text-sm leading-relaxed">
@@ -22,7 +22,8 @@ export function ErrorBoundary({
         </p>
         <button
           onClick={reset}
-          className="px-6 py-2 text-sm font-medium text-slate-100 border border-slate-700 hover:border-slate-500 transition-colors"
+          className="px-6 py-2 text-sm font-medium text-slate-100 border border-slate-700 hover:border-slate-500 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-black"
+          aria-label="Reintentar cargar la página"
         >
           Intentar nuevamente
         </button>
