@@ -48,18 +48,18 @@ export default async function PropertyPage({
     <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       {/* Navigation */}
       <nav className="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <a href="/real-estate" className="text-primary hover:text-primary/80 transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+          <a href="/real-estate" className="text-primary hover:text-primary/80 transition-colors text-sm sm:text-base">
             ← Volver al catálogo
           </a>
         </div>
       </nav>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
           {/* Gallery & Hero */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-6 sm:space-y-8">
             <PropertyGallery images={property.images} title={property.title} />
             <PropertyHero property={property} badge={badge.label} badgeFeatured={badge.featured} />
           </div>
@@ -71,13 +71,13 @@ export default async function PropertyPage({
         </div>
 
         {/* Details Section */}
-        <div className="mt-16 pt-12 border-t border-slate-800/50">
+        <div className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-slate-800/50">
           <PropertyDetails property={property} />
         </div>
       </div>
 
       {/* Footer Whitespace */}
-      <div className="h-20" />
+      <div className="h-12 sm:h-20" />
     </main>
   );
 }
