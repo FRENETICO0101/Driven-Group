@@ -1,15 +1,15 @@
 export function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-black py-12">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          <div>
-            <h3 className="text-white font-bold mb-4">Driven Group</h3>
-            <p className="text-slate-400 text-sm">Plataforma premium de Real Estate</p>
+    <footer className="border-t border-white/5 bg-black py-8 sm:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-12 mb-8 sm:mb-12">
+          <div className="col-span-2 sm:col-span-1">
+            <h3 className="text-white font-bold mb-2 sm:mb-4 text-sm sm:text-base">Driven Group</h3>
+            <p className="text-slate-400 text-xs sm:text-sm">Plataforma premium de Real Estate</p>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-4">Propiedades</h4>
-            <ul className="space-y-2 text-slate-400 text-sm">
+            <h4 className="text-white font-semibold mb-2 sm:mb-4 text-xs sm:text-sm">Propiedades</h4>
+            <ul className="space-y-1 sm:space-y-2 text-slate-400 text-xs sm:text-sm">
               <li>
                 <a href="/real-estate" className="hover:text-primary transition-colors">
                   Listado
@@ -28,8 +28,8 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-4">Empresa</h4>
-            <ul className="space-y-2 text-slate-400 text-sm">
+            <h4 className="text-white font-semibold mb-2 sm:mb-4 text-xs sm:text-sm">Empresa</h4>
+            <ul className="space-y-1 sm:space-y-2 text-slate-400 text-xs sm:text-sm">
               <li>
                 <a href="/about" className="hover:text-primary transition-colors">
                   Nosotros
@@ -43,8 +43,8 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-4">Legal</h4>
-            <ul className="space-y-2 text-slate-400 text-sm">
+            <h4 className="text-white font-semibold mb-2 sm:mb-4 text-xs sm:text-sm">Legal</h4>
+            <ul className="space-y-1 sm:space-y-2 text-slate-400 text-xs sm:text-sm">
               <li>
                 <a href="#" className="hover:text-primary transition-colors">
                   Privacidad
@@ -58,14 +58,14 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-white/5 pt-8 flex justify-between items-center">
-          <p className="text-slate-400 text-sm">© 2026 Driven Group. Todos los derechos reservados.</p>
+        <div className="border-t border-white/5 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-slate-400 text-xs sm:text-sm text-center sm:text-left">© 2026 Driven Group. Todos los derechos reservados.</p>
           <div className="flex gap-4">
             <a href="#" className="text-slate-400 hover:text-primary transition-colors">
-              <span className="material-symbols-outlined text-xl">facebook</span>
+              <span className="material-symbols-outlined text-lg sm:text-xl">facebook</span>
             </a>
             <a href="#" className="text-slate-400 hover:text-primary transition-colors">
-              <span className="material-symbols-outlined text-xl">language</span>
+              <span className="material-symbols-outlined text-lg sm:text-xl">language</span>
             </a>
           </div>
         </div>
