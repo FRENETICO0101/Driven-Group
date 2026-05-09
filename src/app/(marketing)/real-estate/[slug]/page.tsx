@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getPropertyBySlug } from '@/server/services/property.service';
 import { getPropertyBadge } from '@/lib/property-utils';
@@ -9,13 +10,15 @@ import { PropertyCTA } from '@/components/real-estate/PropertyCTA';
 export const dynamic = 'force-dynamic';
 export const revalidate = 60;
 
+const siteUrl = 'https://drivengroup.com';
+
 interface PropertyPageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({
   params,
-}: PropertyPageProps) {
+}: PropertyPageProps): Promise<Metadata> {
   const { slug } = await params;
   const property = await getPropertyBySlug(slug);
 
@@ -26,9 +29,34 @@ export async function generateMetadata({
     };
   }
 
+  const primaryImage = property.images[0]?.url || `${siteUrl}/og-image.png`;
+
   return {
-    title: `${property.title} - Driven Group`,
-    description: property.description || `Descubre esta propiedad en ${property.city}`,
+    title: `${property.title} — Driven Group`,
+    description: property.description || `Activo inmobiliario estratégico en ${property.city}. Inversión corporativa de alto potencial.`,
+    openGraph: {
+      title: `${property.title} — Driven Group`,
+      description: property.description || `Activo inmobiliario estratégico en ${property.city}. Inversión corporativa de alto potencial.`,
+      url: `${siteUrl}/real-estate/${property.slug}`,
+      type: 'website',
+      images: [
+        {
+          url: primaryImage,
+          width: 1200,
+          height: 630,
+          alt: property.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${property.title} — Driven Group`,
+      description: property.description || `Activo inmobiliario estratégico en ${property.city}. Inversión corporativa de alto potencial.`,
+      images: [primaryImage],
+    },
+    alternates: {
+      canonical: `${siteUrl}/real-estate/${property.slug}`,
+    },
   };
 }
 
