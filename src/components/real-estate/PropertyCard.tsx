@@ -13,6 +13,7 @@ interface PropertyCardProps {
   subtitle: string;
   description: string;
   features: Feature[];
+  slug: string;
 }
 
 export function PropertyCard({
@@ -25,6 +26,7 @@ export function PropertyCard({
   subtitle,
   description,
   features,
+  slug,
 }: PropertyCardProps) {
   return (
     <div className="glass-card group overflow-hidden rounded-xl transition-all hover:-translate-y-2 flex flex-col">
@@ -58,9 +60,12 @@ export function PropertyCard({
             </span>
           ))}
         </div>
-        <button className="bg-primary/20 border border-primary/50 text-white px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-primary hover:text-slate-900">
+        <a
+          href={`/real-estate/${slug}`}
+          className="inline-block bg-primary/20 border border-primary/50 text-white px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-primary hover:text-slate-900 text-center"
+        >
           Ver Detalles
-        </button>
+        </a>
       </div>
     </div>
   );

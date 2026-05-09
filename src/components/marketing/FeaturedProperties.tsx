@@ -54,6 +54,7 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
                 subtitle={formatPropertySubtitle(property)}
                 description={property.description ?? ""}
                 features={features}
+                slug={property.slug}
               />
             );
           })}
