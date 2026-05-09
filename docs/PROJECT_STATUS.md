@@ -23,7 +23,7 @@ Enfocada en:
 # Progreso Actual
 
 Progreso estimado general:
-## 65%
+## 75%
 
 ---
 
@@ -63,14 +63,28 @@ Progreso estimado general:
 - Estrategia premium de CTAs
 - Alineación luxury/corporate
 
+## Dynamic Property Detail SSR
+- ✅ /real-estate/[slug] con SSR
+- ✅ PropertyGallery con thumbnails
+- ✅ PropertyHero con specs y pricing
+- ✅ PropertyDetails con amenities
+- ✅ ISR 60 segundos
+
+## Lead Persistence Workflow
+- ✅ PropertyCTA integrado con createLeadAction
+- ✅ Validación Zod en formulario
+- ✅ Estados UX: idle → form → loading → success/error
+- ✅ Error handling inline con retry
+- ✅ Persistencia real en PostgreSQL
+
 ---
 
 # En Progreso
 
-## Integración Frontend-Backend
-- Rendering dinámico de featured properties
-- Property detail page dinámico
-- Consumo de server actions en componentes
+## Property Listing Page
+- /real-estate con grid de propiedades
+- Filtros básicos (ciudad, precio, tipo)
+- Paginación
 
 ## Consolidación de Contenido
 - Sección Corporate Philosophy
@@ -89,21 +103,16 @@ Progreso estimado general:
 
 # Pendiente
 
-## Rendering Dinámico Frontend
-- Consumir server actions en homepage
-- Featured properties dinámicas en hero/section
-- Property detail dinámico con datos reales
-
-## Captura de Leads
-- Persistencia de inquiries (workflow completo)
-- Integración formularios con validación
-- Email integration
-- Flujo real de leads operacional
+## Email Notifications
+- Email a agentes cuando hay nuevo inquiry
+- Notificación a usuario confirmando envío
+- Template de emails
 
 ## Admin & Advanced
 - Admin CRUD para propiedades
 - Upload de imágenes dinámico
 - Gestión amenities
+- Dashboard de inquiries
 - CRM interactions workflow
 
 ## Finalización
@@ -126,11 +135,11 @@ Progreso estimado general:
 
 # Prioridades Actuales
 
-1. Consolidación premium de contenido
-2. Integración dinámica de propiedades
-3. Responsive polish
-4. Flujo de leads
-5. QA final
+1. Property listing page (/real-estate)
+2. Visual polish & responsive refinement
+3. Admin CRUD para propiedades
+4. Email notifications a agentes
+5. QA final y deployment
 
 ---
 
@@ -161,22 +170,30 @@ La plataforma NO debe sentirse como:
 
 # Próxima Fase Principal
 
-## Rendering Dinámico Frontend (Priority)
+## Property Listing Page (Priority 1)
 
 Objetivos inmediatos:
-- Consumir `getFeaturedPropertiesAction()` en homepage
-- Renderizar featured properties con datos reales
-- Integrar property detail dinámico
+- Crear /real-estate con grid dinámico
+- Implementar filtros básicos (ciudad, precio, tipo)
+- Paginación simple
 - Validar flujo end-to-end
 
-Timeline: 1-2 sprints
+Timeline: 1 sprint
 
-## Lead Capture Workflow (Priority 2)
+## Email Notifications (Priority 2)
 
 Objetivos:
-- Implementar persistencia completa de inquiries
-- Validación de formularios con Zod
-- Email integration
-- Notificaciones a agentes
+- Notificaciones a agentes cuando hay nuevo inquiry
+- Confirmación a usuario
+- Templates de emails
 
-Timeline: 2-3 sprints
+Timeline: 1 sprint
+
+## Admin CRUD (Priority 3)
+
+Objetivos:
+- Dashboard administrativo
+- CRUD de propiedades
+- Gestión de inquiries
+
+Timeline: 2 sprints

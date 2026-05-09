@@ -10,7 +10,7 @@ Evoluciona de sitio inmobiliario tradicional hacia **ecosistema estratégico de 
 
 # Estado Actual
 
-**Progreso:** 65%
+**Progreso:** 75%
 
 **Completado:**
 - Arquitectura modular frontend + shared UI
@@ -18,18 +18,22 @@ Evoluciona de sitio inmobiliario tradicional hacia **ecosistema estratégico de 
 - Repositories + Services pattern operacional
 - Server actions funcionales (properties, leads)
 - Premium seed data: 3 propiedades luxury corporate
+- Dynamic property detail page con SSR
+- Lead persistence workflow: PropertyCTA → createLeadAction → PostgreSQL
+- Validación Zod + error handling en formularios
 
 **En Progreso:**
-- Rendering dinámico frontend (featured properties)
 - Consolidación contenido premium
 - Visual polish responsive
+- Property listing page (/real-estate)
 
 **Pendiente:**
-- Lead persistence workflow
 - Admin CRUD
+- Email notifications
+- Analytics
 - Deployment
 
-**Próxima fase:** Integración dinámica frontend → Lead capture workflow
+**Próxima fase:** Polish visual + Admin panel + Deployment
 
 ---
 
@@ -88,9 +92,9 @@ UI Component → Server Action → Service → Repository → Prisma/PostgreSQL
 - **CRMInteraction:** historial interacciones (future)
 
 **Server Actions operacionales:**
-- `getFeaturedPropertiesAction(limit)` - Obtener destacadas
-- `getPropertyBySlugAction(slug)` - Detalle dinámico
-- `createInquiryAction()` - Crear lead (próximo)
+- `getFeaturedPropertiesAction(limit)` - Obtener destacadas ✅
+- `getPropertyBySlugAction(slug)` - Detalle dinámico ✅
+- `createLeadAction(data)` - Crear inquiry con Zod validation ✅
 
 ---
 
@@ -187,10 +191,11 @@ Pequeños, descriptivos, específicos por dominio:
 - Mantenibilidad
 
 ## Prioridades inmediatas (próximos sprints)
-1. **Rendering dinámico frontend** - Consumir server actions en homepage
-2. **Lead persistence workflow** - Validación + email integration
-3. **Responsive polish** - Refinamiento visual final
-4. **QA & deployment** - Testing y go-live
+1. **Property listing page** - /real-estate con filtros básicos
+2. **Visual polish** - Responsive refinement y consistencia
+3. **Admin CRUD** - Gestión de propiedades
+4. **Email notifications** - Notificaciones a agentes
+5. **QA & deployment** - Testing y go-live
 
 ---
 
