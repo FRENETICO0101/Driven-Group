@@ -1,9 +1,10 @@
-# Driven Group - Real Estate Platform
+# Driven Group - Luxury Corporate Real Estate Platform
 
 ![Driven Group](https://img.shields.io/badge/Driven_Group-Real_Estate_Premium-0a0a0a?style=for-the-badge&logoColor=f5f5f7)
-![Project Status](https://img.shields.io/badge/Status-Fase_1_Architecture-blue?style=for-the-badge)
+![Project Status](https://img.shields.io/badge/Status-Fase_1_Dynamic_Integration-blue?style=for-the-badge)
+![Progress](https://img.shields.io/badge/Progress-65%25-green?style=for-the-badge)
 
-**Plataforma premium de Real Estate** enfocada en experiencia digital de alto nivel, con módulo de inversión inmobiliaria, galería interactiva de propiedades y captura de leads de calidad.
+**Plataforma premium de real estate** enfocada en experiencia editorial de inversión corporativa, con integración dinámica de propiedades, galería interactiva premium y captura de leads de calidad.
 
 ---
 
@@ -11,13 +12,13 @@
 
 El ecosistema del proyecto está construido con herramientas modernas y escalables:
 
-- **Frontend:** Next.js 16 (App Router), React 19, TypeScript 5, Tailwind CSS v4
-- **Backend:** Next.js API Routes, Server Actions, Next Auth (próximo)
-- **Base de Datos:** PostgreSQL
-- **ORM:** Prisma 7 con tipo-seguridad completa
+- **Frontend:** Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4
+- **Backend:** Server Actions, Prisma ORM, PostgreSQL (Neon)
+- **Base de Datos:** PostgreSQL con Neon
+- **ORM:** Prisma con tipo-seguridad completa
 - **Validación:** Zod para schemas y formularios
-- **UI/UX:** Glassmorphism, Material Symbols, Dark Mode ejecutivo
-- **Deployment:** Ready for Vercel, adaptable a otros platforms
+- **Architecture:** Server-first, modular, repositories + services pattern
+- **Deployment:** Ready for Vercel
 
 ---
 
@@ -176,34 +177,35 @@ src/
 
 ## 🔄 Fases de Desarrollo
 
-### ✅ Fase 1 (Actual): Arquitectura Base
+### ✅ Fase 1 (Actual): Integración Dinámica Premium
 - [x] Refactorización Academy → Real Estate
 - [x] Rutas agrupadas (marketing)/(platform)
-- [x] Schema Prisma para Real Estate
-- [x] Stack completo con dependencias
+- [x] Schema Prisma completo con Neon
+- [x] Repositories + Services pattern
+- [x] Server actions funcionales (properties, leads)
+- [x] Premium seed data (3 propiedades luxury corporate)
 - [x] Componentes base UI extraídos
-- [ ] API routes básicas
-- [ ] Autenticación base
+- [x] Integración Prisma ↔ Backend
+- [ ] Rendering dinámico frontend (featured properties)
+- [ ] Property detail dinámico
 
-### ⏳ Fase 2: Landing + Real Estate Core
-- [ ] Landing premium finalizado
-- [ ] Listado de propiedades con filtros
-- [ ] Página de detalle de propiedad
-- [ ] Galería interactiva
-- [ ] Sistema de favoritos
-
-### ⏳ Fase 3: Lead Capture
-- [ ] Formulario de consultas
+### ⏳ Fase 2: Lead Capture & Polish
+- [ ] Lead persistence workflow
+- [ ] Formulario de consultas con validación
 - [ ] Email integration
-- [ ] Validación y persistencia
+- [ ] Responsive polish final
 - [ ] Notificaciones a agentes
-- [ ] CRM ready architecture
 
-### ⏳ Fase 4: Polish & Deploy
-- [ ] Responsive design completo
+### ⏳ Fase 3: Admin & Advanced Features
+- [ ] Admin CRUD para propiedades
+- [ ] Upload de imágenes
+- [ ] Gestión amenities dinámicos
+- [ ] CRM interactions
+
+### ⏳ Fase 4: QA & Deploy
+- [ ] Testing completo
 - [ ] Performance optimization
-- [ ] Testing (vitest)
-- [ ] QA
+- [ ] QA final
 - [ ] Deploy a producción
 
 ---
@@ -291,9 +293,9 @@ GET    /api/health                  # Estado de la app
 
 ## 🚨 Status Actual
 
-**Nivel:** 25% - Arquitectura base completada  
-**Focus:** Refactor Academy → Real Estate ✅  
-**Próximo:** API routes y Real Estate core  
+**Nivel:** 65% - Integración dinámica + Foundation backend completadas  
+**Focus:** Premium seed data + Server actions operacionales ✅  
+**Próximo:** Rendering dinámico frontend y persistencia de leads  
 
 ---
 

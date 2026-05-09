@@ -152,22 +152,65 @@ Inspiración:
 
 # Arquitectura de Datos
 
-Entidades principales:
-- User
-- Property
-- PropertyImage
-- Inquiry
-- CRMInteraction
+Entidades principales implementadas:
+
+**User Layer**
+- User (admin, agent, viewer)
+- Roles: VIEWER, AGENT, ADMIN
+
+**Real Estate Core**
+- Property (RESIDENTIAL, COMMERCIAL, LAND, MIXED_USE)
+- PropertyImage (galería multimedia)
+- Status: ACTIVE, SOLD, PENDING, INACTIVE
+
+**Lead Management**
+- Inquiry (captura y tracking de leads)
+- LeadSource: WEBSITE, PHONE, WHATSAPP, FORM_POPUP, EMAIL
+- InquiryStatus: NEW, CONTACTED, QUALIFIED, NEGOTIATING, CLOSED, LOST
+
+**CRM Foundation** (future)
+- CRMInteraction (historial completo)
+- InteractionType: CALL, EMAIL, WHATSAPP, MEETING, PROPOSAL
+
+---
+
+# Patrón Data Flow
+
+```
+UI Component
+    ↓
+Server Action (property.actions.ts)
+    ↓
+Service Layer (property.service.ts)
+    ↓
+Repository Layer (property.repository.ts)
+    ↓
+Prisma + PostgreSQL (Neon)
+```
+
+---
+
+# Server Actions Operacionales
+
+- `getFeaturedPropertiesAction(limit)` - Obtener propiedades destacadas
+- `getPropertyBySlugAction(slug)` - Obtener detalle de propiedad
+- `createInquiryAction()` - Crear lead (próximo)
+- `getInquiriesAction()` - Listar leads (admin)
 
 ---
 
 # Foco Actual
 
 El foco actual del desarrollo es:
-## consolidación premium + integración dinámica real estate
+## integración dinámicamente frontend + persistence de leads
 
-NO:
-- CRM
-- automatizaciones
-- dashboards avanzados
-- auth enterprise
+✅ Completado:
+- Prisma + PostgreSQL setup
+- Repositories pattern
+- Server actions framework
+- Premium seed data
+
+⏳ En progreso:
+- Consumo dinámico en componentes
+- Lead persistence workflow
+- Validación Zod
