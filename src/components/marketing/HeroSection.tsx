@@ -1,9 +1,11 @@
+import Image from "next/image";
+
 export function HeroSection() {
   return (
     <header className="relative min-h-screen sm:min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 hero-gradient z-10"></div>
-        <img
+        <Image
           alt="Luxury Real Estate"
           className="w-full h-full object-cover grayscale-[0.3] brightness-[0.7]"
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop"

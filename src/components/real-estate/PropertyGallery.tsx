@@ -41,7 +41,7 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
             <button
               key={image.id}
               onClick={() => setSelectedIndex(idx)}
-              className={`flex-shrink-0 h-20 sm:h-24 w-20 sm:w-24 rounded-lg overflow-hidden transition-all border-2 ${
+              className={`relative flex-shrink-0 h-20 sm:h-24 w-20 sm:w-24 rounded-lg overflow-hidden transition-all border-2 ${
                 idx === selectedIndex
                   ? 'border-primary/80'
                   : 'border-slate-700 opacity-60 hover:opacity-100'
