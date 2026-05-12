@@ -104,7 +104,10 @@ export function Footer() {
                     <a href="/" className="hover:text-slate-900 transition-colors">Home</a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-slate-900 transition-colors">Contact</a>
+                    <a href="/about" className="hover:text-slate-900 transition-colors">About Us</a>
+                  </li>
+                  <li>
+                    <a href="/contact" className="hover:text-slate-900 transition-colors">Contact</a>
                   </li>
                   <li>
                     <a href="#" className="hover:text-slate-900 transition-colors">Careers</a>
