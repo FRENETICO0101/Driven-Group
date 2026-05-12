@@ -66,25 +66,6 @@ export function OurStory() {
         </div>
       </div>
 
-      {/* Stats Row */}
-      <div className="mt-20 sm:mt-24 md:mt-28 pt-12 sm:pt-16 md:pt-20 border-t border-slate-200 grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 md:gap-16">
-        <div>
-          <p className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 mb-2">$2.8B</p>
-          <p className="editorial-label text-slate-400">TOTAL SALES VOLUME</p>
-        </div>
-        <div>
-          <p className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 mb-2">500+</p>
-          <p className="editorial-label text-slate-400">PROPERTIES SOLD</p>
-        </div>
-        <div>
-          <p className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 mb-2">20+</p>
-          <p className="editorial-label text-slate-400">YEARS EXPERIENCE</p>
-        </div>
-        <div>
-          <p className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 mb-2">98%</p>
-          <p className="editorial-label text-slate-400">CLIENT SATISFACTION</p>
-        </div>
-      </div>
     </section>
   );
 }
