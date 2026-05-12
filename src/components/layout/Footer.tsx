@@ -53,29 +53,29 @@ export function Footer() {
                     <a href="/real-estate" className="hover:text-slate-900 transition-colors">Real Estate</a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-slate-900 transition-colors">Business</a>
+                    <a href="/business" className="hover:text-slate-900 transition-colors">Business</a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-slate-900 transition-colors">Academy</a>
+                    <a href="/academy" className="hover:text-slate-900 transition-colors">Academy</a>
                   </li>
                 </ul>
               </div>
 
-              {/* BUSINESS */}
+              {/* BUSINESS UNITS */}
               <div>
-                <h4 className="editorial-label text-slate-400 mb-5 tracking-[0.15em] text-xs font-semibold">BUSINESS</h4>
+                <h4 className="editorial-label text-slate-400 mb-5 tracking-[0.15em] text-xs font-semibold">BUSINESS UNITS</h4>
                 <ul className="space-y-3 text-slate-700 text-sm">
                   <li>
-                    <a href="#" className="hover:text-slate-900 transition-colors">Digital Commerce</a>
+                    <a href="/business#divisions" className="hover:text-slate-900 transition-colors">Digital Commerce</a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-slate-900 transition-colors">Global Markets</a>
+                    <a href="/business#divisions" className="hover:text-slate-900 transition-colors">Global Markets</a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-slate-900 transition-colors">Strategic Alliances</a>
+                    <a href="/business#divisions" className="hover:text-slate-900 transition-colors">Strategic Alliances</a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-slate-900 transition-colors">Luxury Assets</a>
+                    <a href="/business#divisions" className="hover:text-slate-900 transition-colors">Luxury Assets</a>
                   </li>
                 </ul>
               </div>
@@ -85,16 +85,13 @@ export function Footer() {
                 <h4 className="editorial-label text-slate-400 mb-5 tracking-[0.15em] text-xs font-semibold">ACADEMY</h4>
                 <ul className="space-y-3 text-slate-700 text-sm">
                   <li>
-                    <a href="#" className="hover:text-slate-900 transition-colors">Courses</a>
+                    <a href="/academy#programs" className="hover:text-slate-900 transition-colors">Cursos</a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-slate-900 transition-colors">Mentoring</a>
+                    <a href="/academy#programs" className="hover:text-slate-900 transition-colors">Mentoring</a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-slate-900 transition-colors">Mastering</a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-slate-900 transition-colors">Coming Soon</a>
+                    <a href="/academy#programs" className="hover:text-slate-900 transition-colors">Mastering</a>
                   </li>
                 </ul>
               </div>
@@ -104,10 +101,10 @@ export function Footer() {
                 <h4 className="editorial-label text-slate-400 mb-5 tracking-[0.15em] text-xs font-semibold">COMPANY</h4>
                 <ul className="space-y-3 text-slate-700 text-sm">
                   <li>
-                    <a href="/about" className="hover:text-slate-900 transition-colors">About Us</a>
+                    <a href="/" className="hover:text-slate-900 transition-colors">Home</a>
                   </li>
                   <li>
-                    <a href="/contact" className="hover:text-slate-900 transition-colors">Contact Us</a>
+                    <a href="#" className="hover:text-slate-900 transition-colors">Contact</a>
                   </li>
                   <li>
                     <a href="#" className="hover:text-slate-900 transition-colors">Careers</a>
