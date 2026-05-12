@@ -3,12 +3,11 @@ export function StatsSection() {
     <section className="py-20 sm:py-24 md:py-32 border-y border-slate-200 bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         {/* 4 Main Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 md:gap-16 mb-16 sm:mb-20 md:mb-24">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 md:gap-16">
           {/* Total Sales Volume */}
           <div>
             <p className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 mb-2">$2.8B</p>
-            <p className="editorial-label text-slate-400 text-xs mb-3">TOTAL SALES VOLUME</p>
-            <p className="text-slate-600 text-sm font-medium">Featured Residences</p>
+            <p className="editorial-label text-slate-400 text-xs">TOTAL SALES VOLUME</p>
           </div>
 
           {/* Properties Sold */}
