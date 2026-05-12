@@ -21,16 +21,13 @@ export function HeroSection() {
       <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-8 pb-16 sm:pb-20 md:pb-24">
         <div className="max-w-2xl">
 
-          {/* Eyebrow */}
-          <p className="fade-in-delay-50 editorial-label text-white/50 mb-4">LUXURY INVESTMENT PLATFORM</p>
-
           {/* Headline */}
-          <h1 className="fade-in-delay-100 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] md:leading-[1.05] mb-6 sm:mb-7 text-white tracking-tight">
-            Donde el <em className="not-italic text-white/70">patrimonio</em><br className="hidden sm:block" /> toma forma
+          <h1 className="fade-in-delay-100 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] md:leading-[1.05] mb-6 sm:mb-7 text-slate-900 tracking-tight">
+            Donde el <em className="not-italic text-slate-600">patrimonio</em><br className="hidden sm:block" /> toma forma
           </h1>
 
           {/* Body */}
-          <p className="fade-in-delay-200 text-base sm:text-lg text-white/55 mb-10 sm:mb-12 leading-[1.75] max-w-xl font-light">
+          <p className="fade-in-delay-200 text-base sm:text-lg text-slate-600 mb-10 sm:mb-12 leading-[1.75] max-w-xl font-light">
             Carteras inmobiliarias curadas para inversionistas<br className="hidden md:block" /> que consolidan su legado en ubicaciones excepcionales.
           </p>
 
@@ -42,15 +39,15 @@ export function HeroSection() {
             >
               Explorar Portfolio
             </Link>
-            <button className="px-7 sm:px-9 py-3.5 sm:py-4 rounded-xl font-semibold text-sm sm:text-base tracking-wide text-white/80 border border-white/15 hover:border-white/30 hover:text-white hover:bg-white/5 transition-all duration-300">
+            <button className="px-7 sm:px-9 py-3.5 sm:py-4 rounded-xl font-semibold text-sm sm:text-base tracking-wide text-slate-700 border border-slate-300 hover:border-slate-400 hover:text-slate-900 hover:bg-slate-50 transition-all duration-300">
               Agendar Consulta
             </button>
           </div>
 
           {/* Scroll indicator */}
           <div className="fade-in-delay-400 hidden sm:flex items-center gap-3 mt-14 sm:mt-16">
-            <div className="w-px h-8 bg-white/20" />
-            <span className="editorial-label text-white/35">Scroll para explorar</span>
+            <div className="w-px h-8 bg-slate-300" />
+            <span className="editorial-label text-slate-400">Scroll para explorar</span>
           </div>
 
         </div>

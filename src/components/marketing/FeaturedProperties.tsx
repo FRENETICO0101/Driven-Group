@@ -12,15 +12,15 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
   return (
     <section className="py-24 sm:py-28 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
       <div className="mb-16 sm:mb-20">
-        <p className="editorial-label text-white/40 mb-3">INVESTMENT OPPORTUNITIES</p>
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white/90 mb-4 tracking-tight">Featured Properties</h2>
-        <p className="text-base sm:text-lg text-white/60 max-w-2xl leading-relaxed font-light">
+        <p className="editorial-label text-slate-400 mb-3">INVESTMENT OPPORTUNITIES</p>
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 mb-4 tracking-tight">Featured Properties</h2>
+        <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed font-light">
           Carteras seleccionadas para inversionistas que buscan consolidar su patrimonio en ubicaciones excepcionales.
         </p>
       </div>
 
       {properties.length === 0 ? (
-        <p className="text-white/40 text-center py-24 editorial-label">Próximamente nuevas oportunidades de inversión.</p>
+        <p className="text-slate-400 text-center py-24 editorial-label">Próximamente nuevas oportunidades de inversión.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
           {properties.map((property) => {

@@ -81,7 +81,7 @@ export function Navbar() {
       <header
         className={`fixed left-0 right-0 top-0 z-50 transition-all duration-700 ${
           overlayVisible
-            ? "bg-black/95 border-b border-white/5 backdrop-blur-md"
+            ? "bg-white/95 border-b border-slate-200 backdrop-blur-md"
             : "bg-transparent"
         }`}
         aria-label="Navegación principal"
@@ -93,9 +93,9 @@ export function Navbar() {
             <div className="flex items-center gap-5 sm:gap-6">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className={`flex items-center gap-2.5 transition-colors duration-500 focus:outline-none focus-visible:ring-1 focus-visible:ring-white/30 rounded ${
-                  overlayVisible ? "text-white" : "text-white/80"
-                } hover:text-white`}
+                className={`flex items-center gap-2.5 transition-colors duration-500 focus:outline-none focus-visible:ring-1 focus-visible:ring-slate-300 rounded ${
+                  overlayVisible ? "text-slate-900" : "text-slate-700"
+                } hover:text-slate-900`}
                 aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
                 aria-expanded={isMenuOpen}
               >
@@ -104,19 +104,19 @@ export function Navbar() {
                   <span className={`block h-px bg-current transition-all duration-300 ${isMenuOpen ? "opacity-0 scale-x-0" : ""}`} />
                   <span className={`block h-px bg-current transition-all duration-500 origin-center ${isMenuOpen ? "-rotate-45 -translate-y-2.25" : ""}`} />
                 </div>
-                <span className="hidden sm:inline editorial-label text-current opacity-60">Menu</span>
+                <span className="hidden sm:inline editorial-label text-slate-500">Menu</span>
               </button>
 
               {/* Compact city + time — header bar */}
               {cityInfo.time && (
                 <div
                   className={`hidden md:flex items-center gap-3 pl-5 border-l transition-colors duration-700 ${
-                    overlayVisible ? "border-white/10" : "border-white/15"
+                    overlayVisible ? "border-slate-200" : "border-slate-200"
                   }`}
                 >
-                  <span className="editorial-label text-white/45">{activeCity.label}</span>
-                  <span className="editorial-label text-white/65 tabular-nums">{cityInfo.time}</span>
-                  <span className="editorial-label text-white/40 tabular-nums">{cityInfo.temp}°F</span>
+                  <span className="editorial-label text-slate-500">{activeCity.label}</span>
+                  <span className="editorial-label text-slate-700 tabular-nums">{cityInfo.time}</span>
+                  <span className="editorial-label text-slate-500 tabular-nums">{cityInfo.temp}°F</span>
                 </div>
               )}
             </div>
@@ -124,10 +124,10 @@ export function Navbar() {
             {/* Center — wordmark */}
             <Link
               href="/"
-              className="justify-self-center focus:outline-none focus-visible:ring-1 focus-visible:ring-white/30 rounded"
+              className="justify-self-center focus:outline-none focus-visible:ring-1 focus-visible:ring-slate-300 rounded"
               aria-label="Driven Group — Inicio"
             >
-              <span className={`text-sm sm:text-base md:text-lg font-semibold tracking-[0.25em] uppercase transition-colors duration-700 ${overlayVisible ? "text-white" : "text-white/90"}`}>
+              <span className={`text-sm sm:text-base md:text-lg font-semibold tracking-[0.25em] uppercase transition-colors duration-700 ${overlayVisible ? "text-slate-900" : "text-slate-700"}`}>
                 DRIVEN GROUP
               </span>
             </Link>
@@ -136,21 +136,21 @@ export function Navbar() {
             <div className="flex items-center justify-end gap-4 sm:gap-5">
               <Link
                 href="/contact"
-                className={`hidden sm:flex items-center gap-1.5 transition-colors duration-500 ${overlayVisible ? "text-white/70 hover:text-white" : "text-white/60 hover:text-white/90"}`}
+                className={`hidden sm:flex items-center gap-1.5 transition-colors duration-500 ${overlayVisible ? "text-slate-600 hover:text-slate-900" : "text-slate-600 hover:text-slate-700"}`}
                 aria-label="Contacto"
               >
                 <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>phone</span>
-                <span className="hidden lg:inline editorial-label text-current">Contact</span>
+                <span className="hidden lg:inline editorial-label">Contact</span>
               </Link>
               <button
-                className={`hidden md:flex items-center gap-1.5 transition-colors duration-500 ${overlayVisible ? "text-white/70 hover:text-white" : "text-white/60 hover:text-white/90"}`}
+                className={`hidden md:flex items-center gap-1.5 transition-colors duration-500 ${overlayVisible ? "text-slate-600 hover:text-slate-900" : "text-slate-600 hover:text-slate-700"}`}
                 aria-label="Idioma"
               >
                 <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>language</span>
-                <span className="editorial-label text-current">EN</span>
+                <span className="editorial-label">EN</span>
               </button>
               <button
-                className={`transition-colors duration-500 ${overlayVisible ? "text-white/70 hover:text-white" : "text-white/60 hover:text-white/90"}`}
+                className={`transition-colors duration-500 ${overlayVisible ? "text-slate-600 hover:text-slate-900" : "text-slate-600 hover:text-slate-700"}`}
                 aria-label="Cuenta"
               >
                 <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>person</span>
@@ -163,7 +163,7 @@ export function Navbar() {
 
       {/* Full-screen overlay menu */}
       <div
-        className={`fixed inset-0 z-40 bg-black transition-all duration-700 ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}
+        className={`fixed inset-0 z-40 bg-white transition-all duration-700 ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}
         aria-hidden={!isMenuOpen}
       >
         <div className="flex h-full pt-20 px-8 sm:px-12 lg:px-20">
@@ -184,8 +184,8 @@ export function Navbar() {
                         transition: `opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) ${i * 55 + 60}ms, transform 600ms cubic-bezier(0.22, 1, 0.36, 1) ${i * 55 + 60}ms`,
                       }}
                     >
-                      <span className="editorial-label text-white/20 w-6 tabular-nums">{item.index}</span>
-                      <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white/75 transition-all duration-500 group-hover:text-white group-hover:translate-x-2">
+                      <span className="editorial-label text-slate-300 w-6 tabular-nums">{item.index}</span>
+                      <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-700 transition-all duration-500 group-hover:text-slate-900 group-hover:translate-x-2">
                         {item.name}
                       </span>
                     </Link>
@@ -196,20 +196,20 @@ export function Navbar() {
 
             {/* Bottom bar */}
             <div
-              className="mt-auto pb-10 sm:pb-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-t border-white/8 pt-8"
+              className="mt-auto pb-10 sm:pb-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-t border-slate-200 pt-8"
               style={{
                 opacity: isMenuOpen ? 1 : 0,
                 transition: "opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 440ms",
               }}
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-                <a href="tel:+13055550123" className="editorial-label text-white/40 hover:text-white/70 transition-colors">+1 (305) 555-0123</a>
-                <span className="hidden sm:inline text-white/15">|</span>
-                <a href="mailto:info@drivengroup.com" className="editorial-label text-white/40 hover:text-white/70 transition-colors">info@drivengroup.com</a>
+                <a href="tel:+13055550123" className="editorial-label text-slate-500 hover:text-slate-900 transition-colors">+1 (305) 555-0123</a>
+                <span className="hidden sm:inline text-slate-300">|</span>
+                <a href="mailto:info@drivengroup.com" className="editorial-label text-slate-500 hover:text-slate-900 transition-colors">info@drivengroup.com</a>
               </div>
               <div className="flex gap-6">
                 {["Instagram", "LinkedIn", "YouTube"].map((s) => (
-                  <a key={s} href="#" className="editorial-label text-white/30 hover:text-white/60 transition-colors duration-300">{s.toUpperCase()}</a>
+                  <a key={s} href="#" className="editorial-label text-slate-400 hover:text-slate-700 transition-colors duration-300">{s.toUpperCase()}</a>
                 ))}
               </div>
             </div>
@@ -217,7 +217,7 @@ export function Navbar() {
 
           {/* City widget — right column, desktop only */}
           <div
-            className="hidden lg:flex flex-col justify-center w-64 xl:w-72 pl-12 xl:pl-16 border-l border-white/8 ml-12 xl:ml-16"
+            className="hidden lg:flex flex-col justify-center w-64 xl:w-72 pl-12 xl:pl-16 border-l border-slate-200 ml-12 xl:ml-16"
             style={{
               opacity: isMenuOpen ? 1 : 0,
               transition: "opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) 200ms",
@@ -226,24 +226,24 @@ export function Navbar() {
           >
             {/* Active city display */}
             <div className="mb-8">
-              <p className="editorial-label text-white/30 mb-5 tracking-[0.2em]">Local Time</p>
+              <p className="editorial-label text-slate-400 mb-5 tracking-[0.2em]">Local Time</p>
 
               {/* Big time */}
-              <p className="text-5xl xl:text-6xl font-extralight text-white tabular-nums tracking-tight leading-none mb-2">
+              <p className="text-5xl xl:text-6xl font-extralight text-slate-900 tabular-nums tracking-tight leading-none mb-2">
                 {cityInfo.time}
               </p>
 
               {/* Date + temp row */}
               <div className="flex items-center gap-3 mt-3">
-                <span className="editorial-label text-white/45">{cityInfo.date}</span>
-                <span className="text-white/20">·</span>
-                <span className="editorial-label text-white/45 tabular-nums">{cityInfo.temp}°F</span>
+                <span className="editorial-label text-slate-600">{cityInfo.date}</span>
+                <span className="text-slate-300">·</span>
+                <span className="editorial-label text-slate-600 tabular-nums">{cityInfo.temp}°F</span>
               </div>
             </div>
 
             {/* City selector */}
             <div>
-              <p className="editorial-label text-white/25 mb-3 tracking-[0.2em]">City</p>
+              <p className="editorial-label text-slate-500 mb-3 tracking-[0.2em]">City</p>
               <div className="space-y-0.5">
                 {cities.map((city, idx) => {
                   const info = getCityInfo(city.tz, city.tempBase);
@@ -254,18 +254,18 @@ export function Navbar() {
                       onClick={() => setActiveCityIdx(idx)}
                       className={`w-full flex items-center justify-between py-2.5 px-3 rounded transition-all duration-300 group ${
                         isActive
-                          ? "bg-white/8 text-white"
-                          : "text-white/40 hover:text-white/70 hover:bg-white/4"
+                          ? "bg-slate-100 text-slate-900"
+                          : "text-slate-500 hover:text-slate-700 hover:bg-slate-50"
                       }`}
                     >
                       <div className="flex items-center gap-3">
                         {isActive && (
-                          <span className="w-1 h-1 rounded-full bg-white/60 shrink-0" />
+                          <span className="w-1 h-1 rounded-full bg-slate-600 shrink-0" />
                         )}
                         {!isActive && <span className="w-1 h-1 shrink-0" />}
-                        <span className="editorial-label text-current">{city.label}</span>
+                        <span className="editorial-label">{city.label}</span>
                       </div>
-                      <span className="editorial-label text-current tabular-nums opacity-70">
+                      <span className="editorial-label tabular-nums opacity-70">
                         {info.time}
                       </span>
                     </button>
@@ -278,7 +278,7 @@ export function Navbar() {
           {/* City widget — mobile (compact, inside menu below nav) */}
           {cityInfo.time && (
             <div
-              className="lg:hidden absolute bottom-20 left-8 right-8 sm:left-12 sm:right-12 border-t border-white/8 pt-6"
+              className="lg:hidden absolute bottom-20 left-8 right-8 sm:left-12 sm:right-12 border-t border-slate-200 pt-6"
               style={{
                 opacity: isMenuOpen ? 1 : 0,
                 transition: "opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 420ms",
@@ -286,11 +286,11 @@ export function Navbar() {
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <span className="editorial-label text-white/35">{activeCity.label}</span>
-                  <span className="text-white/15">·</span>
-                  <span className="editorial-label text-white/55 tabular-nums">{cityInfo.time}</span>
-                  <span className="editorial-label text-white/35 tabular-nums">{cityInfo.temp}°F</span>
-                  <span className="editorial-label text-white/25">{cityInfo.date}</span>
+                  <span className="editorial-label text-slate-500">{activeCity.label}</span>
+                  <span className="text-slate-300">·</span>
+                  <span className="editorial-label text-slate-700 tabular-nums">{cityInfo.time}</span>
+                  <span className="editorial-label text-slate-500 tabular-nums">{cityInfo.temp}°F</span>
+                  <span className="editorial-label text-slate-500">{cityInfo.date}</span>
                 </div>
                 {/* Mobile city switcher — horizontal pills */}
                 <div className="flex items-center gap-1.5">
@@ -300,8 +300,8 @@ export function Navbar() {
                       onClick={() => setActiveCityIdx(idx)}
                       className={`editorial-label px-2 py-1 rounded transition-all duration-300 ${
                         idx === activeCityIdx
-                          ? "text-white bg-white/10"
-                          : "text-white/30 hover:text-white/60"
+                          ? "text-slate-900 bg-slate-100"
+                          : "text-slate-400 hover:text-slate-600"
                       }`}
                     >
                       {city.label}
