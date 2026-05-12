@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { getAllProperties, getAvailableCities } from "@/server/services/property.service";
-import { PropertyListingHero } from "@/components/real-estate/PropertyListingHero";
+import { RealEstateHeroSection } from "@/components/real-estate/RealEstateHeroSection";
 import { PropertyFilters } from "@/components/real-estate/PropertyFilters";
 import { PropertyListing } from "@/components/real-estate/PropertyListing";
 import { PropertyListingSkeleton } from "@/components/loading/PropertyListingSkeleton";
@@ -53,14 +53,15 @@ async function ListingContent({ searchParams }: PageProps) {
 
   return (
     <>
-      <PropertyListingHero count={properties.length} />
       <PropertyFilters
         availableCities={cities}
         currentType={filters.type}
         currentCity={filters.city}
         currentStatus={filters.status}
       />
-      <PropertyListing properties={properties} />
+      <section id="listings">
+        <PropertyListing properties={properties} />
+      </section>
     </>
   );
 }
@@ -68,6 +69,7 @@ async function ListingContent({ searchParams }: PageProps) {
 export default function RealEstatePage(props: PageProps) {
   return (
     <main className="min-h-screen bg-white">
+      <RealEstateHeroSection />
       <Suspense fallback={<PropertyListingSkeleton />}>
         <ListingContent searchParams={props.searchParams} />
       </Suspense>
