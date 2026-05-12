@@ -3,22 +3,24 @@ import Link from 'next/link';
 
 export function HeroSection() {
   return (
-    <header className="relative min-h-screen sm:min-h-[85vh] md:min-h-[90vh] flex items-end overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 hero-gradient z-10" />
-        <Image
-          alt="Luxury Real Estate"
-          className="image-zoom w-full h-full object-cover grayscale-[0.18] brightness-[0.72]"
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&q=90"
-          fill
-          priority
-          sizes="100vw"
-        />
-      </div>
+    <header className="relative bg-white pt-16 sm:pt-20">
+      {/* Hero content area with image background below navbar */}
+      <div className="relative min-h-screen sm:min-h-[85vh] md:min-h-[90vh] flex items-end overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 hero-gradient z-10" />
+          <Image
+            alt="Luxury Real Estate"
+            className="image-zoom w-full h-full object-cover grayscale-[0.18] brightness-[0.72]"
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&q=90"
+            fill
+            priority
+            sizes="100vw"
+          />
+        </div>
 
-      {/* Content — bottom-anchored for cinematic editorial feel */}
-      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-8 pb-16 sm:pb-20 md:pb-24">
+        {/* Content — bottom-anchored for cinematic editorial feel */}
+        <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-8 pb-16 sm:pb-20 md:pb-24">
         <div className="max-w-2xl">
 
           {/* Headline */}
@@ -50,6 +52,7 @@ export function HeroSection() {
             <span className="editorial-label text-slate-400">Scroll para explorar</span>
           </div>
 
+        </div>
         </div>
       </div>
     </header>
