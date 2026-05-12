@@ -10,27 +10,19 @@ interface FeaturedPropertiesProps {
 
 export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
   return (
-    <section className="py-16 sm:py-20 md:py-24 max-w-7xl mx-auto px-4 sm:px-6">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 sm:mb-16 gap-4 sm:gap-6">
-        <div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-primary/90 mb-2">Investment Opportunities</h2>
-          <p className="text-slate-400 text-base sm:text-lg max-w-xl">
-            Carteras seleccionadas para inversionistas que buscan consolidar su patrimonio en ubicaciones de excelencia.
-          </p>
-        </div>
-        <a
-          className="text-primary/80 font-bold flex items-center gap-2 group hover:text-primary transition-colors whitespace-nowrap text-sm sm:text-base"
-          href="/real-estate"
-        >
-          Ver todas
-          <span className="material-symbols-outlined transition-transform group-hover:translate-x-1 text-base">arrow_forward</span>
-        </a>
+    <section className="py-24 sm:py-28 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
+      <div className="mb-16 sm:mb-20">
+        <p className="editorial-label text-white/40 mb-3">INVESTMENT OPPORTUNITIES</p>
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white/90 mb-4 tracking-tight">Featured Properties</h2>
+        <p className="text-base sm:text-lg text-white/60 max-w-2xl leading-relaxed font-light">
+          Carteras seleccionadas para inversionistas que buscan consolidar su patrimonio en ubicaciones excepcionales.
+        </p>
       </div>
 
       {properties.length === 0 ? (
-        <p className="text-slate-500 text-center py-16">Próximamente nuevas oportunidades de inversión.</p>
+        <p className="text-white/40 text-center py-24 editorial-label">Próximamente nuevas oportunidades de inversión.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
           {properties.map((property) => {
             const badge = getPropertyBadge(property.type);
             const primaryImage = property.images?.[0];

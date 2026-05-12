@@ -1,72 +1,81 @@
 export function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-black py-8 sm:py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-12 mb-8 sm:mb-12">
-          <div className="col-span-2 sm:col-span-1">
-            <h3 className="text-white font-bold mb-2 sm:mb-4 text-sm sm:text-base">Driven Group</h3>
-            <p className="text-slate-400 text-xs sm:text-sm">Plataforma premium de Real Estate</p>
-          </div>
+    <footer className="border-t border-white/8 py-16 sm:py-20 md:py-24">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+
+        {/* Main Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 md:gap-16 mb-12 sm:mb-16 md:mb-20">
+
+          {/* Brand */}
           <div>
-            <h4 className="text-white font-semibold mb-2 sm:mb-4 text-xs sm:text-sm">Propiedades</h4>
-            <ul className="space-y-1 sm:space-y-2 text-slate-400 text-xs sm:text-sm">
+            <h3 className="text-white font-semibold mb-2 tracking-tight">Driven Group</h3>
+            <p className="text-white/50 text-sm leading-relaxed">Premium real estate investment platform for corporate wealth consolidation.</p>
+          </div>
+
+          {/* Properties */}
+          <div>
+            <h4 className="editorial-label text-white/40 mb-4 tracking-[0.15em]">PROPERTIES</h4>
+            <ul className="space-y-2.5 text-white/60 text-sm">
               <li>
-                <a href="/real-estate" className="hover:text-primary transition-colors">
-                  Listado
-                </a>
+                <a href="/real-estate" className="hover:text-white transition-colors">Browse All</a>
               </li>
               <li>
-                <a href="/real-estate?type=residential" className="hover:text-primary transition-colors">
-                  Residencial
-                </a>
+                <a href="/real-estate?type=residential" className="hover:text-white transition-colors">Residential</a>
               </li>
               <li>
-                <a href="/real-estate?type=commercial" className="hover:text-primary transition-colors">
-                  Comercial
-                </a>
+                <a href="/real-estate?type=commercial" className="hover:text-white transition-colors">Commercial</a>
               </li>
             </ul>
           </div>
+
+          {/* Company */}
           <div>
-            <h4 className="text-white font-semibold mb-2 sm:mb-4 text-xs sm:text-sm">Empresa</h4>
-            <ul className="space-y-1 sm:space-y-2 text-slate-400 text-xs sm:text-sm">
+            <h4 className="editorial-label text-white/40 mb-4 tracking-[0.15em]">COMPANY</h4>
+            <ul className="space-y-2.5 text-white/60 text-sm">
               <li>
-                <a href="/about" className="hover:text-primary transition-colors">
-                  Nosotros
-                </a>
+                <a href="/about" className="hover:text-white transition-colors">About</a>
               </li>
               <li>
-                <a href="/contact" className="hover:text-primary transition-colors">
-                  Contacto
-                </a>
+                <a href="/contact" className="hover:text-white transition-colors">Contact</a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">News</a>
               </li>
             </ul>
           </div>
+
+          {/* Legal */}
           <div>
-            <h4 className="text-white font-semibold mb-2 sm:mb-4 text-xs sm:text-sm">Legal</h4>
-            <ul className="space-y-1 sm:space-y-2 text-slate-400 text-xs sm:text-sm">
+            <h4 className="editorial-label text-white/40 mb-4 tracking-[0.15em]">LEGAL</h4>
+            <ul className="space-y-2.5 text-white/60 text-sm">
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Privacidad
-                </a>
+                <a href="#" className="hover:text-white transition-colors">Privacy</a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Términos
-                </a>
+                <a href="#" className="hover:text-white transition-colors">Terms</a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">Cookies</a>
               </li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-white/5 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-slate-400 text-xs sm:text-sm text-center sm:text-left">© 2026 Driven Group. Todos los derechos reservados.</p>
-          <div className="flex gap-4">
-            <a href="#" className="text-slate-400 hover:text-primary transition-colors">
-              <span className="material-symbols-outlined text-lg sm:text-xl">facebook</span>
-            </a>
-            <a href="#" className="text-slate-400 hover:text-primary transition-colors">
-              <span className="material-symbols-outlined text-lg sm:text-xl">language</span>
-            </a>
+
+        {/* Divider + Footer */}
+        <div className="border-t border-white/8 pt-12 sm:pt-16">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 sm:gap-4">
+            <p className="text-white/40 text-xs tracking-wider">© 2026 DRIVEN GROUP. ALL RIGHTS RESERVED.</p>
+            <div className="flex gap-6">
+              <a href="#" className="text-white/40 hover:text-white transition-colors">
+                <span className="material-symbols-outlined text-base">instagram</span>
+              </a>
+              <a href="#" className="text-white/40 hover:text-white transition-colors">
+                <span className="material-symbols-outlined text-base">language</span>
+              </a>
+              <a href="#" className="text-white/40 hover:text-white transition-colors">
+                <span className="material-symbols-outlined text-base">linkedin</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

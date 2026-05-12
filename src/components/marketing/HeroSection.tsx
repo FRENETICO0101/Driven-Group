@@ -1,38 +1,58 @@
 import Image from "next/image";
+import Link from 'next/link';
 
 export function HeroSection() {
   return (
-    <header className="relative min-h-screen sm:min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
+    <header className="relative min-h-screen sm:min-h-[85vh] md:min-h-[90vh] flex items-end overflow-hidden">
+      {/* Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 hero-gradient z-10"></div>
+        <div className="absolute inset-0 hero-gradient z-10" />
         <Image
           alt="Luxury Real Estate"
-          className="w-full h-full object-cover grayscale-[0.3] brightness-[0.7]"
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop"
+          className="image-zoom w-full h-full object-cover grayscale-[0.18] brightness-[0.72]"
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&q=90"
+          fill
+          priority
+          sizes="100vw"
         />
       </div>
-      <div className="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6">
-        <div className="max-w-3xl">
-          <div className="fade-in inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-primary/90 text-xs font-bold uppercase tracking-widest mb-4 sm:mb-6">
-            <span className="material-symbols-outlined text-sm">real_estate_agent</span> Luxury Real Estate Platform
-          </div>
-          <h1 className="fade-in-delay-100 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.2] sm:leading-[1.15] md:leading-[1.1] mb-6 sm:mb-8 text-white">
-            Donde el <span className="text-primary/90">patrimonio</span> toma forma
+
+      {/* Content — bottom-anchored for cinematic editorial feel */}
+      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-8 pb-16 sm:pb-20 md:pb-24">
+        <div className="max-w-2xl">
+
+          {/* Eyebrow */}
+          <p className="fade-in-delay-50 editorial-label text-white/50 mb-4">LUXURY INVESTMENT PLATFORM</p>
+
+          {/* Headline */}
+          <h1 className="fade-in-delay-100 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] md:leading-[1.05] mb-6 sm:mb-7 text-white tracking-tight">
+            Donde el <em className="not-italic text-white/70">patrimonio</em><br className="hidden sm:block" /> toma forma
           </h1>
-          <p className="fade-in-delay-200 text-base sm:text-lg md:text-xl text-slate-300 mb-8 sm:mb-10 leading-relaxed max-w-2xl">
-            Carteras inmobiliarias curadas para inversionistas que buscan consolidar su legado en ubicaciones de ensueño.
+
+          {/* Body */}
+          <p className="fade-in-delay-200 text-base sm:text-lg text-white/55 mb-10 sm:mb-12 leading-[1.75] max-w-xl font-light">
+            Carteras inmobiliarias curadas para inversionistas<br className="hidden md:block" /> que consolidan su legado en ubicaciones excepcionales.
           </p>
-          <div className="fade-in-delay-200 flex flex-col sm:flex-row gap-3 sm:gap-4">
-            <a
+
+          {/* CTAs */}
+          <div className="fade-in-delay-300 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <Link
               href="/real-estate"
-              className="quartz-button px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-extrabold text-base sm:text-lg hover:scale-105 transition-transform inline-block text-center"
+              className="quartz-button px-7 sm:px-9 py-3.5 sm:py-4 rounded-xl font-semibold text-sm sm:text-base tracking-wide hover:scale-[1.02] transition-transform inline-block text-center"
             >
               Explorar Portfolio
-            </a>
-            <button className="glass-card px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-lg text-white hover:bg-white/10 transition-colors">
+            </Link>
+            <button className="px-7 sm:px-9 py-3.5 sm:py-4 rounded-xl font-semibold text-sm sm:text-base tracking-wide text-white/80 border border-white/15 hover:border-white/30 hover:text-white hover:bg-white/5 transition-all duration-300">
               Agendar Consulta
             </button>
           </div>
+
+          {/* Scroll indicator */}
+          <div className="fade-in-delay-400 hidden sm:flex items-center gap-3 mt-14 sm:mt-16">
+            <div className="w-px h-8 bg-white/20" />
+            <span className="editorial-label text-white/35">Scroll para explorar</span>
+          </div>
+
         </div>
       </div>
     </header>
