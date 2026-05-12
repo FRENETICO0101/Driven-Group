@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Feature {
   icon: string;
@@ -31,48 +32,48 @@ export function PropertyCard({
   slug,
 }: PropertyCardProps) {
   return (
-    <article className="glass-card group overflow-hidden rounded-lg sm:rounded-xl transition-all hover:-translate-y-1 sm:hover:-translate-y-2 flex flex-col h-full">
-      <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
-        <Image
-          alt={imageAlt}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-          src={image}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-        <div
-          className={
-            badgeFeatured
-              ? "absolute top-2 sm:top-4 left-2 sm:left-4 quartz-button text-xs font-black px-2 py-1 rounded uppercase"
-              : "absolute top-2 sm:top-4 left-2 sm:left-4 bg-slate-800 text-primary/90 text-xs font-black px-2 py-1 rounded uppercase border border-white/20"
-          }
-          aria-label={`Tipo: ${badge}`}
-        >
-          {badge}
+    <Link href={`/real-estate/${slug}`}>
+      <article className="group flex flex-col h-full">
+        {/* Image Container */}
+        <div className="relative aspect-4/5 overflow-hidden">
+          <Image
+            alt={imageAlt}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            src={image}
+            fill
+            sizes="(max-width: 640px) 85vw, (max-width: 768px) 60vw, (max-width: 1024px) 45vw, 35vw"
+          />
+          {/* Overlay on hover */}
+          <div className="absolute inset-0 bg-black/0 transition-all duration-700 group-hover:bg-black/20" />
+
+          {/* Badge */}
+          {badge && (
+            <div className="absolute top-4 left-4 text-xs font-semibold px-2.5 py-1.5 rounded tracking-wide uppercase bg-white text-slate-900" aria-label={`Tipo: ${badge}`}>
+              {badge}
+            </div>
+          )}
         </div>
-        <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 bg-slate-900/80 text-white px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-bold" aria-label={`Precio: ${price}`}>
-          {price}
+
+        {/* Content */}
+        <div className="mt-6 flex-1 flex flex-col">
+          <p className="text-[11px] tracking-[0.2em] text-slate-500 uppercase">{subtitle}</p>
+          <h3 className="mt-2 font-serif text-2xl md:text-3xl text-slate-900 leading-tight">{title}</h3>
+
+          {/* Specs */}
+          <div className="mt-4 flex items-center gap-4 text-sm text-slate-600">
+            {features.map((feature, idx) => (
+              <span key={feature.icon} className="flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-[16px]">{feature.icon}</span>
+                <span className="hidden sm:inline">{feature.label}</span>
+                {idx < features.length - 1 && <span className="hidden sm:inline h-1 w-1 rounded-full bg-slate-300 ml-2" />}
+              </span>
+            ))}
+          </div>
+
+          {/* Price */}
+          <p className="mt-6 font-serif text-xl text-slate-900">{price}</p>
         </div>
-      </div>
-      <div className="p-4 sm:p-6 md:p-8 flex-1 flex flex-col">
-        <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-white">{title}</h3>
-        <p className="text-slate-400 text-xs sm:text-sm mb-3 sm:mb-4">{subtitle}</p>
-        <p className="text-slate-400 text-sm mb-4 sm:mb-6 line-clamp-2 leading-relaxed">{description}</p>
-        <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-auto text-slate-300 text-xs sm:text-sm mb-4" role="list">
-          {features.map((feature) => (
-            <span key={feature.icon} className="flex items-center gap-1" role="listitem">
-              <span className="material-symbols-outlined text-xs sm:text-sm" aria-hidden="true">{feature.icon}</span> <span className="hidden sm:inline">{feature.label}</span>
-            </span>
-          ))}
-        </div>
-        <a
-          href={`/real-estate/${slug}`}
-          className="inline-block bg-primary/20 border border-primary/50 text-white px-3 sm:px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm transition-colors hover:bg-primary hover:text-slate-900 text-center w-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-950"
-          aria-label={`Ver detalles de ${title}`}
-        >
-          Ver Detalles
-        </a>
-      </div>
-    </article>
+      </article>
+    </Link>
   );
 }

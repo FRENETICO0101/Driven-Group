@@ -11,12 +11,20 @@ interface FeaturedPropertiesProps {
 export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
   return (
     <section className="py-24 sm:py-28 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
-      <div className="mb-16 sm:mb-20">
-        <p className="editorial-label text-slate-400 mb-3">INVESTMENT OPPORTUNITIES</p>
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 mb-4 tracking-tight">Featured Properties</h2>
-        <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed font-light">
-          Carteras seleccionadas para inversionistas que buscan consolidar su patrimonio en ubicaciones excepcionales.
-        </p>
+      <div className="mb-16 md:mb-24 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="editorial-label text-slate-400 mb-4">Featured Residences</p>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
+            Exceptional<br className="hidden md:block" /> Properties
+          </h2>
+        </div>
+        <a
+          href="/real-estate"
+          className="group inline-flex items-center gap-3 text-[13px] tracking-wide text-slate-600 transition-colors hover:text-slate-900"
+        >
+          View All Residences
+          <span className="material-symbols-outlined text-base transition-transform duration-500 group-hover:translate-x-1">arrow_outward</span>
+        </a>
       </div>
 
       {properties.length === 0 ? (
