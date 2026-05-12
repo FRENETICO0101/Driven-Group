@@ -1,5 +1,3 @@
-"use client";
-
 export function ReputationSection() {
   return (
     <section className="py-20 sm:py-24 md:py-32 bg-slate-50 border-y border-slate-200">

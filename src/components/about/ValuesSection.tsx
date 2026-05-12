@@ -1,5 +1,3 @@
-"use client";
-
 interface Value {
   title: string;
   description: string;

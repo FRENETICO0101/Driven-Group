@@ -23,13 +23,11 @@ export function GetInTouchForm() {
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      console.log("Form submitted:", data);
       setSubmitStatus("success");
       e.currentTarget.reset();
 
       setTimeout(() => setSubmitStatus("idle"), 5000);
-    } catch (error) {
-      console.error("Form error:", error);
+    } catch {
       setSubmitStatus("error");
       setTimeout(() => setSubmitStatus("idle"), 5000);
     } finally {

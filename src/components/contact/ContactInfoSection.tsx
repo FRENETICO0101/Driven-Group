@@ -1,5 +1,3 @@
-"use client";
-
 interface ContactItem {
   icon: string;
   title: string;
