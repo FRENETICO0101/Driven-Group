@@ -55,16 +55,16 @@ export function PropertyFilters({
   };
 
   return (
-    <div className="sticky top-0 z-30 bg-black/80 backdrop-blur-md border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+    <div className="sticky top-16 sm:top-20 z-30 bg-white border-b border-slate-200">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-4">
         <div className="flex flex-wrap items-center gap-3">
           <select
             value={currentType}
             onChange={(e) => updateFilter("type", e.target.value)}
-            className="bg-white/5 border border-white/10 text-white text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-white/8 transition-colors focus:outline-none focus:border-white/30 min-w-[160px]"
+            className="bg-white border border-slate-200 text-slate-900 text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-slate-50 transition-colors focus:outline-none focus:border-slate-400 min-w-40"
           >
             {PROPERTY_TYPES.map((t) => (
-              <option key={t.value} value={t.value} className="bg-slate-900 text-white">
+              <option key={t.value} value={t.value} className="bg-white text-slate-900">
                 {t.label}
               </option>
             ))}
@@ -73,13 +73,13 @@ export function PropertyFilters({
           <select
             value={currentCity}
             onChange={(e) => updateFilter("city", e.target.value)}
-            className="bg-white/5 border border-white/10 text-white text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-white/8 transition-colors focus:outline-none focus:border-white/30 min-w-[160px]"
+            className="bg-white border border-slate-200 text-slate-900 text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-slate-50 transition-colors focus:outline-none focus:border-slate-400 min-w-40"
           >
-            <option value="" className="bg-slate-900 text-white">
+            <option value="" className="bg-white text-slate-900">
               Todas las ciudades
             </option>
             {availableCities.map((city) => (
-              <option key={city} value={city} className="bg-slate-900 text-white">
+              <option key={city} value={city} className="bg-white text-slate-900">
                 {city}
               </option>
             ))}
@@ -88,10 +88,10 @@ export function PropertyFilters({
           <select
             value={currentStatus}
             onChange={(e) => updateFilter("status", e.target.value)}
-            className="bg-white/5 border border-white/10 text-white text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-white/8 transition-colors focus:outline-none focus:border-white/30 min-w-[160px]"
+            className="bg-white border border-slate-200 text-slate-900 text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-slate-50 transition-colors focus:outline-none focus:border-slate-400 min-w-40"
           >
             {PROPERTY_STATUSES.map((s) => (
-              <option key={s.value} value={s.value} className="bg-slate-900 text-white">
+              <option key={s.value} value={s.value} className="bg-white text-slate-900">
                 {s.label}
               </option>
             ))}
@@ -100,7 +100,7 @@ export function PropertyFilters({
           {hasActiveFilters && (
             <button
               onClick={clearFilters}
-              className="flex items-center gap-1.5 text-slate-400 hover:text-white text-sm transition-colors ml-auto"
+              className="flex items-center gap-1.5 text-slate-600 hover:text-slate-900 text-sm transition-colors ml-auto"
             >
               <span className="material-symbols-outlined text-sm">close</span>
               Limpiar
