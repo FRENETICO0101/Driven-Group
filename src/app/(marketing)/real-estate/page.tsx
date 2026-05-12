@@ -67,7 +67,7 @@ async function ListingContent({ searchParams }: PageProps) {
 
 export default function RealEstatePage(props: PageProps) {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-white">
       <Suspense fallback={<PropertyListingSkeleton />}>
         <ListingContent searchParams={props.searchParams} />
       </Suspense>

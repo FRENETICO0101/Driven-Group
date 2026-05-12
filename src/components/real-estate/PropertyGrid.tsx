@@ -13,11 +13,11 @@ interface PropertyGridProps {
 function EmptyState() {
   return (
     <div className="col-span-full flex flex-col items-center justify-center py-24 text-center">
-      <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6">
-        <span className="material-symbols-outlined text-slate-500 text-2xl">search_off</span>
+      <div className="w-16 h-16 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center mb-6">
+        <span className="material-symbols-outlined text-slate-400 text-2xl">search_off</span>
       </div>
-      <h3 className="text-white font-semibold text-lg mb-2">Sin resultados</h3>
-      <p className="text-slate-500 text-sm max-w-xs leading-relaxed">
+      <h3 className="text-slate-900 font-semibold text-lg mb-2">Sin resultados</h3>
+      <p className="text-slate-600 text-sm max-w-xs leading-relaxed">
         No encontramos propiedades con los filtros seleccionados. Intenta ajustar tu búsqueda.
       </p>
     </div>
@@ -27,7 +27,7 @@ function EmptyState() {
 export function PropertyGrid({ properties }: PropertyGridProps) {
   if (properties.length === 0) {
     return (
-      <section className="px-4 sm:px-6 max-w-7xl mx-auto pb-24">
+      <section className="px-6 sm:px-8 max-w-7xl mx-auto pb-24">
         <div className="grid">
           <EmptyState />
         </div>
@@ -36,7 +36,7 @@ export function PropertyGrid({ properties }: PropertyGridProps) {
   }
 
   return (
-    <section className="px-4 sm:px-6 max-w-7xl mx-auto pb-24">
+    <section className="px-6 sm:px-8 max-w-7xl mx-auto pb-24">
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
         {properties.map((property) => {
           const badge = getPropertyBadge(property.type);
