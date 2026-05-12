@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { getAllProperties, getAvailableCities } from "@/server/services/property.service";
 import { PropertyListingHero } from "@/components/real-estate/PropertyListingHero";
 import { PropertyFilters } from "@/components/real-estate/PropertyFilters";
-import { PropertyGrid } from "@/components/real-estate/PropertyGrid";
+import { PropertyListing } from "@/components/real-estate/PropertyListing";
 import { PropertyListingSkeleton } from "@/components/loading/PropertyListingSkeleton";
 
 export const dynamic = "force-dynamic";
@@ -60,7 +60,7 @@ async function ListingContent({ searchParams }: PageProps) {
         currentCity={filters.city}
         currentStatus={filters.status}
       />
-      <PropertyGrid properties={properties} />
+      <PropertyListing properties={properties} />
     </>
   );
 }
