@@ -30,17 +30,6 @@ export function StatsSection() {
           </div>
         </div>
 
-        {/* Additional text and link - bottom right */}
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-6">
-          <div className="space-y-1">
-            <p className="text-slate-700 font-semibold text-sm">Exceptional</p>
-            <p className="text-slate-700 font-semibold text-sm">Properties</p>
-          </div>
-          <a href="/real-estate" className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors text-sm font-semibold">
-            <span>View All Residences</span>
-            <span className="material-symbols-outlined text-base">arrow_forward</span>
-          </a>
-        </div>
       </div>
     </section>
   );
