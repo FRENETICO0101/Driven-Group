@@ -4,19 +4,35 @@ import Link from 'next/link';
 export function HeroSection() {
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
-      {/* Hero content area with image background below navbar */}
+      {/* Hero content area with video/image background below navbar */}
       <div className="relative min-h-screen sm:min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background image */}
+        {/* Background video with image fallback */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 hero-gradient z-10" />
-          <Image
-            alt="Luxury Real Estate"
-            className="image-zoom w-full h-full object-cover"
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&q=90"
-            fill
-            priority
-            sizes="100vw"
-          />
+
+          {/* Video background */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            poster="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&q=90"
+          >
+            <source
+              src="https://media.istockphoto.com/id/1446404317/video/miami-skyline-at-sunset.mp4?s=mp4-640x640-is"
+              type="video/mp4"
+            />
+            {/* Fallback image if video fails */}
+            <Image
+              alt="Luxury Real Estate - Miami"
+              className="w-full h-full object-cover"
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&q=90"
+              fill
+              priority
+              sizes="100vw"
+            />
+          </video>
         </div>
 
         {/* DAY indicator - top right */}

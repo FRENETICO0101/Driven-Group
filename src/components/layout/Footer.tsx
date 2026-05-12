@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-50">
+    <footer className="bg-slate-800 text-slate-50">
       <div className="max-w-450 mx-auto px-6 sm:px-8 py-16 sm:py-24 md:py-32">
 
         {/* Main Grid: 6 Columns */}
