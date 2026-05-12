@@ -14,7 +14,7 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
       <div className="mb-16 md:mb-24 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="editorial-label text-slate-400 mb-4">Featured Residences</p>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
             Exceptional<br className="hidden md:block" /> Properties
           </h2>
         </div>

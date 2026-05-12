@@ -22,7 +22,7 @@ export function AcademyProgram({
         <div className="w-16 h-16 rounded-lg bg-slate-100 flex items-center justify-center mb-6">
           <span className="material-symbols-outlined text-slate-900 text-3xl">{icon}</span>
         </div>
-        <h3 className="text-3xl sm:text-4xl font-black text-slate-900 mb-2">
+        <h3 className="font-serif text-3xl sm:text-4xl font-black text-slate-900 mb-2">
           {title}
         </h3>
         <p className="text-slate-600 font-semibold">{subtitle}</p>

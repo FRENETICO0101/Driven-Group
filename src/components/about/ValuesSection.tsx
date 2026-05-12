@@ -27,7 +27,7 @@ export function ValuesSection() {
     <section id="mission" className="py-20 sm:py-24 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
       <div className="mb-16 sm:mb-20">
         <p className="editorial-label text-slate-400 mb-2">OUR FOUNDATION</p>
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
+        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
           Mission, Passion & Vision
         </h2>
       </div>
@@ -46,7 +46,7 @@ export function ValuesSection() {
             </div>
 
             {/* Content */}
-            <h3 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-4 tracking-tight">
+            <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-slate-900 mb-4 tracking-tight">
               {value.title}
             </h3>
             <p className="text-base sm:text-lg text-slate-600 leading-[1.8] font-light">

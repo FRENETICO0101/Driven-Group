@@ -24,7 +24,7 @@ export function BusinessDivision({
         {/* Content */}
         <div className={reversed ? "md:col-start-2" : ""}>
           <p className="editorial-label text-slate-400 mb-3">DRIVEN GROUP</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 leading-[1.15] mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 leading-[1.15] mb-4">
             {title}
           </h2>
           <p className="text-lg text-slate-600 mb-6 leading-relaxed">

@@ -7,7 +7,7 @@ export function CTASection() {
         </div>
         <div className="max-w-3xl relative z-10">
           <p className="editorial-label text-slate-400 mb-4">LET'S TALK</p>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-[1.1]">
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-[1.1]">
             Transforma tu visión en inversión
           </h2>
           <p className="text-lg sm:text-xl text-slate-600 mb-8 sm:mb-10 leading-[1.8] font-light max-w-2xl">

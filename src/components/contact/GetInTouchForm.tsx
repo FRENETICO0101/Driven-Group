@@ -39,7 +39,7 @@ export function GetInTouchForm() {
     <section id="form" className="py-20 sm:py-24 md:py-32 max-w-4xl mx-auto px-6 sm:px-8">
       <div className="mb-16 sm:mb-20">
         <p className="editorial-label text-slate-400 mb-2">REACH OUT</p>
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
+        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
           Get In Touch With Us
         </h2>
       </div>

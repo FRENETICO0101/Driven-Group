@@ -8,7 +8,7 @@ export function OurStory() {
     <section className="py-20 sm:py-24 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
       <div className="mb-16 sm:mb-20">
         <p className="editorial-label text-slate-400 mb-2">DRIVEN GROUP</p>
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
+        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
           Our Story
         </h2>
       </div>
@@ -21,7 +21,7 @@ export function OurStory() {
 
           {/* Block 1 */}
           <div>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight leading-[1.2]">
+            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight leading-[1.2]">
               A Legacy of Excellence
             </h3>
             <p className="text-base sm:text-lg text-slate-600 leading-[1.8] font-light">
@@ -31,7 +31,7 @@ export function OurStory() {
 
           {/* Block 2 */}
           <div>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight leading-[1.2]">
+            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight leading-[1.2]">
               Our Philosophy
             </h3>
             <p className="text-base sm:text-lg text-slate-600 leading-[1.8] font-light">

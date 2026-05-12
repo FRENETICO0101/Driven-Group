@@ -10,7 +10,7 @@ export function PropertyListingHero({ count }: PropertyListingHeroProps) {
           <span className="material-symbols-outlined text-sm">apartment</span>
           Portafolio de Activos
         </div>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-[1.1] mb-6 text-slate-900">
+        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black leading-[1.1] mb-6 text-slate-900">
           Activos con{" "}
           <span className="text-slate-600">visión</span>
         </h1>
