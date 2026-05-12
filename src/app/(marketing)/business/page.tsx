@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BusinessHero } from "@/components/business/BusinessHero";
+import { BusinessHeroSection } from "@/components/business/BusinessHeroSection";
 import { BusinessDivision } from "@/components/business/BusinessDivision";
 import { BusinessCTA } from "@/components/business/BusinessCTA";
 
@@ -32,12 +32,10 @@ export const metadata: Metadata = {
 export default function BusinessPage() {
   return (
     <main className="min-h-screen bg-white">
-      <BusinessHero
-        title="Strategic Business Units"
-        description="Four integrated divisions driving corporate value, market expansion, and ecosystem growth."
-      />
+      <BusinessHeroSection />
 
-      {/* Digital Commerce */}
+      <section id="divisions">
+        {/* Digital Commerce */}
       <BusinessDivision
         title="Digital Commerce"
         description="End-to-end e-commerce solutions for enterprise-scale operations."
@@ -98,6 +96,7 @@ export default function BusinessPage() {
         ]}
         reversed
       />
+      </section>
 
       <BusinessCTA />
     </main>
