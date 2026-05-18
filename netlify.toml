@@ -1,7 +1,0 @@
-[build]
-  command = "npm run build"
-  publish = ".next"
-
-[build.environment]
-  # Configurar variables de entorno necesarias para el build de Next.js
-  NEXT_PRIVATE_LOCAL_WEBPACK = "true"
