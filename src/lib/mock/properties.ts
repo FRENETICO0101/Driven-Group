@@ -54,7 +54,7 @@ export const mockFeaturedProperties: Property[] = [
       },
       {
         id: "mock-img-2",
-        url: "https://images.unsplash.com/photo-1580129677613-35b82b6021d7?w=1000&h=800&fit=crop",
+        url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1000&h=800&fit=crop",
         alt: "Penthouse living room",
         order: 1,
         createdAt: new Date("2024-01-01"),
@@ -181,7 +181,7 @@ export const mockListingProperties: Property[] = [
     images: [
       {
         id: "mock-img-5",
-        url: "https://images.unsplash.com/photo-1574797690141-a0d743e01a65?w=1000&h=800&fit=crop",
+        url: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1000&h=800&fit=crop",
         alt: "Beachfront estate",
         order: 0,
         createdAt: new Date("2024-01-01"),

@@ -57,7 +57,9 @@ export function isConnectionError(error: unknown): boolean {
     message.includes("network error") ||
     message.includes("socket hang up") ||
     message.includes("socket closed") ||
-    message.includes("reset by peer")
+    message.includes("reset by peer") ||
+    message.includes("environment variable not found") ||
+    message.includes("database_url")
   ) {
     return true;
   }
@@ -69,6 +71,9 @@ export function isConnectionError(error: unknown): boolean {
 
   // Prisma-specific connection errors
   if (
+    message.includes("prismaclientinitializationerror") ||
+    message.includes("error in prisma client") ||
+    message.includes("invalid `prisma.") ||
     code === "P1000" || // "Authentication failed against database server"
     code === "P1001" || // "Can't reach database server"
     code === "P1002" || // "The database server was reached but timed out"
@@ -78,7 +83,9 @@ export function isConnectionError(error: unknown): boolean {
     code === "P1013" || // "The provided database string is invalid"
     code === "P1014" || // "The underlying ... for model ... does not exist in the database"
     code === "P1015" || // "Your Prisma schema is using features that are not supported"
-    code === "P1017" // "Server has closed the connection"
+    code === "P1017" || // "Server has closed the connection"
+    code === "P2021" || // "The table does not exist in the current database"
+    code === "P2022" // "The column does not exist in the current database"
   ) {
     return true;
   }
@@ -116,6 +123,10 @@ export function logError(
 ): void {
   if (process.env.NODE_ENV === "development") {
     const log = createErrorLog(context, error, additionalInfo);
-    console.error(`[Driven Group] ${log}`);
+    if (isConnectionError(error)) {
+      console.warn(`[Driven Group] ${log}`);
+    } else {
+      console.error(`[Driven Group] ${log}`);
+    }
   }
 }

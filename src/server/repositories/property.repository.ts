@@ -111,10 +111,11 @@ export async function getPropertyBySlug(slug: string): Promise<Property | null> 
   } catch (error) {
     if (isConnectionError(error)) {
       logError("getPropertyBySlug", error, { slug });
-      // For detail pages, return null instead of fallback
-      // This allows notFound() to handle gracefully
-      return null;
+    } else {
+      console.error("Database error in getPropertyBySlug:", error);
     }
-    throw error;
+    const mockProperty = [...mockFeaturedProperties, ...mockListingProperties].find(p => p.slug === slug);
+    if (mockProperty) return mockProperty as unknown as Property;
+    return null;
   }
 }

@@ -1,12 +1,47 @@
 @import "tailwindcss";
 
+/* 
+  ========================================
+  1. TOKENS DE DISEÑO (FÁCIL DE EDITAR)
+  ========================================
+  Cambia estos valores para actualizar la 
+  apariencia de toda la plataforma web.
+*/
+:root {
+  /* Tipografía */
+  /* Por defecto usa las fuentes inyectadas por Next.js (--font-sans y --font-serif) */
+  --font-principal: var(--font-sans, system-ui, sans-serif);
+  --font-titulos: var(--font-serif, Georgia, serif);
+
+  /* Paleta de Colores */
+  --theme-primary: #F5F5F7;
+  --theme-bg-light: #ffffff;
+  --theme-bg-dark: #000000;
+  --theme-charcoal: #1D1D1F;
+}
+
 @theme {
-  --font-sans: var(--font-sans);
-  --font-serif: var(--font-serif);
-  --color-primary: #F5F5F7;
-  --color-background-light: #ffffff;
-  --color-background-dark: #000000;
-  --color-charcoal: #1D1D1F;
+  /* Mapeo de Tailwind a nuestras variables CSS */
+  --font-sans: var(--font-principal);
+  --font-serif: var(--font-titulos);
+  
+  --color-primary: var(--theme-primary);
+  --color-background-light: var(--theme-bg-light);
+  --color-background-dark: var(--theme-bg-dark);
+  --color-charcoal: var(--theme-charcoal);
+}
+
+@layer base {
+  /* Homologación Global de Estructura */
+  body {
+    font-family: var(--font-principal);
+    background-color: var(--theme-bg-light);
+    color: var(--theme-charcoal);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-titulos);
+  }
 }
 
 @layer utilities {
@@ -114,6 +149,4 @@
   }
 }
 
-body {
-    background-color: #ffffff;
-}
+
