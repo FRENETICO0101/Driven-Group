@@ -26,8 +26,8 @@ export function ContactInfoSection() {
   return (
     <section className="py-20 sm:py-24 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
       <div className="mb-16 sm:mb-20">
-        <p className="editorial-label text-slate-400 mb-2">GET IN TOUCH</p>
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
+        <p className="editorial-label text-gray mb-2">GET IN TOUCH</p>
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-black tracking-tight leading-[1.1]">
           Contact Information
         </h2>
       </div>
@@ -46,12 +46,12 @@ export function ContactInfoSection() {
             </div>
 
             {/* Content */}
-            <h3 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-4 tracking-tight">
+            <h3 className="text-2xl sm:text-3xl font-semibold text-black mb-4 tracking-tight">
               {item.title}
             </h3>
             <ul className="space-y-3">
               {item.details.map((detail) => (
-                <li key={detail} className="text-base text-slate-600 leading-relaxed font-light">
+                <li key={detail} className="text-base text-dark-gray leading-relaxed font-light">
                   {detail}
                 </li>
               ))}

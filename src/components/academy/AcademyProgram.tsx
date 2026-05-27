@@ -16,33 +16,33 @@ export function AcademyProgram({
   comingSoon = true,
 }: AcademyProgramProps) {
   return (
-    <div className="bg-white border border-slate-200 rounded-lg p-10 sm:p-12 md:p-16">
+    <div className="bg-white border border-light-gray rounded-lg p-10 sm:p-12 md:p-16">
       {/* Icon & Title */}
       <div className="mb-8">
-        <div className="w-16 h-16 rounded-lg bg-slate-100 flex items-center justify-center mb-6">
-          <span className="material-symbols-outlined text-slate-900 text-3xl">{icon}</span>
+        <div className="w-16 h-16 rounded-lg bg-white flex items-center justify-center mb-6">
+          <span className="material-symbols-outlined text-black text-3xl">{icon}</span>
         </div>
-        <h3 className="font-serif text-3xl sm:text-4xl font-black text-slate-900 mb-2">
+        <h3 className="font-serif text-3xl sm:text-4xl font-black text-black mb-2">
           {title}
         </h3>
-        <p className="text-slate-600 font-semibold">{subtitle}</p>
+        <p className="text-dark-gray font-semibold">{subtitle}</p>
       </div>
 
       {/* Description */}
-      <p className="text-slate-700 text-base leading-relaxed mb-8">
+      <p className="text-dark-gray text-base leading-relaxed mb-8">
         {description}
       </p>
 
       {/* Topics */}
-      <div className="mb-8 pb-8 border-b border-slate-200">
-        <p className="editorial-label text-slate-400 mb-4">KEY TOPICS</p>
+      <div className="mb-8 pb-8 border-b border-light-gray">
+        <p className="editorial-label text-gray mb-4">KEY TOPICS</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {topics.map((topic, idx) => (
             <div key={idx} className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-slate-900 flex-shrink-0 text-lg">
+              <span className="material-symbols-outlined text-black flex-shrink-0 text-lg">
                 check_circle
               </span>
-              <span className="text-slate-700 text-sm">{topic}</span>
+              <span className="text-dark-gray text-sm">{topic}</span>
             </div>
           ))}
         </div>
@@ -50,9 +50,9 @@ export function AcademyProgram({
 
       {/* Coming Soon Badge */}
       {comingSoon && (
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 border border-slate-200 rounded-lg">
-          <span className="material-symbols-outlined text-slate-600 text-lg">schedule</span>
-          <p className="text-slate-700 font-semibold text-sm">Coming Soon</p>
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-light-gray rounded-lg">
+          <span className="material-symbols-outlined text-dark-gray text-lg">schedule</span>
+          <p className="text-dark-gray font-semibold text-sm">Coming Soon</p>
         </div>
       )}
     </div>

@@ -26,8 +26,8 @@ export function CEOsSection() {
   return (
     <section className="py-20 sm:py-24 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
       <div className="mb-16 sm:mb-20">
-        <p className="editorial-label text-slate-400 mb-2">LEADERSHIP</p>
-        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
+        <p className="editorial-label text-gray mb-2">LEADERSHIP</p>
+        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-black tracking-tight leading-[1.1]">
           Our Leadership
         </h2>
       </div>
@@ -48,13 +48,13 @@ export function CEOsSection() {
 
             {/* Content */}
             <div>
-              <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-slate-900 mb-2 tracking-tight">
+              <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-black mb-2 tracking-tight">
                 {ceo.name}
               </h3>
               <p className="editorial-label text-yellow-600 mb-6 tracking-wide">
                 {ceo.title}
               </p>
-              <p className="text-base sm:text-lg text-slate-600 leading-[1.8] font-light">
+              <p className="text-base sm:text-lg text-dark-gray leading-[1.8] font-light">
                 {ceo.bio}
               </p>
             </div>

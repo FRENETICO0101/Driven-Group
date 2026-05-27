@@ -11,7 +11,7 @@ interface PropertyCTAProps {
 }
 
 const INPUT_CLASS =
-  'w-full bg-slate-800/50 border border-slate-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-white placeholder-slate-500 focus:outline-none focus:border-primary/50 disabled:opacity-50 disabled:cursor-not-allowed';
+  'w-full bg-black/50 border border-dark-gray rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-white placeholder-gray focus:outline-none focus:border-primary/50 disabled:opacity-50 disabled:cursor-not-allowed';
 
 export function PropertyCTA({ property }: PropertyCTAProps) {
   const [state, setState] = useState<FormState>('idle');
@@ -45,10 +45,10 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
   };
 
   return (
-    <div className="glass-card border border-slate-700/30 rounded-lg sm:rounded-xl p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 sticky top-20 sm:top-24">
+    <div className="glass-card border border-dark-gray/30 rounded-lg sm:rounded-xl p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 sticky top-20 sm:top-24">
       <div>
         <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">Agendar Consulta</h2>
-        <p className="text-slate-400 text-sm sm:text-base">
+        <p className="text-gray text-sm sm:text-base">
           Nuestro equipo está disponible para discutir esta oportunidad de inversión.
         </p>
       </div>
@@ -65,7 +65,7 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
       {state === 'success' && (
         <div className="py-4 text-center space-y-2">
           <p className="text-white font-semibold text-sm sm:text-base">Consulta recibida</p>
-          <p className="text-slate-400 text-xs sm:text-sm">
+          <p className="text-gray text-xs sm:text-sm">
             Un asesor se pondrá en contacto en las próximas 24 horas.
           </p>
           <button
@@ -127,7 +127,7 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
               type="button"
               disabled={state === 'loading'}
               onClick={() => { setState('idle'); setErrorMsg(''); }}
-              className="flex-1 bg-slate-800/50 border border-slate-700 text-white py-2.5 sm:py-3 rounded-lg font-semibold text-xs sm:text-sm transition-colors hover:bg-slate-700 disabled:opacity-50"
+              className="flex-1 bg-black/50 border border-dark-gray text-white py-2.5 sm:py-3 rounded-lg font-semibold text-xs sm:text-sm transition-colors hover:bg-dark-gray disabled:opacity-50"
             >
               Cancelar
             </button>
@@ -135,8 +135,8 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
         </form>
       )}
 
-      <div className="pt-4 sm:pt-6 border-t border-slate-700/30">
-        <p className="text-slate-400 text-xs sm:text-sm mb-2 font-medium uppercase tracking-tight">Contacto directo:</p>
+      <div className="pt-4 sm:pt-6 border-t border-dark-gray/30">
+        <p className="text-gray text-xs sm:text-sm mb-2 font-medium uppercase tracking-tight">Contacto directo:</p>
         <div className="space-y-1">
           <p className="text-white font-semibold text-sm sm:text-base">{agentInfo.name}</p>
           <a

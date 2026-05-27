@@ -55,16 +55,16 @@ export function PropertyFilters({
   };
 
   return (
-    <div className="sticky top-16 sm:top-20 z-30 bg-white border-b border-slate-200">
+    <div className="sticky top-16 sm:top-20 z-30 bg-white border-b border-light-gray">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-4">
         <div className="flex flex-wrap items-center gap-3">
           <select
             value={currentType}
             onChange={(e) => updateFilter("type", e.target.value)}
-            className="bg-white border border-slate-200 text-slate-900 text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-slate-50 transition-colors focus:outline-none focus:border-slate-400 min-w-40"
+            className="bg-white border border-light-gray text-black text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-white transition-colors focus:outline-none focus:border-gray min-w-40"
           >
             {PROPERTY_TYPES.map((t) => (
-              <option key={t.value} value={t.value} className="bg-white text-slate-900">
+              <option key={t.value} value={t.value} className="bg-white text-black">
                 {t.label}
               </option>
             ))}
@@ -73,13 +73,13 @@ export function PropertyFilters({
           <select
             value={currentCity}
             onChange={(e) => updateFilter("city", e.target.value)}
-            className="bg-white border border-slate-200 text-slate-900 text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-slate-50 transition-colors focus:outline-none focus:border-slate-400 min-w-40"
+            className="bg-white border border-light-gray text-black text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-white transition-colors focus:outline-none focus:border-gray min-w-40"
           >
-            <option value="" className="bg-white text-slate-900">
+            <option value="" className="bg-white text-black">
               Todas las ciudades
             </option>
             {availableCities.map((city) => (
-              <option key={city} value={city} className="bg-white text-slate-900">
+              <option key={city} value={city} className="bg-white text-black">
                 {city}
               </option>
             ))}
@@ -88,10 +88,10 @@ export function PropertyFilters({
           <select
             value={currentStatus}
             onChange={(e) => updateFilter("status", e.target.value)}
-            className="bg-white border border-slate-200 text-slate-900 text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-slate-50 transition-colors focus:outline-none focus:border-slate-400 min-w-40"
+            className="bg-white border border-light-gray text-black text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-white transition-colors focus:outline-none focus:border-gray min-w-40"
           >
             {PROPERTY_STATUSES.map((s) => (
-              <option key={s.value} value={s.value} className="bg-white text-slate-900">
+              <option key={s.value} value={s.value} className="bg-white text-black">
                 {s.label}
               </option>
             ))}
@@ -100,7 +100,7 @@ export function PropertyFilters({
           {hasActiveFilters && (
             <button
               onClick={clearFilters}
-              className="flex items-center gap-1.5 text-slate-600 hover:text-slate-900 text-sm transition-colors ml-auto"
+              className="flex items-center gap-1.5 text-dark-gray hover:text-black text-sm transition-colors ml-auto"
             >
               <span className="material-symbols-outlined text-sm">close</span>
               Limpiar

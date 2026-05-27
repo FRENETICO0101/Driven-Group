@@ -4,7 +4,7 @@ export function Input({ className = "", ...props }: ComponentPropsWithoutRef<"in
   return (
     <input
       {...props}
-      className={`bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white placeholder:text-slate-500 focus:border-primary focus:ring-0 outline-none ${className}`.trim()}
+      className={`bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white placeholder:text-gray focus:border-primary focus:ring-0 outline-none ${className}`.trim()}
     />
   );
 }

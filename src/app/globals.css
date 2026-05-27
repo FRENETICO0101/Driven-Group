@@ -9,15 +9,22 @@
 */
 :root {
   /* Tipografía */
-  /* Por defecto usa las fuentes inyectadas por Next.js (--font-sans y --font-serif) */
-  --font-principal: var(--font-sans, system-ui, sans-serif);
-  --font-titulos: var(--font-serif, Georgia, serif);
+  /* Montserrat para cuerpos, Helvetica Neue para títulos */
+  --font-principal: var(--font-sans, 'Montserrat', sans-serif);
+  --font-titulos: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-  /* Paleta de Colores */
-  --theme-primary: #F5F5F7;
-  --theme-bg-light: #ffffff;
-  --theme-bg-dark: #000000;
-  --theme-charcoal: #1D1D1F;
+  /* Paleta de Colores Brand Book */
+  --theme-black: #252525;
+  --theme-dark-gray: #494849;
+  --theme-gray: #8e8e8e;
+  --theme-light-gray: #cccccc;
+  --theme-white: #ffffff;
+
+  /* Paleta de Colores Funcional */
+  --theme-primary: var(--theme-dark-gray);
+  --theme-bg-light: var(--theme-white);
+  --theme-bg-dark: var(--theme-black);
+  --theme-charcoal: var(--theme-black);
 }
 
 @theme {
@@ -29,6 +36,11 @@
   --color-background-light: var(--theme-bg-light);
   --color-background-dark: var(--theme-bg-dark);
   --color-charcoal: var(--theme-charcoal);
+  --color-black: var(--theme-black);
+  --color-dark-gray: var(--theme-dark-gray);
+  --color-gray: var(--theme-gray);
+  --color-light-gray: var(--theme-light-gray);
+  --color-white: var(--theme-white);
 }
 
 @layer base {

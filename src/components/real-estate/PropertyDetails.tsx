@@ -23,9 +23,9 @@ export function PropertyDetails({ property }: PropertyDetailsProps) {
           {specs.map((spec) => (
             <div
               key={spec.label}
-              className="glass-card p-3 sm:p-4 rounded-lg text-center border border-slate-700/30"
+              className="glass-card p-3 sm:p-4 rounded-lg text-center border border-dark-gray/30"
             >
-              <p className="text-slate-400 text-xs uppercase font-semibold mb-2">
+              <p className="text-gray text-xs uppercase font-semibold mb-2">
                 {spec.label}
               </p>
               <p className="text-white font-bold text-base sm:text-lg">{spec.value}</p>
@@ -42,10 +42,10 @@ export function PropertyDetails({ property }: PropertyDetailsProps) {
             {amenities.map((amenity) => (
               <div
                 key={amenity}
-                className="glass-card p-3 sm:p-4 rounded-lg border border-slate-700/30 flex items-center gap-3"
+                className="glass-card p-3 sm:p-4 rounded-lg border border-dark-gray/30 flex items-center gap-3"
               >
                 <span className="material-symbols-outlined text-primary/70 text-lg shrink-0">check_circle</span>
-                <span className="text-slate-200 text-xs sm:text-sm capitalize">{amenity}</span>
+                <span className="text-light-gray text-xs sm:text-sm capitalize">{amenity}</span>
               </div>
             ))}
           </div>
@@ -57,7 +57,7 @@ export function PropertyDetails({ property }: PropertyDetailsProps) {
         <div>
           <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Descripción</h2>
           <div className="prose prose-invert max-w-none">
-            <p className="text-slate-300 leading-relaxed text-base sm:text-lg">
+            <p className="text-light-gray leading-relaxed text-base sm:text-lg">
               {property.description}
             </p>
           </div>

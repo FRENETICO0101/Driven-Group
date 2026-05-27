@@ -5,7 +5,7 @@ type ButtonVariant = "quartz" | "ghost" | "soft" | "outline";
 const variantClasses: Record<ButtonVariant, string> = {
   quartz: "quartz-button",
   ghost: "glass-card text-white hover:bg-white/10 transition-colors",
-  soft: "bg-primary/20 border border-primary/50 text-white transition-colors hover:bg-primary hover:text-slate-900",
+  soft: "bg-primary/20 border border-primary/50 text-white transition-colors hover:bg-primary hover:text-black",
   outline: "bg-white/5 border-2 border-white/20 text-white hover:bg-white/10 transition-colors",
 };
 

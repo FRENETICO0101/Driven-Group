@@ -14,8 +14,8 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
 
   if (!images || images.length === 0) {
     return (
-      <div className="w-full h-96 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl flex items-center justify-center">
-        <span className="text-slate-400">Galería no disponible</span>
+      <div className="w-full h-96 bg-gradient-to-br from-black to-black rounded-xl flex items-center justify-center">
+        <span className="text-gray">Galería no disponible</span>
       </div>
     );
   }
@@ -44,7 +44,7 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
               className={`relative flex-shrink-0 h-20 sm:h-24 w-20 sm:w-24 rounded-lg overflow-hidden transition-all border-2 ${
                 idx === selectedIndex
                   ? 'border-primary/80'
-                  : 'border-slate-700 opacity-60 hover:opacity-100'
+                  : 'border-dark-gray opacity-60 hover:opacity-100'
               }`}
             >
               <Image

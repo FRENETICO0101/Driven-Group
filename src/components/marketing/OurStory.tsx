@@ -7,8 +7,8 @@ export function OurStory() {
   return (
     <section className="py-20 sm:py-24 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
       <div className="mb-16 sm:mb-20">
-        <p className="editorial-label text-slate-400 mb-2">DRIVEN GROUP</p>
-        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
+        <p className="editorial-label text-gray mb-2">DRIVEN GROUP</p>
+        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-black tracking-tight leading-[1.1]">
           Our Story
         </h2>
       </div>
@@ -21,20 +21,20 @@ export function OurStory() {
 
           {/* Block 1 */}
           <div>
-            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight leading-[1.2]">
+            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-black mb-6 tracking-tight leading-[1.2]">
               A Legacy of Excellence
             </h3>
-            <p className="text-base sm:text-lg text-slate-600 leading-[1.8] font-light">
+            <p className="text-base sm:text-lg text-dark-gray leading-[1.8] font-light">
               Founded in the heart of Miami, Driven Group emerged from a vision to redefine luxury real estate investment. For over two decades, we have cultivated relationships with the most discerning investors and curated a portfolio of properties that represent the pinnacle of architectural achievement and lifestyle aspiration. Our commitment to excellence has established us as the premier destination for those seeking not just properties, but strategic vehicles for wealth consolidation.
             </p>
           </div>
 
           {/* Block 2 */}
           <div>
-            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-slate-900 mb-6 tracking-tight leading-[1.2]">
+            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-black mb-6 tracking-tight leading-[1.2]">
               Our Philosophy
             </h3>
-            <p className="text-base sm:text-lg text-slate-600 leading-[1.8] font-light">
+            <p className="text-base sm:text-lg text-dark-gray leading-[1.8] font-light">
               We believe that exceptional real estate transcends mere transactions. Every property in our collection tells a story of craftsmanship, innovation, and the pursuit of perfection. Our team of specialists brings unparalleled market knowledge and deeply personal approach to every client relationship. From waterfront estates to corporate flagships, we understand that finding the perfect property is about understanding dreams and delivering on the promise of extraordinary returns.
             </p>
           </div>
@@ -42,7 +42,7 @@ export function OurStory() {
           {/* Read More */}
           <Link
             href="/about"
-            className="group inline-flex items-center gap-3 text-slate-600 hover:text-slate-900 transition-colors pt-4"
+            className="group inline-flex items-center gap-3 text-dark-gray hover:text-black transition-colors pt-4"
           >
             <span className="editorial-label tracking-[0.15em]">READ MORE</span>
             <span className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1.5">arrow_forward</span>
@@ -60,8 +60,8 @@ export function OurStory() {
             />
           </div>
           <div className="mt-6 flex items-center justify-between">
-            <p className="editorial-label text-slate-400">MIAMI, FLORIDA</p>
-            <p className="editorial-label text-slate-400">EST. 2003</p>
+            <p className="editorial-label text-gray">MIAMI, FLORIDA</p>
+            <p className="editorial-label text-gray">EST. 2003</p>
           </div>
         </div>
       </div>

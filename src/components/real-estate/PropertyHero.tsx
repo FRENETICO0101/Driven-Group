@@ -13,7 +13,7 @@ export function PropertyHero({ property, badge, badgeFeatured }: PropertyHeroPro
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
           <h1 className="text-4xl font-bold text-white mb-2">{property.title}</h1>
-          <p className="text-slate-400 text-lg">
+          <p className="text-gray text-lg">
             {property.address}, {property.city}, {property.state}
           </p>
         </div>
@@ -21,7 +21,7 @@ export function PropertyHero({ property, badge, badgeFeatured }: PropertyHeroPro
           className={
             badgeFeatured
               ? 'quartz-button text-xs font-black px-3 py-1 rounded uppercase whitespace-nowrap'
-              : 'bg-slate-800 text-primary/90 text-xs font-black px-3 py-1 rounded uppercase border border-white/20 whitespace-nowrap'
+              : 'bg-black text-primary/90 text-xs font-black px-3 py-1 rounded uppercase border border-white/20 whitespace-nowrap'
           }
         >
           {badge}
@@ -32,34 +32,34 @@ export function PropertyHero({ property, badge, badgeFeatured }: PropertyHeroPro
         <span className="text-4xl font-bold text-white">
           {formatPropertyPrice(property.price)}
         </span>
-        <span className="text-slate-400 text-sm">USD</span>
+        <span className="text-gray text-sm">USD</span>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 pt-4 border-t border-slate-700/50">
+      <div className="grid grid-cols-3 gap-4 pt-4 border-t border-dark-gray/50">
         {property.bedrooms > 0 && (
           <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-slate-400">bed</span>
+            <span className="material-symbols-outlined text-gray">bed</span>
             <div>
               <p className="text-2xl font-bold text-white">{property.bedrooms}</p>
-              <p className="text-xs text-slate-500 uppercase">Habitaciones</p>
+              <p className="text-xs text-gray uppercase">Habitaciones</p>
             </div>
           </div>
         )}
         {property.bathrooms > 0 && (
           <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-slate-400">shower</span>
+            <span className="material-symbols-outlined text-gray">shower</span>
             <div>
               <p className="text-2xl font-bold text-white">{property.bathrooms}</p>
-              <p className="text-xs text-slate-500 uppercase">Baños</p>
+              <p className="text-xs text-gray uppercase">Baños</p>
             </div>
           </div>
         )}
         {property.squareFeet > 0 && (
           <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-slate-400">square_foot</span>
+            <span className="material-symbols-outlined text-gray">square_foot</span>
             <div>
               <p className="text-2xl font-bold text-white">{property.squareFeet.toLocaleString()}</p>
-              <p className="text-xs text-slate-500 uppercase">m²</p>
+              <p className="text-xs text-gray uppercase">m²</p>
             </div>
           </div>
         )}

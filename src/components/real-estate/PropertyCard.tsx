@@ -48,7 +48,7 @@ export function PropertyCard({
 
           {/* Badge */}
           {badge && (
-            <div className="absolute top-4 left-4 text-xs font-semibold px-2.5 py-1.5 rounded tracking-wide uppercase bg-white text-slate-900" aria-label={`Tipo: ${badge}`}>
+            <div className="absolute top-4 left-4 text-xs font-semibold px-2.5 py-1.5 rounded tracking-wide uppercase bg-white text-black" aria-label={`Tipo: ${badge}`}>
               {badge}
             </div>
           )}
@@ -56,22 +56,22 @@ export function PropertyCard({
 
         {/* Content */}
         <div className="mt-6 flex-1 flex flex-col">
-          <p className="text-[11px] tracking-[0.2em] text-slate-500 uppercase">{subtitle}</p>
-          <h3 className="mt-2 font-serif text-2xl md:text-3xl text-slate-900 leading-tight">{title}</h3>
+          <p className="text-[11px] tracking-[0.2em] text-gray uppercase">{subtitle}</p>
+          <h3 className="mt-2 font-serif text-2xl md:text-3xl text-black leading-tight">{title}</h3>
 
           {/* Specs */}
-          <div className="mt-4 flex items-center gap-4 text-sm text-slate-600">
+          <div className="mt-4 flex items-center gap-4 text-sm text-dark-gray">
             {features.map((feature, idx) => (
               <span key={feature.icon} className="flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-[16px]">{feature.icon}</span>
                 <span className="hidden sm:inline">{feature.label}</span>
-                {idx < features.length - 1 && <span className="hidden sm:inline h-1 w-1 rounded-full bg-slate-300 ml-2" />}
+                {idx < features.length - 1 && <span className="hidden sm:inline h-1 w-1 rounded-full bg-light-gray ml-2" />}
               </span>
             ))}
           </div>
 
           {/* Price */}
-          <p className="mt-6 font-serif text-xl text-slate-900">{price}</p>
+          <p className="mt-6 font-serif text-xl text-black">{price}</p>
         </div>
       </article>
     </Link>
