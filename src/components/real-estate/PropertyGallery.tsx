@@ -14,7 +14,7 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
 
   if (!images || images.length === 0) {
     return (
-      <div className="w-full h-96 bg-gradient-to-br from-black to-black rounded-xl flex items-center justify-center">
+      <div className="w-full h-96 bg-light-gray/20 rounded-xl flex items-center justify-center">
         <span className="text-gray">Galería no disponible</span>
       </div>
     );

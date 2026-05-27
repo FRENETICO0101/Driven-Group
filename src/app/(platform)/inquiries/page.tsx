@@ -8,14 +8,14 @@ export default function InquiriesPage() {
     <div className="p-8">
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-white mb-2">Consultas & Leads</h1>
-        <p className="text-slate-400">Gestión de consultas y leads de clientes potenciales</p>
+        <p className="text-gray">Gestión de consultas y leads de clientes potenciales</p>
       </div>
 
       {/* Filters */}
       <div className="glass-card rounded-xl p-6 mb-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <input
-            className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white placeholder:text-slate-500 focus:border-primary focus:ring-0 outline-none"
+            className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white placeholder:text-gray focus:border-primary focus:ring-0 outline-none"
             placeholder="Buscar por nombre o email..."
             type="text"
           />
@@ -44,12 +44,12 @@ export default function InquiriesPage() {
         <table className="w-full">
           <thead>
             <tr className="border-b border-white/10 bg-white/5">
-              <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Cliente</th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Propiedad</th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Estado</th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Fuente</th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Fecha</th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-slate-300">Acciones</th>
+              <th className="px-6 py-4 text-left text-sm font-semibold text-light-gray">Cliente</th>
+              <th className="px-6 py-4 text-left text-sm font-semibold text-light-gray">Propiedad</th>
+              <th className="px-6 py-4 text-left text-sm font-semibold text-light-gray">Estado</th>
+              <th className="px-6 py-4 text-left text-sm font-semibold text-light-gray">Fuente</th>
+              <th className="px-6 py-4 text-left text-sm font-semibold text-light-gray">Fecha</th>
+              <th className="px-6 py-4 text-left text-sm font-semibold text-light-gray">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -64,7 +64,7 @@ export default function InquiriesPage() {
                 <td className="px-6 py-4 text-sm">
                   <div>
                     <p className="text-white font-medium">{inquiry.name}</p>
-                    <p className="text-slate-400 text-xs">{inquiry.email}</p>
+                    <p className="text-gray text-xs">{inquiry.email}</p>
                   </div>
                 </td>
                 <td className="px-6 py-4 text-sm text-white">{inquiry.property}</td>
@@ -83,8 +83,8 @@ export default function InquiriesPage() {
                     {inquiry.status}
                   </span>
                 </td>
-                <td className="px-6 py-4 text-sm text-slate-400">{inquiry.source}</td>
-                <td className="px-6 py-4 text-sm text-slate-400">{inquiry.date}</td>
+                <td className="px-6 py-4 text-sm text-gray">{inquiry.source}</td>
+                <td className="px-6 py-4 text-sm text-gray">{inquiry.date}</td>
                 <td className="px-6 py-4 text-sm">
                   <div className="flex gap-2">
                     <button className="text-primary hover:text-primary/80 transition-colors" title="Ver detalles">
@@ -106,7 +106,7 @@ export default function InquiriesPage() {
 
       {/* Pagination */}
       <div className="flex justify-between items-center mt-6">
-        <p className="text-slate-400 text-sm">Mostrando 1-5 de 24 consultas</p>
+        <p className="text-gray text-sm">Mostrando 1-5 de 24 consultas</p>
         <div className="flex gap-2">
           <button className="px-4 py-2 rounded-lg border border-white/10 text-white hover:bg-white/5 transition-colors disabled:opacity-50">
             ← Anterior

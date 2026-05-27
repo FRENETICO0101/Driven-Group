@@ -8,7 +8,7 @@ export default function AdminDashboard() {
     <div className="p-8">
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-white mb-2">Dashboard</h1>
-        <p className="text-slate-400">Bienvenido al panel de administración de Driven Group</p>
+        <p className="text-gray">Bienvenido al panel de administración de Driven Group</p>
       </div>
 
       {/* Stats Grid */}
@@ -16,7 +16,7 @@ export default function AdminDashboard() {
         <div className="glass-card rounded-xl p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-slate-400 text-sm mb-1">Propiedades Activas</p>
+              <p className="text-gray text-sm mb-1">Propiedades Activas</p>
               <p className="text-3xl font-bold text-white">156</p>
             </div>
             <span className="material-symbols-outlined text-4xl text-primary/50">apartment</span>
@@ -26,7 +26,7 @@ export default function AdminDashboard() {
         <div className="glass-card rounded-xl p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-slate-400 text-sm mb-1">Consultas Nuevas</p>
+              <p className="text-gray text-sm mb-1">Consultas Nuevas</p>
               <p className="text-3xl font-bold text-white">24</p>
             </div>
             <span className="material-symbols-outlined text-4xl text-primary/50">mail</span>
@@ -36,7 +36,7 @@ export default function AdminDashboard() {
         <div className="glass-card rounded-xl p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-slate-400 text-sm mb-1">Agentes</p>
+              <p className="text-gray text-sm mb-1">Agentes</p>
               <p className="text-3xl font-bold text-white">12</p>
             </div>
             <span className="material-symbols-outlined text-4xl text-primary/50">people</span>
@@ -46,7 +46,7 @@ export default function AdminDashboard() {
         <div className="glass-card rounded-xl p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-slate-400 text-sm mb-1">Propiedades Vendidas</p>
+              <p className="text-gray text-sm mb-1">Propiedades Vendidas</p>
               <p className="text-3xl font-bold text-white">23</p>
             </div>
             <span className="material-symbols-outlined text-4xl text-primary/50">check_circle</span>
@@ -63,7 +63,7 @@ export default function AdminDashboard() {
               <div key={i} className="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
                 <div>
                   <p className="text-white font-medium">Cliente #{i}</p>
-                  <p className="text-slate-400 text-sm">Interesado en propiedad premium</p>
+                  <p className="text-gray text-sm">Interesado en propiedad premium</p>
                 </div>
                 <span className="material-symbols-outlined text-primary">arrow_forward</span>
               </div>

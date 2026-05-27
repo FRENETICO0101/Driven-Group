@@ -37,11 +37,11 @@ export default function AcademyPage() {
       <section id="programs" className="py-20 sm:py-24 md:py-32 px-6 sm:px-8 max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="mb-16 sm:mb-20">
-          <p className="editorial-label text-slate-400 mb-4">DRIVEN GROUP ACADEMY</p>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 leading-[1.1] mb-6">
+          <p className="editorial-label text-gray mb-4">DRIVEN GROUP ACADEMY</p>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-black leading-[1.1] mb-6">
             Three Pathways to Mastery
           </h2>
-          <p className="text-slate-600 text-lg leading-relaxed max-w-2xl">
+          <p className="text-dark-gray text-lg leading-relaxed max-w-2xl">
             Comprehensive programs designed to elevate your expertise in leadership, entrepreneurship, and financial strategy.
           </p>
         </div>
@@ -103,33 +103,33 @@ export default function AcademyPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {/* Industry Leaders */}
           <div>
-            <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-slate-900">verified</span>
+            <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-black">verified</span>
             </div>
-            <h3 className="text-xl font-black text-slate-900 mb-4">Industry Leaders</h3>
-            <p className="text-slate-600 text-base leading-relaxed">
+            <h3 className="text-xl font-black text-black mb-4">Industry Leaders</h3>
+            <p className="text-dark-gray text-base leading-relaxed">
               Learn directly from entrepreneurs, investors, and executives with proven track records of success.
             </p>
           </div>
 
           {/* Practical Application */}
           <div>
-            <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-slate-900">build</span>
+            <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-black">build</span>
             </div>
-            <h3 className="text-xl font-black text-slate-900 mb-4">Practical Application</h3>
-            <p className="text-slate-600 text-base leading-relaxed">
+            <h3 className="text-xl font-black text-black mb-4">Practical Application</h3>
+            <p className="text-dark-gray text-base leading-relaxed">
               Real-world case studies and frameworks you can immediately apply to your business and life.
             </p>
           </div>
 
           {/* Community Access */}
           <div>
-            <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-slate-900">group</span>
+            <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-black">group</span>
             </div>
-            <h3 className="text-xl font-black text-slate-900 mb-4">Community Access</h3>
-            <p className="text-slate-600 text-base leading-relaxed">
+            <h3 className="text-xl font-black text-black mb-4">Community Access</h3>
+            <p className="text-dark-gray text-base leading-relaxed">
               Join a network of ambitious learners and successful entrepreneurs for meaningful connections.
             </p>
           </div>

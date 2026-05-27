@@ -73,9 +73,9 @@ export default async function PropertyPage({
   const badge = getPropertyBadge(property.type);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <main className="min-h-screen bg-white pt-16 sm:pt-20">
       {/* Navigation */}
-      <nav className="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50">
+      <nav className="sticky top-16 sm:top-20 z-40 bg-white/90 backdrop-blur-md border-b border-light-gray/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <a href="/real-estate" className="text-primary hover:text-primary/80 transition-colors text-sm sm:text-base">
             ← Volver al catálogo
@@ -99,7 +99,7 @@ export default async function PropertyPage({
         </div>
 
         {/* Details Section */}
-        <div className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-slate-800/50">
+        <div className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-light-gray/50">
           <PropertyDetails property={property} />
         </div>
       </div>

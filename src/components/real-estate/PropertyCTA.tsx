@@ -11,7 +11,7 @@ interface PropertyCTAProps {
 }
 
 const INPUT_CLASS =
-  'w-full bg-black/50 border border-dark-gray rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-white placeholder-gray focus:outline-none focus:border-primary/50 disabled:opacity-50 disabled:cursor-not-allowed';
+  'w-full bg-white border border-light-gray text-black rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-black placeholder-gray focus:outline-none focus:border-primary/50 disabled:opacity-50 disabled:cursor-not-allowed';
 
 export function PropertyCTA({ property }: PropertyCTAProps) {
   const [state, setState] = useState<FormState>('idle');
@@ -45,9 +45,9 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
   };
 
   return (
-    <div className="glass-card border border-dark-gray/30 rounded-lg sm:rounded-xl p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 sticky top-20 sm:top-24">
+    <div className="bg-white shadow-sm border border-light-gray rounded-lg sm:rounded-xl p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 sticky top-20 sm:top-24">
       <div>
-        <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">Agendar Consulta</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-black mb-2">Agendar Consulta</h2>
         <p className="text-gray text-sm sm:text-base">
           Nuestro equipo está disponible para discutir esta oportunidad de inversión.
         </p>
@@ -56,7 +56,7 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
       {state === 'idle' && (
         <button
           onClick={() => setState('form')}
-          className="w-full quartz-button py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-transform hover:scale-105"
+          className="w-full bg-black text-white hover:bg-dark-gray transition-colors py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-transform hover:scale-105"
         >
           Solicitar Información
         </button>
@@ -64,7 +64,7 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
 
       {state === 'success' && (
         <div className="py-4 text-center space-y-2">
-          <p className="text-white font-semibold text-sm sm:text-base">Consulta recibida</p>
+          <p className="text-black font-semibold text-sm sm:text-base">Consulta recibida</p>
           <p className="text-gray text-xs sm:text-sm">
             Un asesor se pondrá en contacto en las próximas 24 horas.
           </p>
@@ -119,7 +119,7 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
             <button
               type="submit"
               disabled={state === 'loading'}
-              className="flex-1 quartz-button py-2.5 sm:py-3 rounded-lg font-semibold text-xs sm:text-sm transition-all disabled:opacity-50"
+              className="flex-1 bg-black text-white hover:bg-dark-gray transition-colors py-2.5 sm:py-3 rounded-lg font-semibold text-xs sm:text-sm transition-all disabled:opacity-50"
             >
               {state === 'loading' ? 'Enviando...' : 'Enviar'}
             </button>
@@ -127,7 +127,7 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
               type="button"
               disabled={state === 'loading'}
               onClick={() => { setState('idle'); setErrorMsg(''); }}
-              className="flex-1 bg-black/50 border border-dark-gray text-white py-2.5 sm:py-3 rounded-lg font-semibold text-xs sm:text-sm transition-colors hover:bg-dark-gray disabled:opacity-50"
+              className="flex-1 bg-white border border-light-gray text-black text-black py-2.5 sm:py-3 rounded-lg font-semibold text-xs sm:text-sm transition-colors hover:bg-dark-gray disabled:opacity-50"
             >
               Cancelar
             </button>
@@ -138,7 +138,7 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
       <div className="pt-4 sm:pt-6 border-t border-dark-gray/30">
         <p className="text-gray text-xs sm:text-sm mb-2 font-medium uppercase tracking-tight">Contacto directo:</p>
         <div className="space-y-1">
-          <p className="text-white font-semibold text-sm sm:text-base">{agentInfo.name}</p>
+          <p className="text-black font-semibold text-sm sm:text-base">{agentInfo.name}</p>
           <a
             href={`mailto:${agentInfo.email}`}
             className="text-primary/70 hover:text-primary text-xs sm:text-sm transition-colors break-all"
