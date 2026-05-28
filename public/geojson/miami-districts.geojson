@@ -1,0 +1,131 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brickell",
+        "color": "#e3f2fd",
+        "description": "Financial district with luxury high-rises"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-80.2050, 25.7489],
+          [-80.1890, 25.7489],
+          [-80.1890, 25.7650],
+          [-80.2050, 25.7650],
+          [-80.2050, 25.7489]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Downtown Miami",
+        "color": "#e0f2f1",
+        "description": "Urban core and cultural center"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-80.2000, 25.7700],
+          [-80.1820, 25.7700],
+          [-80.1820, 25.7850],
+          [-80.2000, 25.7850],
+          [-80.2000, 25.7700]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wynwood",
+        "color": "#f3e5f5",
+        "description": "Arts and culture neighborhood"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-80.1990, 25.7950],
+          [-80.1760, 25.7950],
+          [-80.1760, 25.8100],
+          [-80.1990, 25.8100],
+          [-80.1990, 25.7950]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Design District",
+        "color": "#fce4ec",
+        "description": "Luxury shopping and design hub"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-80.2050, 25.8050],
+          [-80.1850, 25.8050],
+          [-80.1850, 25.8200],
+          [-80.2050, 25.8200],
+          [-80.2050, 25.8050]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Midtown Miami",
+        "color": "#ede7f6",
+        "description": "Mixed-use residential area"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-80.1950, 25.8200],
+          [-80.1700, 25.8200],
+          [-80.1700, 25.8350],
+          [-80.1950, 25.8350],
+          [-80.1950, 25.8200]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Coconut Grove",
+        "color": "#e8f5e9",
+        "description": "Bohemian village with boutiques"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-80.2300, 25.7350],
+          [-80.2100, 25.7350],
+          [-80.2100, 25.7500],
+          [-80.2300, 25.7500],
+          [-80.2300, 25.7350]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Allapattah",
+        "color": "#fff3e0",
+        "description": "Emerging residential neighborhood"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-80.2300, 25.7600],
+          [-80.2050, 25.7600],
+          [-80.2050, 25.7800],
+          [-80.2300, 25.7800],
+          [-80.2300, 25.7600]
+        ]]
+      }
+    }
+  ]
+}

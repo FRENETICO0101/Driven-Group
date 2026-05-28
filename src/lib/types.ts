@@ -45,6 +45,7 @@ export interface Property {
   zipCode: string;
   latitude?: number;
   longitude?: number;
+  district?: string;
   bedrooms: number;
   bathrooms: number;
   squareFeet: number;

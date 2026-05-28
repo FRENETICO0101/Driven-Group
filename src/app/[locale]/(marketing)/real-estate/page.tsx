@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { getAllProperties, getAvailableCities } from "@/server/services/property.service";
+import dynamic from "next/dynamic";
+import { getAllProperties } from "@/server/services/property.service";
 import { RealEstateHeroSection } from "@/components/real-estate/RealEstateHeroSection";
 import { PropertyFilters } from "@/components/real-estate/PropertyFilters";
 import { PropertyListing } from "@/components/real-estate/PropertyListing";
@@ -11,13 +12,13 @@ export const dynamic = "force-dynamic";
 const siteUrl = "https://drivengroup.com";
 
 export const metadata: Metadata = {
-  title: "Portafolio de Activos — Driven Group",
+  title: "Miami Real Estate — Driven Group",
   description:
-    "Selección curada de inmuebles comerciales, residenciales y patrimoniales. Inversión estratégica corporativa con visión de ecosistema.",
+    "Premium real estate portfolio in Miami. Luxury residences, commercial properties, and development opportunities across Miami's finest neighborhoods.",
   openGraph: {
-    title: "Portafolio de Activos — Driven Group",
+    title: "Miami Real Estate — Driven Group",
     description:
-      "Selección curada de inmuebles comerciales, residenciales y patrimoniales. Inversión estratégica corporativa con visión de ecosistema.",
+      "Premium real estate portfolio in Miami. Luxury residences, commercial properties, and development opportunities across Miami's finest neighborhoods.",
     url: `${siteUrl}/real-estate`,
     type: "website",
     images: [
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
         url: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Portafolio de Activos",
+        alt: "Miami Real Estate",
       },
     ],
   },
@@ -34,34 +35,49 @@ export const metadata: Metadata = {
   },
 };
 
+// Dynamically import the map component for client-side rendering
+const MiamiPropertyMap = dynamic(
+  () => import("@/components/real-estate/MiamiPropertyMap").then((mod) => ({ default: mod.MiamiPropertyMap })),
+  { ssr: false, loading: () => <div className="w-full h-96 md:h-screen bg-pale rounded-lg animate-pulse" /> }
+);
+
 interface PageProps {
-  searchParams: Promise<{ type?: string; city?: string; status?: string }>;
+  searchParams: Promise<{ type?: string; district?: string; status?: string }>;
 }
 
 async function ListingContent({ searchParams }: PageProps) {
   const params = await searchParams;
   const filters = {
     type: params.type ?? "",
-    city: params.city ?? "",
+    district: params.district ?? "",
     status: params.status ?? "",
   };
 
-  const [properties, cities] = await Promise.all([
-    getAllProperties(filters),
-    getAvailableCities(),
-  ]);
+  const properties = await getAllProperties(filters);
 
   return (
     <>
       <PropertyFilters
-        availableCities={cities}
         currentType={filters.type}
-        currentCity={filters.city}
+        currentDistrict={filters.district}
         currentStatus={filters.status}
       />
-      <section id="listings">
-        <PropertyListing properties={properties} />
-      </section>
+      
+      {/* Map + Listing Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-6 sm:px-8 py-12">
+        {/* Map Sidebar (Desktop) / Full Width (Mobile) */}
+        <div className="lg:col-span-1 lg:sticky lg:top-32 h-fit">
+          <h3 className="font-serif text-lg text-black mb-4">Miami Districts</h3>
+          <Suspense fallback={<div className="w-full h-96 bg-pale rounded-lg animate-pulse" />}>
+            <MiamiPropertyMap properties={properties} selectedDistrict={filters.district} />
+          </Suspense>
+        </div>
+
+        {/* Properties Listing */}
+        <div className="lg:col-span-2" id="listings">
+          <PropertyListing properties={properties} />
+        </div>
+      </div>
     </>
   );
 }
