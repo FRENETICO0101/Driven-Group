@@ -37,62 +37,46 @@ export default function BusinessPage() {
       <section id="divisions">
         {/* Digital Commerce */}
       <BusinessDivision
-        title="Digital Commerce"
-        description="End-to-end e-commerce solutions for enterprise-scale operations."
-        longDescription="We architect and operate premium digital marketplaces that connect global buyers with curated products and services. Our technology stack integrates payment processing, logistics, and analytics to deliver seamless commercial experiences."
-        image="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=1000&fit=crop"
+        title="Comercio Digital"
+        description="Participación en el desarrollo y operación de modelos comerciales en entornos digitales, integrando posicionamiento de marca, canales de venta y ejecución orientada a la eficiencia y escalabilidad."
+        image="images1/business-digital.jpg"
         imageAlt="Digital Commerce Technology Platform"
         highlights={[
-          "Multi-currency payment processing and settlement",
-          "Global logistics and supply chain optimization",
-          "Advanced analytics and customer intelligence",
-          "White-label marketplace infrastructure",
+          
         ]}
       />
 
       {/* Global Markets */}
       <BusinessDivision
-        title="Global Markets"
-        description="Strategic access to international investment and trading opportunities."
-        longDescription="Our global markets division provides institutional-grade access to alternative investments, commodities, and securities across emerging and developed markets. We leverage proprietary research and local partnerships to identify high-conviction opportunities."
-        image="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=1000&fit=crop"
+        title="Mercados Gobales"
+        description="Presencia en mercados internacionales, con actividad en Europa y América del Norte, mediante estrcuturas comerciales que permiten la expansión y consolidación de negocios en distintos contextos."
+        image="images1/business-global.jpg"
         imageAlt="Global Markets Financial Operations"
         highlights={[
-          "Institutional investment advisory services",
-          "Commodity and derivative trading platforms",
-          "Cross-border transaction facilitation",
-          "Risk management and portfolio optimization",
+          
         ]}
         reversed
       />
 
       {/* Strategic Alliances */}
       <BusinessDivision
-        title="Strategic Alliances"
-        description="Partnership networks that drive exponential business growth."
-        longDescription="We cultivate deep partnerships with industry leaders, technology innovators, and financial institutions. These alliances create synergies that accelerate market entry, reduce capital requirements, and amplify competitive advantages across our entire ecosystem."
-        image="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=1000&fit=crop"
+        title="Alianzas Estratégicas"
+        description="Colaboración con socios y organizaciones en la construcción de proyectos empresariales, enfocada en la generación de valor conjunto y el fortalecimiento de capacidades."
+        image="images1/business-alliances.jpg"
         imageAlt="Strategic Partnerships and Collaboration"
         highlights={[
-          "Joint venture and co-investment structures",
-          "Technology and innovation partnerships",
-          "Distribution and market access agreements",
-          "Equity stake partnerships with aligned vision",
+        
         ]}
       />
 
       {/* Luxury Assets */}
       <BusinessDivision
-        title="Luxury Assets"
-        description="Curation and stewardship of ultra-premium real estate and tangible assets."
-        longDescription="Our luxury assets division manages a carefully curated portfolio of world-class properties and collectibles. Beyond ownership, we provide comprehensive stewardship including enhancement, management, and strategic disposition planning for high-net-worth clients and institutions."
-        image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=1000&fit=crop"
+        title="Activos de Lujo"
+        description="Participación en la gestión y desarrollo de activos de alto valor, bajo una visión patrimonial, enfocados en exclusividad, calidad y posicionamiento dentro de mercados premium."
+        image="images1/business-luxury.jpg"
         imageAlt="Luxury Real Estate Portfolio"
         highlights={[
-          "Ultra-premium residential property curation",
-          "Commercial and development opportunity sourcing",
-          "Property enhancement and value-add strategies",
-          "Succession planning and estate stewardship",
+          
         ]}
         reversed
       />
