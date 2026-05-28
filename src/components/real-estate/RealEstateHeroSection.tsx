@@ -38,7 +38,7 @@ export function RealEstateHeroSection() {
             <div className="fade-in-delay-200">
               <Link
                 href="#listings"
-                className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors text-sm sm:text-base font-semibold tracking-wide uppercase"
+                className="inline-flex items-center gap-2 text-gray hover:text-dark-gray transition-colors text-sm sm:text-base font-semibold tracking-wide uppercase"
               >
                 <span>BROWSE PORTFOLIO</span>
                 <span className="material-symbols-outlined text-lg">arrow_forward</span>

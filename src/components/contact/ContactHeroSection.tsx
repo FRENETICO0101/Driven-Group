@@ -38,7 +38,7 @@ export function ContactHeroSection() {
             <div className="fade-in-delay-200">
               <Link
                 href="#form"
-                className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors text-sm sm:text-base font-semibold tracking-wide uppercase"
+                className="inline-flex items-center gap-2 text-gray hover:text-dark-gray transition-colors text-sm sm:text-base font-semibold tracking-wide uppercase"
               >
                 <span>GET IN TOUCH</span>
                 <span className="material-symbols-outlined text-lg">arrow_forward</span>

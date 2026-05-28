@@ -8,31 +8,32 @@ export function HeroSection() {
       <div className="relative min-h-screen sm:min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
         {/* Background video with image fallback */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 hero-gradient z-10" />
+          {/* Fallback image background */}
+          <Image
+            alt="Luxury Real Estate - Miami"
+            className="w-full h-full object-cover"
+            src="/images1/hero-luxury.jpg"
+            fill
+            priority
+            sizes="100vw"
+          />
 
-          {/* Video background */}
-          <video
+          {/* Video background (optional) */}
+          {/* <video
             autoPlay
             muted
             loop
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
-            poster="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&q=90"
+            poster="/images1/hero-fallback.jpg"
           >
             <source
               src="https://media.istockphoto.com/id/1446404317/video/miami-skyline-at-sunset.mp4?s=mp4-640x640-is"
               type="video/mp4"
             />
-            {/* Fallback image if video fails */}
-            <Image
-              alt="Luxury Real Estate - Miami"
-              className="w-full h-full object-cover"
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&q=90"
-              fill
-              priority
-              sizes="100vw"
-            />
-          </video>
+          </video> */}
+
+          <div className="absolute inset-0 hero-gradient z-10" />
         </div>
 
         {/* DAY indicator - top right */}
@@ -56,7 +57,7 @@ export function HeroSection() {
             <div className="fade-in-delay-200">
               <Link
                 href="/real-estate"
-                className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors text-sm sm:text-base font-semibold tracking-wide uppercase"
+                className="inline-flex items-center gap-2 text-gray hover:text-dark-gray transition-colors text-sm sm:text-base font-semibold tracking-wide uppercase"
               >
                 <span>VIEW DETAILS</span>
                 <span className="material-symbols-outlined text-lg">arrow_forward</span>

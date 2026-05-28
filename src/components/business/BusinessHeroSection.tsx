@@ -12,7 +12,7 @@ export function BusinessHeroSection() {
           <Image
             alt="Business Growth"
             className="image-zoom w-full h-full object-cover"
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=1080&fit=crop&q=90"
+            src="/images1/business-hero.jpg"
             fill
             priority
             sizes="100vw"
@@ -43,7 +43,7 @@ export function BusinessHeroSection() {
             <div className="fade-in-delay-200">
               <Link
                 href="#divisions"
-                className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors text-sm sm:text-base font-semibold tracking-wide uppercase"
+                className="inline-flex items-center gap-2 text-gray hover:text-dark-gray transition-colors text-sm sm:text-base font-semibold tracking-wide uppercase"
               >
                 <span>EXPLORE DIVISIONS</span>
                 <span className="material-symbols-outlined text-lg">arrow_forward</span>
