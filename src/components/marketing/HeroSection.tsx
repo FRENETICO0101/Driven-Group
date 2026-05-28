@@ -1,7 +1,12 @@
+'use client';
+
 import Image from "next/image";
 import Link from 'next/link';
+import { useTranslations } from "next-intl";
 
 export function HeroSection() {
+  const t = useTranslations('hero');
+
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
       {/* Hero content area with video/image background below navbar */}
@@ -48,7 +53,7 @@ export function HeroSection() {
 
             {/* Headline - serif italic */}
             <h1 className="fade-in-delay-100 font-serif italic text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.2] md:leading-[1.15] mb-8 sm:mb-10 text-white tracking-tight">
-              The Leading International Luxury Real Estate Brokerage
+              {t('luxury')}
             </h1>
 
             {/* Body text removed for cleaner aesthetic */}
@@ -59,7 +64,7 @@ export function HeroSection() {
                 href="/real-estate"
                 className="inline-flex items-center gap-2 text-gray hover:text-dark-gray transition-colors text-sm sm:text-base font-semibold tracking-wide uppercase"
               >
-                <span>VIEW DETAILS</span>
+                <span>{t('viewDetails')}</span>
                 <span className="material-symbols-outlined text-lg">arrow_forward</span>
               </Link>
             </div>

@@ -2,16 +2,23 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
-const navigation = [
-  { name: "Home", href: "/", index: "01" },
-  { name: "Real Estate", href: "/real-estate", index: "02" },
-  { name: "Business", href: "/business", index: "03" },
-  { name: "Academy", href: "/academy", index: "04" },
-  { name: "Contact Us", href: "/contact", index: "05" },
-  { name: "About Us", href: "/about", index: "06" },
+interface NavItem {
+  nameKey: string;
+  href: string;
+  index: string;
+}
+
+const navigationKeys: NavItem[] = [
+  { nameKey: "nav.home", href: "/", index: "01" },
+  { nameKey: "nav.realEstate", href: "/real-estate", index: "02" },
+  { nameKey: "nav.business", href: "/business", index: "03" },
+  { nameKey: "nav.academy", href: "/academy", index: "04" },
+  { nameKey: "nav.contact", href: "/contact", index: "05" },
+  { nameKey: "nav.about", href: "/about", index: "06" },
 ];
 
 const cities = [
@@ -39,6 +46,7 @@ function getCityInfo(tz: string, tempBase: number): CityInfo {
 }
 
 export function Navbar() {
+  const t = useTranslations();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeCityIdx, setActiveCityIdx] = useState(0);
@@ -171,25 +179,29 @@ export function Navbar() {
           <div className="flex flex-col justify-center flex-1 min-w-0">
             <nav aria-label="Menú principal">
               <ul className="space-y-0">
-                {navigation.map((item, i) => (
-                  <li key={item.name}>
-                    <Link
-                      href={item.href}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="group flex items-baseline gap-5 sm:gap-8 py-2.5 sm:py-3"
-                      style={{
-                        opacity: isMenuOpen ? 1 : 0,
-                        transform: isMenuOpen ? "translateY(0)" : "translateY(12px)",
-                        transition: `opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) ${i * 55 + 60}ms, transform 600ms cubic-bezier(0.22, 1, 0.36, 1) ${i * 55 + 60}ms`,
-                      }}
-                    >
-                      <span className="editorial-label text-light-gray w-6 tabular-nums">{item.index}</span>
-                      <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-dark-gray transition-all duration-500 group-hover:text-black group-hover:translate-x-2">
-                        {item.name}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
+                {navigationKeys.map((item, i) => {
+                  const navKey = item.nameKey.split('.')[1];
+                  const name = t(`nav.${navKey}`);
+                  return (
+                    <li key={item.nameKey}>
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="group flex items-baseline gap-5 sm:gap-8 py-2.5 sm:py-3"
+                        style={{
+                          opacity: isMenuOpen ? 1 : 0,
+                          transform: isMenuOpen ? "translateY(0)" : "translateY(12px)",
+                          transition: `opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) ${i * 55 + 60}ms, transform 600ms cubic-bezier(0.22, 1, 0.36, 1) ${i * 55 + 60}ms`,
+                        }}
+                      >
+                        <span className="editorial-label text-light-gray w-6 tabular-nums">{item.index}</span>
+                        <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-dark-gray transition-all duration-500 group-hover:text-black group-hover:translate-x-2">
+                          {name}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
 
@@ -208,7 +220,7 @@ export function Navbar() {
               </div>
               <div className="flex gap-6">
                 {["Instagram", "LinkedIn", "YouTube"].map((s) => (
-                  <a key={s} href="#" className="editorial-label text-gray hover:text-dark-gray transition-colors duration-300">{s.toUpperCase()}</a>
+                  <a key={s} href="#" className="editorial-label text-gray hover:text-dark-gray transition-colors duration-300">{s}</a>
                 ))}
               </div>
             </div>

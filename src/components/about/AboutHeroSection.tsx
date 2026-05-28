@@ -1,7 +1,12 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export function AboutHeroSection() {
+  const t = useTranslations('hero');
+
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
       <div className="relative min-h-screen sm:min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
@@ -28,11 +33,11 @@ export function AboutHeroSection() {
         <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-8">
           <div className="max-w-3xl">
             <h1 className="fade-in-delay-100 font-serif italic text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.2] md:leading-[1.15] mb-8 sm:mb-10 text-white tracking-tight">
-              Building Legacies Through Strategic Vision
+              {t('about')}
             </h1>
 
             <p className="fade-in-delay-150 text-lg sm:text-xl text-white/80 mb-8 leading-relaxed max-w-2xl">
-              Over two decades of excellence, integrity, and transformative leadership in luxury real estate and corporate strategy
+              {t('aboutDesc')}
             </p>
 
             <div className="fade-in-delay-200">
@@ -40,7 +45,7 @@ export function AboutHeroSection() {
                 href="#mission"
                 className="inline-flex items-center gap-2 text-gray hover:text-dark-gray transition-colors text-sm sm:text-base font-semibold tracking-wide uppercase"
               >
-                <span>DISCOVER OUR VALUES</span>
+                <span>{t('discoverValues')}</span>
                 <span className="material-symbols-outlined text-lg">arrow_forward</span>
               </Link>
             </div>
