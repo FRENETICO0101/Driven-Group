@@ -48,7 +48,7 @@ export function OurStory() {
         <div className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-xl">
             <Image
-              src="/public/images1/business-global.jpg"
+              src="/images1/business-global.jpg"
               alt="Driven Group Miami Headquarters"
               fill
               className="object-cover"
@@ -56,7 +56,7 @@ export function OurStory() {
           </div>
           <div className="mt-6 flex items-center justify-between">
             <p className="editorial-label text-gray">MIAMI, FLORIDA</p>
-            <p className="editorial-label text-gray">EST. 2003</p>
+            {/* <p className="editorial-label text-gray">EST. 2003</p> */}
           </div>
         </div>
       </div>
