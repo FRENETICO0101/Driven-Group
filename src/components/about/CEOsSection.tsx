@@ -24,43 +24,50 @@ const ceos: CEO[] = [
 
 export function CEOsSection() {
   return (
-    <section className="py-20 sm:py-24 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
+    <section className="py-24 sm:py-28 md:py-36 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 border-t border-pale">
+
+      {/* Header */}
       <div className="mb-16 sm:mb-20">
-        <p className="editorial-label text-gray mb-2">LEADERSHIP</p>
-        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-black tracking-tight leading-[1.1]">
-          Our Leadership
+        <p className="editorial-label text-gray mb-3">Leadership</p>
+        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-ink tracking-tight leading-[1.05] text-balance">
+          Our Founders
         </h2>
       </div>
 
-      {/* CEOs Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 md:gap-20">
-        {ceos.map((ceo) => (
+      {/* Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 sm:gap-20">
+        {ceos.map((ceo, i) => (
           <div key={ceo.name} className="flex flex-col">
-            {/* Image */}
-            <div className="relative aspect-square overflow-hidden rounded-xl mb-8">
+            {/* Image — portrait aspect */}
+            <div className="relative aspect-[3/4] overflow-hidden mb-8 group">
               <Image
                 src={ceo.image}
                 alt={ceo.name}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"
               />
+              {/* Index badge */}
+              <div className="absolute bottom-5 left-5 editorial-label text-white/50">
+                {String(i + 1).padStart(2, "0")}
+              </div>
             </div>
 
-            {/* Content */}
+            {/* Copy */}
             <div>
-              <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-black mb-2 tracking-tight">
+              <h3 className="font-serif text-2xl sm:text-3xl text-ink mb-1.5 tracking-tight">
                 {ceo.name}
               </h3>
-              <p className="editorial-label text-yellow-600 mb-6 tracking-wide">
+              <p className="editorial-label text-gray mb-6">
                 {ceo.title}
               </p>
-              <p className="text-base sm:text-lg text-dark-gray leading-[1.8] font-light">
+              <p className="text-sm sm:text-base text-dark-gray leading-[1.9] font-light">
                 {ceo.bio}
               </p>
             </div>
           </div>
         ))}
       </div>
+
     </section>
   );
 }

@@ -4,22 +4,21 @@ interface PropertyListingHeroProps {
 
 export function PropertyListingHero({ count }: PropertyListingHeroProps) {
   return (
-    <section className="pt-20 sm:pt-24 pb-12 sm:pb-16 px-6 sm:px-8 max-w-7xl mx-auto">
-      <div className="max-w-3xl">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-light-gray text-dark-gray text-xs font-bold uppercase tracking-widest mb-6">
-          <span className="material-symbols-outlined text-sm">apartment</span>
-          Portafolio de Activos
+    <section className="pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto border-b border-pale">
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div>
+          <p className="editorial-label text-gray mb-4">Portafolio de Activos</p>
+          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl text-ink tracking-tight leading-[1.0] text-balance">
+            Activos con{" "}
+            <span className="italic text-dark-gray">visión</span>
+          </h1>
         </div>
-        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black leading-[1.1] mb-6 text-black">
-          Activos con{" "}
-          <span className="text-dark-gray">visión</span>
-        </h1>
-        <p className="text-dark-gray text-base sm:text-lg leading-relaxed max-w-xl">
+        <p className="text-dark-gray text-base sm:text-lg leading-relaxed max-w-sm font-light">
           Una selección curada de inmuebles para inversionistas que construyen patrimonio con criterio.
         </p>
       </div>
-      <div className="mt-10 pt-8 border-t border-light-gray">
-        <span className="text-gray text-sm">
+      <div className="mt-10 pt-6 border-t border-pale">
+        <span className="editorial-label text-gray">
           {count === 0
             ? "Sin propiedades disponibles"
             : count === 1

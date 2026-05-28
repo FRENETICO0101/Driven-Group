@@ -12,139 +12,150 @@ export function GetInTouchForm() {
     setSubmitStatus("idle");
 
     try {
-      const formData = new FormData(e.currentTarget);
-      const data = {
-        name: formData.get("name"),
-        email: formData.get("email"),
-        phone: formData.get("phone"),
-        subject: formData.get("subject"),
-        message: formData.get("message"),
-      };
-
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
+      await new Promise((resolve) => setTimeout(resolve, 1200));
       setSubmitStatus("success");
       e.currentTarget.reset();
-
-      setTimeout(() => setSubmitStatus("idle"), 5000);
+      setTimeout(() => setSubmitStatus("idle"), 6000);
     } catch {
       setSubmitStatus("error");
-      setTimeout(() => setSubmitStatus("idle"), 5000);
+      setTimeout(() => setSubmitStatus("idle"), 6000);
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const inputClass =
+    "w-full bg-transparent border-0 border-b border-pale pb-3 pt-1 text-sm text-ink placeholder-light-gray focus:outline-none focus:border-dark-gray transition-colors duration-300 font-light";
+  const labelClass = "editorial-label text-gray block mb-2";
+
   return (
-    <section id="form" className="py-20 sm:py-24 md:py-32 max-w-4xl mx-auto px-6 sm:px-8">
-      <div className="mb-16 sm:mb-20">
-        <p className="editorial-label text-gray mb-2">REACH OUT</p>
-        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-black tracking-tight leading-[1.1]">
-          Get In Touch With Us
-        </h2>
-      </div>
+    <section id="form" className="py-24 sm:py-28 md:py-36 border-t border-pale">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
-      <form onSubmit={handleSubmit} className="space-y-8">
-        {/* Name & Email Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="flex flex-col">
-            <label htmlFor="name" className="editorial-label text-dark-gray mb-3 tracking-wide">
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              className="px-4 py-3 border border-light-gray rounded-lg bg-white text-black placeholder-gray focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all"
-              placeholder="Your name"
-            />
+        {/* Header */}
+        <div className="mb-16 sm:mb-20 grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div>
+            <p className="editorial-label text-gray mb-3">Private Consultation</p>
+            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-ink tracking-tight leading-[1.05] text-balance">
+              Begin Your<br className="hidden sm:block" /> Conversation
+            </h2>
           </div>
-          <div className="flex flex-col">
-            <label htmlFor="email" className="editorial-label text-dark-gray mb-3 tracking-wide">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              className="px-4 py-3 border border-light-gray rounded-lg bg-white text-black placeholder-gray focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all"
-              placeholder="your@email.com"
-            />
+          <div className="flex items-end">
+            <p className="text-sm sm:text-base text-dark-gray leading-[1.9] font-light max-w-sm">
+              Our team of specialists responds within 24 hours. All inquiries are handled with the utmost discretion.
+            </p>
           </div>
         </div>
 
-        {/* Phone & Subject Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="flex flex-col">
-            <label htmlFor="phone" className="editorial-label text-dark-gray mb-3 tracking-wide">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              className="px-4 py-3 border border-light-gray rounded-lg bg-white text-black placeholder-gray focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all"
-              placeholder="+1 (305) 555-0000"
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="max-w-4xl">
+          {/* Row 1 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
+            <div>
+              <label htmlFor="name" className={labelClass}>Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                className={inputClass}
+                placeholder="Your full name"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className={labelClass}>Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                className={inputClass}
+                placeholder="your@email.com"
+              />
+            </div>
+          </div>
+
+          {/* Row 2 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
+            <div>
+              <label htmlFor="phone" className={labelClass}>Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                className={inputClass}
+                placeholder="+1 (305) 555-0000"
+              />
+            </div>
+            <div>
+              <label htmlFor="subject" className={labelClass}>Subject</label>
+              <select
+                id="subject"
+                name="subject"
+                required
+                className={`${inputClass} cursor-pointer appearance-none`}
+              >
+                <option value="" className="text-gray">Select a topic</option>
+                <option value="real-estate">Real Estate Inquiry</option>
+                <option value="business">Business Partnership</option>
+                <option value="academy">Academy Programs</option>
+                <option value="general">General Inquiry</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Message */}
+          <div className="mb-14">
+            <label htmlFor="message" className={labelClass}>Message</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows={5}
+              className={`${inputClass} resize-none`}
+              placeholder="Describe your inquiry or the nature of your partnership opportunity…"
             />
           </div>
-          <div className="flex flex-col">
-            <label htmlFor="subject" className="editorial-label text-dark-gray mb-3 tracking-wide">
-              Subject
-            </label>
-            <select
-              id="subject"
-              name="subject"
-              required
-              className="px-4 py-3 border border-light-gray rounded-lg bg-white text-black focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all cursor-pointer"
+
+          {/* Submit */}
+          <div className="flex items-center gap-8">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="dark-button px-10 py-3.5 text-sm font-semibold rounded disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center gap-3"
             >
-              <option value="">Select a topic</option>
-              <option value="real-estate">Real Estate Inquiry</option>
-              <option value="business">Business Partnership</option>
-              <option value="academy">Academy Programs</option>
-              <option value="general">General Inquiry</option>
-            </select>
+              {isSubmitting ? (
+                <>
+                  <span>Sending</span>
+                  <span className="w-1 h-1 rounded-full bg-white/60 animate-pulse" />
+                </>
+              ) : (
+                <>
+                  <span>Send Inquiry</span>
+                  <span
+                    className="material-symbols-outlined"
+                    style={{ fontSize: "14px", fontVariationSettings: "'wght' 200" }}
+                  >
+                    arrow_outward
+                  </span>
+                </>
+              )}
+            </button>
+
+            {submitStatus === "success" && (
+              <p className="editorial-label text-dark-gray">
+                Inquiry received — we will be in touch shortly.
+              </p>
+            )}
+            {submitStatus === "error" && (
+              <p className="editorial-label text-mid-gray">
+                Something went wrong. Please try again.
+              </p>
+            )}
           </div>
-        </div>
+        </form>
 
-        {/* Message */}
-        <div className="flex flex-col">
-          <label htmlFor="message" className="editorial-label text-dark-gray mb-3 tracking-wide">
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            required
-            rows={6}
-            className="px-4 py-3 border border-light-gray rounded-lg bg-white text-black placeholder-gray focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all resize-none"
-            placeholder="Tell us about your inquiry or partnership opportunity..."
-          />
-        </div>
-
-        {/* Submit Button & Status */}
-        <div className="flex items-center justify-between pt-4">
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="px-8 py-4 bg-black text-white font-semibold tracking-wide hover:bg-black disabled:opacity-50 disabled:cursor-not-allowed transition-colors rounded-lg"
-          >
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </button>
-
-          {submitStatus === "success" && (
-            <p className="text-green-600 font-semibold tracking-wide text-sm">
-              ✓ Message sent successfully!
-            </p>
-          )}
-          {submitStatus === "error" && (
-            <p className="text-red-600 font-semibold tracking-wide text-sm">
-              ✗ Error sending message. Please try again.
-            </p>
-          )}
-        </div>
-      </form>
+      </div>
     </section>
   );
 }

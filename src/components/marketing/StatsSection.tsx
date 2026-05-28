@@ -1,34 +1,27 @@
 export function StatsSection() {
+  const stats = [
+    { value: "$2.8B", label: "Total Sales Volume" },
+    { value: "500+",  label: "Properties Sold" },
+    { value: "20+",   label: "Years Experience" },
+    { value: "98%",   label: "Client Satisfaction" },
+  ];
+
   return (
-    <section className="py-20 sm:py-24 md:py-32 border-y border-light-gray bg-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        {/* 4 Main Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 md:gap-16">
-          {/* Total Sales Volume */}
-          <div>
-            <p className="text-4xl sm:text-5xl md:text-6xl font-black text-black mb-2">$2.8B</p>
-            <p className="editorial-label text-gray text-xs">TOTAL SALES VOLUME</p>
-          </div>
-
-          {/* Properties Sold */}
-          <div>
-            <p className="text-4xl sm:text-5xl md:text-6xl font-black text-black mb-2">500+</p>
-            <p className="editorial-label text-gray text-xs">PROPERTIES SOLD</p>
-          </div>
-
-          {/* Years Experience */}
-          <div>
-            <p className="text-4xl sm:text-5xl md:text-6xl font-black text-black mb-2">20+</p>
-            <p className="editorial-label text-gray text-xs">YEARS EXPERIENCE</p>
-          </div>
-
-          {/* Client Satisfaction */}
-          <div>
-            <p className="text-4xl sm:text-5xl md:text-6xl font-black text-black mb-2">98%</p>
-            <p className="editorial-label text-gray text-xs">CLIENT SATISFACTION</p>
-          </div>
+    <section className="border-y border-pale bg-off-white">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20">
+        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-pale">
+          {stats.map((stat, i) => (
+            <div
+              key={stat.label}
+              className="px-6 sm:px-10 first:pl-0 last:pr-0 flex flex-col justify-center py-4 lg:py-0"
+            >
+              <p className="font-serif text-3xl sm:text-4xl md:text-5xl text-ink tracking-tight mb-2">
+                {stat.value}
+              </p>
+              <p className="editorial-label text-gray">{stat.label}</p>
+            </div>
+          ))}
         </div>
-
       </div>
     </section>
   );

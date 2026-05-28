@@ -18,53 +18,55 @@ export function AcademyProgram({
   comingSoon = true,
 }: AcademyProgramProps) {
   return (
-    <div className="bg-white border border-light-gray rounded-lg p-10 sm:p-12 md:p-16">
-      {/* Icon & Title */}
+    <div className="border border-pale p-10 sm:p-12 md:p-14 group hover:border-light-gray transition-colors duration-500">
+
+      {/* Header */}
       <div className="mb-8">
-        <div className="w-16 h-16 rounded-lg bg-white flex items-center justify-center mb-6">
-          <span className="material-symbols-outlined text-black text-3xl">{icon}</span>
-        </div>
-        <h3 className="font-serif text-3xl sm:text-4xl font-black text-black mb-2">
+        <span
+          className="material-symbols-outlined text-dark-gray mb-6 block"
+          style={{ fontSize: "22px", fontVariationSettings: "'wght' 200" }}
+        >
+          {icon}
+        </span>
+        <h3 className="font-serif text-3xl sm:text-4xl text-ink tracking-tight mb-2 text-balance">
           {title}
         </h3>
-        <p className="text-dark-gray font-semibold">{subtitle}</p>
+        <p className="editorial-label text-gray">{subtitle}</p>
       </div>
 
       {/* Description */}
-      <p className="text-dark-gray text-base leading-relaxed mb-8">
+      <p className="text-dark-gray text-sm sm:text-base leading-[1.8] font-light mb-10">
         {description}
       </p>
 
       {/* Topics */}
-      <div className="mb-8 pb-8 border-b border-light-gray">
-        <p className="editorial-label text-gray mb-4">KEY TOPICS</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="mb-8 pb-8 border-b border-pale">
+        <p className="editorial-label text-gray mb-5">Key Topics</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
           {topics.map((topic, idx) => (
             <div key={idx} className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-black shrink-0 text-lg">
-                check_circle
-              </span>
-              <span className="text-dark-gray text-sm">{topic}</span>
+              <span className="w-px h-4 bg-light-gray mt-1 shrink-0" />
+              <span className="text-dark-gray text-sm leading-relaxed">{topic}</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Duration & Coming Soon */}
-      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+      {/* Footer */}
+      <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
         {duration && (
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-light-gray rounded-lg">
-            <span className="material-symbols-outlined text-dark-gray text-lg">schedule</span>
-            <p className="text-dark-gray font-semibold text-sm">{duration}</p>
-          </div>
+          <span className="editorial-label text-gray border border-pale px-3 py-2">
+            {duration}
+          </span>
         )}
         {comingSoon && (
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-light-gray rounded-lg">
-            <span className="material-symbols-outlined text-dark-gray text-lg">schedule</span>
-            <p className="text-dark-gray font-semibold text-sm">Coming Soon</p>
+          <div className="flex items-center gap-2">
+            <span className="editorial-label text-mid-gray">Coming Soon</span>
+            <span className="inline-block w-1 h-1 rounded-full bg-mid-gray animate-pulse" />
           </div>
         )}
       </div>
+
     </div>
   );
 }

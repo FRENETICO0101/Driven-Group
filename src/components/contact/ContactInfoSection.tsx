@@ -1,63 +1,82 @@
 interface ContactItem {
-  icon: string;
+  index: string;
   title: string;
   details: string[];
+  href?: string;
 }
 
 const contactItems: ContactItem[] = [
   {
-    icon: "location_on",
+    index: "01",
     title: "Headquarters",
     details: ["Miami, Florida", "Luxury Tower, Suite 2500", "33130 USA"],
   },
   {
-    icon: "phone",
+    index: "02",
     title: "Phone",
-    details: ["+1 (305) 555-0123", "+1 (305) 555-0124", "Mon - Fri, 9am - 6pm EST"],
+    details: ["+1 (305) 555-0123", "+1 (305) 555-0124", "Mon – Fri, 9am – 6pm EST"],
+    href: "tel:+13055550123",
   },
   {
-    icon: "mail",
+    index: "03",
     title: "Email",
     details: ["info@drivengroup.com", "partnerships@drivengroup.com", "careers@drivengroup.com"],
+    href: "mailto:info@drivengroup.com",
   },
 ];
 
 export function ContactInfoSection() {
   return (
-    <section className="py-20 sm:py-24 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
-      <div className="mb-16 sm:mb-20">
-        <p className="editorial-label text-gray mb-2">GET IN TOUCH</p>
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-black tracking-tight leading-[1.1]">
-          Contact Information
-        </h2>
-      </div>
+    <section className="py-24 sm:py-28 md:py-36 border-t border-pale">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
-      {/* Contact Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-16">
-        {contactItems.map((item) => (
-          <div key={item.title} className="flex flex-col">
-            {/* Icon */}
-            <div className="mb-8">
-              <div className="w-16 h-16 rounded-full bg-yellow-50 flex items-center justify-center">
-                <span className="material-symbols-outlined text-yellow-600 text-2xl">
-                  {item.icon}
-                </span>
+        {/* Header */}
+        <div className="mb-16 sm:mb-20">
+          <p className="editorial-label text-gray mb-3">Reach Out</p>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-ink tracking-tight leading-[1.05] text-balance">
+            Contact Information
+          </h2>
+        </div>
+
+        {/* Items — horizontal rule layout */}
+        <div className="divide-y divide-pale">
+          {contactItems.map((item) => (
+            <div
+              key={item.title}
+              className="py-10 sm:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start group"
+            >
+              <div className="md:col-span-1">
+                <span className="editorial-label text-light-gray">{item.index}</span>
+              </div>
+              <div className="md:col-span-3">
+                <h3 className="font-serif text-2xl sm:text-3xl text-ink tracking-tight">
+                  {item.title}
+                </h3>
+              </div>
+              <div className="md:col-span-8">
+                <ul className="space-y-2">
+                  {item.details.map((detail, i) => (
+                    <li key={detail}>
+                      {item.href && i === 0 ? (
+                        <a
+                          href={item.href}
+                          className="text-sm sm:text-base text-dark-gray hover:text-ink transition-colors duration-300 font-light"
+                        >
+                          {detail}
+                        </a>
+                      ) : (
+                        <span className="text-sm sm:text-base text-dark-gray font-light">
+                          {detail}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
+          ))}
+        </div>
 
-            {/* Content */}
-            <h3 className="text-2xl sm:text-3xl font-semibold text-black mb-4 tracking-tight">
-              {item.title}
-            </h3>
-            <ul className="space-y-3">
-              {item.details.map((detail) => (
-                <li key={detail} className="text-base text-dark-gray leading-relaxed font-light">
-                  {detail}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
       </div>
     </section>
   );
