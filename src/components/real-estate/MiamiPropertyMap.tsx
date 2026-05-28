@@ -229,30 +229,38 @@ export function MiamiPropertyMap({
       {/* District Legend */}
       <div className="border border-light-gray p-4">
         <p className="editorial-label text-gray mb-3">Miami Districts</p>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1.5">
           {allDistricts.map((district: string) => {
             const feat   = districtData?.features?.find((f: any) => f.properties.name === district);
             const color  = feat?.properties?.color || '#6b6b6b';
             const count  = propertiesByDistrict[district] || 0;
+            const desc   = DISTRICT_LABELS[district] || '';
             const active = selectedDistrict === district;
 
             return (
               <button
                 key={district}
                 onClick={() => onDistrictClick?.(active ? '' : district)}
-                className={`flex items-center justify-between w-full px-2 py-1.5 text-left transition-colors duration-200 ${
+                className={`flex items-start justify-between w-full px-3 py-2 text-left transition-all duration-200 rounded-sm ${
                   active ? 'bg-ink text-white' : 'hover:bg-pale text-ink'
                 }`}
               >
-                <span className="flex items-center gap-2">
-                  <span
-                    className="inline-block w-2.5 h-2.5 flex-shrink-0"
-                    style={{ backgroundColor: color }}
-                  />
-                  <span className="text-xs font-medium">{district}</span>
+                <span className="flex flex-col gap-0.5 flex-1">
+                  <span className="flex items-center gap-2">
+                    <span
+                      className="inline-block w-3 h-3 flex-shrink-0 rounded-full"
+                      style={{ backgroundColor: color }}
+                    />
+                    <span className="text-sm font-semibold">{district}</span>
+                  </span>
+                  {desc && (
+                    <span className={`text-[11px] leading-tight ml-5 ${active ? 'text-light-gray/80' : 'text-mid-gray'}`}>
+                      {desc}
+                    </span>
+                  )}
                 </span>
                 {count > 0 && (
-                  <span className={`text-[10px] font-semibold ${active ? 'text-light-gray' : 'text-gray'}`}>
+                  <span className={`text-xs font-bold ml-2 flex-shrink-0 ${active ? 'text-light-gray' : 'text-gray'}`}>
                     {count}
                   </span>
                 )}
@@ -264,9 +272,9 @@ export function MiamiPropertyMap({
         {selectedDistrict && (
           <button
             onClick={() => onDistrictClick?.('')}
-            className="mt-3 w-full text-xs text-mid-gray hover:text-ink transition-colors flex items-center gap-1"
+            className="mt-4 w-full text-xs font-medium text-mid-gray hover:text-ink transition-colors flex items-center justify-center gap-1 py-2"
           >
-            <span className="material-symbols-outlined" style={{ fontSize: 12 }}>close</span>
+            <span className="material-symbols-outlined" style={{ fontSize: 14 }}>clear</span>
             Clear district filter
           </button>
         )}

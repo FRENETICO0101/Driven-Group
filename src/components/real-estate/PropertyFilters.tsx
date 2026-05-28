@@ -49,12 +49,12 @@ export function PropertyFilters({
   const hasActiveFilters = currentType || currentDistrict || currentStatus;
 
   return (
-    <div className="sticky top-16 sm:top-20 z-30 bg-white border-b border-light-gray">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-4">
+    <div className="sticky top-16 sm:top-20 z-30 bg-white border-b border-light-gray shadow-sm">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-3 sm:py-4">
         <div className="flex flex-wrap items-center gap-2">
 
           {/* Miami identifier — always visible, non-interactive */}
-          <div className="flex items-center gap-1.5 px-3 py-2 border border-ink bg-ink text-white text-xs font-semibold tracking-widest uppercase select-none">
+          <div className="flex items-center gap-1.5 px-3 py-2 border border-ink bg-ink text-white text-xs font-bold tracking-widest uppercase select-none rounded-sm transition-all duration-200">
             <span className="material-symbols-outlined" style={{ fontSize: 13 }}>location_on</span>
             Miami, FL
           </div>
@@ -67,10 +67,10 @@ export function PropertyFilters({
               <button
                 key={t.value}
                 onClick={() => updateFilter('type', t.value)}
-                className={`px-3 py-1.5 text-xs font-medium border transition-colors duration-150 ${
+                className={`px-3 py-1.5 text-xs font-medium border rounded-sm transition-all duration-200 ${
                   currentType === t.value
-                    ? 'bg-ink text-white border-ink'
-                    : 'bg-white text-mid-gray border-light-gray hover:border-dark-gray hover:text-ink'
+                    ? 'bg-ink text-white border-ink shadow-sm scale-100'
+                    : 'bg-white text-mid-gray border-light-gray hover:border-dark-gray hover:text-ink hover:bg-pale'
                 }`}
               >
                 {t.label}
@@ -86,10 +86,10 @@ export function PropertyFilters({
               <button
                 key={s.value}
                 onClick={() => updateFilter('status', s.value)}
-                className={`px-3 py-1.5 text-xs font-medium border transition-colors duration-150 ${
+                className={`px-3 py-1.5 text-xs font-medium border rounded-sm transition-all duration-200 ${
                   currentStatus === s.value
-                    ? 'bg-ink text-white border-ink'
-                    : 'bg-white text-mid-gray border-light-gray hover:border-dark-gray hover:text-ink'
+                    ? 'bg-ink text-white border-ink shadow-sm scale-100'
+                    : 'bg-white text-mid-gray border-light-gray hover:border-dark-gray hover:text-ink hover:bg-pale'
                 }`}
               >
                 {s.label}
@@ -101,23 +101,23 @@ export function PropertyFilters({
           {hasActiveFilters && (
             <button
               onClick={() => router.push(pathname)}
-              className="ml-auto flex items-center gap-1 text-xs text-mid-gray hover:text-ink transition-colors"
+              className="ml-auto flex items-center gap-1 text-xs text-mid-gray hover:text-ink transition-colors duration-150 hover:underline"
             >
               <span className="material-symbols-outlined" style={{ fontSize: 13 }}>close</span>
-              Clear
+              Clear all
             </button>
           )}
         </div>
 
         {/* Active district pill if set via map */}
         {currentDistrict && (
-          <div className="flex items-center gap-2 mt-2 pt-2 border-t border-pale">
-            <span className="text-xs text-mid-gray">District:</span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-pale text-ink text-xs font-medium">
+          <div className="flex items-center gap-2 mt-3 pt-3 border-t border-pale animate-in fade-in duration-200">
+            <span className="text-xs text-mid-gray font-medium">District:</span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-pale text-ink text-xs font-semibold rounded-sm border border-light-gray">
               {currentDistrict}
               <button
                 onClick={() => updateFilter('district', '')}
-                className="hover:text-dark-gray transition-colors"
+                className="hover:text-dark-gray transition-colors duration-150 ml-0.5"
                 aria-label="Remove district filter"
               >
                 <span className="material-symbols-outlined" style={{ fontSize: 11 }}>close</span>

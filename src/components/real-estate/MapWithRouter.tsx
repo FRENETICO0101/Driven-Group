@@ -28,6 +28,14 @@ export function MapWithRouter({ properties, selectedDistrict }: MapWithRouterPro
         params.delete('district');
       }
       router.push(`${pathname}?${params.toString()}`);
+      
+      // Scroll to listings smoothly after a small delay for URL update
+      setTimeout(() => {
+        const listingsElement = document.getElementById('listings');
+        if (listingsElement) {
+          listingsElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
     },
     [router, pathname, searchParams]
   );

@@ -43,6 +43,7 @@ async function ListingContent({ searchParams }: PageProps) {
   const params = await searchParams;
   const filters = {
     type:     params.type     ?? "",
+    city:     "Miami", // Always filter by Miami
     district: params.district ?? "",
     status:   params.status   ?? "",
   };
@@ -64,23 +65,23 @@ async function ListingContent({ searchParams }: PageProps) {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-10">
         {/* Mobile: map on top, full width */}
         {/* Desktop: map fixed left sidebar (1/3), listings scroll right (2/3) */}
-        <div className="flex flex-col lg:flex-row gap-10 items-start">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-start">
 
-          {/* Map sidebar */}
-          <aside className="w-full lg:w-[360px] xl:w-[400px] flex-shrink-0 lg:sticky lg:top-36">
-            <div className="mb-4">
-              <h2 className="font-serif text-xl text-ink leading-tight mb-1">
+          {/* Map sidebar — hidden on mobile, sticky on desktop */}
+          <aside className="w-full lg:w-[380px] xl:w-[420px] flex-shrink-0 lg:sticky lg:top-36">
+            <div className="mb-4 lg:mb-6">
+              <h2 className="font-serif text-lg lg:text-xl text-ink leading-tight mb-1">
                 Explore Miami
               </h2>
-              <p className="text-xs text-mid-gray leading-relaxed">
+              <p className="text-xs lg:text-sm text-mid-gray leading-relaxed">
                 Click a district on the map to filter properties by neighborhood.
               </p>
             </div>
             <Suspense
               fallback={
                 <div className="flex flex-col gap-4">
-                  <div className="w-full h-[420px] bg-pale animate-pulse" />
-                  <div className="h-40 bg-pale animate-pulse" />
+                  <div className="w-full h-[320px] lg:h-[420px] bg-pale animate-pulse rounded" />
+                  <div className="h-40 bg-pale animate-pulse rounded" />
                 </div>
               }
             >
@@ -91,8 +92,8 @@ async function ListingContent({ searchParams }: PageProps) {
             </Suspense>
           </aside>
 
-          {/* Listings */}
-          <section className="flex-1 min-w-0" id="listings">
+          {/* Listings — full width on mobile, flex-1 on desktop */}
+          <section className="w-full lg:flex-1 min-w-0" id="listings">
             <PropertyListing properties={properties} />
           </section>
 
