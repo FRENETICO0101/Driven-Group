@@ -2,7 +2,7 @@ import type { Property } from "@/lib/types";
 import { formatPropertyPrice, formatPropertySubtitle, getPropertyBadge } from "@/lib/property-utils";
 import { PropertyCard } from "@/components/real-estate/PropertyCard";
 
-const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&q=85";
+const FALLBACK_IMAGE = "/images1/property-1.jpg";
 
 interface FeaturedPropertiesProps {
   properties: Property[];

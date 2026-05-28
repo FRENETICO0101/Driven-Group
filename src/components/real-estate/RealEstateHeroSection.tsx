@@ -16,7 +16,7 @@ export function RealEstateHeroSection() {
           <Image
             alt="Luxury Real Estate Portfolio"
             className="image-zoom w-full h-full object-cover"
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&q=90"
+            src="/images1/hero-luxury.jpg"
             fill
             priority
             sizes="100vw"

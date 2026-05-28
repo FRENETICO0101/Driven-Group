@@ -205,7 +205,7 @@ export default function AcademyPage() {
 
             <div className="space-y-4">
               {[
-                { icon: "close", label: "No solo números o teoría financiera", negative: true },
+                { icon: "check_circle", label: "No solo números o teoría financiera", negative: false },
                 { icon: "check_circle", label: "Una nueva identidad financiera", negative: false },
                 { icon: "check_circle", label: "Control, claridad y dirección", negative: false },
                 { icon: "check_circle", label: "Libertad y estabilidad a largo plazo", negative: false },

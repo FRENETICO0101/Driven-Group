@@ -47,14 +47,14 @@ export const mockFeaturedProperties: Property[] = [
     images: [
       {
         id: "mock-img-1",
-        url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000&h=800&fit=crop",
+        url: "/images1/aston-interior-1.jpg",
         alt: "Luxury penthouse exterior",
         order: 0,
         createdAt: new Date("2024-01-01"),
       },
       {
         id: "mock-img-2",
-        url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1000&h=800&fit=crop",
+        url: "/images1/aston-bedroom.jpg",
         alt: "Penthouse living room",
         order: 1,
         createdAt: new Date("2024-01-01"),
