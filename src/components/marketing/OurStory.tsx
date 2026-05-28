@@ -2,14 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export function OurStory() {
+  const t = useTranslations('about');
+
   return (
     <section className="py-20 sm:py-24 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
       <div className="mb-16 sm:mb-20">
-        <p className="editorial-label text-gray mb-2">DRIVEN GROUP</p>
+        <p className="editorial-label text-gray mb-2">{t('driven')}</p>
         <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-black tracking-tight leading-[1.1]">
-          Our Story
+          {t('ourStory')}
         </h2>
       </div>
 
@@ -22,15 +25,15 @@ export function OurStory() {
           {/* Block 1 */}
           <div>
             <p className="text-base sm:text-lg text-dark-gray leading-[1.8] font-light">
-              Driven Group fue fundada en el año 2022 por nuestro CEO Iván Rodríguez con la visión de construir una empresa global desde Guadalajara Jalisco, un punto estratégico dentro de una economía dinámica.
+              {t('storyDesc1')}
               <br /><br />
-              Desde sus inicios en el sector inmobiliario, con enfoque en renta a corto plazo y construcción, la empresa evolucionó en Europa y America del Norte, particularmente en el ámbito comercial, la creación de marcas y el desarrollo de negocios. 
+              {t('storyDesc2')}
               <br /><br />
-              Como parte de su proceso de consolidación, en 2026 se incorpora Ricardo Hernández como socio estratégico, sumándose para fortalecer y acelerar la consolidación y expansión del grupo. 
+              {t('storyDesc3')}
               <br /><br />
-              En ese mismo año, Driven Group estructura formalmente su modelo de negocio en tres divisiones estratégicas: Business, Real Estate y Academy. 
+              {t('storyDesc4')}
               <br /><br />
-              Integrando una unidad dedicada a la formación y transferencia de conocimiento, consolidando así un ecosistema empresarial que abarca desde la creación de negocios hasta la inversión inmobiliaria, con un enfoque en la innovación, la sostenibilidad y el valor compartido que articula negocios, real estate y educación.
+              {t('storyDesc5')}
             </p>
           </div>
 
@@ -39,7 +42,7 @@ export function OurStory() {
             href="/about"
             className="group inline-flex items-center gap-3 text-dark-gray hover:text-black transition-colors pt-4"
           >
-            <span className="editorial-label tracking-[0.15em]">READ MORE</span>
+            <span className="editorial-label tracking-[0.15em]">{t('readMore')}</span>
             <span className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1.5">arrow_forward</span>
           </Link>
         </div>
@@ -55,7 +58,7 @@ export function OurStory() {
             />
           </div>
           <div className="mt-6 flex items-center justify-between">
-            <p className="editorial-label text-gray">MIAMI, FLORIDA</p>
+            <p className="editorial-label text-gray">{t('miamiFloridea')}</p>
             {/* <p className="editorial-label text-gray">EST. 2003</p> */}
           </div>
         </div>
