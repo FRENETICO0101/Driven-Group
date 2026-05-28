@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import dynamic from "next/dynamic";
 import { getAllProperties } from "@/server/services/property.service";
 import { RealEstateHeroSection } from "@/components/real-estate/RealEstateHeroSection";
 import { PropertyFilters } from "@/components/real-estate/PropertyFilters";
 import { PropertyListing } from "@/components/real-estate/PropertyListing";
+import { PropertyMapClient } from "@/components/real-estate/PropertyMapClient";
 import { PropertyListingSkeleton } from "@/components/loading/PropertyListingSkeleton";
 
 export const dynamic = "force-dynamic";
@@ -35,12 +35,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Dynamically import the map component for client-side rendering
-const MiamiPropertyMap = dynamic(
-  () => import("@/components/real-estate/MiamiPropertyMap").then((mod) => ({ default: mod.MiamiPropertyMap })),
-  { ssr: false, loading: () => <div className="w-full h-96 md:h-screen bg-pale rounded-lg animate-pulse" /> }
-);
-
 interface PageProps {
   searchParams: Promise<{ type?: string; district?: string; status?: string }>;
 }
@@ -69,7 +63,7 @@ async function ListingContent({ searchParams }: PageProps) {
         <div className="lg:col-span-1 lg:sticky lg:top-32 h-fit">
           <h3 className="font-serif text-lg text-black mb-4">Miami Districts</h3>
           <Suspense fallback={<div className="w-full h-96 bg-pale rounded-lg animate-pulse" />}>
-            <MiamiPropertyMap properties={properties} selectedDistrict={filters.district} />
+            <PropertyMapClient properties={properties} selectedDistrict={filters.district} />
           </Suspense>
         </div>
 
