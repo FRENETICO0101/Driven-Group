@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { BrandLogo } from "@/components/ui/BrandLogo";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const navigation = [
   { name: "Home", href: "/", index: "01" },
@@ -144,13 +145,9 @@ export function Navbar() {
                 <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>phone</span>
                 <span className="hidden lg:inline editorial-label">Contact</span>
               </Link>
-              <button
-                className={`hidden md:flex items-center gap-1.5 transition-colors duration-500 ${overlayVisible ? "text-dark-gray hover:text-black" : "text-dark-gray hover:text-dark-gray"}`}
-                aria-label="Idioma"
-              >
-                <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>language</span>
-                <span className="editorial-label">EN</span>
-              </button>
+              <div className="hidden md:flex">
+                <LanguageSwitcher />
+              </div>
               <button
                 className={`transition-colors duration-500 ${overlayVisible ? "text-dark-gray hover:text-black" : "text-dark-gray hover:text-dark-gray"}`}
                 aria-label="Cuenta"
