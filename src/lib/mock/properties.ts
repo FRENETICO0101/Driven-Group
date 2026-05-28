@@ -47,21 +47,21 @@ export const mockFeaturedProperties: Property[] = [
     images: [
       {
         id: "mock-img-1-fp",
-        url: "/images1/floorplan-1.jpg",
+        url: "/images1/aston-interior-1.jpg",
         alt: "Penthouse floor plan",
         order: 0,
         createdAt: new Date("2024-01-01"),
       },
       {
         id: "mock-img-1-r1",
-        url: "/images1/property-1.jpg",
+        url: "/images1/aston-bedroom.jpg",
         alt: "Master bedroom render",
         order: 1,
         createdAt: new Date("2024-01-01"),
       },
       {
         id: "mock-img-1-r2",
-        url: "/images1/property-2.jpg",
+        url: "/images1/aston-terrace.jpg",
         alt: "Terrace render",
         order: 2,
         createdAt: new Date("2024-01-01"),
@@ -103,21 +103,21 @@ export const mockFeaturedProperties: Property[] = [
     images: [
       {
         id: "mock-img-2-fp",
-        url: "/images1/floorplan-1.jpg",
+        url: "/images1/business-global.jpg",
         alt: "Office tower floor plan",
         order: 0,
         createdAt: new Date("2024-01-01"),
       },
       {
         id: "mock-img-2-r1",
-        url: "/images1/property-3.jpg",
+        url: "/images1/rendering-1.jpg",
         alt: "Lobby render",
         order: 1,
         createdAt: new Date("2024-01-01"),
       },
       {
         id: "mock-img-2-r2",
-        url: "/images1/property-4.jpg",
+        url: "/images1/rendering-2.jpg",
         alt: "Executive office render",
         order: 2,
         createdAt: new Date("2024-01-01"),
@@ -158,21 +158,21 @@ export const mockFeaturedProperties: Property[] = [
     images: [
       {
         id: "mock-img-3-fp",
-        url: "/images1/floorplan-1.jpg",
+        url: "/images1/aston-kitchen.jpg",
         alt: "Development site plan",
         order: 0,
         createdAt: new Date("2024-01-01"),
       },
       {
         id: "mock-img-3-r1",
-        url: "/images1/property-5.jpg",
+        url: "/images1/rendering-1.jpg",
         alt: "Proposed development render 1",
         order: 1,
         createdAt: new Date("2024-01-01"),
       },
       {
         id: "mock-img-3-r2",
-        url: "/images1/property-6.jpg",
+        url: "/images1/rendering-2.jpg",
         alt: "Proposed development render 2",
         order: 2,
         createdAt: new Date("2024-01-01"),
@@ -216,21 +216,21 @@ export const mockListingProperties: Property[] = [
     images: [
       {
         id: "mock-img-4-fp",
-        url: "/images1/floorplan-1.jpg",
+        url: "/images1/aston-terrace.jpg",
         alt: "Estate floor plan",
         order: 0,
         createdAt: new Date("2024-01-01"),
       },
       {
         id: "mock-img-4-r1",
-        url: "/images1/property-7.jpg",
+        url: "/images1/aston-bedroom.jpg",
         alt: "Guest house render",
         order: 1,
         createdAt: new Date("2024-01-01"),
       },
       {
         id: "mock-img-4-r2",
-        url: "/images1/property-8.jpg",
+        url: "/images1/aston-kitchen.jpg",
         alt: "Pool area render",
         order: 2,
         createdAt: new Date("2024-01-01"),
@@ -272,21 +272,21 @@ export const mockListingProperties: Property[] = [
     images: [
       {
         id: "mock-img-5-fp",
-        url: "/images1/floorplan-1.jpg",
+        url: "/images1/business-global.jpg",
         alt: "Tower floor plan",
         order: 0,
         createdAt: new Date("2024-01-01"),
       },
       {
         id: "mock-img-5-r1",
-        url: "/images1/property-9.jpg",
+        url: "/images1/rendering-1.jpg",
         alt: "Residential unit render",
         order: 1,
         createdAt: new Date("2024-01-01"),
       },
       {
         id: "mock-img-5-r2",
-        url: "/images1/property-10.jpg",
+        url: "/images1/rendering-2.jpg",
         alt: "Rooftop amenities render",
         order: 2,
         createdAt: new Date("2024-01-01"),
@@ -322,21 +322,21 @@ export const mockListingProperties: Property[] = [
     images: [
       {
         id: "mock-img-6-fp",
-        url: "/images1/floorplan-1.jpg",
+        url: "/images1/aston-kitchen.jpg",
         alt: "Manor floor plan",
         order: 0,
         createdAt: new Date("2024-01-01"),
       },
       {
         id: "mock-img-6-r1",
-        url: "/images1/rendering-1.jpg",
+        url: "/images1/aston-bedroom.jpg",
         alt: "Guest bedroom render",
         order: 1,
         createdAt: new Date("2024-01-01"),
       },
       {
         id: "mock-img-6-r2",
-        url: "/images1/rendering-2.jpg",
+        url: "/images1/aston-interior-1.jpg",
         alt: "Garden courtyard render",
         order: 2,
         createdAt: new Date("2024-01-01"),
