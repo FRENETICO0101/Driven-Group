@@ -16,7 +16,7 @@ export function AboutHeroSection() {
           <Image
             alt="Driven Group Leadership"
             className="image-zoom w-full h-full object-cover"
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=1080&fit=crop&q=90"
+            src="/images1/about-hero.jpg"
             fill
             priority
             sizes="100vw"

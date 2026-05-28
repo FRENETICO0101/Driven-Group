@@ -96,7 +96,7 @@ export const mockFeaturedProperties: Property[] = [
     images: [
       {
         id: "mock-img-3",
-        url: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1000&h=800&fit=crop",
+        url: "/images1/business-global.jpg",
         alt: "Corporate office building",
         order: 0,
         createdAt: new Date("2024-01-01"),
@@ -137,7 +137,7 @@ export const mockFeaturedProperties: Property[] = [
     images: [
       {
         id: "mock-img-4",
-        url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&h=800&fit=crop",
+        url: "/images1/rendering-1.jpg",
         alt: "Development land",
         order: 0,
         createdAt: new Date("2024-01-01"),
@@ -181,7 +181,7 @@ export const mockListingProperties: Property[] = [
     images: [
       {
         id: "mock-img-5",
-        url: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1000&h=800&fit=crop",
+        url: "/images1/aston-terrace.jpg",
         alt: "Beachfront estate",
         order: 0,
         createdAt: new Date("2024-01-01"),
@@ -223,7 +223,7 @@ export const mockListingProperties: Property[] = [
     images: [
       {
         id: "mock-img-6",
-        url: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1000&h=800&fit=crop",
+        url: "/images1/rendering-2.jpg",
         alt: "Mixed-use tower",
         order: 0,
         createdAt: new Date("2024-01-01"),
@@ -259,7 +259,7 @@ export const mockListingProperties: Property[] = [
     images: [
       {
         id: "mock-img-7",
-        url: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1000&h=800&fit=crop",
+        url: "/images1/aston-kitchen.jpg",
         alt: "Mediterranean manor",
         order: 0,
         createdAt: new Date("2024-01-01"),
