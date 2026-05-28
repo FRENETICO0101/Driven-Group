@@ -21,7 +21,8 @@ export class DatabaseError extends Error {
  */
 export function isConnectionError(error: unknown): boolean {
   const message = String(error).toLowerCase();
-  const code = (error as any)?.code?.toString().toLowerCase() || "";
+  const rawCode = (error as any)?.code?.toString() || "";
+  const code = rawCode.toLowerCase();
 
   // Connection pool errors
   if (
@@ -52,6 +53,8 @@ export function isConnectionError(error: unknown): boolean {
 
   // Generic connection errors
   if (
+    message.includes("authentication failed") ||
+    message.includes("password authentication failed") ||
     message.includes("failed to connect") ||
     message.includes("connection lost") ||
     message.includes("network error") ||
@@ -74,18 +77,18 @@ export function isConnectionError(error: unknown): boolean {
     message.includes("prismaclientinitializationerror") ||
     message.includes("error in prisma client") ||
     message.includes("invalid `prisma.") ||
-    code === "P1000" || // "Authentication failed against database server"
-    code === "P1001" || // "Can't reach database server"
-    code === "P1002" || // "The database server was reached but timed out"
-    code === "P1003" || // "Your database (at ...) does not exist"
-    code === "P1008" || // "Operations timed out after"
-    code === "P1009" || // "Database already exists"
-    code === "P1013" || // "The provided database string is invalid"
-    code === "P1014" || // "The underlying ... for model ... does not exist in the database"
-    code === "P1015" || // "Your Prisma schema is using features that are not supported"
-    code === "P1017" || // "Server has closed the connection"
-    code === "P2021" || // "The table does not exist in the current database"
-    code === "P2022" // "The column does not exist in the current database"
+    rawCode === "P1000" || // "Authentication failed against database server"
+    rawCode === "P1001" || // "Can't reach database server"
+    rawCode === "P1002" || // "The database server was reached but timed out"
+    rawCode === "P1003" || // "Your database (at ...) does not exist"
+    rawCode === "P1008" || // "Operations timed out after"
+    rawCode === "P1009" || // "Database already exists"
+    rawCode === "P1013" || // "The provided database string is invalid"
+    rawCode === "P1014" || // "The underlying ... for model ... does not exist in the database"
+    rawCode === "P1015" || // "Your Prisma schema is using features that are not supported"
+    rawCode === "P1017" || // "Server has closed the connection"
+    rawCode === "P2021" || // "The table does not exist in the current database"
+    rawCode === "P2022" // "The column does not exist in the current database"
   ) {
     return true;
   }
