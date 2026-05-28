@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "Home",
+    "business": "Business",
+    "realEstate": "Real Estate",
+    "academy": "Academy",
+    "about": "About Us",
+    "contact": "Contact"
+  },
+  "hero": {
+    "luxury": "The Leading International Luxury Real Estate Brokerage",
+    "viewDetails": "VIEW DETAILS",
+    "business": "Strategic Business Divisions",
+    "businessDesc": "Four integrated business units driving corporate value and ecosystem expansion",
+    "exploreDivisions": "EXPLORE DIVISIONS",
+    "realEstate": "Premium Properties for Strategic Investors",
+    "realEstateDesc": "Curated portfolio of exceptional assets across the globe's most desirable locations",
+    "browsePortfolio": "BROWSE PORTFOLIO",
+    "contact": "Let's Build Something Extraordinary",
+    "contactDesc": "Connect with our team to explore partnerships, investment opportunities, or strategic collaboration",
+    "getInTouch": "GET IN TOUCH",
+    "about": "Building Legacies Through Strategic Vision",
+    "aboutDesc": "Over two decades of excellence, integrity, and transformative leadership in luxury real estate and corporate strategy",
+    "discoverValues": "DISCOVER OUR VALUES"
+  },
+  "academy": {
+    "official": "OFFICIAL LAUNCH — DRIVEN ACADEMY",
+    "title": "Rich Mode",
+    "subtitle1": "A new way to understand money.",
+    "subtitle2": "A new way to live.",
+    "ensureSpot": "SECURE YOUR SPOT",
+    "system": "THE SYSTEM",
+    "systemTitle": "It's not a finance course. It's a transformation.",
+    "systemDesc": "RICH MODE™ is a guided system designed to help you regain control of your money, reorganize your financial life, and build stability, growth, and long-term freedom.",
+    "systemDesc2": "The DRIVEN™ method combines modern financial education, mindset, discipline, emotional control, organization, smart credit, and wealth intelligence. All within a practical, emotional, and progressive experience.",
+    "philosophy": "DRIVEN™ PHILOSOPHY",
+    "methodTitle": "DRIVEN™ METHOD",
+    "structure": "Strategic Structure",
+    "result": "Result",
+    "content": "CONTENT",
+    "whatIncludes": "What's Included in Rich Mode™?",
+    "difference": "THE DIFFERENCE",
+    "notTeachTheory": "We don't teach theory. We create a new financial identity.",
+    "differenceDesc": "True financial transformation happens when a person thinks differently, organizes differently, controls their emotions, makes better decisions, and builds stability with direction.",
+    "launch": "LAUNCH OFFER",
+    "activateRico": "Activate Your Rich Mode",
+    "bePartOf": "Be part of this new financially free generation.",
+    "limitedTime": "Limited time · Instant access · Satisfaction guarantee",
+    "emailPlaceholder": "Your email address",
+    "ensureSpotBtn": "SECURE YOUR SPOT NOW",
+    "lifetimeContent": "∞ LIFETIME CONTENT",
+    "instantAccess": "⚡ INSTANT ACCESS",
+    "satisfaction": "✓ SATISFACTION GUARANTEE"
+  },
+  "business": {
+    "ourDivisions": "OUR DIVISIONS",
+    "fourIntegrated": "Four integrated units",
+    "digitalCommerce": "Digital Commerce",
+    "digitalCommerceDesc": "End-to-end e-commerce solutions for enterprise-scale operations with strategic brand positioning and sales channels optimized for efficiency and scalability.",
+    "globalMarkets": "Global Markets",
+    "globalMarketsDesc": "International market presence with operations in Europe and North America, providing commercial structures that enable business expansion and consolidation in diverse contexts.",
+    "strategicAlliances": "Strategic Alliances",
+    "strategicAlliancesDesc": "Collaboration with partners and organizations in building business projects, focused on generating shared value and strengthening capabilities.",
+    "luxuryAssets": "Luxury Assets",
+    "luxuryAssetsDesc": "Participation in the management and development of high-value assets with a wealth perspective, focused on exclusivity, quality, and positioning within premium markets."
+  },
+  "about": {
+    "driven": "DRIVEN GROUP",
+    "ourStory": "Our Story",
+    "storyDesc1": "Driven Group was founded in 2022 by our CEO Iván Rodríguez with the vision of building a global company from Guadalajara Jalisco, a strategic point within a dynamic economy.",
+    "storyDesc2": "From its origins in the real estate sector, with a focus on short-term rentals and construction, the company evolved in Europe and North America, particularly in the commercial sector, brand creation, and business development.",
+    "storyDesc3": "As part of its consolidation process, in 2026 Ricardo Hernández joins as a strategic partner, strengthening and accelerating the consolidation and expansion of the group.",
+    "storyDesc4": "That same year, Driven Group formally structures its business model into three strategic divisions: Business, Real Estate, and Academy.",
+    "storyDesc5": "Integrating a unit dedicated to training and knowledge transfer, consolidating a business ecosystem spanning from business creation to real estate investment, with a focus on innovation, sustainability, and shared value that articulates business, real estate, and education.",
+    "readMore": "READ MORE",
+    "miamiFloridea": "MIAMI, FLORIDA"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Send us a message and we'll get back to you soon."
+  }
+}

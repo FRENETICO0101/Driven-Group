@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "business": "Business",
+    "realEstate": "Real Estate",
+    "academy": "Academy",
+    "about": "Nosotros",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "luxury": "La principal agencia de bienes raíces de lujo internacional",
+    "viewDetails": "VER DETALLES",
+    "business": "Divisiones Empresariales Estratégicas",
+    "businessDesc": "Cuatro unidades de negocio integradas que impulsan valor corporativo y expansión del ecosistema",
+    "exploreDivisions": "EXPLORAR DIVISIONES",
+    "realEstate": "Propiedades Premium para Inversores Estratégicos",
+    "realEstateDesc": "Cartera seleccionada de activos excepcionales en las ubicaciones más deseables del mundo",
+    "browsePortfolio": "EXPLORAR PORTAFOLIO",
+    "contact": "Construyamos algo extraordinario",
+    "contactDesc": "Conéctate con nuestro equipo para explorar asociaciones, oportunidades de inversión o colaboración estratégica",
+    "getInTouch": "PONTE EN CONTACTO",
+    "about": "Construyendo Legados a Través de Visión Estratégica",
+    "aboutDesc": "Más de dos décadas de excelencia, integridad y liderazgo transformador en bienes raíces de lujo y estrategia corporativa",
+    "discoverValues": "DESCUBRE NUESTROS VALORES"
+  },
+  "academy": {
+    "official": "LANZAMIENTO OFICIAL — DRIVEN ACADEMY",
+    "title": "Modo Rico",
+    "subtitle1": "Una nueva forma de entender el dinero.",
+    "subtitle2": "Una nueva forma de vivir.",
+    "ensureSpot": "ASEGURA TU LUGAR",
+    "system": "EL SISTEMA",
+    "systemTitle": "No es un curso de finanzas. Es una transformación.",
+    "systemDesc": "MODO RICO™ es un sistema guiado diseñado para ayudarte a recuperar el control de tu dinero, reorganizar tu vida financiera y construir estabilidad, crecimiento y libertad a largo plazo.",
+    "systemDesc2": "El método DRIVEN™ combina educación financiera moderna, mentalidad, disciplina, control emocional, organización, crédito inteligente e inteligencia patrimonial. Todo dentro de una experiencia práctica, emocional y progresiva.",
+    "philosophy": "FILOSOFÍA DRIVEN™",
+    "methodTitle": "MÉTODO DRIVEN™",
+    "structure": "Estructura Estratégica",
+    "result": "Resultado",
+    "content": "CONTENIDO",
+    "whatIncludes": "¿Qué incluye Modo Rico™?",
+    "difference": "LA DIFERENCIA",
+    "notTeachTheory": "No enseñamos teoría. Creamos una nueva identidad financiera.",
+    "differenceDesc": "La verdadera transformación financiera ocurre cuando una persona piensa diferente, se organiza diferente, controla sus emociones, toma mejores decisiones y construye estabilidad con dirección.",
+    "launch": "OFERTA DE LANZAMIENTO",
+    "activateRico": "Activa tu Modo Rico",
+    "bePartOf": "Sé parte de esta nueva generación financieramente libre.",
+    "limitedTime": "Por tiempo limitado · Acceso inmediato · Garantía de satisfacción",
+    "emailPlaceholder": "Tu correo electrónico",
+    "ensureSpotBtn": "ASEGURA TU LUGAR AHORA",
+    "lifetimeContent": "∞ CONTENIDO DE POR VIDA",
+    "instantAccess": "⚡ ACCESO INMEDIATO",
+    "satisfaction": "✓ GARANTÍA DE SATISFACCIÓN"
+  },
+  "business": {
+    "ourDivisions": "NUESTRAS DIVISIONES",
+    "fourIntegrated": "Cuatro unidades integradas",
+    "digitalCommerce": "Comercio Digital",
+    "digitalCommerceDesc": "Participación en el desarrollo y operación de modelos comerciales en entornos digitales, integrando posicionamiento de marca, canales de venta y ejecución orientada a la eficiencia y escalabilidad.",
+    "globalMarkets": "Mercados Globales",
+    "globalMarketsDesc": "Presencia en mercados internacionales, con actividad en Europa y América del Norte, mediante estructuras comerciales que permiten la expansión y consolidación de negocios en distintos contextos.",
+    "strategicAlliances": "Alianzas Estratégicas",
+    "strategicAlliancesDesc": "Colaboración con socios y organizaciones en la construcción de proyectos empresariales, enfocada en la generación de valor conjunto y el fortalecimiento de capacidades.",
+    "luxuryAssets": "Activos de Lujo",
+    "luxuryAssetsDesc": "Participación en la gestión y desarrollo de activos de alto valor, bajo una visión patrimonial, enfocados en exclusividad, calidad y posicionamiento dentro de mercados premium."
+  },
+  "about": {
+    "driven": "DRIVEN GROUP",
+    "ourStory": "Nuestra Historia",
+    "storyDesc1": "Driven Group fue fundada en el año 2022 por nuestro CEO Iván Rodríguez con la visión de construir una empresa global desde Guadalajara Jalisco, un punto estratégico dentro de una economía dinámica.",
+    "storyDesc2": "Desde sus inicios en el sector inmobiliario, con enfoque en renta a corto plazo y construcción, la empresa evolucionó en Europa y America del Norte, particularmente en el ámbito comercial, la creación de marcas y el desarrollo de negocios.",
+    "storyDesc3": "Como parte de su proceso de consolidación, en 2026 se incorpora Ricardo Hernández como socio estratégico, sumándose para fortalecer y acelerar la consolidación y expansión del grupo.",
+    "storyDesc4": "En ese mismo año, Driven Group estructura formalmente su modelo de negocio en tres divisiones estratégicas: Business, Real Estate y Academy.",
+    "storyDesc5": "Integrando una unidad dedicada a la formación y transferencia de conocimiento, consolidando así un ecosistema empresarial que abarca desde la creación de negocios hasta la inversión inmobiliaria, con un enfoque en la innovación, la sostenibilidad y el valor compartido que articula negocios, real estate y educación.",
+    "readMore": "LEER MÁS",
+    "miamiFloridea": "MIAMI, FLORIDA"
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "description": "Envíanos un mensaje y nos pondremos en contacto contigo pronto."
+  }
+}
