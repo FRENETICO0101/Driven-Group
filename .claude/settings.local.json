@@ -57,7 +57,14 @@
       "Bash(curl -s -I http://localhost:3000/es)",
       "Bash(curl -s -I http://localhost:3000/en)",
       "Bash(curl -s http://localhost:3000/es)",
-      "Bash(curl -s http://localhost:3000/en)"
+      "Bash(curl -s http://localhost:3000/en)",
+      "Bash(Start-Process -NoNewWindow -FilePath \"npm\" -ArgumentList \"run\",\"dev\" -RedirectStandardOutput \"dev-output.log\" -RedirectStandardError \"dev-error.log\")",
+      "Bash(Start-Sleep -Seconds 8)",
+      "Bash(Get-Content dev-output.log)",
+      "Bash(Get-Content dev-error.log)",
+      "PowerShell(cd \"c:\\\\Users\\\\Ruben\\\\Desktop\\\\Projects\\\\DrivenGroup-Fase2\\\\Driven-Group\"; $job = Start-Job -ScriptBlock { Set-Location \"c:\\\\Users\\\\Ruben\\\\Desktop\\\\Projects\\\\DrivenGroup-Fase2\\\\Driven-Group\"; & npm run dev 2>&1 }; Start-Sleep -Seconds 10; Receive-Job $job; Stop-Job $job; Remove-Job $job)",
+      "PowerShell(cd \"c:\\\\Users\\\\Ruben\\\\Desktop\\\\Projects\\\\DrivenGroup-Fase2\\\\Driven-Group\"; $job = Start-Job -ScriptBlock { Set-Location \"c:\\\\Users\\\\Ruben\\\\Desktop\\\\Projects\\\\DrivenGroup-Fase2\\\\Driven-Group\"; & npm run dev 2>&1 }; Start-Sleep -Seconds 12; Receive-Job $job; Stop-Job $job; Remove-Job $job)",
+      "PowerShell(cd \"c:\\\\Users\\\\Ruben\\\\Desktop\\\\Projects\\\\DrivenGroup-Fase2\\\\Driven-Group\"; $job = Start-Job -ScriptBlock { Set-Location \"c:\\\\Users\\\\Ruben\\\\Desktop\\\\Projects\\\\DrivenGroup-Fase2\\\\Driven-Group\"; & npm run dev 2>&1 }; Start-Sleep -Seconds 14; Receive-Job $job; Stop-Job $job; Remove-Job $job)"
     ],
     "additionalDirectories": [
       "\\tmp"
