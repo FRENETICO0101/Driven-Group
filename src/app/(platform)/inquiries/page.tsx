@@ -74,7 +74,7 @@ export default function InquiriesPage() {
                       inquiry.status === "Nuevo"
                         ? "bg-blue-500/20 text-blue-300"
                         : inquiry.status === "Contactado"
-                          ? "bg-yellow-500/20 text-yellow-300"
+                          ? "bg-gray/20 text-gray"
                           : inquiry.status === "Calificado"
                             ? "bg-purple-500/20 text-purple-300"
                             : "bg-green-500/20 text-green-300"
