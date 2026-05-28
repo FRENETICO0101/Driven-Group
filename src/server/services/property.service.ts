@@ -8,7 +8,12 @@ import {
 import type { Property, PropertyType, PropertyStatus } from "@/lib/types";
 
 export async function getFeaturedProperties(limit = 6): Promise<Property[]> {
-  return repoGetFeatured(limit);
+  try {
+    return await repoGetFeatured(limit);
+  } catch (error) {
+    console.error("[Property Service] Error fetching featured properties:", error);
+    return [];
+  }
 }
 
 export async function getAllProperties(filters: {
@@ -16,18 +21,33 @@ export async function getAllProperties(filters: {
   city?: string;
   status?: string;
 }): Promise<Property[]> {
-  const cleaned: PropertyFilters = {};
-  if (filters.type) cleaned.type = filters.type as PropertyType;
-  if (filters.city) cleaned.city = filters.city;
-  if (filters.status) cleaned.status = filters.status as PropertyStatus;
-  return repoGetAll(cleaned);
+  try {
+    const cleaned: PropertyFilters = {};
+    if (filters.type) cleaned.type = filters.type as PropertyType;
+    if (filters.city) cleaned.city = filters.city;
+    if (filters.status) cleaned.status = filters.status as PropertyStatus;
+    return await repoGetAll(cleaned);
+  } catch (error) {
+    console.error("[Property Service] Error fetching properties:", error);
+    return [];
+  }
 }
 
 export async function getAvailableCities(): Promise<string[]> {
-  return repoGetCities();
+  try {
+    return await repoGetCities();
+  } catch (error) {
+    console.error("[Property Service] Error fetching cities:", error);
+    return [];
+  }
 }
 
 export async function getPropertyBySlug(slug: string): Promise<Property | null> {
   if (!slug || typeof slug !== "string") return null;
-  return repoGetBySlug(slug.toLowerCase().trim());
+  try {
+    return await repoGetBySlug(slug.toLowerCase().trim());
+  } catch (error) {
+    console.error("[Property Service] Error fetching property by slug:", error);
+    return null;
+  }
 }

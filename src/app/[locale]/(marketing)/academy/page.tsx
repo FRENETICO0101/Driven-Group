@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { AcademyHeroSection } from "@/components/academy/AcademyHeroSection";
 import { AcademyCTA } from "@/components/academy/AcademyCTA";
 
+export const dynamic = 'force-dynamic';
+
 const siteUrl = "https://drivengroup.com";
 
 export const metadata: Metadata = {

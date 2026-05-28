@@ -1,5 +1,7 @@
 'use client';
 
+export const dynamic = 'force-dynamic';
+
 import { useTranslations } from "next-intl";
 import { BusinessHeroSection } from "@/components/business/BusinessHeroSection";
 import { BusinessDivision } from "@/components/business/BusinessDivision";

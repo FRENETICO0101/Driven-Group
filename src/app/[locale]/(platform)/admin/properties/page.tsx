@@ -1,4 +1,5 @@
 /**
+export const dynamic = 'force-dynamic';
  * Admin - Properties Management
  * CRUD operations for real estate properties
  */

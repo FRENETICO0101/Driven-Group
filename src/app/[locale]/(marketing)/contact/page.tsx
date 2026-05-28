@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { ContactHeroSection } from "@/components/contact/ContactHeroSection";
+
+export const dynamic = 'force-dynamic';
 import { ContactInfoSection } from "@/components/contact/ContactInfoSection";
 import { GetInTouchForm } from "@/components/contact/GetInTouchForm";
 

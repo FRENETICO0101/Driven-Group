@@ -26,11 +26,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-
-  // Turbopack root directory (fixes "another instance of next dev" error)
-  turbopack: {
-    root: path.resolve(__dirname),
-  },
 };
 
 module.exports = withNextIntl(nextConfig);

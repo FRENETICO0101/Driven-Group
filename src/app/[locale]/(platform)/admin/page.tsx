@@ -1,4 +1,5 @@
 /**
+export const dynamic = 'force-dynamic';
  * Admin Dashboard
  * Overview and quick stats
  */

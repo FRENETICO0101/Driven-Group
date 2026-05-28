@@ -50,7 +50,14 @@
       "Bash(rm -rf .next)",
       "Bash(curl -s http://localhost:3000/)",
       "Bash(curl -s http://localhost:3001/real-estate)",
-      "Bash(powershell -Command \"Get-Process node -ErrorAction SilentlyContinue | Select-Object -First 5\")"
+      "Bash(powershell -Command \"Get-Process node -ErrorAction SilentlyContinue | Select-Object -First 5\")",
+      "PowerShell(Get-Process node -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Force -ErrorAction SilentlyContinue)",
+      "Bash(curl -s -I http://localhost:3000)",
+      "Bash(curl -s -I http://localhost:3000/es)",
+      "Bash(curl -s -I http://localhost:3000/en)",
+      "Bash(curl -s http://localhost:3000/es)",
+      "Bash(curl -s http://localhost:3000/en)"
     ],
     "additionalDirectories": [
       "\\tmp"

@@ -4,6 +4,8 @@ import { CEOsSection } from "@/components/about/CEOsSection";
 import { ValuesSection } from "@/components/about/ValuesSection";
 import { ReputationSection } from "@/components/about/ReputationSection";
 
+export const dynamic = 'force-dynamic';
+
 const siteUrl = "https://drivengroup.com";
 
 export const metadata: Metadata = {

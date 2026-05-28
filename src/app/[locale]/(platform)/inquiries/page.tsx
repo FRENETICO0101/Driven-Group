@@ -1,4 +1,5 @@
 /**
+export const dynamic = 'force-dynamic';
  * Inquiries / Leads Management
  * Track and manage customer inquiries and leads
  */
