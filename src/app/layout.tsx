@@ -8,41 +8,40 @@ const siteUrl = "https://drivengroup.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Driven Group | Ecosistema de Inversión Inmobiliaria Premium",
+  title: "Driven Group | Premium Real Estate & Investment Ecosystem",
   description:
-    "Plataforma editorial de inversión corporativa. Accede a propiedades estratégicas, patrimoniales y de alto rendimiento.",
+    "Editorial platform for corporate real estate investment. Access strategic properties worldwide.",
   keywords: [
     "real estate",
-    "inversión inmobiliaria",
-    "propiedades comerciales",
-    "patrimonio corporativo",
-    "activos estratégicos",
+    "property investment",
+    "commercial properties",
+    "corporate assets",
+    "strategic investments",
   ],
   authors: [{ name: "Driven Group" }],
   creator: "Driven Group",
   publisher: "Driven Group",
   openGraph: {
     type: "website",
-    locale: "es_ES",
     url: siteUrl,
     siteName: "Driven Group",
-    title: "Driven Group | Ecosistema de Inversión Inmobiliaria Premium",
+    title: "Driven Group | Premium Real Estate & Investment Ecosystem",
     description:
-      "Plataforma editorial de inversión corporativa. Accede a propiedades estratégicas, patrimoniales y de alto rendimiento.",
+      "Editorial platform for corporate real estate investment.",
     images: [
       {
         url: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Driven Group - Inversión Inmobiliaria Premium",
+        alt: "Driven Group",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Driven Group | Ecosistema de Inversión Inmobiliaria Premium",
+    title: "Driven Group | Premium Real Estate & Investment Ecosystem",
     description:
-      "Plataforma editorial de inversión corporativa. Accede a propiedades estratégicas, patrimoniales y de alto rendimiento.",
+      "Editorial platform for corporate real estate investment.",
     images: [`${siteUrl}/og-image.png`],
   },
   robots: {
