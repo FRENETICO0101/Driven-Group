@@ -1,6 +1,7 @@
 import type { Property } from "@/lib/types";
 import { formatPropertyPrice } from "@/lib/property-utils";
 import Link from "next/link";
+import Image from "next/image";
 
 interface PropertyListingProps {
   properties: Property[];
@@ -105,35 +106,58 @@ export function PropertyListing({ properties }: PropertyListingProps) {
               </div>
             </div>
 
-            {/* Right: Images Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {/* Main image (spans 2 rows on desktop) */}
+            {/* Right: Images Grid - 3 images layout */}
+            <div className="space-y-4">
+              {/* Floorplan - Full width or left side on desktop */}
               {property.images[0] && (
-                <div className="col-span-2 md:col-span-1 md:row-span-2">
-                  <img
+                <div className="relative w-full h-64 md:h-80 overflow-hidden rounded-lg bg-pale">
+                  <Image
                     src={property.images[0].url}
-                    alt={property.images[0].alt || property.title}
-                    className="w-full h-80 md:h-full object-cover rounded-lg"
+                    alt={property.images[0].alt || `${property.title} - Floor Plan`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 40vw"
+                    className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700"
                   />
+                  <div className="absolute bottom-3 left-3 editorial-label px-2 py-1 bg-white/90 text-ink text-xs">
+                    FLOOR PLAN
+                  </div>
                 </div>
               )}
 
-              {/* Secondary images */}
-              {property.images.slice(1, 4).map((image, idx) => (
-                <div key={idx} className="aspect-square">
-                  <img
-                    src={image.url}
-                    alt={image.alt || `${property.title} - Image ${idx + 2}`}
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-              ))}
+              {/* Renders - Side by side on desktop, stacked on mobile */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {property.images[1] && (
+                  <div className="relative w-full h-48 sm:h-56 overflow-hidden rounded-lg bg-pale">
+                    <Image
+                      src={property.images[1].url}
+                      alt={property.images[1].alt || `${property.title} - Render 1`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 18vw"
+                      className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700"
+                    />
+                  </div>
+                )}
+                {property.images[2] && (
+                  <div className="relative w-full h-48 sm:h-56 overflow-hidden rounded-lg bg-pale">
+                    <Image
+                      src={property.images[2].url}
+                      alt={property.images[2].alt || `${property.title} - Render 2`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 18vw"
+                      className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700"
+                    />
+                  </div>
+                )}
 
-              {/* Fallback images if not enough in property */}
-              {property.images.length < 4 &&
-                Array.from({ length: 4 - property.images.length }).map((_, idx) => (
-                  <div key={`fallback-${idx}`} className="aspect-square bg-light-gray rounded-lg" />
-                ))}
+                {/* Fallback placeholders if not enough images */}
+                {property.images.length < 3 &&
+                  Array.from({ length: 3 - property.images.length }).map((_, idx) => (
+                    <div
+                      key={`fallback-${idx}`}
+                      className="w-full h-48 sm:h-56 bg-pale rounded-lg border border-light-gray"
+                    />
+                  ))}
+              </div>
             </div>
           </div>
         ))}

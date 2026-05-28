@@ -7,7 +7,7 @@ interface Feature {
 }
 
 interface PropertyCardProps {
-  image: string;
+  images: Array<{ url: string; alt: string }>;
   imageAlt: string;
   badge: string;
   badgeFeatured?: boolean;
@@ -20,7 +20,7 @@ interface PropertyCardProps {
 }
 
 export function PropertyCard({
-  image,
+  images,
   imageAlt,
   badge,
   badgeFeatured = false,
@@ -30,31 +30,77 @@ export function PropertyCard({
   features,
   slug,
 }: PropertyCardProps) {
+  // Take first 3 images: [0] = floorplan (left), [1-2] = renders (right stacked)
+  const floorplan = images?.[0];
+  const render1 = images?.[1];
+  const render2 = images?.[2];
+
   return (
     <Link href={`/real-estate/${slug}`} className="group block">
       <article className="flex flex-col h-full">
 
-        {/* Image */}
-        <div className="relative aspect-[3/4] overflow-hidden bg-pale">
-          <Image
-            alt={imageAlt}
-            className="w-full h-full object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-[1.04]"
-            src={image}
-            fill
-            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 33vw"
-          />
-          {/* Subtle bottom veil */}
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        {/* Image Gallery Grid */}
+        <div className="relative overflow-hidden bg-pale mb-5">
+          {/* Desktop: Floorplan left (tall) + 2 renders stacked right | Mobile: Stack all vertically */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:h-96">
+            
+            {/* Floorplan - Left side (takes full width on mobile, 1.5 columns on desktop) */}
+            {floorplan && (
+              <div className="relative col-span-1 md:col-span-2 row-span-2 h-80 md:h-auto aspect-square md:aspect-auto overflow-hidden bg-pale">
+                <Image
+                  alt="Floor plan"
+                  className="w-full h-full object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-[1.04]"
+                  src={floorplan.url}
+                  fill
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 35vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                {/* Label */}
+                <div className="absolute bottom-3 left-3 editorial-label px-2 py-1 bg-white/90 text-ink text-xs">
+                  FLOOR PLAN
+                </div>
+              </div>
+            )}
 
-          {/* Badge */}
+            {/* Render 1 - Right top */}
+            {render1 && (
+              <div className="relative col-span-1 row-span-1 h-36 md:h-auto aspect-video md:aspect-auto overflow-hidden bg-pale">
+                <Image
+                  alt="Property render"
+                  className="w-full h-full object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-[1.04]"
+                  src={render1.url}
+                  fill
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 30vw, 20vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              </div>
+            )}
+
+            {/* Render 2 - Right bottom */}
+            {render2 && (
+              <div className="relative col-span-1 row-span-1 h-36 md:h-auto aspect-video md:aspect-auto overflow-hidden bg-pale">
+                <Image
+                  alt="Property render"
+                  className="w-full h-full object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-[1.04]"
+                  src={render2.url}
+                  fill
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 30vw, 20vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              </div>
+            )}
+
+          </div>
+
+          {/* Badge - Positioned over gallery */}
           {badge && (
             <div
-              className={`absolute top-4 left-4 editorial-label px-3 py-1.5 ${
+              className={`absolute top-4 left-4 editorial-label px-3 py-1.5 z-10 ${
                 badgeFeatured
                   ? "bg-ink text-white"
                   : "bg-white/90 text-ink"
               }`}
-              aria-label={`Tipo: ${badge}`}
+              aria-label={`Property type: ${badge}`}
             >
               {badge}
             </div>
@@ -62,14 +108,14 @@ export function PropertyCard({
         </div>
 
         {/* Meta */}
-        <div className="mt-5 flex-1 flex flex-col gap-3">
+        <div className="flex-1 flex flex-col gap-3">
           <p className="editorial-label text-gray">{subtitle}</p>
           <h3 className="font-serif text-xl sm:text-2xl text-ink leading-tight group-hover:text-dark-gray transition-colors duration-300">
             {title}
           </h3>
 
           {/* Specs */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap">
             {features.map((feature, idx) => (
               <span key={feature.icon} className="flex items-center gap-1.5 text-xs text-mid-gray">
                 <span

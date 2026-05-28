@@ -16,7 +16,7 @@ export function ContactHeroSection() {
           <Image
             alt="Contact Driven Group"
             className="image-zoom w-full h-full object-cover"
-            src="/images1/contact-hero.jpg"
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=1080&fit=crop&q=90"
             fill
             priority
             sizes="100vw"

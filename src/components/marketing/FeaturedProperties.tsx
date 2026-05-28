@@ -43,7 +43,8 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
             {properties.map((property) => {
               const badge        = getPropertyBadge(property.type);
-              const primaryImage = property.images?.[0];
+              const images       = property.images?.map(img => ({ url: img.url, alt: img.alt })) ?? 
+                                  [{ url: FALLBACK_IMAGE, alt: property.title }];
               const features     = [];
 
               if (property.bedrooms  > 0) features.push({ icon: "bed",        label: `${property.bedrooms} Dorm` });
@@ -53,8 +54,8 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
               return (
                 <PropertyCard
                   key={property.id}
-                  image={primaryImage?.url ?? FALLBACK_IMAGE}
-                  imageAlt={primaryImage?.alt ?? property.title}
+                  images={images}
+                  imageAlt={property.title}
                   badge={badge.label}
                   badgeFeatured={badge.featured}
                   price={formatPropertyPrice(property.price)}
