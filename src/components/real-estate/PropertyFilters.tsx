@@ -11,17 +11,6 @@ const PROPERTY_TYPES = [
   { value: 'MIXED_USE', label: 'Mixed Use' },
 ];
 
-const MIAMI_DISTRICTS = [
-  { value: '', label: 'All Districts' },
-  { value: 'Brickell', label: 'Brickell' },
-  { value: 'Downtown Miami', label: 'Downtown Miami' },
-  { value: 'Wynwood', label: 'Wynwood' },
-  { value: 'Design District', label: 'Design District' },
-  { value: 'Midtown Miami', label: 'Midtown Miami' },
-  { value: 'Coconut Grove', label: 'Coconut Grove' },
-  { value: 'Allapattah', label: 'Allapattah' },
-];
-
 const PROPERTY_STATUSES = [
   { value: '', label: 'All Status' },
   { value: 'ACTIVE', label: 'Available' },
@@ -59,69 +48,83 @@ export function PropertyFilters({
 
   const hasActiveFilters = currentType || currentDistrict || currentStatus;
 
-  const clearFilters = () => {
-    router.push(pathname);
-  };
-
   return (
     <div className="sticky top-16 sm:top-20 z-30 bg-white border-b border-light-gray">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-4">
-        <div className="flex flex-wrap items-center gap-3">
-          {/* Property Type */}
-          <select
-            value={currentType}
-            onChange={(e) => updateFilter('type', e.target.value)}
-            className="bg-white border border-light-gray text-black text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-white transition-colors focus:outline-none focus:border-gray min-w-40"
-          >
+        <div className="flex flex-wrap items-center gap-2">
+
+          {/* Miami identifier — always visible, non-interactive */}
+          <div className="flex items-center gap-1.5 px-3 py-2 border border-ink bg-ink text-white text-xs font-semibold tracking-widest uppercase select-none">
+            <span className="material-symbols-outlined" style={{ fontSize: 13 }}>location_on</span>
+            Miami, FL
+          </div>
+
+          <span className="text-light-gray text-xs hidden sm:inline">|</span>
+
+          {/* Property Type — pill buttons */}
+          <div className="flex items-center gap-1.5 flex-wrap">
             {PROPERTY_TYPES.map((t) => (
-              <option key={t.value} value={t.value} className="bg-white text-black">
+              <button
+                key={t.value}
+                onClick={() => updateFilter('type', t.value)}
+                className={`px-3 py-1.5 text-xs font-medium border transition-colors duration-150 ${
+                  currentType === t.value
+                    ? 'bg-ink text-white border-ink'
+                    : 'bg-white text-mid-gray border-light-gray hover:border-dark-gray hover:text-ink'
+                }`}
+              >
                 {t.label}
-              </option>
+              </button>
             ))}
-          </select>
+          </div>
 
-          {/* Miami District */}
-          <select
-            value={currentDistrict}
-            onChange={(e) => updateFilter('district', e.target.value)}
-            className="bg-white border border-light-gray text-black text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-white transition-colors focus:outline-none focus:border-gray min-w-40"
-          >
-            {MIAMI_DISTRICTS.map((d) => (
-              <option key={d.value} value={d.value} className="bg-white text-black">
-                {d.label}
-              </option>
-            ))}
-          </select>
+          <span className="text-light-gray text-xs hidden sm:inline">|</span>
 
-          {/* Property Status */}
-          <select
-            value={currentStatus}
-            onChange={(e) => updateFilter('status', e.target.value)}
-            className="bg-white border border-light-gray text-black text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-white transition-colors focus:outline-none focus:border-gray min-w-40"
-          >
+          {/* Status pills */}
+          <div className="flex items-center gap-1.5 flex-wrap">
             {PROPERTY_STATUSES.map((s) => (
-              <option key={s.value} value={s.value} className="bg-white text-black">
+              <button
+                key={s.value}
+                onClick={() => updateFilter('status', s.value)}
+                className={`px-3 py-1.5 text-xs font-medium border transition-colors duration-150 ${
+                  currentStatus === s.value
+                    ? 'bg-ink text-white border-ink'
+                    : 'bg-white text-mid-gray border-light-gray hover:border-dark-gray hover:text-ink'
+                }`}
+              >
                 {s.label}
-              </option>
+              </button>
             ))}
-          </select>
+          </div>
 
-          {/* Clear Filters Button */}
+          {/* Clear — only when filters active */}
           {hasActiveFilters && (
             <button
-              onClick={clearFilters}
-              className="flex items-center gap-1.5 text-dark-gray hover:text-black text-sm transition-colors ml-auto"
+              onClick={() => router.push(pathname)}
+              className="ml-auto flex items-center gap-1 text-xs text-mid-gray hover:text-ink transition-colors"
             >
-              <span className="material-symbols-outlined text-sm">close</span>
-              Clear Filters
+              <span className="material-symbols-outlined" style={{ fontSize: 13 }}>close</span>
+              Clear
             </button>
           )}
         </div>
 
-        {/* Miami Info Banner */}
-        <p className="text-xs text-dark-gray mt-3">
-          📍 Showing Miami properties only • Mapa interactivo available in the sidebar
-        </p>
+        {/* Active district pill if set via map */}
+        {currentDistrict && (
+          <div className="flex items-center gap-2 mt-2 pt-2 border-t border-pale">
+            <span className="text-xs text-mid-gray">District:</span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-pale text-ink text-xs font-medium">
+              {currentDistrict}
+              <button
+                onClick={() => updateFilter('district', '')}
+                className="hover:text-dark-gray transition-colors"
+                aria-label="Remove district filter"
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: 11 }}>close</span>
+              </button>
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

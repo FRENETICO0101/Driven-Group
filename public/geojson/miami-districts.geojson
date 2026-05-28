@@ -5,7 +5,7 @@
       "type": "Feature",
       "properties": {
         "name": "Brickell",
-        "color": "#e3f2fd",
+        "color": "#3a3a3a",
         "description": "Financial district with luxury high-rises"
       },
       "geometry": {
@@ -23,7 +23,7 @@
       "type": "Feature",
       "properties": {
         "name": "Downtown Miami",
-        "color": "#e0f2f1",
+        "color": "#494849",
         "description": "Urban core and cultural center"
       },
       "geometry": {
@@ -41,7 +41,7 @@
       "type": "Feature",
       "properties": {
         "name": "Wynwood",
-        "color": "#f3e5f5",
+        "color": "#6b6b6b",
         "description": "Arts and culture neighborhood"
       },
       "geometry": {
@@ -59,7 +59,7 @@
       "type": "Feature",
       "properties": {
         "name": "Design District",
-        "color": "#fce4ec",
+        "color": "#8e8e8e",
         "description": "Luxury shopping and design hub"
       },
       "geometry": {
@@ -77,7 +77,7 @@
       "type": "Feature",
       "properties": {
         "name": "Midtown Miami",
-        "color": "#ede7f6",
+        "color": "#aaaaaa",
         "description": "Mixed-use residential area"
       },
       "geometry": {
@@ -95,17 +95,17 @@
       "type": "Feature",
       "properties": {
         "name": "Coconut Grove",
-        "color": "#e8f5e9",
+        "color": "#c8c8c8",
         "description": "Bohemian village with boutiques"
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [[
-          [-80.2300, 25.7350],
-          [-80.2100, 25.7350],
-          [-80.2100, 25.7500],
-          [-80.2300, 25.7500],
-          [-80.2300, 25.7350]
+          [-80.2900, 25.7200],
+          [-80.2450, 25.7200],
+          [-80.2450, 25.7480],
+          [-80.2900, 25.7480],
+          [-80.2900, 25.7200]
         ]]
       }
     },
@@ -113,7 +113,7 @@
       "type": "Feature",
       "properties": {
         "name": "Allapattah",
-        "color": "#fff3e0",
+        "color": "#5a5a5a",
         "description": "Emerging residential neighborhood"
       },
       "geometry": {
