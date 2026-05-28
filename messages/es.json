@@ -81,6 +81,8 @@
   },
   "ui": {
     "menu": "Menú",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
     "account": "Cuenta",
     "mainMenu": "Menú principal"
   }

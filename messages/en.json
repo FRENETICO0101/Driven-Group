@@ -81,6 +81,8 @@
   },
   "ui": {
     "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
     "account": "Account",
     "mainMenu": "Main menu"
   }

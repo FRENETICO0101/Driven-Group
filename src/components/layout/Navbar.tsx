@@ -92,7 +92,7 @@ export function Navbar() {
             ? "bg-white/97 border-b border-pale backdrop-blur-sm"
             : "bg-transparent"
         }`}
-        aria-label="Navegación principal"
+        aria-label={t("ui.mainMenu")}
       >
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
           <div
@@ -107,7 +107,7 @@ export function Navbar() {
                 className={`group flex items-center gap-2.5 focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray rounded transition-colors duration-500 ${
                   overlayBg ? "text-ink" : "text-white"
                 }`}
-                aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+                aria-label={isMenuOpen ? t("ui.closeMenu") : t("ui.openMenu")}
                 aria-expanded={isMenuOpen}
               >
                 <div className="w-5 h-3.5 flex flex-col justify-between">
@@ -152,7 +152,7 @@ export function Navbar() {
             <Link
               href="/"
               className="justify-self-center focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray rounded flex items-center gap-2.5"
-              aria-label="Driven Group — Inicio"
+              aria-label={t("nav.home")}
             >
               <BrandLogo
                 className={`h-4 sm:h-5 w-auto transition-colors duration-700 ${
