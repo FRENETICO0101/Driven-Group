@@ -9,9 +9,9 @@ export function AcademyHeroSection() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 hero-gradient z-10" />
           <Image
-            alt="Academy Learning"
+            alt="Modo Rico by Driven Academy"
             className="image-zoom w-full h-full object-cover"
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=1080&fit=crop&q=90"
+            src="/images1/academy-hero.jpg"
             fill
             priority
             sizes="100vw"
@@ -27,20 +27,25 @@ export function AcademyHeroSection() {
         {/* Content */}
         <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-8">
           <div className="max-w-3xl">
-            <h1 className="fade-in-delay-100 font-serif italic text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.2] md:leading-[1.15] mb-8 sm:mb-10 text-white tracking-tight">
-              Transform Your Future
+            <p className="fade-in-delay-50 editorial-label text-white/60 mb-4">LANZAMIENTO OFICIAL — DRIVEN ACADEMY</p>
+
+            <h1 className="fade-in-delay-100 font-serif italic text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.1] mb-4 text-white tracking-tight">
+              Modo Rico
             </h1>
 
-            <p className="fade-in-delay-150 text-lg sm:text-xl text-white/80 mb-8 leading-relaxed max-w-2xl">
-              Premium education in leadership, entrepreneurship, and financial mastery
+            <p className="fade-in-delay-150 text-lg sm:text-xl text-white/80 mb-2 font-light">
+              Una nueva forma de entender el dinero.
+            </p>
+            <p className="fade-in-delay-150 text-lg sm:text-xl text-gray mb-10 font-light">
+              Una nueva forma de vivir.
             </p>
 
             <div className="fade-in-delay-200">
               <Link
-                href="#programs"
-                className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors text-sm sm:text-base font-semibold tracking-wide uppercase"
+                href="#programa"
+                className="inline-flex items-center gap-2 text-gray hover:text-dark-gray transition-colors text-sm sm:text-base font-semibold tracking-wide uppercase"
               >
-                <span>EXPLORE PROGRAMS</span>
+                <span>ASEGURA TU LUGAR</span>
                 <span className="material-symbols-outlined text-lg">arrow_forward</span>
               </Link>
             </div>
