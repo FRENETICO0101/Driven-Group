@@ -4,6 +4,7 @@ interface AcademyProgramProps {
   description: string;
   topics: string[];
   icon: string;
+  duration?: string;
   comingSoon?: boolean;
 }
 
@@ -13,6 +14,7 @@ export function AcademyProgram({
   description,
   topics,
   icon,
+  duration,
   comingSoon = true,
 }: AcademyProgramProps) {
   return (
@@ -39,7 +41,7 @@ export function AcademyProgram({
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {topics.map((topic, idx) => (
             <div key={idx} className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-black flex-shrink-0 text-lg">
+              <span className="material-symbols-outlined text-black shrink-0 text-lg">
                 check_circle
               </span>
               <span className="text-dark-gray text-sm">{topic}</span>
@@ -48,13 +50,21 @@ export function AcademyProgram({
         </div>
       </div>
 
-      {/* Coming Soon Badge */}
-      {comingSoon && (
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-light-gray rounded-lg">
-          <span className="material-symbols-outlined text-dark-gray text-lg">schedule</span>
-          <p className="text-dark-gray font-semibold text-sm">Coming Soon</p>
-        </div>
-      )}
+      {/* Duration & Coming Soon */}
+      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+        {duration && (
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-light-gray rounded-lg">
+            <span className="material-symbols-outlined text-dark-gray text-lg">schedule</span>
+            <p className="text-dark-gray font-semibold text-sm">{duration}</p>
+          </div>
+        )}
+        {comingSoon && (
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-light-gray rounded-lg">
+            <span className="material-symbols-outlined text-dark-gray text-lg">schedule</span>
+            <p className="text-dark-gray font-semibold text-sm">Coming Soon</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
