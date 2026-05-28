@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const path = require('path');
 const createNextIntlPlugin = require('next-intl/plugin');
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
@@ -24,6 +25,11 @@ const nextConfig = {
 
   typescript: {
     ignoreBuildErrors: true,
+  },
+
+  // Turbopack root directory (fixes "another instance of next dev" error)
+  turbopack: {
+    root: path.resolve(__dirname),
   },
 };
 
