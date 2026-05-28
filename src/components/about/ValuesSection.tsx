@@ -6,18 +6,18 @@ interface Value {
 
 const values: Value[] = [
   {
-    title: "Mission",
-    description: "To redefine luxury real estate investment through strategic curation, institutional partnerships, and transformative client relationships that create lasting wealth and legacies.",
+    title: "Misión",
+    description: "Contribuir al desarrollo de nuestros clientes, parteners, colaboradores y aliados estrategicos, mediante la mejora continua de las personas y construccion de negocios sostenibles, sustentados en la confianza, el valor compartido y relaciones de largo plazo.",
     icon: "target",
   },
   {
-    title: "Passion",
-    description: "We are driven by an unwavering commitment to excellence, innovation, and the pursuit of architectural and lifestyle perfection in every property and partnership we undertake.",
+    title: "Pasión",
+    description: "Nos mueve la conviccion de hacer las cosas bien, incluso cuando nadie esta viendo. Creemos en la lealtad, en la palabra cumplida y en la confianza que se construye con hechos. Desde ahi nacen decisiones, neustras alianzas y el valor que permanece.",
     icon: "favorite",
   },
   {
-    title: "Vision",
-    description: "To establish Driven Group as the premier global ecosystem for strategic investors, where properties transcend transactions and become vehicles for legacy building and wealth consolidation.",
+    title: "Visión",
+    description: "Consolidarnos como un grupo empresarial global referente por su capacidad de construir, integrar y escalar ecosostemas de negocio, generadndo crecimiento sostenible, innovación constante y valor estratégico a través de múltiples industrias.",
     icon: "visibility",
   },
 ];
