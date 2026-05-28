@@ -78,5 +78,10 @@
   "contact": {
     "title": "Contáctanos",
     "description": "Envíanos un mensaje y nos pondremos en contacto contigo pronto."
+  },
+  "ui": {
+    "menu": "Menú",
+    "account": "Cuenta",
+    "mainMenu": "Menú principal"
   }
 }

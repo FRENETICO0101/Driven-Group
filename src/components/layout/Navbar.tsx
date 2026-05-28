@@ -128,7 +128,7 @@ export function Navbar() {
                   />
                 </div>
                 <span className="hidden sm:inline editorial-label text-current opacity-60 group-hover:opacity-100 transition-opacity">
-                  Menu
+                  {t("ui.menu")}
                 </span>
               </button>
 
@@ -177,12 +177,12 @@ export function Navbar() {
                     ? "text-gray hover:text-ink"
                     : "text-white/60 hover:text-white"
                 }`}
-                aria-label="Contacto"
+                aria-label={t("nav.contact")}
               >
                 <span className="material-symbols-outlined" style={{ fontSize: "16px", fontVariationSettings: "'wght' 200" }}>
                   phone
                 </span>
-                <span className="hidden lg:inline editorial-label">Contact</span>
+                <span className="hidden lg:inline editorial-label">{t("nav.contact")}</span>
               </Link>
 
               <div className="hidden md:flex">
@@ -195,7 +195,7 @@ export function Navbar() {
                     ? "text-gray hover:text-ink"
                     : "text-white/60 hover:text-white"
                 }`}
-                aria-label="Cuenta"
+                aria-label={t("ui.account")}
               >
                 <span
                   className="material-symbols-outlined"
@@ -220,7 +220,7 @@ export function Navbar() {
 
           {/* Nav links — left column */}
           <div className="flex flex-col justify-center flex-1 min-w-0">
-            <nav aria-label="Menú principal">
+            <nav aria-label={t("ui.mainMenu")}>
               <ul className="space-y-0">
                 {navigationKeys.map((item, i) => {
                   const navKey = item.nameKey.split(".")[1];

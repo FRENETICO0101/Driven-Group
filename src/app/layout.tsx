@@ -1,8 +1,19 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Lora } from "next/font/google";
 import "./globals.css";
 
-const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-sans", weight: ["300", "400", "500", "600", "700"] });
+const montserrat = Montserrat({ 
+  subsets: ["latin"], 
+  variable: "--font-sans", 
+  weight: ["300", "400", "500", "600", "700"] 
+});
+
+// Using Lora as a serif alternative (similar to Helvetica Neue LT PRO for titles)
+const lora = Lora({ 
+  subsets: ["latin"], 
+  variable: "--font-serif",
+  weight: ["400", "500", "600", "700"]
+});
 
 const siteUrl = "https://drivengroup.com";
 
@@ -64,7 +75,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${montserrat.variable} bg-white`}>
+    <html lang="es" className={`${montserrat.variable} ${lora.variable} bg-white`}>
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"

@@ -78,5 +78,10 @@
   "contact": {
     "title": "Contact Us",
     "description": "Send us a message and we'll get back to you soon."
+  },
+  "ui": {
+    "menu": "Menu",
+    "account": "Account",
+    "mainMenu": "Main menu"
   }
 }

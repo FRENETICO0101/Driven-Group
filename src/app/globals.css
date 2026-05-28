@@ -9,7 +9,7 @@
 :root {
   /* Typography */
   --font-principal: var(--font-sans, 'Montserrat', sans-serif);
-  --font-titulos: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-titulos: var(--font-serif, 'Helvetica Neue LT Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif);
 
   /* Brand palette — monochromatic, architectural */
   --theme-black:      #1a1a1a;
