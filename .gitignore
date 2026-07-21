@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# Build-time public mirror generated from assets/properties.
+/public/property-assets/
+
 # dependencies
 /node_modules
 /.pnp

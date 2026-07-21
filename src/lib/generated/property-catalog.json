@@ -1,0 +1,2324 @@
+[
+  {
+    "id": "catalog-1428-brickell",
+    "slug": "1428-brickell",
+    "title": "1428 Brickell",
+    "description": "Luxury residences in Brickell Miami featuring private elevators, panoramic views and world-class amenities.",
+    "price": 0,
+    "address": "1428 Brickell Ave, Miami, FL 33131",
+    "city": "Miami",
+    "state": "Florida",
+    "zipCode": "",
+    "latitude": 25.7597,
+    "longitude": -80.1927,
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "squareFeet": 0,
+    "yearBuilt": 2028,
+    "type": "RESIDENTIAL",
+    "status": "ACTIVE",
+    "amenities": [],
+    "features": "Overview\r\n\r\nViceroy Brickell Residences represents a new generation of branded luxury living in Miami. Developed by Related Group and GTIS Partners, the tower combines contemporary architecture by Arquitectonica with interiors by Meyer Davis and the legendary hospitality of Viceroy Hotels & Resorts.\r\n\r\nPositioned where the Miami River meets Brickell, the residences offer panoramic city and waterfront views while providing immediate access to Brickell City Centre, Downtown Miami, Coconut Grove, Key Biscayne, and Miami International Airport.\r\n\r\nResidents enjoy an elevated lifestyle focused on wellness, design, personalized services, and world-class amenities, making Viceroy one of the most desirable residential addresses in Brickell.",
+    "images": [
+      {
+        "id": "1428-brickell-hero-exterior-day.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/hero-exterior-day.webp",
+        "alt": "1428 Brickell — hero exterior day",
+        "order": 0
+      },
+      {
+        "id": "1428-brickell-cava.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/cava.webp",
+        "alt": "1428 Brickell — cava",
+        "order": 1
+      },
+      {
+        "id": "1428-brickell-cinema-room.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/cinema-room.webp",
+        "alt": "1428 Brickell — cinema room",
+        "order": 2
+      },
+      {
+        "id": "1428-brickell-cochera-a.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/cochera-a.webp",
+        "alt": "1428 Brickell — cochera a",
+        "order": 3
+      },
+      {
+        "id": "1428-brickell-cochera-b.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/cochera-b.webp",
+        "alt": "1428 Brickell — cochera b",
+        "order": 4
+      },
+      {
+        "id": "1428-brickell-cochera-c.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/cochera-c.webp",
+        "alt": "1428 Brickell — cochera c",
+        "order": 5
+      },
+      {
+        "id": "1428-brickell-entrance.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/entrance.webp",
+        "alt": "1428 Brickell — entrance",
+        "order": 6
+      },
+      {
+        "id": "1428-brickell-exterior-01.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/exterior-01.webp",
+        "alt": "1428 Brickell — exterior 01",
+        "order": 7
+      },
+      {
+        "id": "1428-brickell-exterior-02.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/exterior-02.webp",
+        "alt": "1428 Brickell — exterior 02",
+        "order": 8
+      },
+      {
+        "id": "1428-brickell-garden.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/garden.webp",
+        "alt": "1428 Brickell — garden",
+        "order": 9
+      },
+      {
+        "id": "1428-brickell-gym-floor.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/gym-floor.webp",
+        "alt": "1428 Brickell — gym floor",
+        "order": 10
+      },
+      {
+        "id": "1428-brickell-hero-exterior-night.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/hero-exterior-night.webp",
+        "alt": "1428 Brickell — hero exterior night",
+        "order": 11
+      },
+      {
+        "id": "1428-brickell-kids-imaginarium.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/kids-imaginarium.webp",
+        "alt": "1428 Brickell — kids imaginarium",
+        "order": 12
+      },
+      {
+        "id": "1428-brickell-library-lounge-01.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/library-lounge-01.webp",
+        "alt": "1428 Brickell — library lounge 01",
+        "order": 13
+      },
+      {
+        "id": "1428-brickell-library-lounge-02.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/library-lounge-02.webp",
+        "alt": "1428 Brickell — library lounge 02",
+        "order": 14
+      },
+      {
+        "id": "1428-brickell-lift-lobby-01.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/lift-lobby-01.webp",
+        "alt": "1428 Brickell — lift lobby 01",
+        "order": 15
+      },
+      {
+        "id": "1428-brickell-lift-lobby-02.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/lift-lobby-02.webp",
+        "alt": "1428 Brickell — lift lobby 02",
+        "order": 16
+      },
+      {
+        "id": "1428-brickell-lobby-entrance-day.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/lobby-entrance-day.webp",
+        "alt": "1428 Brickell — lobby entrance day",
+        "order": 17
+      },
+      {
+        "id": "1428-brickell-lobby-entrance-night.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/lobby-entrance-night.webp",
+        "alt": "1428 Brickell — lobby entrance night",
+        "order": 18
+      },
+      {
+        "id": "1428-brickell-mail-room.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/mail-room.webp",
+        "alt": "1428 Brickell — mail room",
+        "order": 19
+      },
+      {
+        "id": "1428-brickell-pool-pavillion.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/pool-pavillion.webp",
+        "alt": "1428 Brickell — pool pavillion",
+        "order": 20
+      },
+      {
+        "id": "1428-brickell-private-dining-hummingbird.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/private-dining-hummingbird.webp",
+        "alt": "1428 Brickell — private dining hummingbird",
+        "order": 21
+      },
+      {
+        "id": "1428-brickell-private-dining-interior.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/private-dining-interior.webp",
+        "alt": "1428 Brickell — private dining interior",
+        "order": 22
+      },
+      {
+        "id": "1428-brickell-rooftop-atrium.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/rooftop-atrium.webp",
+        "alt": "1428 Brickell — rooftop atrium",
+        "order": 23
+      },
+      {
+        "id": "1428-brickell-rooftop-pool.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/rooftop-pool.webp",
+        "alt": "1428 Brickell — rooftop pool",
+        "order": 24
+      },
+      {
+        "id": "1428-brickell-spa.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/spa.webp",
+        "alt": "1428 Brickell — spa",
+        "order": 25
+      },
+      {
+        "id": "1428-brickell-street-looking-south.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/street-looking-south.webp",
+        "alt": "1428 Brickell — street looking south",
+        "order": 26
+      },
+      {
+        "id": "1428-brickell-unit-b-entrance.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-b-entrance.webp",
+        "alt": "1428 Brickell — unit b entrance",
+        "order": 27
+      },
+      {
+        "id": "1428-brickell-unit-b-kitchen.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-b-kitchen.webp",
+        "alt": "1428 Brickell — unit b kitchen",
+        "order": 28
+      },
+      {
+        "id": "1428-brickell-unit-b-staircase.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-b-staircase.webp",
+        "alt": "1428 Brickell — unit b staircase",
+        "order": 29
+      },
+      {
+        "id": "1428-brickell-unit-g-balcony.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-g-balcony.webp",
+        "alt": "1428 Brickell — unit g balcony",
+        "order": 30
+      },
+      {
+        "id": "1428-brickell-unit-g-kitchen-01.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-g-kitchen-01.webp",
+        "alt": "1428 Brickell — unit g kitchen 01",
+        "order": 31
+      },
+      {
+        "id": "1428-brickell-unit-g-kitchen-02.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-g-kitchen-02.webp",
+        "alt": "1428 Brickell — unit g kitchen 02",
+        "order": 32
+      },
+      {
+        "id": "1428-brickell-unit-g-living-day.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-g-living-day.webp",
+        "alt": "1428 Brickell — unit g living day",
+        "order": 33
+      },
+      {
+        "id": "1428-brickell-unit-g-living.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-g-living.webp",
+        "alt": "1428 Brickell — unit g living",
+        "order": 34
+      },
+      {
+        "id": "1428-brickell-unit-g-master-bathroom-01.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-g-master-bathroom-01.webp",
+        "alt": "1428 Brickell — unit g master bathroom 01",
+        "order": 35
+      },
+      {
+        "id": "1428-brickell-unit-g-master-bathroom-02.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-g-master-bathroom-02.webp",
+        "alt": "1428 Brickell — unit g master bathroom 02",
+        "order": 36
+      },
+      {
+        "id": "1428-brickell-unit-g-master-bedroom-01.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-g-master-bedroom-01.webp",
+        "alt": "1428 Brickell — unit g master bedroom 01",
+        "order": 37
+      },
+      {
+        "id": "1428-brickell-unit-g-master-bedroom-02.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-g-master-bedroom-02.webp",
+        "alt": "1428 Brickell — unit g master bedroom 02",
+        "order": 38
+      },
+      {
+        "id": "1428-brickell-unit-l-dining.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-l-dining.webp",
+        "alt": "1428 Brickell — unit l dining",
+        "order": 39
+      },
+      {
+        "id": "1428-brickell-unit-l-hummingbird.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-l-hummingbird.webp",
+        "alt": "1428 Brickell — unit l hummingbird",
+        "order": 40
+      },
+      {
+        "id": "1428-brickell-unit-l-kitchen.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-l-kitchen.webp",
+        "alt": "1428 Brickell — unit l kitchen",
+        "order": 41
+      },
+      {
+        "id": "1428-brickell-unit-l-livingroom-01.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-l-livingroom-01.webp",
+        "alt": "1428 Brickell — unit l livingroom 01",
+        "order": 42
+      },
+      {
+        "id": "1428-brickell-unit-l-livingroom-02.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/unit-l-livingroom-02.webp",
+        "alt": "1428 Brickell — unit l livingroom 02",
+        "order": 43
+      },
+      {
+        "id": "1428-brickell-wine-lounge.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/wine-lounge.webp",
+        "alt": "1428 Brickell — wine lounge",
+        "order": 44
+      },
+      {
+        "id": "1428-brickell-yoga-stage.webp",
+        "url": "/property-assets/brickell/1428-brickell/gallery/yoga-stage.webp",
+        "alt": "1428 Brickell — yoga stage",
+        "order": 45
+      }
+    ],
+    "resources": {
+      "floorplans": [
+        {
+          "name": "1428-penthouse",
+          "documentUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-penthouse.pdf",
+          "previewUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-penthouse.webp"
+        },
+        {
+          "name": "1428-residence-a-north",
+          "documentUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-a-north.pdf",
+          "previewUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-a-north.webp"
+        },
+        {
+          "name": "1428-residence-a-south",
+          "documentUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-a-south.pdf",
+          "previewUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-a-south.webp"
+        },
+        {
+          "name": "1428-residence-b",
+          "documentUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-b.pdf",
+          "previewUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-b.webp"
+        },
+        {
+          "name": "1428-residence-c-north",
+          "documentUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-c-north.pdf",
+          "previewUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-c-north.webp"
+        },
+        {
+          "name": "1428-residence-c-south",
+          "documentUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-c-south.pdf",
+          "previewUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-c-south.webp"
+        },
+        {
+          "name": "1428-residence-d-north",
+          "documentUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-d-north.pdf",
+          "previewUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-d-north.webp"
+        },
+        {
+          "name": "1428-residence-d-south",
+          "documentUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-d-south.pdf",
+          "previewUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-d-south.webp"
+        },
+        {
+          "name": "1428-residence-e-north",
+          "documentUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-e-north.pdf",
+          "previewUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-e-north.webp"
+        },
+        {
+          "name": "1428-residence-e-south",
+          "documentUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-e-south.pdf",
+          "previewUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-e-south.webp"
+        },
+        {
+          "name": "1428-residence-f-north",
+          "documentUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-f-north%20.pdf",
+          "previewUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-f-north%20.webp"
+        },
+        {
+          "name": "1428-residence-f-south",
+          "documentUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-f-south.pdf",
+          "previewUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-f-south.webp"
+        },
+        {
+          "name": "1428-residence-g",
+          "documentUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-g.pdf",
+          "previewUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-g.webp"
+        },
+        {
+          "name": "1428-residence-h",
+          "documentUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-h.pdf",
+          "previewUrl": "/property-assets/brickell/1428-brickell/floorplans/1428-residence-h.webp"
+        }
+      ],
+      "brochures": [
+        {
+          "name": "1428-brickell-brochure",
+          "url": "/property-assets/brickell/1428-brickell/brochure/1428-brickell-brochure.pdf"
+        },
+        {
+          "name": "buyer-schedule ",
+          "url": "/property-assets/brickell/1428-brickell/brochure/buyer-schedule%20.pdf"
+        }
+      ],
+      "galleryDocuments": []
+    },
+    "seo": {
+      "title": "1428 Brickell Residences Miami",
+      "description": "Luxury residences in Brickell Miami featuring private elevators, panoramic views and world-class amenities."
+    },
+    "assetBase": "brickell/1428-brickell",
+    "assetFiles": [
+      "gallery/hero-exterior-day.webp",
+      "gallery/cava.webp",
+      "gallery/cinema-room.webp",
+      "gallery/cochera-a.webp",
+      "gallery/cochera-b.webp",
+      "gallery/cochera-c.webp",
+      "gallery/entrance.webp",
+      "gallery/exterior-01.webp",
+      "gallery/exterior-02.webp",
+      "gallery/garden.webp",
+      "gallery/gym-floor.webp",
+      "gallery/hero-exterior-night.webp",
+      "gallery/kids-imaginarium.webp",
+      "gallery/library-lounge-01.webp",
+      "gallery/library-lounge-02.webp",
+      "gallery/lift-lobby-01.webp",
+      "gallery/lift-lobby-02.webp",
+      "gallery/lobby-entrance-day.webp",
+      "gallery/lobby-entrance-night.webp",
+      "gallery/mail-room.webp",
+      "gallery/pool-pavillion.webp",
+      "gallery/private-dining-hummingbird.webp",
+      "gallery/private-dining-interior.webp",
+      "gallery/rooftop-atrium.webp",
+      "gallery/rooftop-pool.webp",
+      "gallery/spa.webp",
+      "gallery/street-looking-south.webp",
+      "gallery/unit-b-entrance.webp",
+      "gallery/unit-b-kitchen.webp",
+      "gallery/unit-b-staircase.webp",
+      "gallery/unit-g-balcony.webp",
+      "gallery/unit-g-kitchen-01.webp",
+      "gallery/unit-g-kitchen-02.webp",
+      "gallery/unit-g-living-day.webp",
+      "gallery/unit-g-living.webp",
+      "gallery/unit-g-master-bathroom-01.webp",
+      "gallery/unit-g-master-bathroom-02.webp",
+      "gallery/unit-g-master-bedroom-01.webp",
+      "gallery/unit-g-master-bedroom-02.webp",
+      "gallery/unit-l-dining.webp",
+      "gallery/unit-l-hummingbird.webp",
+      "gallery/unit-l-kitchen.webp",
+      "gallery/unit-l-livingroom-01.webp",
+      "gallery/unit-l-livingroom-02.webp",
+      "gallery/wine-lounge.webp",
+      "gallery/yoga-stage.webp",
+      "floorplans/1428-penthouse.pdf",
+      "floorplans/1428-penthouse.webp",
+      "floorplans/1428-residence-a-north.pdf",
+      "floorplans/1428-residence-a-north.webp",
+      "floorplans/1428-residence-a-south.pdf",
+      "floorplans/1428-residence-a-south.webp",
+      "floorplans/1428-residence-b.pdf",
+      "floorplans/1428-residence-b.webp",
+      "floorplans/1428-residence-c-north.pdf",
+      "floorplans/1428-residence-c-north.webp",
+      "floorplans/1428-residence-c-south.pdf",
+      "floorplans/1428-residence-c-south.webp",
+      "floorplans/1428-residence-d-north.pdf",
+      "floorplans/1428-residence-d-north.webp",
+      "floorplans/1428-residence-d-south.pdf",
+      "floorplans/1428-residence-d-south.webp",
+      "floorplans/1428-residence-e-north.pdf",
+      "floorplans/1428-residence-e-north.webp",
+      "floorplans/1428-residence-e-south.pdf",
+      "floorplans/1428-residence-e-south.webp",
+      "floorplans/1428-residence-f-north .pdf",
+      "floorplans/1428-residence-f-north .webp",
+      "floorplans/1428-residence-f-south.pdf",
+      "floorplans/1428-residence-f-south.webp",
+      "floorplans/1428-residence-g.pdf",
+      "floorplans/1428-residence-g.webp",
+      "floorplans/1428-residence-h.pdf",
+      "floorplans/1428-residence-h.webp",
+      "brochure/1428-brickell-brochure.pdf",
+      "brochure/buyer-schedule .pdf"
+    ]
+  },
+  {
+    "id": "catalog-cipriani-residences",
+    "slug": "cipriani-residences",
+    "title": "Cipriani Residences Miami",
+    "description": "Luxury waterfront residences in Brickell Miami.",
+    "price": 0,
+    "address": "1420 South Miami Avenue",
+    "city": "Miami",
+    "state": "Florida",
+    "zipCode": "",
+    "latitude": 25.7604,
+    "longitude": -80.1939,
+    "bedrooms": 4,
+    "bathrooms": 0,
+    "squareFeet": 0,
+    "yearBuilt": 2028,
+    "type": "RESIDENTIAL",
+    "status": "ACTIVE",
+    "amenities": [
+      "Signature Cipriani Services",
+      "Private Dining",
+      "Resort Pools",
+      "Wellness Center",
+      "Spa",
+      "Fitness Center",
+      "Library Lounge",
+      "Wine Lounge",
+      "Pickleball Court",
+      "Golf Simulator"
+    ],
+    "features": "Cipriani Residences Miami brings the legendary Italian hospitality brand to the center of Brickell.\r\n\r\nDesigned by Arquitectonica with interiors by 1508 London, the tower rises above Miami’s financial district offering expansive residences with sweeping views of Biscayne Bay, Simpson Park, and the Brickell skyline.\r\n\r\nInspired by nearly a century of Cipriani heritage, every residence reflects timeless design, elevated service, and effortless luxury.\r\n\r\nResidents enjoy signature Cipriani hospitality, private dining experiences, wellness amenities, resort-style pools, and personalized concierge services.\r\n\r\nHighlights:\r\n\r\nArchitecture by Arquitectonica\r\nInteriors by 1508 London\r\nSignature Cipriani services\r\nResort-style amenities\r\nPanoramic Bay and Skyline views\r\nPrivate dining experiences\r\nPrime Brickell location",
+    "images": [
+      {
+        "id": "cipriani-residences-cipriani-residences-miami-building.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-miami-building.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences miami building",
+        "order": 0
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-arrival.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-arrival.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences arrival",
+        "order": 1
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-balcony-to-living.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-balcony-to-living.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences balcony to living",
+        "order": 2
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-gym.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-gym.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences gym",
+        "order": 3
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-hummingbird-south.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-hummingbird-south.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences hummingbird south",
+        "order": 4
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-kitchen.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-kitchen.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences kitchen",
+        "order": 5
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-library.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-library.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences library",
+        "order": 6
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-living-balcony.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-living-balcony.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences living balcony",
+        "order": 7
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-living.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-living.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences living",
+        "order": 8
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-lobby-ext.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-lobby-ext.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences lobby ext",
+        "order": 9
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-lobby.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-lobby.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences lobby",
+        "order": 10
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-lounge.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-lounge.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences lounge",
+        "order": 11
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-master-bath.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-master-bath.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences master bath",
+        "order": 12
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-master-bedroom.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-master-bedroom.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences master bedroom",
+        "order": 13
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-miami-aerial-pool.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-miami-aerial-pool.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences miami aerial pool",
+        "order": 14
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-miami-building-labeled.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-miami-building-labeled.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences miami building labeled",
+        "order": 15
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-miami-ext-view.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-miami-ext-view.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences miami ext view",
+        "order": 16
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-miami-hummingbird.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-miami-hummingbird.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences miami hummingbird",
+        "order": 17
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-miami-pool.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-miami-pool.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences miami pool",
+        "order": 18
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-miami-restaurant.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-miami-restaurant.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences miami restaurant",
+        "order": 19
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-reception.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-reception.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences reception",
+        "order": 20
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-spa.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-spa.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences spa",
+        "order": 21
+      },
+      {
+        "id": "cipriani-residences-cipriani-residences-speakeasy.webp",
+        "url": "/property-assets/brickell/cipriani-residences/gallery/cipriani-residences-speakeasy.webp",
+        "alt": "Cipriani Residences Miami — cipriani residences speakeasy",
+        "order": 22
+      }
+    ],
+    "resources": {
+      "floorplans": [
+        {
+          "name": "ph-01",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/ph-01.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/ph-01.webp"
+        },
+        {
+          "name": "ph-02",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/ph-02.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/ph-02.webp"
+        },
+        {
+          "name": "ph-03",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/ph-03.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/ph-03.webp"
+        },
+        {
+          "name": "ph-04",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/ph-04.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/ph-04.webp"
+        },
+        {
+          "name": "ph-05",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/ph-05.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/ph-05.webp"
+        },
+        {
+          "name": "ph-06",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/ph-06.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/ph-06.webp"
+        },
+        {
+          "name": "residence-01-a",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-01-a.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-01-a.webp"
+        },
+        {
+          "name": "residence-01-b",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-01-b.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-01-b.webp"
+        },
+        {
+          "name": "residence-01-d",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-01-d.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-01-d.webp"
+        },
+        {
+          "name": "residence-01-e",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-01-e.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-01-e.webp"
+        },
+        {
+          "name": "residence-01",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-01.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-01.webp"
+        },
+        {
+          "name": "residence-02-b",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-02-b.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-02-b.webp"
+        },
+        {
+          "name": "residence-02-d",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-02-d.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-02-d.webp"
+        },
+        {
+          "name": "residence-02-e",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-02-e.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-02-e.webp"
+        },
+        {
+          "name": "residence-02",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-02.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-02.webp"
+        },
+        {
+          "name": "residence-03-b",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-03-b.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-03-b.webp"
+        },
+        {
+          "name": "residence-03-d",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-03-d.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-03-d.webp"
+        },
+        {
+          "name": "residence-03-e",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-03-e.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-03-e.webp"
+        },
+        {
+          "name": "residence-03",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-03.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-03.webp"
+        },
+        {
+          "name": "residence-04-b",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-04-b.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-04-b.webp"
+        },
+        {
+          "name": "residence-04-c",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-04-c.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-04-c.webp"
+        },
+        {
+          "name": "residence-04-d",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-04-d.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-04-d.webp"
+        },
+        {
+          "name": "residence-04-e",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-04-e.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-04-e.webp"
+        },
+        {
+          "name": "residence-04",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-04.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-04.webp"
+        },
+        {
+          "name": "residence-05-a",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-05-a.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-05-a.webp"
+        },
+        {
+          "name": "residence-05-b",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-05-b.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-05-b.webp"
+        },
+        {
+          "name": "residence-05-d",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-05-d.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-05-d.webp"
+        },
+        {
+          "name": "residence-05",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-05.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-05.webp"
+        },
+        {
+          "name": "residence-06-a",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-06-a.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-06-a.webp"
+        },
+        {
+          "name": "residence-06-b",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-06-b.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-06-b.webp"
+        },
+        {
+          "name": "residence-06-d",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-06-d.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-06-d.webp"
+        },
+        {
+          "name": "residence-06",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-06.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-06.webp"
+        },
+        {
+          "name": "residence-07-a",
+          "documentUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-07-a.pdf",
+          "previewUrl": "/property-assets/brickell/cipriani-residences/floorplans/residence-07-a.webp"
+        }
+      ],
+      "brochures": [
+        {
+          "name": "cipriani-brochure ",
+          "url": "/property-assets/brickell/cipriani-residences/brochure/cipriani-brochure%20.pdf"
+        },
+        {
+          "name": "deposit-schedule",
+          "url": "/property-assets/brickell/cipriani-residences/brochure/deposit-schedule.pdf"
+        }
+      ],
+      "galleryDocuments": []
+    },
+    "seo": {
+      "title": "Cipriani Residences Miami",
+      "description": "Luxury waterfront residences in Brickell Miami."
+    },
+    "assetBase": "brickell/cipriani-residences",
+    "assetFiles": [
+      "gallery/cipriani-residences-miami-building.webp",
+      "gallery/cipriani-residences-arrival.webp",
+      "gallery/cipriani-residences-balcony-to-living.webp",
+      "gallery/cipriani-residences-gym.webp",
+      "gallery/cipriani-residences-hummingbird-south.webp",
+      "gallery/cipriani-residences-kitchen.webp",
+      "gallery/cipriani-residences-library.webp",
+      "gallery/cipriani-residences-living-balcony.webp",
+      "gallery/cipriani-residences-living.webp",
+      "gallery/cipriani-residences-lobby-ext.webp",
+      "gallery/cipriani-residences-lobby.webp",
+      "gallery/cipriani-residences-lounge.webp",
+      "gallery/cipriani-residences-master-bath.webp",
+      "gallery/cipriani-residences-master-bedroom.webp",
+      "gallery/cipriani-residences-miami-aerial-pool.webp",
+      "gallery/cipriani-residences-miami-building-labeled.webp",
+      "gallery/cipriani-residences-miami-ext-view.webp",
+      "gallery/cipriani-residences-miami-hummingbird.webp",
+      "gallery/cipriani-residences-miami-pool.webp",
+      "gallery/cipriani-residences-miami-restaurant.webp",
+      "gallery/cipriani-residences-reception.webp",
+      "gallery/cipriani-residences-spa.webp",
+      "gallery/cipriani-residences-speakeasy.webp",
+      "floorplans/ph-01.pdf",
+      "floorplans/ph-01.webp",
+      "floorplans/ph-02.pdf",
+      "floorplans/ph-02.webp",
+      "floorplans/ph-03.pdf",
+      "floorplans/ph-03.webp",
+      "floorplans/ph-04.pdf",
+      "floorplans/ph-04.webp",
+      "floorplans/ph-05.pdf",
+      "floorplans/ph-05.webp",
+      "floorplans/ph-06.pdf",
+      "floorplans/ph-06.webp",
+      "floorplans/residence-01-a.pdf",
+      "floorplans/residence-01-a.webp",
+      "floorplans/residence-01-b.pdf",
+      "floorplans/residence-01-b.webp",
+      "floorplans/residence-01-d.pdf",
+      "floorplans/residence-01-d.webp",
+      "floorplans/residence-01-e.pdf",
+      "floorplans/residence-01-e.webp",
+      "floorplans/residence-01.pdf",
+      "floorplans/residence-01.webp",
+      "floorplans/residence-02-b.pdf",
+      "floorplans/residence-02-b.webp",
+      "floorplans/residence-02-d.pdf",
+      "floorplans/residence-02-d.webp",
+      "floorplans/residence-02-e.pdf",
+      "floorplans/residence-02-e.webp",
+      "floorplans/residence-02.pdf",
+      "floorplans/residence-02.webp",
+      "floorplans/residence-03-b.pdf",
+      "floorplans/residence-03-b.webp",
+      "floorplans/residence-03-d.pdf",
+      "floorplans/residence-03-d.webp",
+      "floorplans/residence-03-e.pdf",
+      "floorplans/residence-03-e.webp",
+      "floorplans/residence-03.pdf",
+      "floorplans/residence-03.webp",
+      "floorplans/residence-04-b.pdf",
+      "floorplans/residence-04-b.webp",
+      "floorplans/residence-04-c.pdf",
+      "floorplans/residence-04-c.webp",
+      "floorplans/residence-04-d.pdf",
+      "floorplans/residence-04-d.webp",
+      "floorplans/residence-04-e.pdf",
+      "floorplans/residence-04-e.webp",
+      "floorplans/residence-04.pdf",
+      "floorplans/residence-04.webp",
+      "floorplans/residence-05-a.pdf",
+      "floorplans/residence-05-a.webp",
+      "floorplans/residence-05-b.pdf",
+      "floorplans/residence-05-b.webp",
+      "floorplans/residence-05-d.pdf",
+      "floorplans/residence-05-d.webp",
+      "floorplans/residence-05.pdf",
+      "floorplans/residence-05.webp",
+      "floorplans/residence-06-a.pdf",
+      "floorplans/residence-06-a.webp",
+      "floorplans/residence-06-b.pdf",
+      "floorplans/residence-06-b.webp",
+      "floorplans/residence-06-d.pdf",
+      "floorplans/residence-06-d.webp",
+      "floorplans/residence-06.pdf",
+      "floorplans/residence-06.webp",
+      "floorplans/residence-07-a.pdf",
+      "floorplans/residence-07-a.webp",
+      "brochure/cipriani-brochure .pdf",
+      "brochure/deposit-schedule.pdf"
+    ]
+  },
+  {
+    "id": "catalog-mandarin-oriental-residences",
+    "slug": "mandarin-oriental-residences",
+    "title": "The Residences at Mandarin Oriental, Miami",
+    "description": "Waterfront residences on Brickell Key with Mandarin Oriental service and panoramic Miami views.",
+    "price": 0,
+    "address": "500 Brickell Key Drive, Miami, FL 33131",
+    "city": "Miami",
+    "state": "Florida",
+    "zipCode": "",
+    "latitude": 25.764994,
+    "longitude": -80.185166,
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "squareFeet": 0,
+    "type": "RESIDENTIAL",
+    "status": "ACTIVE",
+    "amenities": [],
+    "images": [
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-hero.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-hero.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami hero",
+        "order": 0
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-arrival-2.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-arrival-2.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami arrival 2",
+        "order": 1
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-bathroom-sauna.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-bathroom-sauna.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami bathroom sauna",
+        "order": 2
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-great-room-col-2-unit-3.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-great-room-col-2-unit-3.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami great room col 2 unit 3",
+        "order": 3
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-great-room-col-4-unit-1.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-great-room-col-4-unit-1.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami great room col 4 unit 1",
+        "order": 4
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-kitchen-cool-pallette.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-kitchen-cool-pallette.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami kitchen cool pallette",
+        "order": 5
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-kitchen-warm-pallette.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-kitchen-warm-pallette.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami kitchen warm pallette",
+        "order": 6
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-lagoon-pool.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-lagoon-pool.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami lagoon pool",
+        "order": 7
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-night-hero.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-night-hero.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami night hero",
+        "order": 8
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-ocean-pool.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-ocean-pool.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami ocean pool",
+        "order": 9
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-ph-crowd.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-ph-crowd.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami ph crowd",
+        "order": 10
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-ph-pool.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-ph-pool.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami ph pool",
+        "order": 11
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-pool.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-pool.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami pool",
+        "order": 12
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-primary-bedroom-col-4-unit-2.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-primary-bedroom-col-4-unit-2.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami primary bedroom col 4 unit 2",
+        "order": 13
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-south-tower-arrival.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-south-tower-arrival.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami south tower arrival",
+        "order": 14
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-tea-pavillion.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-tea-pavillion.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami tea pavillion",
+        "order": 15
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-terrace-sunrise.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-terrace-sunrise.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami terrace sunrise",
+        "order": 16
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-terrace.dusk.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-terrace.dusk.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami terrace.dusk",
+        "order": 17
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-terrace.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-terrace.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami terrace",
+        "order": 18
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-tub.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-tub.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami tub",
+        "order": 19
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-upward-hero.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-upward-hero.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami upward hero",
+        "order": 20
+      },
+      {
+        "id": "mandarin-oriental-residences-mandarin-oriental-miami-wet-room.webp",
+        "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-wet-room.webp",
+        "alt": "The Residences at Mandarin Oriental, Miami — mandarin oriental miami wet room",
+        "order": 21
+      }
+    ],
+    "resources": {
+      "floorplans": [
+        {
+          "name": "091024 Collection I, Residence 01",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20I%2C%20Residence%2001.pdf"
+        },
+        {
+          "name": "091024 Collection I, Residence 02",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20I%2C%20Residence%2002.pdf"
+        },
+        {
+          "name": "091024 Collection I, Residence 03",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20I%2C%20Residence%2003.pdf"
+        },
+        {
+          "name": "091024 Collection I, Residence 04",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20I%2C%20Residence%2004.pdf"
+        },
+        {
+          "name": "091024 Collection I, Residence 05",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20I%2C%20Residence%2005.pdf"
+        },
+        {
+          "name": "091024 Collection II, Residence 01",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20II%2C%20Residence%2001.pdf"
+        },
+        {
+          "name": "091024 Collection II, Residence 02",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20II%2C%20Residence%2002.pdf"
+        },
+        {
+          "name": "091024 Collection II, Residence 03",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20II%2C%20Residence%2003.pdf"
+        },
+        {
+          "name": "091024 Collection II, Residence 04",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20II%2C%20Residence%2004.pdf"
+        },
+        {
+          "name": "091024 Collection III, Residence 01",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20III%2C%20Residence%2001.pdf"
+        },
+        {
+          "name": "091024 Collection III, Residence 02",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20III%2C%20Residence%2002.pdf"
+        },
+        {
+          "name": "091024 Collection III, Residence 03",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20III%2C%20Residence%2003.pdf"
+        },
+        {
+          "name": "091024 Collection IV, Residence 01",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20IV%2C%20Residence%2001.pdf"
+        },
+        {
+          "name": "091024 Collection IV, Residence 02",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20IV%2C%20Residence%2002.pdf"
+        },
+        {
+          "name": "091024 Collection IV, Residence 6101",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20IV%2C%20Residence%206101.pdf"
+        },
+        {
+          "name": "091024 Collection IV, Residence 6102",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/091024%20Collection%20IV%2C%20Residence%206102.pdf"
+        },
+        {
+          "name": "100824 Collection III, Residence 4801",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/100824%20Collection%20III%2C%20Residence%204801.pdf"
+        },
+        {
+          "name": "100824 Collection III, Residence 4802",
+          "documentUrl": "/property-assets/brickell/mandarin-oriental-residences/floorplans/100824%20Collection%20III%2C%20Residence%204802.pdf"
+        }
+      ],
+      "brochures": [
+        {
+          "name": "brochure",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/brochure/brochure.pdf"
+        }
+      ],
+      "galleryDocuments": [
+        {
+          "name": "mandarin-oriental-miami-arrival-2",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-arrival-2.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-bathroom-sauna",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-bathroom-sauna.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-great-room-col-2-unit-3",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-great-room-col-2-unit-3.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-great-room-col-4-unit-1",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-great-room-col-4-unit-1.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-hero",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-hero.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-kitchen-cool-pallette",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-kitchen-cool-pallette.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-kitchen-warm-pallette",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-kitchen-warm-pallette.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-lagoon-pool",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-lagoon-pool.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-night-hero",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-night-hero.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-ocean-pool",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-ocean-pool.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-ph-crowd",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-ph-crowd.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-ph-pool",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-ph-pool.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-pool",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-pool.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-primary-bedroom-col-4-unit-2",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-primary-bedroom-col-4-unit-2.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-south-tower-arrival",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-south-tower-arrival.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-tea-pavillion",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-tea-pavillion.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-terrace-sunrise",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-terrace-sunrise.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-terrace.dusk",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-terrace.dusk.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-terrace",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-terrace.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-tub",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-tub.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-upward-hero",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-upward-hero.pdf"
+        },
+        {
+          "name": "mandarin-oriental-miami-wet-room",
+          "url": "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-wet-room.pdf"
+        }
+      ]
+    },
+    "seo": {
+      "title": "The Residences at Mandarin Oriental, Miami",
+      "description": "Waterfront residences on Brickell Key with Mandarin Oriental service and panoramic Miami views."
+    },
+    "assetBase": "brickell/mandarin-oriental-residences",
+    "assetFiles": [
+      "gallery/mandarin-oriental-miami-hero.webp",
+      "gallery/mandarin-oriental-miami-arrival-2.webp",
+      "gallery/mandarin-oriental-miami-bathroom-sauna.webp",
+      "gallery/mandarin-oriental-miami-great-room-col-2-unit-3.webp",
+      "gallery/mandarin-oriental-miami-great-room-col-4-unit-1.webp",
+      "gallery/mandarin-oriental-miami-kitchen-cool-pallette.webp",
+      "gallery/mandarin-oriental-miami-kitchen-warm-pallette.webp",
+      "gallery/mandarin-oriental-miami-lagoon-pool.webp",
+      "gallery/mandarin-oriental-miami-night-hero.webp",
+      "gallery/mandarin-oriental-miami-ocean-pool.webp",
+      "gallery/mandarin-oriental-miami-ph-crowd.webp",
+      "gallery/mandarin-oriental-miami-ph-pool.webp",
+      "gallery/mandarin-oriental-miami-pool.webp",
+      "gallery/mandarin-oriental-miami-primary-bedroom-col-4-unit-2.webp",
+      "gallery/mandarin-oriental-miami-south-tower-arrival.webp",
+      "gallery/mandarin-oriental-miami-tea-pavillion.webp",
+      "gallery/mandarin-oriental-miami-terrace-sunrise.webp",
+      "gallery/mandarin-oriental-miami-terrace.dusk.webp",
+      "gallery/mandarin-oriental-miami-terrace.webp",
+      "gallery/mandarin-oriental-miami-tub.webp",
+      "gallery/mandarin-oriental-miami-upward-hero.webp",
+      "gallery/mandarin-oriental-miami-wet-room.webp",
+      "floorplans/091024 Collection I, Residence 01.pdf",
+      "floorplans/091024 Collection I, Residence 02.pdf",
+      "floorplans/091024 Collection I, Residence 03.pdf",
+      "floorplans/091024 Collection I, Residence 04.pdf",
+      "floorplans/091024 Collection I, Residence 05.pdf",
+      "floorplans/091024 Collection II, Residence 01.pdf",
+      "floorplans/091024 Collection II, Residence 02.pdf",
+      "floorplans/091024 Collection II, Residence 03.pdf",
+      "floorplans/091024 Collection II, Residence 04.pdf",
+      "floorplans/091024 Collection III, Residence 01.pdf",
+      "floorplans/091024 Collection III, Residence 02.pdf",
+      "floorplans/091024 Collection III, Residence 03.pdf",
+      "floorplans/091024 Collection IV, Residence 01.pdf",
+      "floorplans/091024 Collection IV, Residence 02.pdf",
+      "floorplans/091024 Collection IV, Residence 6101.pdf",
+      "floorplans/091024 Collection IV, Residence 6102.pdf",
+      "floorplans/100824 Collection III, Residence 4801.pdf",
+      "floorplans/100824 Collection III, Residence 4802.pdf",
+      "brochure/brochure.pdf",
+      "gallery/mandarin-oriental-miami-arrival-2.pdf",
+      "gallery/mandarin-oriental-miami-bathroom-sauna.pdf",
+      "gallery/mandarin-oriental-miami-great-room-col-2-unit-3.pdf",
+      "gallery/mandarin-oriental-miami-great-room-col-4-unit-1.pdf",
+      "gallery/mandarin-oriental-miami-hero.pdf",
+      "gallery/mandarin-oriental-miami-kitchen-cool-pallette.pdf",
+      "gallery/mandarin-oriental-miami-kitchen-warm-pallette.pdf",
+      "gallery/mandarin-oriental-miami-lagoon-pool.pdf",
+      "gallery/mandarin-oriental-miami-night-hero.pdf",
+      "gallery/mandarin-oriental-miami-ocean-pool.pdf",
+      "gallery/mandarin-oriental-miami-ph-crowd.pdf",
+      "gallery/mandarin-oriental-miami-ph-pool.pdf",
+      "gallery/mandarin-oriental-miami-pool.pdf",
+      "gallery/mandarin-oriental-miami-primary-bedroom-col-4-unit-2.pdf",
+      "gallery/mandarin-oriental-miami-south-tower-arrival.pdf",
+      "gallery/mandarin-oriental-miami-tea-pavillion.pdf",
+      "gallery/mandarin-oriental-miami-terrace-sunrise.pdf",
+      "gallery/mandarin-oriental-miami-terrace.dusk.pdf",
+      "gallery/mandarin-oriental-miami-terrace.pdf",
+      "gallery/mandarin-oriental-miami-tub.pdf",
+      "gallery/mandarin-oriental-miami-upward-hero.pdf",
+      "gallery/mandarin-oriental-miami-wet-room.pdf"
+    ]
+  },
+  {
+    "id": "catalog-st-regis-residences",
+    "slug": "st-regis-residences",
+    "title": "St. Regis Residences Miami",
+    "description": "Ultra-luxury waterfront residences in Brickell featuring expansive floorplans, private elevators, St. Regis services, and panoramic Biscayne Bay views.",
+    "price": 0,
+    "address": "1809 Brickell Avenue, Miami, FL 33129",
+    "city": "Miami",
+    "state": "Florida",
+    "zipCode": "",
+    "latitude": 25.755757,
+    "longitude": -80.196013,
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "squareFeet": 0,
+    "type": "RESIDENTIAL",
+    "status": "ACTIVE",
+    "amenities": [
+      "Private elevator entry",
+      "Floor-to-ceiling glass",
+      "Waterfront location",
+      "Expansive terraces",
+      "Italian crafted kitchens",
+      "Wolf appliances",
+      "Sub-Zero refrigeration",
+      "Dornbracht fixtures",
+      "St. Regis services",
+      "Bay views"
+    ],
+    "features": "St. Regis Residences Miami\r\n\r\nLocated directly on Biscayne Bay in the heart of Brickell, St. Regis Residences Miami redefines luxury waterfront living through timeless design, expansive residences, and legendary St. Regis hospitality.\r\n\r\nCreated as a design-driven residential collection, the project combines refined architecture, private residential amenities, curated services, and panoramic water views to deliver one of Miami's most prestigious residential addresses.\r\n\r\nEach residence has been conceived as a seamless extension of indoor and outdoor living, featuring oversized terraces, floor-to-ceiling glass, and private elevator access.",
+    "images": [
+      {
+        "id": "st-regis-residences-balcony-view.webp",
+        "url": "/property-assets/brickell/st-regis-residences/gallery/balcony-view.webp",
+        "alt": "St. Regis Residences Miami — balcony view",
+        "order": 0
+      },
+      {
+        "id": "st-regis-residences-ph-family-room.webp",
+        "url": "/property-assets/brickell/st-regis-residences/gallery/ph-family-room.webp",
+        "alt": "St. Regis Residences Miami — ph family room",
+        "order": 1
+      },
+      {
+        "id": "st-regis-residences-ph-living-room.webp",
+        "url": "/property-assets/brickell/st-regis-residences/gallery/ph-living-room.webp",
+        "alt": "St. Regis Residences Miami — ph living room",
+        "order": 2
+      },
+      {
+        "id": "st-regis-residences-ph-pool-terrace.webp",
+        "url": "/property-assets/brickell/st-regis-residences/gallery/ph-pool-terrace.webp",
+        "alt": "St. Regis Residences Miami — ph pool terrace",
+        "order": 3
+      }
+    ],
+    "resources": {
+      "floorplans": [],
+      "brochures": [
+        {
+          "name": "butler-service",
+          "url": "/property-assets/brickell/st-regis-residences/brochure/butler-service.pdf"
+        },
+        {
+          "name": "deposit-schedule",
+          "url": "/property-assets/brickell/st-regis-residences/brochure/deposit-schedule.pdf"
+        },
+        {
+          "name": "listofservices",
+          "url": "/property-assets/brickell/st-regis-residences/brochure/listofservices.pdf"
+        },
+        {
+          "name": "price-ranges",
+          "url": "/property-assets/brickell/st-regis-residences/brochure/price-ranges.pdf"
+        },
+        {
+          "name": "reservantion-benefits",
+          "url": "/property-assets/brickell/st-regis-residences/brochure/reservantion-benefits.pdf"
+        },
+        {
+          "name": "residences-brochure ",
+          "url": "/property-assets/brickell/st-regis-residences/brochure/residences-brochure%20.pdf"
+        },
+        {
+          "name": "villas-brochure",
+          "url": "/property-assets/brickell/st-regis-residences/brochure/villas-brochure.pdf"
+        }
+      ],
+      "galleryDocuments": []
+    },
+    "seo": {
+      "title": "St. Regis Residences Miami",
+      "description": "Ultra-luxury waterfront residences in Brickell featuring expansive floorplans, private elevators, St. Regis services, and panoramic Biscayne Bay views."
+    },
+    "assetBase": "brickell/st-regis-residences",
+    "assetFiles": [
+      "gallery/balcony-view.webp",
+      "gallery/ph-family-room.webp",
+      "gallery/ph-living-room.webp",
+      "gallery/ph-pool-terrace.webp",
+      "brochure/butler-service.pdf",
+      "brochure/deposit-schedule.pdf",
+      "brochure/listofservices.pdf",
+      "brochure/price-ranges.pdf",
+      "brochure/reservantion-benefits.pdf",
+      "brochure/residences-brochure .pdf",
+      "brochure/villas-brochure.pdf"
+    ]
+  },
+  {
+    "id": "catalog-viceroy-brickell",
+    "slug": "viceroy-brickell",
+    "title": "Viceroy Brickell Residences",
+    "description": "title: 1428 Brickell\r\n\r\nlocation: Brickell, Miami\r\n\r\nheadline: The First Solar-Powered Luxury Skyscraper\r\n\r\nsubtitle: A new icon rises over Miami's skyline.\r\n\r\nprimary_cta: Request Information\r\n\r\nsecondary_cta: Download Brochure",
+    "price": 0,
+    "address": "77 SE 5th Street",
+    "city": "Miami",
+    "state": "Florida",
+    "zipCode": "",
+    "latitude": 25.7693,
+    "longitude": -80.1908,
+    "bedrooms": 2,
+    "bathrooms": 0,
+    "squareFeet": 0,
+    "yearBuilt": 2026,
+    "type": "RESIDENTIAL",
+    "status": "ACTIVE",
+    "amenities": [
+      "Viceroy Hotel Services",
+      "Resort Pool",
+      "Wellness Center",
+      "Spa",
+      "Fitness Center",
+      "Wine Salon",
+      "Screening Room",
+      "F1 Simulator",
+      "Business Center",
+      "Grand Bay Beach Club Membership"
+    ],
+    "features": "title: 1428 Brickell\r\n\r\nlocation: Brickell, Miami\r\n\r\nheadline: The First Solar-Powered Luxury Skyscraper\r\n\r\nsubtitle: A new icon rises over Miami's skyline.\r\n\r\nprimary_cta: Request Information\r\n\r\nsecondary_cta: Download Brochure",
+    "images": [
+      {
+        "id": "viceroy-brickell-page-01.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/page-01.webp",
+        "alt": "Viceroy Brickell Residences — page 01",
+        "order": 0
+      },
+      {
+        "id": "viceroy-brickell-page-02.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/page-02.webp",
+        "alt": "Viceroy Brickell Residences — page 02",
+        "order": 1
+      },
+      {
+        "id": "viceroy-brickell-page-03.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/page-03.webp",
+        "alt": "Viceroy Brickell Residences — page 03",
+        "order": 2
+      },
+      {
+        "id": "viceroy-brickell-page-04.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/page-04.webp",
+        "alt": "Viceroy Brickell Residences — page 04",
+        "order": 3
+      },
+      {
+        "id": "viceroy-brickell-page-05.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/page-05.webp",
+        "alt": "Viceroy Brickell Residences — page 05",
+        "order": 4
+      },
+      {
+        "id": "viceroy-brickell-page-06.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/page-06.webp",
+        "alt": "Viceroy Brickell Residences — page 06",
+        "order": 5
+      },
+      {
+        "id": "viceroy-brickell-page-07.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/page-07.webp",
+        "alt": "Viceroy Brickell Residences — page 07",
+        "order": 6
+      },
+      {
+        "id": "viceroy-brickell-page-08.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/page-08.webp",
+        "alt": "Viceroy Brickell Residences — page 08",
+        "order": 7
+      },
+      {
+        "id": "viceroy-brickell-page-09.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/page-09.webp",
+        "alt": "Viceroy Brickell Residences — page 09",
+        "order": 8
+      },
+      {
+        "id": "viceroy-brickell-page-10.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/page-10.webp",
+        "alt": "Viceroy Brickell Residences — page 10",
+        "order": 9
+      },
+      {
+        "id": "viceroy-brickell-viceroy-bedroom-balcony-se-day.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/viceroy-bedroom-balcony-se-day.webp",
+        "alt": "Viceroy Brickell Residences — viceroy bedroom balcony se day",
+        "order": 10
+      },
+      {
+        "id": "viceroy-brickell-viceroy-halo-rendering-panorama-nw-day.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/viceroy-halo-rendering-panorama-nw-day.webp",
+        "alt": "Viceroy Brickell Residences — viceroy halo rendering panorama nw day",
+        "order": 11
+      },
+      {
+        "id": "viceroy-brickell-viceroy-halo-rendering-panorama-water-sunset.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/viceroy-halo-rendering-panorama-water-sunset.webp",
+        "alt": "Viceroy Brickell Residences — viceroy halo rendering panorama water sunset",
+        "order": 12
+      },
+      {
+        "id": "viceroy-brickell-viceroy-north-facade-ne-view-dusk.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/viceroy-north-facade-ne-view-dusk.webp",
+        "alt": "Viceroy Brickell Residences — viceroy north facade ne view dusk",
+        "order": 13
+      },
+      {
+        "id": "viceroy-brickell-viceroy-residence-01.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/viceroy-residence-01.webp",
+        "alt": "Viceroy Brickell Residences — viceroy residence 01",
+        "order": 14
+      },
+      {
+        "id": "viceroy-brickell-viceroy-residence-02.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/viceroy-residence-02.webp",
+        "alt": "Viceroy Brickell Residences — viceroy residence 02",
+        "order": 15
+      },
+      {
+        "id": "viceroy-brickell-viceroy-south-facade-se-day-view.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/viceroy-south-facade-se-day-view.webp",
+        "alt": "Viceroy Brickell Residences — viceroy south facade se day view",
+        "order": 16
+      },
+      {
+        "id": "viceroy-brickell-viceroy-south-facade-view-dusk.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/viceroy-south-facade-view-dusk.webp",
+        "alt": "Viceroy Brickell Residences — viceroy south facade view dusk",
+        "order": 17
+      },
+      {
+        "id": "viceroy-brickell-viceroy-tower-looking-up.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/viceroy-tower-looking-up.webp",
+        "alt": "Viceroy Brickell Residences — viceroy tower looking up",
+        "order": 18
+      },
+      {
+        "id": "viceroy-brickell-viceroy-tower-south-facade-baccarat.webp",
+        "url": "/property-assets/brickell/viceroy-brickell/gallery/viceroy-tower-south-facade-baccarat.webp",
+        "alt": "Viceroy Brickell Residences — viceroy tower south facade baccarat",
+        "order": 19
+      }
+    ],
+    "resources": {
+      "floorplans": [],
+      "brochures": [
+        {
+          "name": "Brochure-FloorPlans",
+          "url": "/property-assets/brickell/viceroy-brickell/brochure/Brochure-FloorPlans.pdf"
+        }
+      ],
+      "galleryDocuments": []
+    },
+    "seo": {
+      "title": "Viceroy Brickell Residences",
+      "description": "title: 1428 Brickell\r\n\r\nlocation: Brickell, Miami\r\n\r\nheadline: The First Solar-Powered Luxury Skyscraper\r\n\r\nsubtitle: A new icon rises over Miami's skyline.\r\n\r\nprimary_cta: Request Information\r\n\r\nsecondary_cta: Download Brochure"
+    },
+    "assetBase": "brickell/viceroy-brickell",
+    "assetFiles": [
+      "gallery/page-01.webp",
+      "gallery/page-02.webp",
+      "gallery/page-03.webp",
+      "gallery/page-04.webp",
+      "gallery/page-05.webp",
+      "gallery/page-06.webp",
+      "gallery/page-07.webp",
+      "gallery/page-08.webp",
+      "gallery/page-09.webp",
+      "gallery/page-10.webp",
+      "gallery/viceroy-bedroom-balcony-se-day.webp",
+      "gallery/viceroy-halo-rendering-panorama-nw-day.webp",
+      "gallery/viceroy-halo-rendering-panorama-water-sunset.webp",
+      "gallery/viceroy-north-facade-ne-view-dusk.webp",
+      "gallery/viceroy-residence-01.webp",
+      "gallery/viceroy-residence-02.webp",
+      "gallery/viceroy-south-facade-se-day-view.webp",
+      "gallery/viceroy-south-facade-view-dusk.webp",
+      "gallery/viceroy-tower-looking-up.webp",
+      "gallery/viceroy-tower-south-facade-baccarat.webp",
+      "brochure/Brochure-FloorPlans.pdf"
+    ]
+  },
+  {
+    "id": "catalog-jem-world-center",
+    "slug": "jem-world-center",
+    "title": "JEM Private Residences",
+    "description": "Discover JEM Private Residences at Miami Worldcenter, offering luxury residences, premium amenities, contemporary design, and an exceptional Downtown Miami lifestyle.",
+    "price": 0,
+    "address": "1016 NE 2nd Avenue, Miami, FL 33132",
+    "city": "Miami",
+    "state": "Florida",
+    "zipCode": "",
+    "latitude": 25.784008,
+    "longitude": -80.190681,
+    "bedrooms": 4,
+    "bathrooms": 0,
+    "squareFeet": 0,
+    "yearBuilt": 2027,
+    "type": "RESIDENTIAL",
+    "status": "ACTIVE",
+    "amenities": [
+      "Resort Style Pool",
+      "Fitness Center",
+      "Spa",
+      "Resident Lounge",
+      "Coworking Spaces",
+      "Private Dining",
+      "Outdoor Terraces",
+      "Concierge",
+      "Valet Parking",
+      "24-Hour Security"
+    ],
+    "features": "Overview\r\n\r\nJEM Private Residences is a luxury residential tower located within Miami Worldcenter, one of the largest mixed-use developments in the United States.\r\n\r\nDesigned to blend modern architecture with elevated hospitality-inspired living, JEM offers residents an exceptional collection of amenities, thoughtfully designed residences, and immediate access to world-class dining, shopping, entertainment, and cultural destinations.\r\n\r\nIts strategic location places residents just minutes from Brickell, Biscayne Bay, Wynwood, the Design District, Miami International Airport, and Miami Beach, creating an ideal balance between business, leisure, and luxury living.",
+    "images": [
+      {
+        "id": "jem-world-center-jem-aerial.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-aerial.webp",
+        "alt": "JEM Private Residences — jem aerial",
+        "order": 0
+      },
+      {
+        "id": "jem-world-center-jem-bedroom.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-bedroom.webp",
+        "alt": "JEM Private Residences — jem bedroom",
+        "order": 1
+      },
+      {
+        "id": "jem-world-center-jem-crown-golden.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-crown-golden.webp",
+        "alt": "JEM Private Residences — jem crown golden",
+        "order": 2
+      },
+      {
+        "id": "jem-world-center-jem-hero-2.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-hero-2.webp",
+        "alt": "JEM Private Residences — jem hero 2",
+        "order": 3
+      },
+      {
+        "id": "jem-world-center-jem-hero-3.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-hero-3.webp",
+        "alt": "JEM Private Residences — jem hero 3",
+        "order": 4
+      },
+      {
+        "id": "jem-world-center-jem-hero.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-hero.webp",
+        "alt": "JEM Private Residences — jem hero",
+        "order": 5
+      },
+      {
+        "id": "jem-world-center-jem-kitchen.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-kitchen.webp",
+        "alt": "JEM Private Residences — jem kitchen",
+        "order": 6
+      },
+      {
+        "id": "jem-world-center-jem-living-room.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-living-room.webp",
+        "alt": "JEM Private Residences — jem living room",
+        "order": 7
+      },
+      {
+        "id": "jem-world-center-jem-primary-bathroom.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-primary-bathroom.webp",
+        "alt": "JEM Private Residences — jem primary bathroom",
+        "order": 8
+      },
+      {
+        "id": "jem-world-center-jem-resiencie-livingroom.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-resiencie-livingroom.webp",
+        "alt": "JEM Private Residences — jem resiencie livingroom",
+        "order": 9
+      },
+      {
+        "id": "jem-world-center-jem-studios-view-crop.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-studios-view-crop.webp",
+        "alt": "JEM Private Residences — jem studios view crop",
+        "order": 10
+      },
+      {
+        "id": "jem-world-center-jem-studios-view-terrace-sunset.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-studios-view-terrace-sunset.webp",
+        "alt": "JEM Private Residences — jem studios view terrace sunset",
+        "order": 11
+      },
+      {
+        "id": "jem-world-center-jem-studios-view-terrace.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-studios-view-terrace.webp",
+        "alt": "JEM Private Residences — jem studios view terrace",
+        "order": 12
+      },
+      {
+        "id": "jem-world-center-jem-terrace.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-terrace.webp",
+        "alt": "JEM Private Residences — jem terrace",
+        "order": 13
+      },
+      {
+        "id": "jem-world-center-jem-treatment-room.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-treatment-room.webp",
+        "alt": "JEM Private Residences — jem treatment room",
+        "order": 14
+      },
+      {
+        "id": "jem-world-center-jem-yoga-studio.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/jem-yoga-studio.webp",
+        "alt": "JEM Private Residences — jem yoga studio",
+        "order": 15
+      },
+      {
+        "id": "jem-world-center-page-02.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-02.webp",
+        "alt": "JEM Private Residences — page 02",
+        "order": 16
+      },
+      {
+        "id": "jem-world-center-page-25.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-25.webp",
+        "alt": "JEM Private Residences — page 25",
+        "order": 17
+      },
+      {
+        "id": "jem-world-center-page-26.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-26.webp",
+        "alt": "JEM Private Residences — page 26",
+        "order": 18
+      },
+      {
+        "id": "jem-world-center-page-29.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-29.webp",
+        "alt": "JEM Private Residences — page 29",
+        "order": 19
+      },
+      {
+        "id": "jem-world-center-page-30.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-30.webp",
+        "alt": "JEM Private Residences — page 30",
+        "order": 20
+      },
+      {
+        "id": "jem-world-center-page-31.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-31.webp",
+        "alt": "JEM Private Residences — page 31",
+        "order": 21
+      },
+      {
+        "id": "jem-world-center-page-32.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-32.webp",
+        "alt": "JEM Private Residences — page 32",
+        "order": 22
+      },
+      {
+        "id": "jem-world-center-page-33.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-33.webp",
+        "alt": "JEM Private Residences — page 33",
+        "order": 23
+      },
+      {
+        "id": "jem-world-center-page-35.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-35.webp",
+        "alt": "JEM Private Residences — page 35",
+        "order": 24
+      },
+      {
+        "id": "jem-world-center-page-36.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-36.webp",
+        "alt": "JEM Private Residences — page 36",
+        "order": 25
+      },
+      {
+        "id": "jem-world-center-page-37.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-37.webp",
+        "alt": "JEM Private Residences — page 37",
+        "order": 26
+      },
+      {
+        "id": "jem-world-center-page-38.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-38.webp",
+        "alt": "JEM Private Residences — page 38",
+        "order": 27
+      },
+      {
+        "id": "jem-world-center-page-40.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-40.webp",
+        "alt": "JEM Private Residences — page 40",
+        "order": 28
+      },
+      {
+        "id": "jem-world-center-page-42.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-42.webp",
+        "alt": "JEM Private Residences — page 42",
+        "order": 29
+      },
+      {
+        "id": "jem-world-center-page-43.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-43.webp",
+        "alt": "JEM Private Residences — page 43",
+        "order": 30
+      },
+      {
+        "id": "jem-world-center-page-44.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-44.webp",
+        "alt": "JEM Private Residences — page 44",
+        "order": 31
+      },
+      {
+        "id": "jem-world-center-page-45.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-45.webp",
+        "alt": "JEM Private Residences — page 45",
+        "order": 32
+      },
+      {
+        "id": "jem-world-center-page-46.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-46.webp",
+        "alt": "JEM Private Residences — page 46",
+        "order": 33
+      },
+      {
+        "id": "jem-world-center-page-47.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-47.webp",
+        "alt": "JEM Private Residences — page 47",
+        "order": 34
+      },
+      {
+        "id": "jem-world-center-page-49.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-49.webp",
+        "alt": "JEM Private Residences — page 49",
+        "order": 35
+      },
+      {
+        "id": "jem-world-center-page-50.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-50.webp",
+        "alt": "JEM Private Residences — page 50",
+        "order": 36
+      },
+      {
+        "id": "jem-world-center-page-52.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-52.webp",
+        "alt": "JEM Private Residences — page 52",
+        "order": 37
+      },
+      {
+        "id": "jem-world-center-page-54.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-54.webp",
+        "alt": "JEM Private Residences — page 54",
+        "order": 38
+      },
+      {
+        "id": "jem-world-center-page-56.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-56.webp",
+        "alt": "JEM Private Residences — page 56",
+        "order": 39
+      },
+      {
+        "id": "jem-world-center-page-61.webp",
+        "url": "/property-assets/downtown/jem-world-center/gallery/page-61.webp",
+        "alt": "JEM Private Residences — page 61",
+        "order": 40
+      }
+    ],
+    "resources": {
+      "floorplans": [
+        {
+          "name": "jem-43-65-K-1BD",
+          "documentUrl": "/property-assets/downtown/jem-world-center/floorplans/jem-43-65-K-1BD.pdf"
+        },
+        {
+          "name": "jem-43-65-R",
+          "documentUrl": "/property-assets/downtown/jem-world-center/floorplans/jem-43-65-R.pdf"
+        }
+      ],
+      "brochures": [
+        {
+          "name": "jem-brochure",
+          "url": "/property-assets/downtown/jem-world-center/brochure/jem-brochure.pdf"
+        },
+        {
+          "name": "jem-pricing",
+          "url": "/property-assets/downtown/jem-world-center/brochure/jem-pricing.pdf"
+        }
+      ],
+      "galleryDocuments": []
+    },
+    "seo": {
+      "title": "JEM Private Residences | Miami Worldcenter Luxury Condominiums",
+      "description": "Discover JEM Private Residences at Miami Worldcenter, offering luxury residences, premium amenities, contemporary design, and an exceptional Downtown Miami lifestyle."
+    },
+    "assetBase": "downtown/jem-world-center",
+    "assetFiles": [
+      "gallery/jem-aerial.webp",
+      "gallery/jem-bedroom.webp",
+      "gallery/jem-crown-golden.webp",
+      "gallery/jem-hero-2.webp",
+      "gallery/jem-hero-3.webp",
+      "gallery/jem-hero.webp",
+      "gallery/jem-kitchen.webp",
+      "gallery/jem-living-room.webp",
+      "gallery/jem-primary-bathroom.webp",
+      "gallery/jem-resiencie-livingroom.webp",
+      "gallery/jem-studios-view-crop.webp",
+      "gallery/jem-studios-view-terrace-sunset.webp",
+      "gallery/jem-studios-view-terrace.webp",
+      "gallery/jem-terrace.webp",
+      "gallery/jem-treatment-room.webp",
+      "gallery/jem-yoga-studio.webp",
+      "gallery/page-02.webp",
+      "gallery/page-25.webp",
+      "gallery/page-26.webp",
+      "gallery/page-29.webp",
+      "gallery/page-30.webp",
+      "gallery/page-31.webp",
+      "gallery/page-32.webp",
+      "gallery/page-33.webp",
+      "gallery/page-35.webp",
+      "gallery/page-36.webp",
+      "gallery/page-37.webp",
+      "gallery/page-38.webp",
+      "gallery/page-40.webp",
+      "gallery/page-42.webp",
+      "gallery/page-43.webp",
+      "gallery/page-44.webp",
+      "gallery/page-45.webp",
+      "gallery/page-46.webp",
+      "gallery/page-47.webp",
+      "gallery/page-49.webp",
+      "gallery/page-50.webp",
+      "gallery/page-52.webp",
+      "gallery/page-54.webp",
+      "gallery/page-56.webp",
+      "gallery/page-61.webp",
+      "floorplans/jem-43-65-K-1BD.pdf",
+      "floorplans/jem-43-65-R.pdf",
+      "brochure/jem-brochure.pdf",
+      "brochure/jem-pricing.pdf"
+    ]
+  },
+  {
+    "id": "catalog-edition-residences",
+    "slug": "edition-residences",
+    "title": "Edition Residences",
+    "description": "Edition Residences in Edgewater, Miami.",
+    "price": 0,
+    "address": "2121 N Bayshore Drive, Miami, FL 33137",
+    "city": "Miami",
+    "state": "Florida",
+    "zipCode": "",
+    "latitude": 25.797284,
+    "longitude": -80.186983,
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "squareFeet": 0,
+    "type": "RESIDENTIAL",
+    "status": "ACTIVE",
+    "amenities": [],
+    "features": "Overview\r\n\r\nViceroy Brickell Residences represents a new generation of branded luxury living in Miami. Developed by Related Group and GTIS Partners, the tower combines contemporary architecture by Arquitectonica with interiors by Meyer Davis and the legendary hospitality of Viceroy Hotels & Resorts.\r\n\r\nPositioned where the Miami River meets Brickell, the residences offer panoramic city and waterfront views while providing immediate access to Brickell City Centre, Downtown Miami, Coconut Grove, Key Biscayne, and Miami International Airport.\r\n\r\nResidents enjoy an elevated lifestyle focused on wellness, design, personalized services, and world-class amenities, making Viceroy one of the most desirable residential addresses in Brickell.",
+    "images": [
+      {
+        "id": "edition-residences-aerial.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/aerial.webp",
+        "alt": "Edition Residences — aerial",
+        "order": 0
+      },
+      {
+        "id": "edition-residences-amenity-lobby.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/amenity-lobby.webp",
+        "alt": "Edition Residences — amenity lobby",
+        "order": 1
+      },
+      {
+        "id": "edition-residences-amenity-pool-lounge.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/amenity-pool-lounge.webp",
+        "alt": "Edition Residences — amenity pool lounge",
+        "order": 2
+      },
+      {
+        "id": "edition-residences-arrival-portrait.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/arrival-portrait.webp",
+        "alt": "Edition Residences — arrival portrait",
+        "order": 3
+      },
+      {
+        "id": "edition-residences-arrival.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/arrival.webp",
+        "alt": "Edition Residences — arrival",
+        "order": 4
+      },
+      {
+        "id": "edition-residences-bathtub.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/bathtub.webp",
+        "alt": "Edition Residences — bathtub",
+        "order": 5
+      },
+      {
+        "id": "edition-residences-boardroom.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/boardroom.webp",
+        "alt": "Edition Residences — boardroom",
+        "order": 6
+      },
+      {
+        "id": "edition-residences-building-exterior-1.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/building-exterior-1.webp",
+        "alt": "Edition Residences — building exterior 1",
+        "order": 7
+      },
+      {
+        "id": "edition-residences-cinema.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/cinema.webp",
+        "alt": "Edition Residences — cinema",
+        "order": 8
+      },
+      {
+        "id": "edition-residences-fitness-center.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/fitness-center.webp",
+        "alt": "Edition Residences — fitness center",
+        "order": 9
+      },
+      {
+        "id": "edition-residences-garden-terrace-2-dusk.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/garden-terrace-2-dusk.webp",
+        "alt": "Edition Residences — garden terrace 2 dusk",
+        "order": 10
+      },
+      {
+        "id": "edition-residences-garden-terrace-2.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/garden-terrace-2.webp",
+        "alt": "Edition Residences — garden terrace 2",
+        "order": 11
+      },
+      {
+        "id": "edition-residences-garden-terrace-day.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/garden-terrace-day.webp",
+        "alt": "Edition Residences — garden terrace day",
+        "order": 12
+      },
+      {
+        "id": "edition-residences-garden-terrace-dusk.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/garden-terrace-dusk.webp",
+        "alt": "Edition Residences — garden terrace dusk",
+        "order": 13
+      },
+      {
+        "id": "edition-residences-great-room-1.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/great-room-1.webp",
+        "alt": "Edition Residences — great room 1",
+        "order": 14
+      },
+      {
+        "id": "edition-residences-great-room-d.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/great-room-d.webp",
+        "alt": "Edition Residences — great room d",
+        "order": 15
+      },
+      {
+        "id": "edition-residences-hero.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/hero.webp",
+        "alt": "Edition Residences — hero",
+        "order": 16
+      },
+      {
+        "id": "edition-residences-kitchen.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/kitchen.webp",
+        "alt": "Edition Residences — kitchen",
+        "order": 17
+      },
+      {
+        "id": "edition-residences-library-lounge.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/library-lounge.webp",
+        "alt": "Edition Residences — library lounge",
+        "order": 18
+      },
+      {
+        "id": "edition-residences-lobby-2.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/lobby-2.webp",
+        "alt": "Edition Residences — lobby 2",
+        "order": 19
+      },
+      {
+        "id": "edition-residences-master-bathroom-D.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/master-bathroom-D.webp",
+        "alt": "Edition Residences — master bathroom D",
+        "order": 20
+      },
+      {
+        "id": "edition-residences-master-bedroom-D.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/master-bedroom-D.webp",
+        "alt": "Edition Residences — master bedroom D",
+        "order": 21
+      },
+      {
+        "id": "edition-residences-north-facade.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/north-facade.webp",
+        "alt": "Edition Residences — north facade",
+        "order": 22
+      },
+      {
+        "id": "edition-residences-north-terrace.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/north-terrace.webp",
+        "alt": "Edition Residences — north terrace",
+        "order": 23
+      },
+      {
+        "id": "edition-residences-party-lounge-A.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/party-lounge-A.webp",
+        "alt": "Edition Residences — party lounge A",
+        "order": 24
+      },
+      {
+        "id": "edition-residences-party-lounge-B.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/party-lounge-B.webp",
+        "alt": "Edition Residences — party lounge B",
+        "order": 25
+      },
+      {
+        "id": "edition-residences-pool-lounge.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/pool-lounge.webp",
+        "alt": "Edition Residences — pool lounge",
+        "order": 26
+      },
+      {
+        "id": "edition-residences-powder-room-D.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/powder-room-D.webp",
+        "alt": "Edition Residences — powder room D",
+        "order": 27
+      },
+      {
+        "id": "edition-residences-residence-terrace.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/residence-terrace.webp",
+        "alt": "Edition Residences — residence terrace",
+        "order": 28
+      },
+      {
+        "id": "edition-residences-spa-relaxation-lounge.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/spa-relaxation-lounge.webp",
+        "alt": "Edition Residences — spa relaxation lounge",
+        "order": 29
+      },
+      {
+        "id": "edition-residences-staircase.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/staircase.webp",
+        "alt": "Edition Residences — staircase",
+        "order": 30
+      },
+      {
+        "id": "edition-residences-the-lawn.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/the-lawn.webp",
+        "alt": "Edition Residences — the lawn",
+        "order": 31
+      },
+      {
+        "id": "edition-residences-the-stash.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/the-stash.webp",
+        "alt": "Edition Residences — the stash",
+        "order": 32
+      },
+      {
+        "id": "edition-residences-yoga-studio.webp",
+        "url": "/property-assets/edgewater/edition-residences/gallery/yoga-studio.webp",
+        "alt": "Edition Residences — yoga studio",
+        "order": 33
+      }
+    ],
+    "resources": {
+      "floorplans": [
+        {
+          "name": "A-north",
+          "documentUrl": "/property-assets/edgewater/edition-residences/floorplans/A-north.pdf",
+          "previewUrl": "/property-assets/edgewater/edition-residences/floorplans/A-north.webp"
+        },
+        {
+          "name": "A-south",
+          "documentUrl": "/property-assets/edgewater/edition-residences/floorplans/A-south.pdf",
+          "previewUrl": "/property-assets/edgewater/edition-residences/floorplans/A-south.webp"
+        },
+        {
+          "name": "AA-north",
+          "documentUrl": "/property-assets/edgewater/edition-residences/floorplans/AA-north.pdf",
+          "previewUrl": "/property-assets/edgewater/edition-residences/floorplans/AA-north.webp"
+        },
+        {
+          "name": "AA-south",
+          "documentUrl": "/property-assets/edgewater/edition-residences/floorplans/AA-south.pdf",
+          "previewUrl": "/property-assets/edgewater/edition-residences/floorplans/AA-south.webp"
+        },
+        {
+          "name": "AAA-north",
+          "documentUrl": "/property-assets/edgewater/edition-residences/floorplans/AAA-north.pdf",
+          "previewUrl": "/property-assets/edgewater/edition-residences/floorplans/AAA-north.webp"
+        },
+        {
+          "name": "B1-east-north",
+          "documentUrl": "/property-assets/edgewater/edition-residences/floorplans/B1-east-north.pdf",
+          "previewUrl": "/property-assets/edgewater/edition-residences/floorplans/B1-east-north.webp"
+        },
+        {
+          "name": "B2-east-north",
+          "documentUrl": "/property-assets/edgewater/edition-residences/floorplans/B2-east-north.pdf",
+          "previewUrl": "/property-assets/edgewater/edition-residences/floorplans/B2-east-north.webp"
+        },
+        {
+          "name": "B2-east-south",
+          "documentUrl": "/property-assets/edgewater/edition-residences/floorplans/B2-east-south.pdf",
+          "previewUrl": "/property-assets/edgewater/edition-residences/floorplans/B2-east-south.webp"
+        },
+        {
+          "name": "C-east",
+          "documentUrl": "/property-assets/edgewater/edition-residences/floorplans/C-east.pdf",
+          "previewUrl": "/property-assets/edgewater/edition-residences/floorplans/C-east.webp"
+        },
+        {
+          "name": "D-south",
+          "documentUrl": "/property-assets/edgewater/edition-residences/floorplans/D-south.pdf",
+          "previewUrl": "/property-assets/edgewater/edition-residences/floorplans/D-south.webp"
+        }
+      ],
+      "brochures": [
+        {
+          "name": "edition-buyer-deposit-structure",
+          "url": "/property-assets/edgewater/edition-residences/brochure/edition-buyer-deposit-structure.pdf"
+        },
+        {
+          "name": "edition-price-ranges",
+          "url": "/property-assets/edgewater/edition-residences/brochure/edition-price-ranges.pdf"
+        }
+      ],
+      "galleryDocuments": []
+    },
+    "seo": {
+      "title": "Edition Residences | Miami",
+      "description": "Edition Residences in Edgewater, Miami."
+    },
+    "assetBase": "edgewater/edition-residences",
+    "assetFiles": [
+      "gallery/aerial.webp",
+      "gallery/amenity-lobby.webp",
+      "gallery/amenity-pool-lounge.webp",
+      "gallery/arrival-portrait.webp",
+      "gallery/arrival.webp",
+      "gallery/bathtub.webp",
+      "gallery/boardroom.webp",
+      "gallery/building-exterior-1.webp",
+      "gallery/cinema.webp",
+      "gallery/fitness-center.webp",
+      "gallery/garden-terrace-2-dusk.webp",
+      "gallery/garden-terrace-2.webp",
+      "gallery/garden-terrace-day.webp",
+      "gallery/garden-terrace-dusk.webp",
+      "gallery/great-room-1.webp",
+      "gallery/great-room-d.webp",
+      "gallery/hero.webp",
+      "gallery/kitchen.webp",
+      "gallery/library-lounge.webp",
+      "gallery/lobby-2.webp",
+      "gallery/master-bathroom-D.webp",
+      "gallery/master-bedroom-D.webp",
+      "gallery/north-facade.webp",
+      "gallery/north-terrace.webp",
+      "gallery/party-lounge-A.webp",
+      "gallery/party-lounge-B.webp",
+      "gallery/pool-lounge.webp",
+      "gallery/powder-room-D.webp",
+      "gallery/residence-terrace.webp",
+      "gallery/spa-relaxation-lounge.webp",
+      "gallery/staircase.webp",
+      "gallery/the-lawn.webp",
+      "gallery/the-stash.webp",
+      "gallery/yoga-studio.webp",
+      "floorplans/A-north.pdf",
+      "floorplans/A-north.webp",
+      "floorplans/A-south.pdf",
+      "floorplans/A-south.webp",
+      "floorplans/AA-north.pdf",
+      "floorplans/AA-north.webp",
+      "floorplans/AA-south.pdf",
+      "floorplans/AA-south.webp",
+      "floorplans/AAA-north.pdf",
+      "floorplans/AAA-north.webp",
+      "floorplans/B1-east-north.pdf",
+      "floorplans/B1-east-north.webp",
+      "floorplans/B2-east-north.pdf",
+      "floorplans/B2-east-north.webp",
+      "floorplans/B2-east-south.pdf",
+      "floorplans/B2-east-south.webp",
+      "floorplans/C-east.pdf",
+      "floorplans/C-east.webp",
+      "floorplans/D-south.pdf",
+      "floorplans/D-south.webp",
+      "brochure/edition-buyer-deposit-structure.pdf",
+      "brochure/edition-price-ranges.pdf"
+    ]
+  }
+]
