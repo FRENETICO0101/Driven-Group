@@ -3,6 +3,9 @@
 # Build-time public mirror generated from assets/properties.
 /public/property-assets/
 
+# Local debugging output.
+debug.log
+
 # dependencies
 /node_modules
 /.pnp
