@@ -1,22 +1,18 @@
-export function BusinessCTA() {
-  return (
-    <section className="py-20 sm:py-24 md:py-32 px-6 sm:px-8 max-w-7xl mx-auto">
-      <div className="bg-white border border-light-gray rounded-lg p-12 sm:p-16 md:p-20 text-center">
-        <p className="editorial-label text-gray mb-4">PARTNERSHIP OPPORTUNITIES</p>
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-black text-black leading-[1.2] mb-6 max-w-2xl mx-auto">
-          Explore Strategic Partnerships
-        </h2>
-        <p className="text-dark-gray text-lg leading-relaxed max-w-xl mx-auto mb-12">
-          We're always seeking visionary partners to expand our ecosystem and create transformative value together.
-        </p>
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="px-8 py-3 bg-black text-white text-sm font-semibold rounded-lg hover:bg-black transition-colors">
-            Get in Touch
-          </button>
-          <button className="px-8 py-3 border border-light-gray text-black text-sm font-semibold rounded-lg hover:bg-white transition-colors">
-            Learn More
-          </button>
+export function BusinessCTA() {
+  const t = useTranslations('business');
+
+  return (
+    <section id="business-contact" className="scroll-mt-24 px-6 py-16 sm:px-8 sm:py-20 md:py-24">
+      <div className="mx-auto max-w-6xl rounded-2xl bg-black px-6 py-12 text-center text-white sm:px-12 sm:py-16">
+        <p className="editorial-label text-white/60">{t('partnershipLabel')}</p>
+        <h2 className="mx-auto mt-4 max-w-3xl font-serif text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">{t('partnershipTitle')}</h2>
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">{t('partnershipDescription')}</p>
+        <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+          <Link href="/contact" className="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-light-gray">{t('contactCta')}</Link>
+          <Link href="/about" className="rounded-lg border border-white/35 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10">{t('learnMoreCta')}</Link>
         </div>
       </div>
     </section>

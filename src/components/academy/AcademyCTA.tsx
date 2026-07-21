@@ -1,33 +1,38 @@
 export function AcademyCTA() {
   return (
-    <section className="py-20 sm:py-24 md:py-32 px-6 sm:px-8 max-w-7xl mx-auto">
-      <div className="bg-black rounded-lg p-12 sm:p-16 md:p-20 text-center">
-        <p className="editorial-label text-white/40 mb-4">OFERTA DE LANZAMIENTO</p>
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-black text-white leading-[1.2] mb-6 max-w-2xl mx-auto">
-          Activa tu Modo Rico
+    <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 sm:py-24 md:py-32">
+      <div className="rounded-2xl bg-black p-10 text-center shadow-2xl sm:p-16 md:p-20">
+        <p className="editorial-label mb-4 text-white/40">OFERTA DE LANZAMIENTO</p>
+        <h2 className="mx-auto mb-6 max-w-2xl font-serif text-3xl font-black leading-[1.2] text-white sm:text-4xl md:text-5xl">
+          Empieza a construir una vida financiera con dirección.
         </h2>
-        <p className="text-white/60 text-lg leading-relaxed max-w-xl mx-auto mb-4">
-          Sé parte de esta nueva generación financieramente libre.
+        <p className="mx-auto mb-4 max-w-xl text-lg leading-relaxed text-white/60">
+          Sé parte de la primera generación de Modo Rico y aplica un método práctico desde el primer día.
         </p>
-        <p className="text-gray font-semibold text-sm tracking-wide uppercase mb-12">
-          Por tiempo limitado · Acceso inmediato · Garantía de satisfacción
+        <p className="mb-10 text-sm font-semibold uppercase tracking-wide text-gray">
+          Acceso online 24/7 · Formación práctica · Garantía de 7 días
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-          <input
-            type="email"
-            placeholder="Tu correo electrónico"
-            className="flex-1 px-6 py-3 border border-white/20 bg-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-gray"
-          />
-          <button className="px-8 py-3 bg-gray text-black text-sm font-bold rounded-lg hover:bg-dark-gray transition-colors whitespace-nowrap">
-            ASEGURA TU LUGAR AHORA
-          </button>
+        <div className="flex flex-col justify-center gap-3 sm:flex-row">
+          <a
+            href="https://driven-academy.com/modo-rico"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-7 py-3.5 text-sm font-bold text-black transition-transform hover:-translate-y-0.5 hover:bg-gray"
+          >
+            QUIERO APLICAR ESTE MÉTODO
+            <span className="material-symbols-outlined text-base">north_east</span>
+          </a>
+          <a href="#modulos" className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/30 px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10">
+            VER LA CURRÍCULA
+            <span className="material-symbols-outlined text-base">arrow_upward</span>
+          </a>
         </div>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-6 text-white/40 text-xs tracking-widest">
-          <span>∞ CONTENIDO DE POR VIDA</span>
-          <span>⚡ ACCESO INMEDIATO</span>
-          <span>✓ GARANTÍA DE SATISFACCIÓN</span>
+        <div className="mt-10 flex flex-wrap justify-center gap-6 text-xs tracking-widest text-white/40">
+          <span>ACCESO ONLINE 24/7</span>
+          <span>COMUNIDAD PRIVADA</span>
+          <span>GARANTÍA DE 7 DÍAS</span>
         </div>
       </div>
     </section>

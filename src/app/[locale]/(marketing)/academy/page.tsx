@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import { AcademyHeroSection } from "@/components/academy/AcademyHeroSection";
 import { AcademyCTA } from "@/components/academy/AcademyCTA";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 const siteUrl = "https://drivengroup.com";
 
 export const metadata: Metadata = {
   title: "Modo Rico™ — Driven Academy",
   description:
-    "Sistema guiado de transformación financiera. Recupera el control de tu dinero, construye estabilidad y libertad a largo plazo.",
+    "Un método práctico para recuperar el control de tu dinero, construir estabilidad y crear patrimonio con dirección.",
   openGraph: {
     title: "Modo Rico™ — Driven Academy",
-    description: "Sistema guiado de transformación financiera.",
+    description: "Educación financiera práctica para construir patrimonio con dirección.",
     url: `${siteUrl}/academy`,
     type: "website",
     images: [{ url: `${siteUrl}/og-image.png`, width: 1200, height: 630, alt: "Modo Rico™ — Driven Academy" }],
@@ -20,73 +20,65 @@ export const metadata: Metadata = {
   alternates: { canonical: `${siteUrl}/academy` },
 };
 
-const modulos = [
+const phases = [
   {
-    numero: "01",
-    titulo: "Despertar Financiero",
-    subtitulo: "El diagnóstico de tu caos financiero",
-    temas: ["Hábitos destructivos", "Fugas financieras", "Impulsividad y ansiedad económica", "Patrones que te mantienen estancado"],
-    resultado: "Ahora entiendo qué está destruyendo mi estabilidad.",
+    number: "01",
+    name: "Diagnóstico y control",
+    outcome: "Claridad total sobre tu situación y un plan para tomar las riendas.",
+    modules: [
+      { title: "Despertar Financiero", description: "El diagnóstico honesto de tu realidad económica." },
+      { title: "Reprogramación Mental", description: "Reconstruye tu relación con el dinero." },
+      { title: "Control Total", description: "Toma las riendas de tus ingresos y decisiones." },
+    ],
   },
   {
-    numero: "02",
-    titulo: "Reprogramación Financiera",
-    subtitulo: "Reconstruyendo tu relación con el dinero",
-    temas: ["Mentalidad y creencias", "Identidad financiera", "Control emocional", "Disciplina financiera"],
-    resultado: "La estabilidad financiera sí es posible para mí.",
+    number: "02",
+    name: "Estrategia y crecimiento",
+    outcome: "Deuda bajo control, escudo financiero activado y patrimonio en marcha.",
+    modules: [
+      { title: "Libertad del Caos", description: "Reestructura deuda y crédito con inteligencia." },
+      { title: "Fortaleza Financiera", description: "Construye tu base de estabilidad." },
+      { title: "Expansión Inteligente", description: "Impulsa patrimonio con visión moderna." },
+    ],
   },
   {
-    numero: "03",
-    titulo: "Control y Orden",
-    subtitulo: "Tomando control de tu dinero",
-    temas: ["Organización financiera", "Presupuesto moderno", "Control de gastos", "Herramientas y estructura financiera"],
-    resultado: "Por primera vez tengo claridad financiera.",
-  },
-  {
-    numero: "04",
-    titulo: "Eliminando el Caos",
-    subtitulo: "Saliendo del desorden financiero",
-    temas: ["Eliminación de deudas", "Uso inteligente del crédito", "Historial crediticio", "Decisiones financieras responsables"],
-    resultado: "Estoy recuperando estabilidad y paz mental.",
-  },
-  {
-    numero: "05",
-    titulo: "Construcción de Estabilidad",
-    subtitulo: "Creando una base financiera fuerte",
-    temas: ["Ahorro inteligente", "Planificación y objetivos", "Estabilidad sostenida", "Visión financiera"],
-    resultado: "Ya no siento que sobrevivo.",
-  },
-  {
-    numero: "06",
-    titulo: "Crecimiento Financiero",
-    subtitulo: "Haciendo crecer tu dinero con dirección",
-    temas: ["Fundamentos de inversión", "Crecimiento patrimonial", "Visión financiera moderna", "Construcción de patrimonio responsable"],
-    resultado: "Ahora mi dinero tiene dirección.",
-  },
-  {
-    numero: "07",
-    titulo: "Identidad Modo Rico™",
-    subtitulo: "Convertirte en una persona financieramente fuerte",
-    temas: ["Disciplina y hábitos permanentes", "Control emocional avanzado", "Evolución personal", "Fortaleza financiera"],
-    resultado: "Ya no soy la misma persona.",
-  },
-  {
-    numero: "08",
-    titulo: "Evolución y Expansión",
-    subtitulo: "Tu nueva vida financiera",
-    temas: ["Crecimiento continuo", "Comunidad y mastermind", "Expansión patrimonial", "Visión de largo plazo"],
-    resultado: "Esto apenas comienza.",
+    number: "03",
+    name: "Patrimonio y legado",
+    outcome: "Una vida financiera consolidada que trasciende a tu familia.",
+    modules: [
+      { title: "Visión de Legado", description: "Diseña tu futuro y el de los tuyos." },
+      { title: "Identidad Modo Rico", description: "Consolida una nueva forma de vivir tus finanzas." },
+    ],
   },
 ];
 
-const filosofia = ["EDUCAR.", "ENFOCAR.", "EJECUTAR.", "TRANSFORMAR."];
+const challenges = [
+  "Ganas bien, pero el dinero se evapora cada mes.",
+  "Sabes que deberías invertir, pero no sabes por dónde empezar.",
+  "Necesitas nuevas fuentes de ingreso y una estrategia real.",
+  "Has consumido información financiera, pero sigues sin avanzar.",
+];
 
-const incluye = [
-  { icon: "play_circle", label: "Clases en Video de Alto Valor" },
-  { icon: "description", label: "Guías y Plantillas Descargables" },
-  { icon: "groups", label: "Comunidad Privada" },
-  { icon: "videocam", label: "Sesiones en Vivo" },
-  { icon: "workspace_premium", label: "Certificado Acreditado" },
+const included = [
+  { icon: "account_tree", title: "Método Modo Rico completo", copy: "Una ruta práctica y progresiva para pasar de caos a patrimonio." },
+  { icon: "group", title: "Comunidad privada", copy: "Un espacio para dudas, oportunidades y networking." },
+  { icon: "dashboard", title: "Nexora by Driven Academy", copy: "Tu panel de control financiero personal." },
+  { icon: "description", title: "Plantillas premium", copy: "Diagnósticos, calculadoras, trackers y simuladores aplicables." },
+  { icon: "play_circle", title: "Acceso online 24/7", copy: "Avanza a tu ritmo, desde donde estés." },
+  { icon: "task_alt", title: "Formación práctica", copy: "Ejercicios aplicables desde el primer día." },
+];
+
+const bonuses = [
+  { number: "01", title: "Plan de Acción 90 Días", copy: "Tu hoja de ruta para los primeros tres meses: ejecución clara y medible." },
+  { number: "02", title: "Reto 21 Días Modo Rico", copy: "Un desafío diario para reprogramar hábitos y generar tracción." },
+  { number: "03", title: "GPT Privado Modo Rico", copy: "Un asistente entrenado con el método para resolver dudas y acompañarte." },
+];
+
+const faqs = [
+  { question: "¿Necesito conocimientos previos en finanzas?", answer: "No. Modo Rico empieza desde los fundamentos y avanza paso a paso, con ejercicios aplicables desde el primer día." },
+  { question: "¿Cuánto tiempo tengo para completar el programa?", answer: "El acceso es online 24/7 y puedes avanzar a tu ritmo. La ruta está diseñada para completarse aproximadamente en 8 a 12 semanas." },
+  { question: "¿Es teoría o podré aplicarlo?", answer: "Cada etapa incluye herramientas prácticas, plantillas y ejercicios para convertir la información en decisiones concretas." },
+  { question: "¿Qué pasa si el programa no es para mí?", answer: "La primera generación cuenta con una garantía de 7 días para evaluar si el método cumple tus expectativas." },
 ];
 
 export default function AcademyPage() {
@@ -94,133 +86,132 @@ export default function AcademyPage() {
     <main>
       <AcademyHeroSection />
 
-      {/* Intro — El Sistema */}
-      <section className="py-20 sm:py-24 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-start">
-          <div>
-            <p className="editorial-label text-gray mb-3">EL SISTEMA</p>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-black tracking-tight leading-[1.1] mb-8">
-              No es un curso de finanzas. Es una transformación.
-            </h2>
-            <p className="text-base sm:text-lg text-dark-gray leading-[1.8] font-light mb-6">
-              MODO RICO™ es un sistema guiado diseñado para ayudarte a <strong className="text-black font-semibold">recuperar el control de tu dinero</strong>, reorganizar tu vida financiera y construir estabilidad, crecimiento y libertad a largo plazo.
-            </p>
-            <p className="text-base sm:text-lg text-dark-gray leading-[1.8] font-light">
-              El método DRIVEN™ combina educación financiera moderna, mentalidad, disciplina, control emocional, organización, crédito inteligente y <strong className="text-black font-semibold">inteligencia patrimonial</strong>. Todo dentro de una experiencia práctica, emocional y progresiva.
-            </p>
-          </div>
-
-          {/* Quote */}
-          <div className="bg-black rounded-lg p-10 sm:p-12 md:p-14">
-            <span className="font-serif text-6xl text-gray leading-none block mb-6">"</span>
-            <p className="font-serif text-xl sm:text-2xl text-white leading-[1.65] mb-10">
-              No se trata de ganar más, se trata de convertirte en la persona que sabe{" "}
-              <span className="text-gray">qué hacer con ello.</span>
-            </p>
-            <div className="border-t border-white/10 pt-8">
-              <p className="editorial-label text-white/30 mb-6">FILOSOFÍA DRIVEN™</p>
-              <div className="grid grid-cols-2 gap-3">
-                {filosofia.map((f) => (
-                  <p key={f} className="text-white font-black text-lg tracking-tight">{f}</p>
-                ))}
-              </div>
-            </div>
-          </div>
+      <section className="mx-auto grid max-w-7xl gap-14 px-6 py-20 sm:px-8 sm:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24 md:py-32">
+        <div>
+          <p className="editorial-label mb-3 text-gray">EL MÉTODO</p>
+          <h2 className="font-serif text-4xl font-black leading-[1.1] tracking-tight text-black sm:text-5xl md:text-6xl">
+            Deja de ganar para gastar. Empieza a construir.
+          </h2>
+          <p className="mt-8 text-base font-light leading-[1.8] text-dark-gray sm:text-lg">
+            Modo Rico es un sistema construido desde experiencia real dentro del sector financiero para transformar el caos en estabilidad, sin importar cuánto ganes hoy.
+          </p>
+          <p className="mt-5 text-base font-light leading-[1.8] text-dark-gray sm:text-lg">
+            No se trata solo de ganar más. Se trata de convertirte en la persona que sabe qué hacer con su dinero, toma decisiones con dirección y construye patrimonio real.
+          </p>
         </div>
+
+        <aside className="rounded-2xl border border-light-gray bg-[#f7f7f7] p-7 sm:p-10">
+          <p className="editorial-label mb-5 text-gray">¿ESTO ES PARA TI?</p>
+          <h3 className="font-serif text-2xl font-black leading-tight text-black sm:text-3xl">Si te identificas con una de estas situaciones, no estás solo.</h3>
+          <div className="mt-7 space-y-4">
+            {challenges.map((challenge) => (
+              <div key={challenge} className="flex gap-3 border-t border-black/10 pt-4 first:border-0 first:pt-0">
+                <span className="material-symbols-outlined mt-0.5 text-lg text-black">arrow_forward</span>
+                <p className="text-sm leading-relaxed text-dark-gray sm:text-base">{challenge}</p>
+              </div>
+            ))}
+          </div>
+        </aside>
       </section>
 
-      {/* Módulos */}
-      <section id="modulos" className="py-20 sm:py-24 md:py-32 bg-black">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8">
-          <div className="mb-16 sm:mb-20">
-            <p className="editorial-label text-white/30 mb-3">MÉTODO DRIVEN™</p>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.1]">
-              Estructura Estratégica
-            </h2>
+      <section id="modulos" className="bg-black py-20 sm:py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8">
+          <div className="max-w-3xl">
+            <p className="editorial-label mb-3 text-white/35">CURRÍCULA DEL PROGRAMA</p>
+            <h2 className="font-serif text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">Una ruta clara: de control a legado.</h2>
+            <p className="mt-6 text-base font-light leading-relaxed text-white/60 sm:text-lg">Ocho módulos organizados en tres fases para transformar tu relación con el dinero y convertir ingresos en patrimonio.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10">
-            {modulos.map((m) => (
-              <div key={m.numero} className="bg-black p-8 sm:p-10 md:p-12">
-                <div className="flex items-start gap-5 mb-6">
-                  <span className="font-serif text-4xl font-black text-gray leading-none shrink-0">{m.numero}</span>
+          <div className="mt-14 grid gap-5 lg:grid-cols-3">
+            {phases.map((phase) => (
+              <article key={phase.number} className="rounded-2xl border border-white/15 bg-white/[0.04] p-6 sm:p-8">
+                <div className="flex items-start justify-between gap-5 border-b border-white/10 pb-6">
                   <div>
-                    <h3 className="font-serif text-xl sm:text-2xl font-black text-white leading-tight mb-1">
-                      {m.titulo}
-                    </h3>
-                    <p className="text-white/50 text-sm font-light italic">&ldquo;{m.subtitulo}&rdquo;</p>
+                    <p className="font-serif text-4xl font-black text-gray">{phase.number}</p>
+                    <h3 className="mt-4 font-serif text-2xl font-black text-white">{phase.name}</h3>
                   </div>
+                  <span className="material-symbols-outlined text-white/40">account_balance</span>
                 </div>
-
-                <div className="space-y-2 mb-6">
-                  {m.temas.map((t) => (
-                    <div key={t} className="flex items-center gap-3">
-                      <span className="w-1 h-1 rounded-full bg-gray shrink-0" />
-                      <span className="text-white/70 text-sm">{t}</span>
-                    </div>
+                <div className="mt-6 space-y-3">
+                  {phase.modules.map((module) => (
+                    <details key={module.title} className="group rounded-xl bg-white/[0.06] px-4 py-3 open:bg-white/[0.1]">
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-semibold text-white">
+                        {module.title}
+                        <span className="material-symbols-outlined text-base text-white/60 transition-transform group-open:rotate-45">add</span>
+                      </summary>
+                      <p className="pt-3 text-sm leading-relaxed text-white/60">{module.description}</p>
+                    </details>
                   ))}
                 </div>
-
-                <div className="border-t border-white/10 pt-5">
-                  <p className="text-white/40 text-xs tracking-widest uppercase mb-1">Resultado</p>
-                  <p className="font-serif text-white/80 italic text-sm">&ldquo;{m.resultado}&rdquo;</p>
-                </div>
-              </div>
+                <p className="mt-7 border-t border-white/10 pt-5 text-sm leading-relaxed text-white/65"><span className="font-semibold text-white">Resultado: </span>{phase.outcome}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* La Diferencia */}
-      <section className="py-20 sm:py-24 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-start">
-
-          {/* Qué incluye */}
+      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 sm:py-24 md:py-32">
+        <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
           <div>
-            <p className="editorial-label text-gray mb-3">CONTENIDO</p>
-            <h2 className="font-serif text-4xl sm:text-5xl font-black text-black tracking-tight leading-[1.1] mb-10">
-              ¿Qué incluye Modo Rico™?
-            </h2>
-            <div className="space-y-4">
-              {incluye.map((item) => (
-                <div key={item.label} className="flex items-center gap-5 p-5 border border-light-gray rounded-lg">
-                  <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-gray text-xl">{item.icon}</span>
+            <p className="editorial-label mb-3 text-gray">MÁS VALOR PARA TU CRECIMIENTO</p>
+            <h2 className="font-serif text-4xl font-black leading-[1.1] tracking-tight text-black sm:text-5xl">Todo lo que recibes al entrar.</h2>
+            <p className="mt-6 text-base font-light leading-[1.8] text-dark-gray sm:text-lg">No es información para algún día. Es un sistema con herramientas que puedes poner en práctica ahora.</p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {included.map((item) => (
+              <article key={item.title} className="group rounded-xl border border-light-gray p-6 transition-all hover:-translate-y-1 hover:border-black hover:shadow-xl">
+                <span className="material-symbols-outlined rounded-lg bg-black p-3 text-xl text-white">{item.icon}</span>
+                <h3 className="mt-5 font-serif text-xl font-black text-black">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-dark-gray">{item.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f3f3f3] py-20 sm:py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8">
+          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
+            <div>
+              <p className="editorial-label mb-3 text-gray">PRIMERA GENERACIÓN</p>
+              <h2 className="font-serif text-4xl font-black leading-[1.1] tracking-tight text-black sm:text-5xl">Entra con herramientas para ejecutar desde el inicio.</h2>
+              <p className="mt-6 text-base font-light leading-[1.8] text-dark-gray sm:text-lg">Los bonos de lanzamiento acompañan la implementación del método con una ruta clara, hábitos medibles y apoyo práctico.</p>
+            </div>
+            <div className="space-y-3">
+              {bonuses.map((bonus) => (
+                <article key={bonus.number} className="group flex gap-5 rounded-xl border border-black/10 bg-white p-6 transition-shadow hover:shadow-lg sm:gap-7 sm:p-7">
+                  <span className="font-serif text-3xl font-black text-gray">{bonus.number}</span>
+                  <div>
+                    <h3 className="font-serif text-xl font-black text-black">{bonus.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-dark-gray">{bonus.copy}</p>
                   </div>
-                  <p className="text-black font-semibold">{item.label}</p>
-                </div>
+                </article>
               ))}
             </div>
           </div>
-
-          {/* La Diferencia */}
-          <div>
-            <p className="editorial-label text-gray mb-3">LA DIFERENCIA</p>
-            <h2 className="font-serif text-4xl sm:text-5xl font-black text-black tracking-tight leading-[1.1] mb-8">
-              No enseñamos teoría. Creamos una nueva identidad financiera.
-            </h2>
-            <p className="text-base sm:text-lg text-dark-gray leading-[1.8] font-light mb-10">
-              La verdadera transformación financiera ocurre cuando una persona piensa diferente, se organiza diferente, controla sus emociones, toma mejores decisiones y construye estabilidad con dirección.
-            </p>
-
-            <div className="space-y-4">
-              {[
-                { icon: "close", label: "No solo números o teoría financiera", negative: true },
-                { icon: "check_circle", label: "Una nueva identidad financiera", negative: false },
-                { icon: "check_circle", label: "Control, claridad y dirección", negative: false },
-                { icon: "check_circle", label: "Libertad y estabilidad a largo plazo", negative: false },
-              ].map((item) => (
-                <div key={item.label} className="flex items-center gap-4">
-                  <span className={`material-symbols-outlined shrink-0 text-xl ${item.negative ? "text-gray" : "text-black"}`}>
-                    {item.icon}
-                  </span>
-                  <p className={`text-base ${item.negative ? "text-gray line-through" : "text-black font-semibold"}`}>
-                    {item.label}
-                  </p>
-                </div>
-              ))}
+          <div className="mt-12 flex flex-col gap-5 rounded-2xl bg-black p-7 text-white sm:flex-row sm:items-center sm:justify-between sm:p-9">
+            <div>
+              <p className="editorial-label text-white/40">GARANTÍA DE TRANQUILIDAD</p>
+              <h3 className="mt-2 font-serif text-2xl font-black">Tu inversión está protegida durante los primeros 7 días.</h3>
             </div>
+            <span className="material-symbols-outlined text-4xl text-gray">verified_user</span>
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-4xl px-6 py-20 sm:px-8 sm:py-24 md:py-32">
+        <p className="editorial-label mb-3 text-gray">PREGUNTAS FRECUENTES</p>
+        <h2 className="font-serif text-4xl font-black leading-[1.1] tracking-tight text-black sm:text-5xl">Todo claro antes de comenzar.</h2>
+        <div className="mt-10 divide-y divide-light-gray border-y border-light-gray">
+          {faqs.map((faq, index) => (
+            <details key={faq.question} open={index === 0} className="group py-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-serif text-lg font-black text-black sm:text-xl">
+                {faq.question}
+                <span className="material-symbols-outlined shrink-0 text-black transition-transform group-open:rotate-45">add</span>
+              </summary>
+              <p className="max-w-3xl pt-4 text-sm leading-relaxed text-dark-gray sm:text-base">{faq.answer}</p>
+            </details>
+          ))}
         </div>
       </section>
 

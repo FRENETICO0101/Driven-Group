@@ -1,65 +1,48 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-interface CEO {
+interface Leader {
   name: string;
   title: string;
   bio: string;
-  image: string;
 }
 
-const ceos: CEO[] = [
+const leaders: Leader[] = [
   {
-    name: "Iván Rodríguez",
-    title: "Chief Executive Officer & Founder",
-    bio: "Fundador de Driven Group en 2022 con la visión de construir una empresa global desde Guadalajara, Jalisco. Iván ha liderado la evolución de la compañía desde el sector inmobiliario hacia un ecosistema empresarial integrado que abarca negocio, real estate y educación, consolidando operaciones en Europa y América del Norte.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop&q=90",
+    name: 'Iván Rodríguez',
+    title: 'Chief Executive Officer & Founder',
+    bio: 'Fundador de Driven Group en 2022 con la visión de construir una empresa global desde Guadalajara, Jalisco. Iván ha liderado la evolución de la compañía desde el sector inmobiliario hacia un ecosistema empresarial integrado que abarca negocio, real estate y educación, consolidando operaciones en Europa y América del Norte.',
   },
   {
-    name: "Ricardo Hernández",
-    title: "Strategic Partner & Co-Founder",
-    bio: "Se incorporó a Driven Group en 2026 como socio estratégico para fortalecer y acelerar la consolidación y expansión del grupo. Ricardo aporta experiencia en desarrollo empresarial y visión estratégica para la escalabilidad de las divisiones de negocio, real estate y educación.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=600&fit=crop&q=90",
+    name: 'Ricardo Hernández',
+    title: 'Strategic Partner & Co-Founder',
+    bio: 'Se incorporó a Driven Group en 2026 como socio estratégico para fortalecer y acelerar la consolidación y expansión del grupo. Ricardo aporta experiencia en desarrollo empresarial y visión estratégica para la escalabilidad de las divisiones de negocio, real estate y educación.',
   },
 ];
 
 export function CEOsSection() {
   return (
-    <section className="py-20 sm:py-24 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
-      <div className="mb-16 sm:mb-20">
-        <p className="editorial-label text-gray mb-2">LEADERSHIP</p>
-        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-black tracking-tight leading-[1.1]">
-          Our Leadership
-        </h2>
+    <section className="bg-black py-20 sm:py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8">
+      <div className="mb-12 sm:mb-16">
+        <p className="editorial-label mb-2 text-white/45">LIDERAZGO</p>
+        <h2 className="font-serif text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">Nuestro Liderazgo</h2>
       </div>
 
-      {/* CEOs Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 md:gap-20">
-        {ceos.map((ceo) => (
-          <div key={ceo.name} className="flex flex-col">
-            {/* Image */}
-            <div className="relative aspect-square overflow-hidden rounded-xl mb-8">
-              <Image
-                src={ceo.image}
-                alt={ceo.name}
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            {/* Content */}
-            <div>
-              <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-black mb-2 tracking-tight">
-                {ceo.name}
-              </h3>
-              <p className="editorial-label text-yellow-600 mb-6 tracking-wide">
-                {ceo.title}
-              </p>
-              <p className="text-base sm:text-lg text-dark-gray leading-[1.8] font-light">
-                {ceo.bio}
-              </p>
-            </div>
-          </div>
-        ))}
+      <div className="overflow-hidden rounded-2xl border border-white/15 bg-[#171717] shadow-[0_18px_44px_rgba(0,0,0,0.28)]">
+        <div className="relative flex min-h-[20rem] items-center justify-center overflow-hidden bg-[#0f0f0f] p-4 sm:min-h-[28rem] sm:p-8">
+          <Image src="/images1/imagen-nosotros.png" alt="Liderazgo de Driven Group" fill className="object-contain" sizes="(max-width: 1280px) 100vw, 1152px" />
+        </div>
+        <div className="grid grid-cols-1 divide-y divide-white/15 lg:grid-cols-2 lg:divide-x lg:divide-y-0">
+          {leaders.map((leader, index) => (
+            <article key={leader.name} className="p-6 sm:p-8 lg:p-10">
+              <p className="editorial-label text-white/45">{String(index + 1).padStart(2, '0')} · DRIVEN GROUP</p>
+              <h3 className="mt-3 font-serif text-2xl font-semibold tracking-tight text-white sm:text-3xl">{leader.name}</h3>
+              <p className="editorial-label mt-2 text-white/55">{leader.title}</p>
+              <p className="mt-6 text-base font-light leading-[1.8] text-white/75 sm:text-lg">{leader.bio}</p>
+            </article>
+          ))}
+        </div>
+      </div>
       </div>
     </section>
   );

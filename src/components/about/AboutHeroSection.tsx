@@ -1,12 +1,15 @@
 import { PageHero } from "@/components/layout/PageHero";
+import { useTranslations } from "next-intl";
 
 export function AboutHeroSection() {
+  const t = useTranslations("nav");
+
   return (
     <PageHero
       icon="info"
-      label="ABOUT US"
-      imageSrc="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=1080&fit=crop&q=90"
-      imageAlt="Driven Group Leadership"
+      label={t("about").toUpperCase()}
+      imageSrc="/images1/about-driven-group-miami.png"
+      imageAlt="Liderazgo de Driven Group frente a la bahía de Miami"
       titleKey="about"
       descKey="aboutDesc"
       ctaHref="#mission"
