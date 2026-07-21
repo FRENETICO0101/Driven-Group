@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navigation = [
   { key: "home", href: "/", index: "01" },
@@ -43,6 +44,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeCityIdx, setActiveCityIdx] = useState(0);
+  const [isNight, setIsNight] = useState(() => typeof document !== "undefined" && document.documentElement.dataset.theme === "night");
   const [, setTick] = useState(0);
 
   useEffect(() => {
@@ -91,7 +93,7 @@ export function Navbar() {
             </div>
 
             <Link href="/" className="justify-self-center rounded focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={t("ui.homeAria")}>
-              <BrandLogo className={isRealEstate || isBusiness || isAcademy ? "w-28 sm:w-40 md:w-48" : "w-20 sm:w-24"} variant={isRealEstate ? "realEstate" : isBusiness ? "business" : isAcademy ? "academy" : "corporate"} />
+              <BrandLogo className={isRealEstate || isBusiness || isAcademy ? "w-28 sm:w-40 md:w-48" : "w-20 sm:w-24"} variant={isRealEstate ? "realEstate" : isBusiness ? "business" : isAcademy ? "academy" : "corporate"} dark={isNight} />
             </Link>
 
             <div className="flex items-center justify-end gap-4 sm:gap-5">
@@ -100,6 +102,7 @@ export function Navbar() {
                 <span className="editorial-label hidden lg:inline">{t("ui.contact")}</span>
               </Link>
               <LanguageSwitcher />
+              <ThemeToggle onThemeChange={setIsNight} />
               <button className="text-dark-gray transition-colors hover:text-black" aria-label={t("ui.account")}>
                 <span className="material-symbols-outlined text-[18px]">person</span>
               </button>

@@ -1,9 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import Link from 'next/link';
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 export function HeroSection() {
   const t = useTranslations('hero');
+  const [isNight, setIsNight] = useState(() => typeof document !== "undefined" && document.documentElement.dataset.theme === "night");
+
+  useEffect(() => {
+    const syncTheme = (event: Event) => setIsNight((event as CustomEvent<boolean>).detail);
+    window.addEventListener("driven-theme-change", syncTheme);
+    return () => window.removeEventListener("driven-theme-change", syncTheme);
+  }, []);
 
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
@@ -15,7 +25,7 @@ export function HeroSection() {
           <Image
             alt="Luxury Real Estate - Miami"
             className="image-zoom h-full w-full object-cover"
-            src="/images1/hero-miami-skyline.png"
+            src={isNight ? "/images1/hero-miami-night-v1.webp" : "/images1/hero-miami-skyline.png"}
             fill
             priority
             sizes="100vw"
@@ -41,11 +51,6 @@ export function HeroSection() {
         </div>
 
         {/* DAY indicator - top right */}
-        <div className="absolute top-8 right-8 z-30 text-center">
-          <span className="material-symbols-outlined text-white text-2xl block">light_mode</span>
-          <p className="text-white text-xs tracking-widest font-semibold mt-2">DAY</p>
-        </div>
-
         {/* Content — centered for luxury editorial feel */}
         <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-8">
           <div className="max-w-3xl">

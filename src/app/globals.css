@@ -27,6 +27,47 @@
   --theme-charcoal: var(--theme-black);
 }
 
+html[data-theme="night"] {
+  color-scheme: dark;
+  background: #111111;
+}
+
+html[data-theme="night"] body {
+  background: #111111;
+  color: #f4f4f4;
+}
+
+html[data-theme="night"] .bg-white,
+html[data-theme="night"] [class*="bg-white/"] {
+  background-color: #1b1b1b !important;
+}
+
+html[data-theme="night"] .bg-light-gray,
+html[data-theme="night"] [class*="bg-light-gray/"] {
+  background-color: #242424 !important;
+}
+
+html[data-theme="night"] .text-black {
+  color: #f5f5f5 !important;
+}
+
+html[data-theme="night"] .text-dark-gray {
+  color: #d0d0d0 !important;
+}
+
+html[data-theme="night"] .text-gray {
+  color: #a8a8a8 !important;
+}
+
+html[data-theme="night"] .border-light-gray,
+html[data-theme="night"] .divide-light-gray > :not([hidden]) ~ :not([hidden]) {
+  border-color: #444444 !important;
+}
+
+html[data-theme="night"] header [data-brand-variant="corporate"] img {
+  filter: invert(1);
+}
+
 @theme {
   /* Mapeo de Tailwind a nuestras variables CSS */
   --font-sans: var(--font-principal);
