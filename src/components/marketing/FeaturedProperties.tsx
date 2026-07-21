@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import type { Property } from "@/lib/types";
-import { formatPropertyPrice, formatPropertySubtitle, getPropertyBadge } from "@/lib/property-utils";
+import { formatPropertySubtitle, getPropertyBadge } from "@/lib/property-utils";
 import { PropertyCard } from "@/components/real-estate/PropertyCard";
 
 const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop";
@@ -51,7 +51,6 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
                 imageAlt={primaryImage?.alt ?? property.title}
                 badge={badge.label}
                 badgeFeatured={badge.featured}
-                price={formatPropertyPrice(property.price)}
                 title={property.title}
                 subtitle={formatPropertySubtitle(property)}
                 description={property.description ?? ""}

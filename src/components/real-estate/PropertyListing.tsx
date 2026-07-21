@@ -1,6 +1,5 @@
 import { useTranslations } from "next-intl";
 import type { Property } from "@/lib/types";
-import { formatPropertyPrice } from "@/lib/property-utils";
 import Link from "next/link";
 
 interface PropertyListingProps {
@@ -61,7 +60,7 @@ export function PropertyListing({ properties }: PropertyListingProps) {
               </p>
 
               {/* Specs Grid */}
-              <div className="grid grid-cols-3 divide-x divide-light-gray rounded-xl border border-light-gray bg-light-gray/10 mb-9 overflow-hidden">
+              <div className="grid grid-cols-2 divide-x divide-light-gray rounded-xl border border-light-gray bg-light-gray/10 mb-9 overflow-hidden">
                 {property.bedrooms > 0 && (
                   <div className="p-4 sm:p-5">
                     <p className="text-2xl sm:text-3xl font-black text-black mb-1">
@@ -78,18 +77,7 @@ export function PropertyListing({ properties }: PropertyListingProps) {
                     <p className="editorial-label text-gray text-xs">{t("bathrooms")}</p>
                   </div>
                 )}
-                <div className="p-4 sm:p-5">
-                  <p className="text-2xl sm:text-3xl font-black text-black mb-1">
-                    {property.squareFeet.toLocaleString()}
-                  </p>
-                  <p className="editorial-label text-gray text-xs">{t("sqft")}</p>
-                </div>
               </div>
-
-              {/* Price */}
-              <p className="font-serif text-3xl md:text-4xl text-black mb-8">
-                {formatPropertyPrice(property.price)}
-              </p>
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4">

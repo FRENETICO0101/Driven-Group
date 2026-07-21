@@ -12,7 +12,6 @@ interface PropertyCardProps {
   imageAlt: string;
   badge: string;
   badgeFeatured?: boolean;
-  price: string;
   title: string;
   subtitle: string;
   description: string;
@@ -25,7 +24,6 @@ export function PropertyCard({
   imageAlt,
   badge,
   badgeFeatured = false,
-  price,
   title,
   subtitle,
   description,
@@ -72,9 +70,6 @@ export function PropertyCard({
               </span>
             ))}
           </div>
-
-          {/* Price */}
-          <p className="mt-6 font-serif text-xl text-black">{price}</p>
         </div>
       </article>
     </Link>
