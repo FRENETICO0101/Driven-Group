@@ -20,16 +20,16 @@ export function HeroSection() {
       {/* Hero content area with video/image background below navbar */}
       <div className="relative min-h-screen sm:min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
         {/* Background video with image fallback */}
-        <div className="absolute inset-0 z-0">
+        <div className={`absolute inset-0 z-0 ${isNight ? "bg-[#080d16]" : ""}`}>
           {/* Fallback image background */}
           <Image
             alt="Luxury Real Estate - Miami"
-            className="image-zoom h-full w-full object-cover"
+            className={`h-full w-full ${isNight ? "object-contain" : "image-zoom object-cover"}`}
             src={isNight ? "/images1/hero-miami-night-v1.webp" : "/images1/hero-miami-skyline.png"}
             fill
             priority
             sizes="100vw"
-            style={{ objectPosition: "center 55%" }}
+            style={{ objectPosition: isNight ? "60% 52%" : "center 55%" }}
           />
 
           {/* Video background (optional) */}
@@ -47,7 +47,7 @@ export function HeroSection() {
             />
           </video> */}
 
-          <div className="absolute inset-0 hero-gradient z-10" />
+          <div className={`absolute inset-0 z-10 ${isNight ? "night-hero-gradient" : "hero-gradient"}`} />
         </div>
 
         {/* DAY indicator - top right */}
