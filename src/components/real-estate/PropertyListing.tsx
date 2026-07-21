@@ -22,7 +22,6 @@ function EmptyState() {
 }
 
 export function PropertyListing({ properties }: PropertyListingProps) {
-  const t = useTranslations("properties");
   const tListing = useTranslations("listing");
   if (properties.length === 0) {
     return (
@@ -53,31 +52,6 @@ export function PropertyListing({ properties }: PropertyListingProps) {
               <p className="text-dark-gray text-sm mb-6 leading-relaxed">
                 {property.address}
               </p>
-
-              {/* Description */}
-              <p className="text-dark-gray text-base leading-relaxed mb-8 max-w-xl">
-                {property.description || "Activo inmobiliario de alto valor estratégico."}
-              </p>
-
-              {/* Specs Grid */}
-              <div className="grid grid-cols-2 divide-x divide-light-gray rounded-xl border border-light-gray bg-light-gray/10 mb-9 overflow-hidden">
-                {property.bedrooms > 0 && (
-                  <div className="p-4 sm:p-5">
-                    <p className="text-2xl sm:text-3xl font-black text-black mb-1">
-                      {property.bedrooms}
-                    </p>
-                    <p className="editorial-label text-gray text-xs">{t("bedrooms")}</p>
-                  </div>
-                )}
-                {property.bathrooms > 0 && (
-                  <div className="p-4 sm:p-5">
-                    <p className="text-2xl sm:text-3xl font-black text-black mb-1">
-                      {property.bathrooms}
-                    </p>
-                    <p className="editorial-label text-gray text-xs">{t("bathrooms")}</p>
-                  </div>
-                )}
-              </div>
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4">

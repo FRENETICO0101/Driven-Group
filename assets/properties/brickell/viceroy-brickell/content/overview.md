@@ -1,11 +1,7 @@
-title: 1428 Brickell
+# Overview
 
-location: Brickell, Miami
+Viceroy Brickell Residences is a branded residential tower by Viceroy Hotels & Resorts, positioned on the Miami River at the entrance to Brickell.
 
-headline: The First Solar-Powered Luxury Skyscraper
+Developed by Related Group and GTIS Partners, with architecture by Arquitectonica and interiors by Meyer Davis, the project combines sophisticated design with Viceroy's signature hospitality and a curated collection of resort-style amenities.
 
-subtitle: A new icon rises over Miami's skyline.
-
-primary_cta: Request Information
-
-secondary_cta: Download Brochure
+Its central Brickell location places residents close to the neighborhood's financial district, dining, retail, waterfront experiences, and key connections across Miami.

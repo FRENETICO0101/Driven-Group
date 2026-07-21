@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { BrandLogo } from '@/components/ui/BrandLogo';
 
 export function Footer() {
   const t = useTranslations('footer');
+  const locale = useLocale();
 
   return (
     <footer className="bg-black text-white">
@@ -50,9 +51,9 @@ export function Footer() {
         <div className="mt-14 flex flex-col gap-6 border-t border-white/15 pt-8 sm:mt-20 sm:flex-row sm:items-center sm:justify-between sm:pt-10">
           <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-gray">{t('copyright', { year: new Date().getFullYear() })}</p>
           <div className="flex flex-wrap gap-x-6 gap-y-3 text-[10px] font-medium uppercase tracking-[0.16em] text-gray sm:gap-x-8">
-            <a href="#" className="transition-colors hover:text-white">{t('privacy')}</a>
-            <a href="#" className="transition-colors hover:text-white">{t('terms')}</a>
-            <a href="#" className="transition-colors hover:text-white">{t('cookies')}</a>
+            <Link href={`/${locale}/privacy-policy`} className="transition-colors hover:text-white">{t('privacy')}</Link>
+            <Link href={`/${locale}/terms-of-service`} className="transition-colors hover:text-white">{t('terms')}</Link>
+            <Link href={`/${locale}/cookie-settings`} className="transition-colors hover:text-white">{t('cookies')}</Link>
           </div>
         </div>
       </div>
