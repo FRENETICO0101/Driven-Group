@@ -23,9 +23,6 @@ const nextConfig = {
   compress: true,
   productionBrowserSourceMaps: false,
 
-  typescript: {
-    ignoreBuildErrors: true,
-  },
 };
 
 module.exports = withNextIntl(nextConfig);

@@ -1,0 +1,58 @@
+{
+  "id": "st-regis-residences-miami",
+  "slug": "st-regis-residences",
+  "name": "St. Regis Residences Miami",
+  "status": "Under Construction",
+  "developer": "Related Group",
+  "brand": "St. Regis",
+  "location": {
+    "address": "1809 Brickell Avenue",
+    "city": "Miami",
+    "state": "Florida",
+    "country": "USA",
+    "neighborhood": "Brickell"
+  },
+  "address": "1809 Brickell Avenue, Miami, FL 33129",
+  "city": "Miami",
+  "state": "Florida",
+  "country": "USA",
+  "district": "Brickell",
+  "coordinates": {
+    "lat": 25.755757,
+    "lng": -80.196013
+  },
+  "waterfront": true,
+  "propertyType": "Luxury Condominium Residences",
+  "architecture": {
+    "interiorDesign": "Rockwell Group"
+  },
+  "overview": {
+    "headline": "A Landmark Collection of Waterfront Residences in Brickell",
+    "description": "The St. Regis Residences Miami introduces a collection of ultra-luxury waterfront homes designed to deliver the legendary St. Regis lifestyle with expansive floorplans, private elevator entry, panoramic Biscayne Bay views, and world-class hospitality services."
+  },
+  "residences": {
+    "bedroomsMin": 2,
+    "bedroomsMax": 4,
+    "interiorSqFtMin": 2616,
+    "interiorSqFtMax": 3712,
+    "privateElevator": true,
+    "floorToCeilingWindows": true,
+    "waterViews": true
+  },
+  "features": [
+    "Private elevator entry",
+    "Floor-to-ceiling glass",
+    "Waterfront location",
+    "Expansive terraces",
+    "Italian crafted kitchens",
+    "Wolf appliances",
+    "Sub-Zero refrigeration",
+    "Dornbracht fixtures",
+    "St. Regis services",
+    "Bay views"
+  ],
+  "seo": {
+    "title": "St. Regis Residences Miami",
+    "description": "Ultra-luxury waterfront residences in Brickell featuring expansive floorplans, private elevators, St. Regis services, and panoramic Biscayne Bay views."
+  }
+}

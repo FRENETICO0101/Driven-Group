@@ -1,0 +1,66 @@
+{
+  "id": "jem-world-center",
+  "slug": "jem-world-center",
+  "name": "JEM Private Residences",
+  "subtitle": "Luxury Residences at Miami Worldcenter",
+
+  "developer": "Naftali Group",
+  "architect": "Arquitectonica",
+  "interiorDesigner": "Rockwell Group",
+
+  "status": "Pre Construction",
+
+  "propertyType": "Luxury Condominium",
+
+  "city": "Miami",
+  "district": "Downtown Miami",
+  "state": "Florida",
+  "country": "USA",
+
+  "address": "1016 NE 2nd Avenue, Miami, FL 33132",
+  "coordinates": {
+    "lat": 25.784008,
+    "lng": -80.190681
+  },
+
+  "year": 2027,
+
+  "stories": 67,
+
+  "residences": 259,
+
+  "bedrooms": [
+    "1 Bedroom",
+    "2 Bedroom",
+    "3 Bedroom",
+    "4 Bedroom",
+    "Penthouse"
+  ],
+
+  "heroImage": "hero.webp",
+
+  "brochure": "jem-brochure.pdf",
+
+  "downloads": [
+    "jem-brochure.pdf",
+    "jem-pricing.pdf"
+  ],
+
+  "features": [
+    "Resort Style Pool",
+    "Fitness Center",
+    "Spa",
+    "Resident Lounge",
+    "Coworking Spaces",
+    "Private Dining",
+    "Outdoor Terraces",
+    "Concierge",
+    "Valet Parking",
+    "24-Hour Security"
+  ],
+
+  "seo": {
+    "title": "JEM Private Residences | Miami Worldcenter Luxury Condominiums",
+    "description": "Discover JEM Private Residences at Miami Worldcenter, offering luxury residences, premium amenities, contemporary design, and an exceptional Downtown Miami lifestyle."
+  }
+}

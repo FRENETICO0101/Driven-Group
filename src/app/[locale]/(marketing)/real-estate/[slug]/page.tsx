@@ -6,6 +6,7 @@ import { PropertyGallery } from '@/components/real-estate/PropertyGallery';
 import { PropertyHero } from '@/components/real-estate/PropertyHero';
 import { PropertyDetails } from '@/components/real-estate/PropertyDetails';
 import { PropertyCTA } from '@/components/real-estate/PropertyCTA';
+import type { CatalogProperty } from '@/lib/property-catalog';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 60;
@@ -71,6 +72,7 @@ export default async function PropertyPage({
   }
 
   const badge = getPropertyBadge(property.type);
+  const catalogResources = 'resources' in property ? (property as CatalogProperty).resources : undefined;
 
   return (
     <main className="min-h-screen bg-white pt-16 sm:pt-20">
@@ -85,11 +87,11 @@ export default async function PropertyPage({
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <PropertyHero property={property} badge={badge.label} badgeFeatured={badge.featured} />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
           {/* Gallery & Hero */}
-          <div className="lg:col-span-2 space-y-6 sm:space-y-8">
-            <PropertyGallery images={property.images} title={property.title} />
-            <PropertyHero property={property} badge={badge.label} badgeFeatured={badge.featured} />
+          <div className="lg:col-span-2">
+            <PropertyGallery images={property.images} title={property.title} galleryDocuments={catalogResources?.galleryDocuments} />
           </div>
 
           {/* CTA Sidebar */}

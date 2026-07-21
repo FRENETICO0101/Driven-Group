@@ -1,0 +1,30 @@
+{
+  "id": "edition-residences",
+  "slug": "edition-residences",
+  "name": "Edition Residences",
+  "status": "pre-construction",
+  "featured": true,
+  "district": "Edgewater",
+  "city": "Miami",
+  "state": "Florida",
+  "country": "USA",
+  "address": "2121 N Bayshore Drive, Miami, FL 33137",
+  "coordinates": {
+    "lat": 25.797284,
+    "lng": -80.186983
+  },
+  "hero": {
+    "title": "Edition Residences",
+    "location": "Edgewater, Miami"
+  },
+  "gallery": {
+    "totalImages": 34
+  },
+  "floorplans": {
+    "totalLayouts": 10
+  },
+  "seo": {
+    "title": "Edition Residences | Miami",
+    "description": "Edition Residences in Edgewater, Miami."
+  }
+}

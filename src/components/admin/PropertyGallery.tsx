@@ -1,0 +1,248 @@
+'use client';
+
+import { useState } from 'react';
+import Image from 'next/image';
+import {
+  deletePropertyImageAction,
+  reorderPropertyImagesAction,
+  uploadPropertyImageAction,
+} from '@/server/actions/property.actions';
+import type { PropertyImage } from '@/lib/types';
+
+interface PropertyGalleryProps {
+  propertyId: string;
+  images: PropertyImage[];
+}
+
+export function PropertyGallery({ propertyId, images: initialImages }: PropertyGalleryProps) {
+  const [images, setImages] = useState(initialImages);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [uploadUrl, setUploadUrl] = useState('');
+  const [uploadAlt, setUploadAlt] = useState('');
+  const [draggedImageId, setDraggedImageId] = useState<string | null>(null);
+
+  const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!uploadUrl.trim()) {
+      setError('Please enter an image URL');
+      return;
+    }
+
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      const result = await uploadPropertyImageAction(propertyId, uploadUrl, uploadAlt || undefined);
+
+      if (!result.success || !result.data) {
+        setError(result.error || 'Failed to upload image');
+        return;
+      }
+
+      setImages([...images, result.data]);
+      setUploadUrl('');
+      setUploadAlt('');
+    } catch (err) {
+      setError('An unexpected error occurred');
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleDelete = async (imageId: string) => {
+    if (!confirm('Are you sure you want to delete this image?')) return;
+
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      const result = await deletePropertyImageAction(imageId);
+
+      if (!result.success) {
+        setError(result.error || 'Failed to delete image');
+        return;
+      }
+
+      setImages(images.filter((img) => img.id !== imageId));
+    } catch (err) {
+      setError('An unexpected error occurred');
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleMoveUp = async (index: number) => {
+    if (index === 0) return;
+
+    const newImages = [...images];
+    const previous = newImages[index - 1];
+    const current = newImages[index];
+    if (!previous || !current) return;
+    [newImages[index - 1], newImages[index]] = [current, previous];
+
+    setImages(newImages);
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      await reorderPropertyImagesAction(newImages.map((img) => img.id));
+    } catch (err) {
+      setError('Failed to reorder images');
+      console.error(err);
+      setImages(images);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleMoveDown = async (index: number) => {
+    if (index === images.length - 1) return;
+
+    const newImages = [...images];
+    const current = newImages[index];
+    const next = newImages[index + 1];
+    if (!current || !next) return;
+    [newImages[index], newImages[index + 1]] = [next, current];
+
+    setImages(newImages);
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      await reorderPropertyImagesAction(newImages.map((img) => img.id));
+    } catch (err) {
+      setError('Failed to reorder images');
+      console.error(err);
+      setImages(images);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="space-y-8">
+      {error && (
+        <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+          <p className="text-sm text-red-800">{error}</p>
+        </div>
+      )}
+
+      {/* Upload Form */}
+      <div className="bg-white border border-light-gray rounded-xl p-8">
+        <h2 className="text-2xl font-serif text-black mb-6">Add Image</h2>
+
+        <form onSubmit={handleUpload} className="space-y-4">
+          <div>
+            <label className="block text-sm font-semibold text-black mb-2">Image URL</label>
+            <input
+              type="url"
+              value={uploadUrl}
+              onChange={(e) => setUploadUrl(e.target.value)}
+              placeholder="https://example.com/image.jpg"
+              className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-black mb-2">Alt Text (optional)</label>
+            <input
+              type="text"
+              value={uploadAlt}
+              onChange={(e) => setUploadAlt(e.target.value)}
+              placeholder="Description of the image"
+              className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-black/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          >
+            {isLoading ? 'Uploading...' : 'Add Image'}
+          </button>
+        </form>
+      </div>
+
+      {/* Gallery */}
+      <div className="bg-white border border-light-gray rounded-xl p-8">
+        <h2 className="text-2xl font-serif text-black mb-6">
+          Gallery ({images.length} images)
+        </h2>
+
+        {images.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-dark-gray">No images yet. Add one above to get started.</p>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {images.map((image, index) => (
+              <div
+                key={image.id}
+                className="border border-light-gray rounded-lg overflow-hidden hover:border-black/30 transition-colors"
+                onDragStart={() => setDraggedImageId(image.id)}
+                onDragEnd={() => setDraggedImageId(null)}
+              >
+                <div className="flex items-center gap-4 p-4">
+                  {/* Thumbnail */}
+                  <div className="relative w-24 h-24 flex-shrink-0 bg-light-gray rounded-lg overflow-hidden">
+                    <Image
+                      src={image.url}
+                      alt={image.alt || 'Property image'}
+                      fill
+                      className="object-cover"
+                      onError={(e) => {
+                        const img = e.target as HTMLImageElement;
+                        img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect fill="%23f0f0f0" width="100" height="100"/%3E%3C/svg%3E';
+                      }}
+                    />
+                  </div>
+
+                  {/* Info */}
+                  <div className="flex-grow min-w-0">
+                    <p className="text-sm font-semibold text-black truncate">{image.alt || 'Image'}</p>
+                    <p className="text-xs text-dark-gray truncate">{image.url}</p>
+                    <p className="text-xs text-gray mt-1">Order: {image.order}</p>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex items-center gap-2 flex-shrink-0">
+                    <button
+                      onClick={() => handleMoveUp(index)}
+                      disabled={index === 0 || isLoading}
+                      className="px-3 py-2 border border-light-gray rounded-lg text-xs font-semibold hover:bg-light-gray/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                      title="Move up"
+                    >
+                      ↑
+                    </button>
+
+                    <button
+                      onClick={() => handleMoveDown(index)}
+                      disabled={index === images.length - 1 || isLoading}
+                      className="px-3 py-2 border border-light-gray rounded-lg text-xs font-semibold hover:bg-light-gray/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                      title="Move down"
+                    >
+                      ↓
+                    </button>
+
+                    <button
+                      onClick={() => handleDelete(image.id)}
+                      disabled={isLoading}
+                      className="px-3 py-2 border border-red-200 text-red-700 rounded-lg text-xs font-semibold hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

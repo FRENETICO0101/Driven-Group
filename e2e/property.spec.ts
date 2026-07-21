@@ -1,16 +1,32 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Property Detail Page', () => {
+  test('should render Mandarin PDF renderings in the gallery', async ({ page }) => {
+    await page.goto('/en/real-estate/mandarin-oriental-residences');
+
+    const rendering = page.locator('iframe[title*="Mandarin Oriental"]');
+    await expect(rendering).toBeVisible();
+    await expect(rendering).toHaveAttribute('src', /mandarin-oriental-miami-hero\.pdf/);
+  });
+
+  test('should render interactive maps for mapped properties', async ({ page }) => {
+    await page.goto('/en/real-estate/1428-brickell');
+    await expect(page.locator('.leaflet-container')).toBeVisible();
+
+    await page.goto('/en/real-estate');
+    await expect(page.locator('.leaflet-container')).toBeVisible();
+  });
+
   test('should load property detail page', async ({ page }) => {
     // Navigate through featured properties to find a slug
     await page.goto('/');
     
     // Click first property card
-    const firstProperty = page.locator('a[href^="/real-estate/"]').first();
+    const firstProperty = page.locator('main a[href*="/real-estate/"]').first();
     await firstProperty.click();
     
     // Should be on a property detail page
-    expect(page.url()).toMatch(/\/real-estate\/[^/]+$/);
+    await expect(page).toHaveURL(/\/(en\/)?real-estate\/[^/]+$/);
     
     // Property details visible
     await expect(page.getByRole('heading', { name: /especificaciones/i })).toBeVisible();
@@ -19,7 +35,7 @@ test.describe('Property Detail Page', () => {
   test('should display property gallery', async ({ page }) => {
     await page.goto('/');
     
-    const firstProperty = page.locator('a[href^="/real-estate/"]').first();
+    const firstProperty = page.locator('main a[href*="/real-estate/"]').first();
     await firstProperty.click();
     
     // Gallery image visible
@@ -30,7 +46,7 @@ test.describe('Property Detail Page', () => {
   test('should display property CTA form', async ({ page }) => {
     await page.goto('/');
     
-    const firstProperty = page.locator('a[href^="/real-estate/"]').first();
+    const firstProperty = page.locator('main a[href*="/real-estate/"]').first();
     await firstProperty.click();
     
     // CTA section visible
@@ -43,7 +59,7 @@ test.describe('Property Detail Page', () => {
   test('should expand form when clicking request info', async ({ page }) => {
     await page.goto('/');
     
-    const firstProperty = page.locator('a[href^="/real-estate/"]').first();
+    const firstProperty = page.locator('main a[href*="/real-estate/"]').first();
     await firstProperty.click();
     
     // Click request info
@@ -58,25 +74,25 @@ test.describe('Property Detail Page', () => {
   test('should navigate back to listings', async ({ page }) => {
     await page.goto('/');
     
-    const firstProperty = page.locator('a[href^="/real-estate/"]').first();
+    const firstProperty = page.locator('main a[href*="/real-estate/"]').first();
     await firstProperty.click();
     
     // Click back link
     await page.getByRole('link', { name: /volver al catálogo/i }).click();
     
     // Should be back on real-estate page
-    await expect(page).toHaveURL('/real-estate');
+    await expect(page).toHaveURL(/\/(en\/)?real-estate$/);
   });
 
   test('mobile: should display sticky CTA sidebar', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto('/');
     
-    const firstProperty = page.locator('a[href^="/real-estate/"]').first();
+    const firstProperty = page.locator('main a[href*="/real-estate/"]').first();
     await firstProperty.click();
     
     // CTA sidebar should be visible
-    const ctaSection = page.locator('.sticky');
+    const ctaSection = page.locator('.sticky').last();
     await expect(ctaSection).toBeVisible();
   });
 
@@ -84,7 +100,7 @@ test.describe('Property Detail Page', () => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto('/');
     
-    const firstProperty = page.locator('a[href^="/real-estate/"]').first();
+    const firstProperty = page.locator('main a[href*="/real-estate/"]').first();
     await firstProperty.click();
     
     await page.getByRole('button', { name: /solicitar información/i }).click();

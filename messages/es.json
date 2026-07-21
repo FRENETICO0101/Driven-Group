@@ -20,7 +20,7 @@
     "contactDesc": "Conéctate con nuestro equipo para explorar asociaciones, oportunidades de inversión o colaboración estratégica",
     "getInTouch": "PONTE EN CONTACTO",
     "about": "Construyendo Legados a Través de Visión Estratégica",
-    "aboutDesc": "Más de dos décadas de excelencia, integridad y liderazgo transformador en bienes raíces de lujo y estrategia corporativa",
+    "aboutDesc": "Desde 2022, liderando la transformación en bienes raíces de lujo y estrategia corporativa con integridad y visión global",
     "discoverValues": "DESCUBRE NUESTROS VALORES"
   },
   "academy": {
@@ -78,5 +78,46 @@
   "contact": {
     "title": "Contáctanos",
     "description": "Envíanos un mensaje y nos pondremos en contacto contigo pronto."
+  },
+  "properties": {
+    "featured": "Residencias Destacadas",
+    "exceptional": "Propiedades\nExcepcionales",
+    "viewAll": "Ver Todas las Residencias",
+    "empty": "Sin resultados",
+    "emptyDesc": "No encontramos propiedades con los filtros seleccionados. Intenta ajustar tu búsqueda.",
+    "bedrooms": "Dormitorios",
+    "bathrooms": "Baños",
+    "sqft": "M²",
+    "location": "Ubicación",
+    "viewLocation": "Ver ubicación",
+    "exploreByLocation": "Explorar por ubicación",
+    "propertyMap": "Mapa de propiedades",
+    "expandMap": "Ampliar mapa",
+    "collapseMap": "Reducir mapa",
+    "locationsAvailable": "{count, plural, one {# ubicación disponible} other {# ubicaciones disponibles}}"
+  },
+  "cta": {
+    "label": "HABLEMOS",
+    "headline": "Transforma tu visión en inversión",
+    "body": "Conecta con asesores especializados en patrimonio inmobiliario corporativo. Diseñamos estrategias que consolidan y perduran.",
+    "scheduleBtn": "Agendar Consulta",
+    "exploreBtn": "Explorar Propiedades"
+  },
+  "filters": {
+    "allTypes": "Todos los tipos",
+    "residential": "Residencial",
+    "commercial": "Comercial",
+    "land": "Terreno",
+    "mixedUse": "Uso Mixto",
+    "allStatuses": "Todos los estados",
+    "available": "Disponible",
+    "pending": "En negociación",
+    "sold": "Vendido",
+    "allCities": "Todas las ciudades",
+    "clear": "Limpiar"
+  },
+  "listing": {
+    "scheduleTour": "Agendar Tour",
+    "viewDetails": "Ver Detalles"
   }
 }

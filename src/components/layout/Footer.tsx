@@ -11,9 +11,8 @@ export function Footer() {
           {/* [Col 1-2] Brand Section */}
           <div className="lg:col-span-2">
             {/* Logo */}
-            <div className="flex items-center gap-3 mb-6">
-              <BrandLogo className="h-8 sm:h-10 w-auto text-white" />
-              <h2 className="font-serif text-2xl sm:text-3xl tracking-[0.1em] text-white">DRIVEN GROUP</h2>
+            <div className="mb-6">
+              <BrandLogo className="w-32 sm:w-40" imageClassName="brightness-0 invert" />
             </div>
 
             {/* Description */}
@@ -22,13 +21,10 @@ export function Footer() {
             {/* Contact Info */}
             <div className="space-y-3 mb-8">
               <div className="text-sm text-gray">
-                <a href="tel:+13055550123" className="hover:text-white transition-colors duration-500">+1 (305) 555-0123</a>
-              </div>
-              <div className="text-sm text-gray">
                 <a href="mailto:info@drivengroup.com" className="hover:text-white transition-colors duration-500">info@drivengroup.com</a>
               </div>
               <div className="text-sm text-gray">
-                Miami, FL
+                Miami, Florida
               </div>
             </div>
 
@@ -132,7 +128,7 @@ export function Footer() {
         {/* Footer Bottom: Legal */}
         <div className="border-t border-black pt-8 sm:pt-12">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
-            <p className="text-[11px] uppercase tracking-[0.2em] text-gray">© 2026 Driven Group. All rights reserved.</p>
+            <p className="text-[11px] uppercase tracking-[0.2em] text-gray">© {new Date().getFullYear()} Driven Group. All rights reserved.</p>
             <div className="flex flex-col sm:flex-row gap-6 sm:gap-8">
               <a href="#" className="text-[11px] uppercase tracking-[0.2em] text-gray hover:text-white transition-colors duration-500">Privacy Policy</a>
               <a href="#" className="text-[11px] uppercase tracking-[0.2em] text-gray hover:text-white transition-colors duration-500">Terms of Service</a>

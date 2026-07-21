@@ -10,6 +10,9 @@ export default defineConfig({
 
   use: {
     baseURL: 'http://localhost:3000',
+    extraHTTPHeaders: {
+      'Accept-Language': 'es',
+    },
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },

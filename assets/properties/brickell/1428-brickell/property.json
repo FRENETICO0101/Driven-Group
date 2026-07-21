@@ -1,0 +1,87 @@
+{
+  "id": "1428-brickell",
+
+  "slug": "1428-brickell",
+
+  "name": "1428 Brickell",
+
+  "status": "pre-construction",
+
+  "featured": true,
+
+  "district": "Brickell",
+
+  "city": "Miami",
+
+  "state": "Florida",
+
+  "country": "USA",
+
+  "address": "1428 Brickell Ave, Miami, FL 33131",
+
+  "coordinates": {
+    "lat": 25.7597,
+    "lng": -80.1927
+  },
+
+  "developer": "Ytech",
+
+  "architect": "Arquitectonica",
+
+  "interiorDesigner": "Antonio Citterio",
+
+  "residences": 189,
+
+  "stories": 70,
+
+  "completion": "2028",
+
+  "waterfront": false,
+
+  "officialWebsite": "https://1428brickell.com",
+
+  "contact": {
+    "phone": "+1 305 706 1428",
+    "email": "info@1428brickell.com"
+  },
+
+  "pricing": {
+    "startingFrom": null,
+    "currency": "USD"
+  },
+
+  "hero": {
+    "title": "1428 Brickell",
+    "location": "Brickell, Miami",
+    "headline": "The First Solar-Powered Luxury Skyscraper",
+    "image": "gallery/hero-exterior-day.webp",
+    "imageNight": "gallery/hero-exterior-night.webp"
+  },
+
+  "gallery": {
+    "totalImages": 46
+  },
+
+  "floorplans": {
+    "totalLayouts": 14
+  },
+
+  "brochure": {
+    "main": "brochure/1428-brickell-brochure.pdf",
+    "buyerSchedule": "brochure/buyer-schedule.pdf"
+  },
+
+  "content": {
+    "hero": "content/hero.md",
+    "overview": "content/overview.md",
+    "amenities": "content/amenities.md",
+    "location": "content/location.md",
+    "downloads": "content/downloads.md",
+    "residences": "content/residences.md"
+  },
+
+  "seo": {
+    "title": "1428 Brickell Residences Miami",
+    "description": "Luxury residences in Brickell Miami featuring private elevators, panoramic views and world-class amenities."
+  }
+}

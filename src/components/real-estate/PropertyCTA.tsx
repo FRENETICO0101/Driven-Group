@@ -32,7 +32,7 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
       email: data.get('email') as string,
       phone: data.get('phone') as string,
       message: data.get('message') as string || undefined,
-      propertyId: property.id,
+      propertyId: property.id.startsWith('catalog-') ? undefined : property.id,
     });
 
     if (result.success) {

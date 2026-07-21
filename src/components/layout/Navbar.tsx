@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -47,6 +48,7 @@ function getCityInfo(tz: string, tempBase: number): CityInfo {
 
 export function Navbar() {
   const t = useTranslations();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeCityIdx, setActiveCityIdx] = useState(0);
@@ -83,6 +85,9 @@ export function Navbar() {
   }, []);
 
   const overlayVisible = isScrolled || isMenuOpen;
+  const isRealEstate = pathname.includes("/real-estate");
+  const isBusiness = pathname.includes("/business");
+  const isAcademy = pathname.includes("/academy");
   const activeCity = cities[activeCityIdx];
   const cityInfo = getCityInfo(activeCity.tz, activeCity.tempBase);
 
@@ -134,13 +139,13 @@ export function Navbar() {
             {/* Center — wordmark */}
             <Link
               href="/"
-              className="justify-self-center focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray rounded flex items-center gap-3"
+              className="justify-self-center rounded focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray"
               aria-label="Driven Group — Inicio"
             >
-              <BrandLogo className={`h-5 sm:h-7 w-auto transition-colors duration-700 ${overlayVisible ? "text-black" : "text-dark-gray"}`} />
-              <span className={`text-sm sm:text-base md:text-lg font-semibold tracking-[0.25em] uppercase transition-colors duration-700 ${overlayVisible ? "text-black" : "text-dark-gray"}`}>
-                DRIVEN GROUP
-              </span>
+              <BrandLogo
+                className={isRealEstate || isBusiness || isAcademy ? "w-28 sm:w-40 md:w-48" : "w-20 sm:w-24"}
+                variant={isRealEstate ? "realEstate" : isBusiness ? "business" : isAcademy ? "academy" : "corporate"}
+              />
             </Link>
 
             {/* Right — utility icons */}
@@ -153,9 +158,7 @@ export function Navbar() {
                 <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>phone</span>
                 <span className="hidden lg:inline editorial-label">Contact</span>
               </Link>
-              <div className="hidden md:flex">
-                <LanguageSwitcher />
-              </div>
+              <LanguageSwitcher />
               <button
                 className={`transition-colors duration-500 ${overlayVisible ? "text-dark-gray hover:text-black" : "text-dark-gray hover:text-dark-gray"}`}
                 aria-label="Cuenta"
@@ -214,8 +217,6 @@ export function Navbar() {
               }}
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-                <a href="tel:+13055550123" className="editorial-label text-gray hover:text-black transition-colors">+1 (305) 555-0123</a>
-                <span className="hidden sm:inline text-light-gray">|</span>
                 <a href="mailto:info@drivengroup.com" className="editorial-label text-gray hover:text-black transition-colors">info@drivengroup.com</a>
               </div>
               <div className="flex gap-6">

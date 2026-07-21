@@ -1,0 +1,46 @@
+{
+  "id": "mandarin-oriental-residences",
+  "slug": "mandarin-oriental-residences",
+  "name": "The Residences at Mandarin Oriental, Miami",
+  "status": "pre-construction",
+  "featured": true,
+  "district": "Brickell Key",
+  "city": "Miami",
+  "state": "Florida",
+  "country": "USA",
+  "address": "500 Brickell Key Drive, Miami, FL 33131",
+  "coordinates": {
+    "lat": 25.764994,
+    "lng": -80.185166
+  },
+  "developer": "Swire Properties",
+  "stories": 66,
+  "waterfront": true,
+  "hero": {
+    "title": "The Residences at Mandarin Oriental, Miami",
+    "location": "Brickell Key, Miami",
+    "headline": "An elevated expression of island living.",
+    "image": "mandarin-oriental-miami-hero.pdf"
+  },
+  "gallery": {
+    "totalImages": 23
+  },
+  "floorplans": {
+    "totalLayouts": 18
+  },
+  "brochure": {
+    "main": "brochure/brochure.pdf"
+  },
+  "content": {
+    "hero": "content/hero.md",
+    "overview": "content/overview.md",
+    "amenities": "content/amenities.md",
+    "location": "content/location.md",
+    "downloads": "content/downloads.md",
+    "residences": "content/residences.md"
+  },
+  "seo": {
+    "title": "The Residences at Mandarin Oriental, Miami",
+    "description": "Waterfront residences on Brickell Key with Mandarin Oriental service and panoramic Miami views."
+  }
+}

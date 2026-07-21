@@ -1,24 +1,30 @@
+import { useTranslations } from "next-intl";
+
 export function CTASection() {
+  const t = useTranslations("cta");
   return (
     <section className="py-24 sm:py-28 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
-      <div className="border border-light-gray rounded-xl sm:rounded-2xl p-12 sm:p-16 md:p-20 relative overflow-hidden">
-        <div className="absolute -right-32 -top-32 opacity-5">
-          <span className="material-symbols-outlined text-[400px] text-black">apartment</span>
+      <div className="border border-black rounded-xl sm:rounded-2xl p-8 sm:p-12 md:p-16 lg:p-20 relative overflow-hidden bg-black text-white shadow-[0_24px_64px_rgba(0,0,0,0.14)]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_88%_12%,rgba(178,144,99,0.25),transparent_31%),linear-gradient(120deg,rgba(255,255,255,0.08),transparent_42%)]" />
+        <div className="absolute -right-24 -bottom-32 opacity-15">
+          <span className="material-symbols-outlined text-[380px] text-white">apartment</span>
         </div>
+        <div className="absolute left-0 top-0 h-1 w-24 bg-white sm:w-36" />
         <div className="max-w-3xl relative z-10">
-          <p className="editorial-label text-gray mb-4">LET'S TALK</p>
-          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-black mb-6 tracking-tight leading-[1.1]">
-            Transforma tu visión en inversión
+          <p className="editorial-label text-light-gray mb-5">{t("label")}</p>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 tracking-tight leading-[1.1]">
+            {t("headline")}
           </h2>
-          <p className="text-lg sm:text-xl text-dark-gray mb-8 sm:mb-10 leading-[1.8] font-light max-w-2xl">
-            Conecta con asesores especializados en patrimonio inmobiliario corporativo. Diseñamos estrategias que consolidan y perduran.
+          <p className="text-base sm:text-lg text-light-gray mb-8 sm:mb-10 leading-[1.8] font-light max-w-2xl">
+            {t("body")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-            <a href="/contact" className="quartz-button px-8 sm:px-10 py-4 rounded-lg sm:rounded-xl font-semibold text-base transition-all hover:scale-105 inline-block text-center">
-              Schedule Consultation
+            <a href="/contact" className="bg-white px-8 sm:px-10 py-4 rounded-lg sm:rounded-xl font-semibold text-base text-black transition-all hover:bg-light-gray hover:-translate-y-0.5 inline-block text-center shadow-lg">
+              {t("scheduleBtn")}
+              <span className="material-symbols-outlined align-middle ml-2 text-lg">arrow_forward</span>
             </a>
-            <a href="/real-estate" className="border border-light-gray px-8 sm:px-10 py-4 rounded-lg sm:rounded-xl font-semibold text-base text-dark-gray hover:text-black hover:bg-white transition-all inline-block text-center">
-              Explore Properties
+            <a href="/real-estate" className="border border-white/35 px-8 sm:px-10 py-4 rounded-lg sm:rounded-xl font-semibold text-base text-white hover:border-white hover:bg-white/10 transition-all inline-block text-center">
+              {t("exploreBtn")}
             </a>
           </div>
         </div>

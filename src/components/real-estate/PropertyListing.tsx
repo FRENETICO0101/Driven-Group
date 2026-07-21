@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import type { Property } from "@/lib/types";
 import { formatPropertyPrice } from "@/lib/property-utils";
 import Link from "next/link";
@@ -7,20 +8,23 @@ interface PropertyListingProps {
 }
 
 function EmptyState() {
+  const t = useTranslations("properties");
   return (
     <div className="col-span-full flex flex-col items-center justify-center py-24 text-center">
       <div className="w-16 h-16 rounded-full bg-white border border-light-gray flex items-center justify-center mb-6">
         <span className="material-symbols-outlined text-gray text-2xl">search_off</span>
       </div>
-      <h3 className="text-black font-semibold text-lg mb-2">Sin resultados</h3>
+      <h3 className="text-black font-semibold text-lg mb-2">{t("empty")}</h3>
       <p className="text-dark-gray text-sm max-w-xs leading-relaxed">
-        No encontramos propiedades con los filtros seleccionados. Intenta ajustar tu búsqueda.
+        {t("emptyDesc")}
       </p>
     </div>
   );
 }
 
 export function PropertyListing({ properties }: PropertyListingProps) {
+  const t = useTranslations("properties");
+  const tListing = useTranslations("listing");
   if (properties.length === 0) {
     return (
       <section className="px-6 sm:px-8 max-w-7xl mx-auto pb-24">
@@ -33,16 +37,16 @@ export function PropertyListing({ properties }: PropertyListingProps) {
 
   return (
     <section className="px-6 sm:px-8 max-w-7xl mx-auto pb-24">
-      <div className="space-y-20 sm:space-y-28 md:space-y-32">
+      <div className="space-y-16 sm:space-y-20">
         {properties.map((property) => (
-          <div key={property.id} className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <article key={property.id} className="group grid grid-cols-1 gap-8 rounded-2xl border border-light-gray bg-white p-5 shadow-[0_16px_40px_rgba(37,37,37,0.06)] sm:p-7 lg:grid-cols-2 lg:gap-12 lg:p-8 xl:gap-16">
             {/* Left: Info */}
-            <div className="flex flex-col justify-start">
+            <div className="flex flex-col justify-center lg:py-4">
               {/* Location */}
-              <p className="text-dark-gray text-sm mb-4">{property.city}</p>
+              <p className="editorial-label text-gray mb-4">{property.city} · {property.state}</p>
 
               {/* Title */}
-              <h2 className="font-serif text-4xl md:text-5xl text-black leading-tight mb-4">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-black leading-tight mb-4">
                 {property.title}
               </h2>
 
@@ -52,33 +56,33 @@ export function PropertyListing({ properties }: PropertyListingProps) {
               </p>
 
               {/* Description */}
-              <p className="text-dark-gray text-base leading-relaxed mb-8">
+              <p className="text-dark-gray text-base leading-relaxed mb-8 max-w-xl">
                 {property.description || "Activo inmobiliario de alto valor estratégico."}
               </p>
 
               {/* Specs Grid */}
-              <div className="grid grid-cols-3 gap-8 mb-12 pb-8 border-b border-light-gray">
+              <div className="grid grid-cols-3 divide-x divide-light-gray rounded-xl border border-light-gray bg-light-gray/10 mb-9 overflow-hidden">
                 {property.bedrooms > 0 && (
-                  <div>
-                    <p className="text-3xl sm:text-4xl font-black text-black mb-2">
+                  <div className="p-4 sm:p-5">
+                    <p className="text-2xl sm:text-3xl font-black text-black mb-1">
                       {property.bedrooms}
                     </p>
-                    <p className="editorial-label text-gray text-xs">BEDROOMS</p>
+                    <p className="editorial-label text-gray text-xs">{t("bedrooms")}</p>
                   </div>
                 )}
                 {property.bathrooms > 0 && (
-                  <div>
-                    <p className="text-3xl sm:text-4xl font-black text-black mb-2">
+                  <div className="p-4 sm:p-5">
+                    <p className="text-2xl sm:text-3xl font-black text-black mb-1">
                       {property.bathrooms}
                     </p>
-                    <p className="editorial-label text-gray text-xs">BATHROOMS</p>
+                    <p className="editorial-label text-gray text-xs">{t("bathrooms")}</p>
                   </div>
                 )}
-                <div>
-                  <p className="text-3xl sm:text-4xl font-black text-black mb-2">
+                <div className="p-4 sm:p-5">
+                  <p className="text-2xl sm:text-3xl font-black text-black mb-1">
                     {property.squareFeet.toLocaleString()}
                   </p>
-                  <p className="editorial-label text-gray text-xs">SQ FT</p>
+                  <p className="editorial-label text-gray text-xs">{t("sqft")}</p>
                 </div>
               </div>
 
@@ -91,51 +95,43 @@ export function PropertyListing({ properties }: PropertyListingProps) {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href={`/real-estate/${property.slug}`}
-                  className="px-8 py-3 bg-black text-white text-sm font-semibold rounded-lg hover:bg-black transition-colors text-center"
+                  className="px-7 py-3 bg-black text-white text-sm font-semibold rounded-lg hover:bg-dark-gray transition-colors text-center"
                 >
-                  Schedule Tour
+                  {tListing("scheduleTour")}
                 </Link>
                 <Link
                   href={`/real-estate/${property.slug}`}
-                  className="px-8 py-3 border border-light-gray text-black text-sm font-semibold rounded-lg hover:bg-white transition-colors text-center inline-flex items-center justify-center gap-2"
+                  className="px-7 py-3 border border-light-gray text-black text-sm font-semibold rounded-lg hover:border-dark-gray hover:bg-light-gray/10 transition-colors text-center inline-flex items-center justify-center gap-2"
                 >
-                  VIEW DETAILS
+                  {tListing("viewDetails")}
                   <span className="material-symbols-outlined text-base">arrow_forward</span>
                 </Link>
               </div>
             </div>
 
-            {/* Right: Images Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {/* Main image (spans 2 rows on desktop) */}
-              {property.images[0] && (
-                <div className="col-span-2 md:col-span-1 md:row-span-2">
-                  <img
-                    src={property.images[0].url}
-                    alt={property.images[0].alt || property.title}
-                    className="w-full h-80 md:h-full object-cover rounded-lg"
-                  />
+            {/* Right: Curated image composition */}
+            <div className="grid grid-cols-[1.12fr_0.88fr] gap-3 sm:gap-4">
+              <div className="aspect-[4/5] overflow-hidden rounded-xl bg-light-gray/20">
+                {property.images[0] && (
+                  <img src={property.images[0].url} alt={property.images[0].alt || property.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                )}
+              </div>
+              <div className="flex flex-col gap-3 sm:gap-4">
+                <div className="aspect-[4/3] overflow-hidden rounded-xl bg-light-gray/20">
+                  {property.images[1] && (
+                    <img src={property.images[1].url} alt={property.images[1].alt || `${property.title} - Image 2`} className="h-full w-full object-cover" />
+                  )}
                 </div>
-              )}
-
-              {/* Secondary images */}
-              {property.images.slice(1, 4).map((image, idx) => (
-                <div key={idx} className="aspect-square">
-                  <img
-                    src={image.url}
-                    alt={image.alt || `${property.title} - Image ${idx + 2}`}
-                    className="w-full h-full object-cover rounded-lg"
-                  />
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                  {[property.images[2], property.images[3]].map((image, idx) => (
+                    <div key={image?.url ?? `fallback-${idx}`} className="aspect-square overflow-hidden rounded-xl bg-light-gray/20">
+                      {image && <img src={image.url} alt={image.alt || `${property.title} - Image ${idx + 3}`} className="h-full w-full object-cover" />}
+                    </div>
+                  ))}
                 </div>
-              ))}
-
-              {/* Fallback images if not enough in property */}
-              {property.images.length < 4 &&
-                Array.from({ length: 4 - property.images.length }).map((_, idx) => (
-                  <div key={`fallback-${idx}`} className="aspect-square bg-light-gray rounded-lg" />
-                ))}
+              </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>

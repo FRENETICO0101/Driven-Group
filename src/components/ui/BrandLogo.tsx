@@ -1,32 +1,30 @@
-import React from 'react';
+import Image from "next/image";
+import corporateLogo from "../../../assets/logos/logo-claro-negro.png";
+import realEstateLogo from "../../../assets/logos/logo-re-blanco.png";
+import businessLogo from "../../../assets/logos/logo-bussines-blanco.png";
+import academyLogo from "../../../assets/logos/academy-blanco.png";
 
 interface BrandLogoProps {
   className?: string;
-  fill?: string;
+  imageClassName?: string;
+  variant?: "corporate" | "realEstate" | "business" | "academy";
 }
 
-export function BrandLogo({ className = "w-8 h-8", fill = "currentColor" }: BrandLogoProps) {
+export function BrandLogo({ className = "w-24", imageClassName = "", variant = "corporate" }: BrandLogoProps) {
+  const isDivisionLogo = variant === "realEstate" || variant === "business" || variant === "academy";
+  const logo = variant === "realEstate" ? realEstateLogo : variant === "business" ? businessLogo : variant === "academy" ? academyLogo : corporateLogo;
+  const aspectRatio = isDivisionLogo ? "aspect-[3.16]" : "aspect-[1.42]";
+  const sizes = isDivisionLogo ? "(max-width: 640px) 112px, 192px" : "(max-width: 640px) 80px, 160px";
+
   return (
-    <svg 
-      viewBox="0 0 440 214" 
-      fill="none" 
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-label="Driven Group Logo"
-    >
-      {/* 
-        Isotipo: Tres triángulos equiláteros idénticos.
-        El triángulo central está desplazado hacia arriba, creando el espacio en 'V'
-        y haciendo que su borde superior sobresalga, coincidiendo exactamente con la imagen.
-      */}
-      {/* Triángulo Izquierdo */}
-      <polygon points="0,213 200,213 100,40" fill={fill} />
-      
-      {/* Triángulo Derecho */}
-      <polygon points="240,213 440,213 340,40" fill={fill} />
-      
-      {/* Triángulo Central (hacia abajo, elevado) */}
-      <polygon points="120,0 320,0 220,173" fill={fill} />
-    </svg>
+    <span className={`relative block overflow-hidden ${aspectRatio} ${className}`}>
+      <Image
+        src={logo}
+        alt="Driven Group"
+        fill
+        sizes={sizes}
+        className={`object-cover object-center ${imageClassName}`}
+      />
+    </span>
   );
 }

@@ -4,6 +4,7 @@ import { getAllProperties, getAvailableCities } from "@/server/services/property
 import { RealEstateHeroSection } from "@/components/real-estate/RealEstateHeroSection";
 import { PropertyFilters } from "@/components/real-estate/PropertyFilters";
 import { PropertyListing } from "@/components/real-estate/PropertyListing";
+import { PropertiesMap } from "@/components/real-estate/PropertiesMap";
 import { PropertyListingSkeleton } from "@/components/loading/PropertyListingSkeleton";
 
 export const dynamic = "force-dynamic";
@@ -59,6 +60,7 @@ async function ListingContent({ searchParams }: PageProps) {
         currentCity={filters.city}
         currentStatus={filters.status}
       />
+      <PropertiesMap properties={properties} />
       <section id="listings">
         <PropertyListing properties={properties} />
       </section>

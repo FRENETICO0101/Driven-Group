@@ -12,19 +12,19 @@ datasource db {
 // ============================================
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  password  String?  // Para admin
-  name      String
-  role      Role     @default(VIEWER)
-  
+  id              String   @id @default(uuid())
+  email           String   @unique
+  hashedPassword  String?
+  name            String?
+  role            Role     @default(VIEWER)
+
   // Relations
-  properties    Property[]    @relation("AgentProperties")
-  inquiries     Inquiry[]     @relation("InquiryAgent")
-  interactions  CRMInteraction[] @relation("InteractionAgent")
-  
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  properties      Property[]    @relation("AgentProperties")
+  inquiries       Inquiry[]     @relation("InquiryAgent")
+  interactions    CRMInteraction[] @relation("InteractionAgent")
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
 enum Role {
@@ -131,8 +131,8 @@ model Inquiry {
   source    LeadSource @default(WEBSITE)
   
   // Relations
-  property  Property  @relation("PropertyInquiries", fields: [propertyId], references: [id], onDelete: Cascade)
-  propertyId String
+  property  Property?  @relation("PropertyInquiries", fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId String?
   
   agent     User?     @relation("InquiryAgent", fields: [agentId], references: [id])
   agentId   String?

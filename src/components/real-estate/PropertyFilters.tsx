@@ -2,21 +2,7 @@
 
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
-
-const PROPERTY_TYPES = [
-  { value: "", label: "Todos los tipos" },
-  { value: "RESIDENTIAL", label: "Residencial" },
-  { value: "COMMERCIAL", label: "Comercial" },
-  { value: "LAND", label: "Terreno" },
-  { value: "MIXED_USE", label: "Uso Mixto" },
-];
-
-const PROPERTY_STATUSES = [
-  { value: "", label: "Todos los estados" },
-  { value: "ACTIVE", label: "Disponible" },
-  { value: "PENDING", label: "En negociación" },
-  { value: "SOLD", label: "Vendido" },
-];
+import { useTranslations } from "next-intl";
 
 interface PropertyFiltersProps {
   availableCities: string[];
@@ -31,9 +17,25 @@ export function PropertyFilters({
   currentCity,
   currentStatus,
 }: PropertyFiltersProps) {
+  const t = useTranslations("filters");
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const PROPERTY_TYPES = [
+    { value: "", label: t("allTypes") },
+    { value: "RESIDENTIAL", label: t("residential") },
+    { value: "COMMERCIAL", label: t("commercial") },
+    { value: "LAND", label: t("land") },
+    { value: "MIXED_USE", label: t("mixedUse") },
+  ];
+
+  const PROPERTY_STATUSES = [
+    { value: "", label: t("allStatuses") },
+    { value: "ACTIVE", label: t("available") },
+    { value: "PENDING", label: t("pending") },
+    { value: "SOLD", label: t("sold") },
+  ];
 
   const updateFilter = useCallback(
     (key: string, value: string) => {
@@ -76,7 +78,7 @@ export function PropertyFilters({
             className="bg-white border border-light-gray text-black text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-white transition-colors focus:outline-none focus:border-gray min-w-40"
           >
             <option value="" className="bg-white text-black">
-              Todas las ciudades
+              {t("allCities")}
             </option>
             {availableCities.map((city) => (
               <option key={city} value={city} className="bg-white text-black">
@@ -103,7 +105,7 @@ export function PropertyFilters({
               className="flex items-center gap-1.5 text-dark-gray hover:text-black text-sm transition-colors ml-auto"
             >
               <span className="material-symbols-outlined text-sm">close</span>
-              Limpiar
+              {t("clear")}
             </button>
           )}
         </div>

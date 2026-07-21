@@ -1,7 +1,7 @@
 interface BusinessDivisionProps {
   title: string;
   description: string;
-  longDescription: string;
+  longDescription?: string;
   image: string;
   imageAlt: string;
   highlights: string[];

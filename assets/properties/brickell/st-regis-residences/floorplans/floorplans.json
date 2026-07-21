@@ -1,0 +1,47 @@
+[
+  {
+    "id": "residence-a",
+    "name": "Residence A",
+    "bedrooms": 4,
+    "bathrooms": 5.5,
+    "interiorSqFt": 3712,
+    "exteriorSqFt": 941,
+    "totalSqFt": 4653,
+    "pdf": "residence-a.pdf",
+    "image": "residence-a.webp",
+    "featured": true
+  },
+  {
+    "id": "residence-b",
+    "name": "Residence B",
+    "bedrooms": 4,
+    "bathrooms": 5.5,
+    "interiorSqFt": 3679,
+    "exteriorSqFt": 941,
+    "totalSqFt": 4620,
+    "pdf": "residence-b.pdf",
+    "image": "residence-b.webp"
+  },
+  {
+    "id": "residence-c",
+    "name": "Residence C",
+    "bedrooms": 3,
+    "bathrooms": 3.5,
+    "interiorSqFt": 2987,
+    "exteriorSqFt": 590,
+    "totalSqFt": 3577,
+    "pdf": "residence-c.pdf",
+    "image": "residence-c.webp"
+  },
+  {
+    "id": "residence-d",
+    "name": "Residence D",
+    "bedrooms": 2,
+    "bathrooms": 3.5,
+    "interiorSqFt": 2616,
+    "exteriorSqFt": 590,
+    "totalSqFt": 3206,
+    "pdf": "residence-d.pdf",
+    "image": "residence-d.webp"
+  }
+]

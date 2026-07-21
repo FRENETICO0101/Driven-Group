@@ -1,0 +1,79 @@
+{
+  "hero": [
+    "hero-exterior-day.webp",
+    "hero-exterior-night.webp"
+  ],
+
+  "exterior": [
+    "exterior-01.webp",
+    "exterior-02.webp",
+    "street-looking-south.webp"
+  ],
+
+  "arrival": [
+    "entrance.webp"
+  ],
+
+  "parking": [
+    "cochera-a.webp",
+    "cochera-b.webp",
+    "cochera-c.webp"
+  ],
+
+  "lobby": [
+    "lobby-entrance-day.webp",
+    "lobby-entrance-night.webp",
+    "lift-lobby-01.webp",
+    "lift-lobby-02.webp"
+  ],
+
+  "amenities": [
+    "rooftop-pool.webp",
+    "pool-pavilion.webp",
+    "spa.webp",
+    "wine-lounge.webp",
+    "cinema-room.webp",
+    "yoga-stage.webp",
+    "gym-floor.webp",
+    "mail-room.webp",
+    "kids-imaginarium.webp",
+    "garden.webp",
+    "cava.webp"
+  ],
+
+  "private-dining": [
+    "private-dining-interior.webp",
+    "private-dining-hummingbird.webp"
+  ],
+
+  "library-lounge": [
+    "library-lounge-01.webp",
+    "library-lounge-02.webp"
+  ],
+
+  "unit-b": [
+    "unit-b-entrance.webp",
+    "unit-b-kitchen.webp",
+    "unit-b-staircase.webp"
+  ],
+
+  "unit-g": [
+    "unit-g-living.webp",
+    "unit-g-living-day.webp",
+    "unit-g-kitchen-01.webp",
+    "unit-g-kitchen-02.webp",
+    "unit-g-balcony.webp",
+    "unit-g-master-bedroom-01.webp",
+    "unit-g-master-bedroom-02.webp",
+    "unit-g-master-bathroom-01.webp",
+    "unit-g-master-bathroom-02.webp"
+  ],
+
+  "unit-l": [
+    "unit-l-livingroom-01.webp",
+    "unit-l-livingroom-02.webp",
+    "unit-l-dining.webp",
+    "unit-l-kitchen.webp",
+    "unit-l-hummingbird.webp"
+  ]
+}

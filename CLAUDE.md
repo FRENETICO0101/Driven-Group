@@ -1,177 +1,50 @@
-# CLAUDE.md — Master Context File
+# CLAUDE.md — Guía operativa para IA
 
-# Driven Group — Luxury Corporate Real Estate Platform
+Reglas de trabajo para asistentes de IA en el proyecto **Driven Group**.
 
-Plataforma premium de real estate enfocada en **experiencia editorial de inversión corporativa**, con integración dinámica de propiedades, galería interactiva y captura de leads.
-
-Evoluciona de sitio inmobiliario tradicional hacia **ecosistema estratégico de inversión premium**.
-
----
-
-# Estado Actual
-
-**Progreso:** 85%
-
-**Completado:**
-- Arquitectura modular frontend + shared UI
-- Foundation backend: Prisma + PostgreSQL (Neon)
-- Repositories + Services pattern operacional
-- Server actions funcionales (properties, leads)
-- Premium seed data: 3 propiedades luxury corporate
-- Dynamic property detail page con SSR
-- Lead persistence workflow: PropertyCTA → createLeadAction → PostgreSQL
-- Validación Zod + error handling en formularios
-- **🔒 Production Hardening Completo:**
-  - SEO metadata + OpenGraph para todas las rutas
-  - robots.txt + sitemap.xml
-  - Error boundaries premium (listing + detail)
-  - Loading skeletons + empty states
-  - Image optimization (Next.js Image)
-  - Accessibility basics (semantic HTML, focus states, aria-labels)
-  - Environment security (.env.example, .gitignore refinado)
-  - TypeScript strict mode + build validation
-
-**En Progreso:**
-- Property listing page (/real-estate) con filtros
-
-**Pendiente:**
-- Admin CRUD
-- Email notifications
-- Analytics
-- Deployment
-
-**Próxima fase:** Property listing filters + Admin panel + Deployment
+> 📖 **Contexto del proyecto** (visión, stack, arquitectura, modelo de datos, estado,
+> deployment): **[PROJECT_CONTEXT.md](PROJECT_CONTEXT.md)** es la fuente de verdad. Leerlo
+> antes de trabajar. Este archivo solo contiene cómo trabajar, no qué es el proyecto.
 
 ---
 
-# Stack Tecnológico
+## Modelo de trabajo
 
-**Frontend:** Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4
-**Backend:** Server Actions, Prisma ORM con tipo-seguridad
-**Base de Datos:** PostgreSQL (Neon cloud)
-**Validación:** Zod para schemas
+Desarrollo asistido por IA con **ejecución controlada**.
 
-**Estructura:**
-```
-src/
-├── app/              # Next.js routes
-├── components/       # Modular UI
-├── lib/             # Types, utils, validation
-├── server/
-│   ├── actions/     # Server actions
-│   ├── repositories/ # Prisma queries
-│   └── services/    # Business logic
-```
+- **IA:** acelerar arquitectura, reducir deuda técnica, foundations estructuradas, apoyar
+  implementaciones complejas.
+- **Humanos:** validación, refinamiento UX, visual polish, alineación de negocio, calidad final.
+
+Flujo obligatorio: **`plan → execute → validate → build → commit → push`**.
+Validar con `npm run build` + `npm run dev` después de bloques importantes.
 
 ---
 
-# Principios Arquitectónicos
+## Scope control
 
-## Modular
-- Componentes reutilizables, aislados, mantenibles
-- NO: páginas monolíticas, UI duplicada, lógica inline
+**1 prompt = 1 objetivo.**
 
-## Server-First
-- Priorizar server actions + rendering server-side
-- Queries Prisma desde backend, no client-side fetches
-- NO: exceso de client components, fetches innecesarios
+Evitar prompts multidominio, ejecución descontrolada y feature stacking. No modificar dominios
+no relacionados con la tarea:
 
-## Separación de Responsabilidades
-- **Repositories:** queries Prisma, persistencia, DB access
-- **Services:** lógica negocio, validaciones, reglas dominio
-- **Actions:** orquestación server-side, error handling
-- **Components:** UI, no lógica negocio
-
-## Data Flow Pattern
-```
-UI Component → Server Action → Service → Repository → Prisma/PostgreSQL
-```
-
----
-
-# Arquitectura de Datos
-
-**Entidades principales:**
-- **User:** admin, agent, viewer
-- **Property:** RESIDENTIAL | COMMERCIAL | LAND | MIXED_USE
-- **PropertyImage:** galería multimedia
-- **Inquiry:** captura y tracking de leads (NEW → CLOSED/LOST)
-- **CRMInteraction:** historial interacciones (future)
-
-**Server Actions operacionales:**
-- `getFeaturedPropertiesAction(limit)` - Obtener destacadas ✅
-- `getPropertyBySlugAction(slug)` - Detalle dinámico ✅
-- `createLeadAction(data)` - Crear inquiry con Zod validation ✅
-
----
-
-# Experience Direction
-
-La plataforma debe sentirse como:
-- **Ecosistema de inversión premium**
-- **Experiencia editorial luxury**
-- **Corporate minimalism** (no tradicional)
-
-La plataforma NO debe sentirse como:
-- Portal de propiedades genérico
-- Template WordPress inmobiliario
-- Dashboard SaaS
-- Presentación corporativa PowerPoint
-
-## Narrativa Editorial
-
-**Conceptos preferidos:** patrimonio, visión, legado, inversión, expansión, ecosistema, acompañamiento estratégico
-
-**Evitar abuso de:** luxury, premium, ROI, corporativo
-
-**Transmitir lujo mediante:** whitespace, tipografía, jerarquía visual, moderación narrativa, imágenes de calidad
-
-**Atributos:** moderna, cinematográfica, orientada inversión, confiable, escalable
-
----
-
-# Workflow IA Operativo
-
-## Modelo
-Este proyecto usa **desarrollo asistido por IA con ejecución controlada**.
-
-IA: acelerar arquitectura, reducir deuda técnica, foundations estructuradas, apoyar implementaciones complejas
-Humanos: validación, refinamiento UX, visual polish, alineación negocio, calidad final
-
-## Scope Control
-**1 prompt = 1 objetivo**
-
-Evitar:
-- Prompts multidominio
-- Ejecución descontrolada
-- Feature stacking
-
-NO modificar dominios no relacionados:
 - Backend ≠ marketing UI
 - Contenido ≠ Prisma schema
 - Visual polish ≠ arquitectura
 
-## Workflow Obligatorio
-```
-plan → execute → validate → build → commit → push
-```
-
-**Validación:** `npm run build` + `npm run dev` después de bloques importantes
-
 ---
 
-# Reglas Desarrollo
+## Git
 
-## Git Workflow
-**Nunca en `main`.** Usar:
-- `feature/*` - nuevas features
-- `refactor/*` - refactors
-- `fix/*` - bugfixes
+**Nunca trabajar en `main`.** Usar ramas:
 
-Ejemplo: `feature/dynamic-properties`, `refactor/premium-homepage`
+- `feature/*` — nuevas features
+- `fix/*` — bugfixes
+- `refactor/*` — refactors
+- `docs/*` — documentación
 
-## Commits
-Pequeños, descriptivos, específicos por dominio:
+**Commits** pequeños, descriptivos y específicos por dominio:
+
 - ✅ `feat: integrate dynamic property data`
 - ✅ `refactor: modularize premium marketing experience`
 - ✅ `fix: improve mobile hero spacing`
@@ -179,56 +52,40 @@ Pequeños, descriptivos, específicos por dominio:
 
 ---
 
-# Restricciones & Prioridades
+## Principios de arquitectura (resumen)
 
-## NO priorizar todavía
-- CRM avanzado
-- Analytics
-- Automatizaciones complejas
-- Dashboards
-- Auth enterprise
-- Microservicios
-- Abstracciones excesivas
+Respetar el data flow y la separación de capas. Detalle en
+[PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
 
-## Priorizar
-- Experiencia premium
-- Arquitectura limpia
-- Foundations escalables
-- Velocidad ejecución
-- Mantenibilidad
+```
+UI Component → Server Action → Service → Repository → Prisma/PostgreSQL
+```
 
-## Prioridades inmediatas (próximos sprints)
-1. **Property listing page** - /real-estate con filtros funcionales
-2. **Admin CRUD** - Panel de gestión de propiedades
-3. **Email notifications** - Notificaciones a agentes sobre leads
-4. **Visual polish final** - Refinement responsive y consistencia
-5. **QA & deployment** - Testing E2E y go-live
+- **Modular:** componentes reutilizables; sin páginas monolíticas ni UI duplicada.
+- **Server-first:** priorizar server actions y rendering server-side; minimizar client
+  components y fetches innecesarios.
+- **Separación:** repositories (DB) · services (negocio) · actions (orquestación) ·
+  components (UI sin lógica).
 
 ---
 
-# Filosofía Operativa
+## Filosofía
 
-Priorizar:
-- **Simplicidad** sobre abstracción prematura
-- **Percepción premium** mediante diseño, no feature count
-- **Foundations escalables** que soporten crecimiento
-- **Velocidad ejecución** sin sacrificar calidad
-- **Mantenibilidad** como atributo de arquitectura
+Priorizar: simplicidad sobre abstracción prematura · percepción premium mediante diseño, no
+feature count · foundations escalables · velocidad de ejecución sin sacrificar calidad ·
+mantenibilidad.
 
-Evitar:
-- Overengineering
-- Abstracciones innecesarias
-- Feature bloat
-- Sobrecarga visual
-- Comentarios innecesarios en código
+Evitar: overengineering · abstracciones innecesarias · feature bloat · sobrecarga visual ·
+comentarios innecesarios en código.
 
 ---
 
-# Referencias Documentación Complementaria
+## Dirección de experiencia
 
-- **ARCHITECTURE.md** — Detalles arquitectura, rutas, endpoints
-- **PROJECT_STATUS.md** — Estado detallado, breakdown por fase
-- **TEAM_WORKFLOW.md** — Roles, responsabilidades, workflow detallado
-- **SEED_DATA.md** — Propiedades premium, seed structure
-- **EXPERIENCE_PRINCIPLES.md** — Luxury direction, CTA rules, UX philosophy
-- **README.md** — Setup, instalación, scripts, stack completo
+La plataforma debe sentirse como un **ecosistema de inversión premium** y una experiencia
+**editorial luxury** — nunca como un portal genérico, template WordPress inmobiliario o
+dashboard SaaS. Transmitir lujo mediante whitespace, tipografía, jerarquía visual y moderación
+narrativa.
+
+**Narrativa preferida:** patrimonio, visión, legado, inversión, expansión, ecosistema,
+acompañamiento estratégico. **Evitar abuso de:** luxury, premium, ROI, corporativo.

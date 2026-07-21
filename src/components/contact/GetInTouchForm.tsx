@@ -1,34 +1,42 @@
 "use client";
 
 import { useState } from "react";
+import { sendContactAction } from "@/server/actions/contact.actions";
 
 export function GetInTouchForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus("idle");
+    setErrorMessage("");
 
     try {
       const formData = new FormData(e.currentTarget);
-      const data = {
-        name: formData.get("name"),
-        email: formData.get("email"),
-        phone: formData.get("phone"),
-        subject: formData.get("subject"),
-        message: formData.get("message"),
-      };
+      const result = await sendContactAction({
+        name: String(formData.get("name")),
+        email: String(formData.get("email")),
+        phone: String(formData.get("phone") || ""),
+        subject: formData.get("subject") as "real-estate" | "business" | "academy" | "general",
+        message: String(formData.get("message")),
+      });
 
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      setSubmitStatus("success");
-      e.currentTarget.reset();
-
-      setTimeout(() => setSubmitStatus("idle"), 5000);
-    } catch {
+      if (result.success) {
+        setSubmitStatus("success");
+        e.currentTarget.reset();
+        setTimeout(() => setSubmitStatus("idle"), 5000);
+      } else {
+        setSubmitStatus("error");
+        setErrorMessage(result.error || "Failed to send message");
+        setTimeout(() => setSubmitStatus("idle"), 5000);
+      }
+    } catch (error) {
       setSubmitStatus("error");
+      setErrorMessage("An unexpected error occurred");
+      console.error("Form submission error:", error);
       setTimeout(() => setSubmitStatus("idle"), 5000);
     } finally {
       setIsSubmitting(false);
@@ -140,7 +148,7 @@ export function GetInTouchForm() {
           )}
           {submitStatus === "error" && (
             <p className="text-red-600 font-semibold tracking-wide text-sm">
-              ✗ Error sending message. Please try again.
+              ✗ {errorMessage || "Error sending message. Please try again."}
             </p>
           )}
         </div>

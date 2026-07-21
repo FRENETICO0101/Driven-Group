@@ -7,17 +7,17 @@ interface Value {
 const values: Value[] = [
   {
     title: "Misión",
-    description: "Contribuir al desarrollo de nuestros clientes, parteners, colaboradores y aliados estrategicos, mediante la mejora continua de las personas y construccion de negocios sostenibles, sustentados en la confianza, el valor compartido y relaciones de largo plazo.",
+    description: "Contribuir al desarrollo de nuestros clientes, partners, colaboradores y aliados estratégicos, mediante la mejora continua de las personas y construcción de negocios sostenibles, sustentados en la confianza, el valor compartido y relaciones de largo plazo.",
     icon: "target",
   },
   {
     title: "Pasión",
-    description: "Nos mueve la conviccion de hacer las cosas bien, incluso cuando nadie esta viendo. Creemos en la lealtad, en la palabra cumplida y en la confianza que se construye con hechos. Desde ahi nacen decisiones, neustras alianzas y el valor que permanece.",
+    description: "Nos mueve la convicción de hacer las cosas bien, incluso cuando nadie está viendo. Creemos en la lealtad, en la palabra cumplida y en la confianza que se construye con hechos. Desde ahí nacen decisiones, nuestras alianzas y el valor que permanece.",
     icon: "favorite",
   },
   {
     title: "Visión",
-    description: "Consolidarnos como un grupo empresarial global referente por su capacidad de construir, integrar y escalar ecosostemas de negocio, generadndo crecimiento sostenible, innovación constante y valor estratégico a través de múltiples industrias.",
+    description: "Consolidarnos como un grupo empresarial global referente por su capacidad de construir, integrar y escalar ecosistemas de negocio, generando crecimiento sostenible, innovación constante y valor estratégico a través de múltiples industrias.",
     icon: "visibility",
   },
 ];

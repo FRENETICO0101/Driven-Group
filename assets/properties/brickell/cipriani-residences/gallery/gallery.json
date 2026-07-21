@@ -1,0 +1,95 @@
+[
+  {
+    "file": "cipriani-residences-miami-building.webp",
+    "category": "hero",
+    "featured": true
+  },
+  {
+    "file": "cipriani-residences-miami-ext-view.webp",
+    "category": "exterior"
+  },
+  {
+    "file": "cipriani-residences-miami-building-labeled.webp",
+    "category": "exterior"
+  },
+  {
+    "file": "cipriani-residences-miami-aerial-pool.webp",
+    "category": "pool"
+  },
+  {
+    "file": "cipriani-residences-miami-pool.webp",
+    "category": "pool"
+  },
+  {
+    "file": "cipriani-residences-arrival.webp",
+    "category": "arrival"
+  },
+  {
+    "file": "cipriani-residences-reception.webp",
+    "category": "arrival"
+  },
+  {
+    "file": "cipriani-residences-lobby.webp",
+    "category": "arrival"
+  },
+  {
+    "file": "cipriani-residences-lobby-ext.webp",
+    "category": "arrival"
+  },
+  {
+    "file": "cipriani-residences-library.webp",
+    "category": "amenity"
+  },
+  {
+    "file": "cipriani-residences-spa.webp",
+    "category": "wellness"
+  },
+  {
+    "file": "cipriani-residences-gym.webp",
+    "category": "wellness"
+  },
+  {
+    "file": "cipriani-residences-lounge.webp",
+    "category": "amenity"
+  },
+  {
+    "file": "cipriani-residences-speakeasy.webp",
+    "category": "amenity"
+  },
+  {
+    "file": "cipriani-residences-restaurant.webp",
+    "category": "dining"
+  },
+  {
+    "file": "cipriani-residences-kitchen.webp",
+    "category": "residence"
+  },
+  {
+    "file": "cipriani-residences-living.webp",
+    "category": "residence"
+  },
+  {
+    "file": "cipriani-residences-living-balcony.webp",
+    "category": "residence"
+  },
+  {
+    "file": "cipriani-residences-balcony-to-living.webp",
+    "category": "residence"
+  },
+  {
+    "file": "cipriani-residences-master-bedroom.webp",
+    "category": "residence"
+  },
+  {
+    "file": "cipriani-residences-master-bath.webp",
+    "category": "residence"
+  },
+  {
+    "file": "cipriani-residences-hummingbird-south.webp",
+    "category": "view"
+  },
+  {
+    "file": "cipriani-residences-miami-hummingbird.webp",
+    "category": "view"
+  }
+]

@@ -1,4 +1,4 @@
-import { createLead as repoCreateLead } from "@/server/repositories/lead.repository";
+import { createInquiry } from "@/server/repositories/inquiry.repository";
 import { InquiryFormSchema } from "@/lib/validation";
 import type { Inquiry } from "@/lib/types";
 
@@ -14,6 +14,6 @@ export async function createLead(input: unknown): Promise<CreateLeadResult> {
     return { success: false, error: message };
   }
 
-  const lead = await repoCreateLead(parsed.data);
+  const lead = await createInquiry(parsed.data);
   return { success: true, data: lead };
 }

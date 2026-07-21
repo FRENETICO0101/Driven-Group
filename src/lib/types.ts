@@ -12,7 +12,7 @@ export type UserRole = "VIEWER" | "AGENT" | "ADMIN";
 export interface User {
   id: string;
   email: string;
-  name: string;
+  name?: string | null;
   role: UserRole;
   createdAt: Date;
   updatedAt: Date;
@@ -28,7 +28,7 @@ export type PropertyStatus = "ACTIVE" | "SOLD" | "PENDING" | "INACTIVE";
 export interface PropertyImage {
   id: string;
   url: string;
-  alt?: string;
+  alt?: string | null;
   order: number;
   createdAt: Date;
 }
@@ -37,23 +37,23 @@ export interface Property {
   id: string;
   title: string;
   slug: string;
-  description?: string;
+  description?: string | null;
   price: number;
   address: string;
   city: string;
   state: string;
   zipCode: string;
-  latitude?: number;
-  longitude?: number;
+  latitude?: number | null;
+  longitude?: number | null;
   bedrooms: number;
   bathrooms: number;
   squareFeet: number;
-  lotSize?: number;
-  yearBuilt?: number;
+  lotSize?: number | null;
+  yearBuilt?: number | null;
   type: PropertyType;
   status: PropertyStatus;
   amenities: string[];
-  features?: string;
+  features?: string | null;
   images: PropertyImage[];
   agent: User;
   agentId: string;
@@ -106,14 +106,14 @@ export interface CRMInteraction {
 // API RESPONSE TYPES
 // ============================================
 
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean;
   data?: T;
   error?: string;
   message?: string;
 }
 
-export interface PaginatedResponse<T = any> {
+export interface PaginatedResponse<T = unknown> {
   data: T[];
   total: number;
   page: number;

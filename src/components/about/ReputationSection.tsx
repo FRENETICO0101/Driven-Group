@@ -6,26 +6,26 @@ export function ReputationSection() {
 
         <blockquote className="mb-12">
           <p className="font-serif italic text-3xl sm:text-4xl md:text-5xl text-black leading-[1.3] tracking-tight mb-8">
-            "All said and done, it's your reputation that counts"
+            "Tu reputación es tu patrimonio más valioso"
           </p>
           <p className="text-lg text-dark-gray leading-relaxed font-light">
-            This principle guides every decision, every partnership, and every interaction. At Driven Group, we understand that in luxury real estate and strategic investment, trust is the most valuable currency. Our reputation is built on decades of integrity, transparency, and delivering on our promises. We don't just sell properties—we build relationships that endure, creating a legacy of trust that transcends transactions.
+            Este principio guía cada decisión, cada alianza y cada interacción en Driven Group. Entendemos que en bienes raíces de lujo e inversión estratégica, la confianza es la moneda más valiosa. Construimos relaciones duraderas a través de integridad, transparencia y cumplimiento de promesas. No solo gestionamos propiedades—creamos un legado de confianza que trasciende transacciones.
           </p>
         </blockquote>
 
         {/* Supporting Stats */}
         <div className="grid grid-cols-3 gap-8 sm:gap-12 mt-16 pt-12 border-t border-light-gray">
           <div>
-            <p className="text-3xl sm:text-4xl md:text-5xl font-black text-black mb-2">20+</p>
-            <p className="editorial-label text-gray text-xs">YEARS OF TRUST</p>
+            <p className="text-3xl sm:text-4xl md:text-5xl font-black text-black mb-2">4+</p>
+            <p className="editorial-label text-gray text-xs">AÑOS DE CONFIANZA</p>
           </div>
           <div>
-            <p className="text-3xl sm:text-4xl md:text-5xl font-black text-black mb-2">$2.8B</p>
-            <p className="editorial-label text-gray text-xs">IN TRANSACTIONS</p>
+            <p className="text-3xl sm:text-4xl md:text-5xl font-black text-black mb-2">3</p>
+            <p className="editorial-label text-gray text-xs">DIVISIONES ESTRATÉGICAS</p>
           </div>
           <div>
-            <p className="text-3xl sm:text-4xl md:text-5xl font-black text-black mb-2">98%</p>
-            <p className="editorial-label text-gray text-xs">CLIENT TRUST RATE</p>
+            <p className="text-3xl sm:text-4xl md:text-5xl font-black text-black mb-2">100+</p>
+            <p className="editorial-label text-gray text-xs">SOCIOS GLOBALES</p>
           </div>
         </div>
       </div>

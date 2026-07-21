@@ -9,15 +9,15 @@ interface CEO {
 
 const ceos: CEO[] = [
   {
-    name: "Carlos Eduardo Villegas",
+    name: "Iván Rodríguez",
     title: "Chief Executive Officer & Founder",
-    bio: "With over 25 years of experience in luxury real estate and strategic investments, Carlos has shaped Driven Group into a global leader in premium property curation. His visionary approach to market dynamics and deep relationships with institutional investors have defined the company's trajectory.",
+    bio: "Fundador de Driven Group en 2022 con la visión de construir una empresa global desde Guadalajara, Jalisco. Iván ha liderado la evolución de la compañía desde el sector inmobiliario hacia un ecosistema empresarial integrado que abarca negocio, real estate y educación, consolidando operaciones en Europa y América del Norte.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop&q=90",
   },
   {
-    name: "Marina Castillo Romero",
-    title: "Chief Operating Officer & Co-Founder",
-    bio: "Marina brings unparalleled expertise in corporate strategy and operational excellence. Her innovative approach to client engagement and commitment to sustainable growth has transformed Driven Group into an ecosystem of trust, driving transformative outcomes across all business divisions.",
+    name: "Ricardo Hernández",
+    title: "Strategic Partner & Co-Founder",
+    bio: "Se incorporó a Driven Group en 2026 como socio estratégico para fortalecer y acelerar la consolidación y expansión del grupo. Ricardo aporta experiencia en desarrollo empresarial y visión estratégica para la escalabilidad de las divisiones de negocio, real estate y educación.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=600&fit=crop&q=90",
   },
 ];

@@ -20,7 +20,7 @@
     "contactDesc": "Connect with our team to explore partnerships, investment opportunities, or strategic collaboration",
     "getInTouch": "GET IN TOUCH",
     "about": "Building Legacies Through Strategic Vision",
-    "aboutDesc": "Over two decades of excellence, integrity, and transformative leadership in luxury real estate and corporate strategy",
+    "aboutDesc": "Since 2022, leading the transformation in luxury real estate and corporate strategy with integrity and global vision",
     "discoverValues": "DISCOVER OUR VALUES"
   },
   "academy": {
@@ -78,5 +78,46 @@
   "contact": {
     "title": "Contact Us",
     "description": "Send us a message and we'll get back to you soon."
+  },
+  "properties": {
+    "featured": "Featured Residences",
+    "exceptional": "Exceptional\nProperties",
+    "viewAll": "View All Residences",
+    "empty": "No properties found",
+    "emptyDesc": "We couldn't find any properties matching your filters. Try adjusting your search.",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "sqft": "SQ FT",
+    "location": "Location",
+    "viewLocation": "View location",
+    "exploreByLocation": "Explore by location",
+    "propertyMap": "Property map",
+    "expandMap": "Expand map",
+    "collapseMap": "Reduce map",
+    "locationsAvailable": "{count, plural, one {# location available} other {# locations available}}"
+  },
+  "cta": {
+    "label": "LET'S TALK",
+    "headline": "Transform Your Vision Into Investment",
+    "body": "Connect with specialists in corporate real estate wealth management. We design strategies that consolidate and endure.",
+    "scheduleBtn": "Schedule Consultation",
+    "exploreBtn": "Explore Properties"
+  },
+  "filters": {
+    "allTypes": "All Types",
+    "residential": "Residential",
+    "commercial": "Commercial",
+    "land": "Land",
+    "mixedUse": "Mixed Use",
+    "allStatuses": "All Statuses",
+    "available": "Available",
+    "pending": "Pending",
+    "sold": "Sold",
+    "allCities": "All Cities",
+    "clear": "Clear"
+  },
+  "listing": {
+    "scheduleTour": "Schedule Tour",
+    "viewDetails": "View Details"
   }
 }

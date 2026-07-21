@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 
 interface Feature {
   icon: string;
@@ -31,8 +32,10 @@ export function PropertyCard({
   features,
   slug,
 }: PropertyCardProps) {
+  const locale = useLocale();
+
   return (
-    <Link href={`/real-estate/${slug}`}>
+    <Link href={`/${locale}/real-estate/${slug}`}>
       <article className="group flex flex-col h-full">
         {/* Image Container */}
         <div className="relative aspect-4/5 overflow-hidden">

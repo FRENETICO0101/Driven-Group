@@ -1,0 +1,73 @@
+{
+  "id": "cipriani-residences-miami",
+  "name": "Cipriani Residences Miami",
+  "slug": "cipriani-residences",
+
+  "developer": "Mast Capital, Fortune International Group",
+
+  "brand": "Cipriani",
+
+  "architect": "Arquitectonica",
+
+  "interiorDesigner": "1508 London",
+
+  "status": "Pre-Construction",
+
+  "propertyType": "Condominium",
+
+  "year": 2028,
+
+  "city": "Miami",
+
+  "district": "Brickell",
+
+  "state": "Florida",
+
+  "country": "USA",
+
+  "address": "1420 South Miami Avenue",
+
+  "coordinates": {
+    "lat": 25.7604,
+    "lng": -80.1939
+  },
+
+  "residences": 397,
+
+  "stories": 80,
+
+  "bedrooms": [
+    "1 Bedroom",
+    "2 Bedroom",
+    "3 Bedroom",
+    "4 Bedroom",
+    "Penthouse"
+  ],
+
+  "features": [
+    "Signature Cipriani Services",
+    "Private Dining",
+    "Resort Pools",
+    "Wellness Center",
+    "Spa",
+    "Fitness Center",
+    "Library Lounge",
+    "Wine Lounge",
+    "Pickleball Court",
+    "Golf Simulator"
+  ],
+
+  "heroImage": "cipriani-residences-miami-building.webp",
+
+  "brochure": "cipriani-brochure.pdf",
+
+  "depositSchedule": "deposit-schedule.pdf",
+
+  "priceFrom": null,
+  "waterfront": true,
+  "ownership": "Condominium",
+  "featured": true,
+  "seoTitle": "Cipriani Residences Miami",
+  "seoDescription": "Luxury waterfront residences in Brickell Miami."
+
+}

@@ -1,6 +1,7 @@
 import type { Property } from "@/lib/types";
 
 export function formatPropertyPrice(price: number): string {
+  if (price <= 0) return "Consultar precio";
   if (price >= 1_000_000) {
     const value = price / 1_000_000;
     return `$${value % 1 === 0 ? value.toFixed(0) : value.toFixed(1)}M`;

@@ -1,12 +1,11 @@
 import { test, expect } from '@playwright/test';
 
+const hasTestDatabase = process.env.E2E_DATABASE_AVAILABLE === 'true';
+
 test.describe('Lead Capture Form', () => {
   test('should submit lead form successfully', async ({ page }) => {
-    await page.goto('/');
-    
-    // Navigate to property
-    const firstProperty = page.locator('a[href^="/real-estate/"]').first();
-    await firstProperty.click();
+    test.skip(!hasTestDatabase, 'Requires a provisioned E2E PostgreSQL database.');
+    await page.goto('/en/real-estate/1428-brickell');
     
     // Open form
     await page.getByRole('button', { name: /solicitar información/i }).click();
@@ -26,15 +25,9 @@ test.describe('Lead Capture Form', () => {
   });
 
   test('should validate required fields', async ({ page }) => {
-    await page.goto('/');
-    
-    const firstProperty = page.locator('a[href^="/real-estate/"]').first();
-    await firstProperty.click();
+    await page.goto('/en/real-estate/1428-brickell');
     
     await page.getByRole('button', { name: /solicitar información/i }).click();
-    
-    // Try to submit empty form
-    const submitBtn = page.getByRole('button', { name: /^enviar$/i });
     
     // HTML5 validation should prevent submission
     const isRequired = await page.getByPlaceholder(/nombre completo/i).evaluate(
@@ -44,10 +37,7 @@ test.describe('Lead Capture Form', () => {
   });
 
   test('should validate email format', async ({ page }) => {
-    await page.goto('/');
-    
-    const firstProperty = page.locator('a[href^="/real-estate/"]').first();
-    await firstProperty.click();
+    await page.goto('/en/real-estate/1428-brickell');
     
     await page.getByRole('button', { name: /solicitar información/i }).click();
     
@@ -65,10 +55,7 @@ test.describe('Lead Capture Form', () => {
   });
 
   test('should allow form reset', async ({ page }) => {
-    await page.goto('/');
-    
-    const firstProperty = page.locator('a[href^="/real-estate/"]').first();
-    await firstProperty.click();
+    await page.goto('/en/real-estate/1428-brickell');
     
     await page.getByRole('button', { name: /solicitar información/i }).click();
     
@@ -85,10 +72,7 @@ test.describe('Lead Capture Form', () => {
 
   test('mobile: should have responsive form layout', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/');
-    
-    const firstProperty = page.locator('a[href^="/real-estate/"]').first();
-    await firstProperty.click();
+    await page.goto('/en/real-estate/1428-brickell');
     
     await page.getByRole('button', { name: /solicitar información/i }).click();
     
@@ -100,10 +84,8 @@ test.describe('Lead Capture Form', () => {
   });
 
   test('should show loading state during submission', async ({ page }) => {
-    await page.goto('/');
-    
-    const firstProperty = page.locator('a[href^="/real-estate/"]').first();
-    await firstProperty.click();
+    test.skip(!hasTestDatabase, 'Requires a provisioned E2E PostgreSQL database.');
+    await page.goto('/en/real-estate/1428-brickell');
     
     await page.getByRole('button', { name: /solicitar información/i }).click();
     
@@ -114,7 +96,7 @@ test.describe('Lead Capture Form', () => {
     
     // Submit and check button changes to loading
     const submitBtn = page.getByRole('button', { name: /^enviar$/i });
-    submitBtn.click();
+    await submitBtn.click();
     
     // Button should show loading text briefly
     await expect(submitBtn).toContainText(/enviando|enviar/i);

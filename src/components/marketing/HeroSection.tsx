@@ -1,5 +1,3 @@
-'use client';
-
 import Image from "next/image";
 import Link from 'next/link';
 import { useTranslations } from "next-intl";
@@ -17,7 +15,7 @@ export function HeroSection() {
           <Image
             alt="Luxury Real Estate - Miami"
             className="w-full h-full object-cover"
-            src="/images1/hero-luxury.jpg"
+            src="/images1/hero-miami-skyline.png"
             fill
             priority
             sizes="100vw"

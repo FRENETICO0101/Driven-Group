@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
@@ -51,8 +49,8 @@ export function OurStory() {
         <div className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-xl">
             <Image
-              src="/images1/business-global.jpg"
-              alt="Driven Group Miami Headquarters"
+              src="/images1/our-story-driven-group-miami.png"
+              alt="Driven Group strategic leadership in Miami"
               fill
               className="object-cover"
             />

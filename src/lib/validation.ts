@@ -38,7 +38,7 @@ export const InquiryFormSchema = z.object({
   email: z.string().email("Email inválido"),
   phone: z.string().min(7, "Teléfono inválido"),
   message: z.string().optional(),
-  propertyId: z.string().uuid("Property ID inválido"),
+  propertyId: z.string().uuid("Property ID inválido").optional(),
 });
 
 export type InquiryFormInput = z.infer<typeof InquiryFormSchema>;

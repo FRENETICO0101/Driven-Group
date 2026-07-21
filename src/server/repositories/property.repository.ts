@@ -1,121 +1,140 @@
-import { prisma } from "@/lib/prisma";
-import type { Property, PropertyType, PropertyStatus } from "@/lib/types";
-import { isConnectionError, logError } from "@/lib/errors";
-import { mockFeaturedProperties, mockListingProperties } from "@/lib/mock/properties";
-import { mockCities } from "@/lib/mock/cities";
+import { prisma } from '@/lib/prisma';
+import { PropertyType, PropertyStatus } from '@prisma/client';
 
-const propertyInclude = {
-  images: { orderBy: { order: "asc" as const } },
-  agent: {
-    select: { id: true, name: true, email: true, role: true, createdAt: true, updatedAt: true },
-  },
+export type PropertyFilters = {
+  city?: string;
+  type?: PropertyType;
+  status?: PropertyStatus;
+  search?: string;
 };
 
-export interface PropertyFilters {
-  type?: PropertyType;
-  city?: string;
-  status?: PropertyStatus;
+export async function getFeaturedProperties(limit = 6) {
+  return prisma.property.findMany({
+    where: { status: 'ACTIVE' },
+    include: { images: { orderBy: { order: 'asc' } }, agent: { select: { id: true, name: true, email: true, role: true, createdAt: true, updatedAt: true } } },
+    orderBy: { createdAt: 'desc' },
+    take: limit,
+  });
 }
 
-/**
- * Get featured properties with graceful fallback.
- * Returns mock data if database is unavailable.
- */
-export async function getFeaturedProperties(limit = 6): Promise<Property[]> {
-  try {
-    return await prisma.property.findMany({
-      where: { status: "ACTIVE" },
-      include: propertyInclude,
-      orderBy: { createdAt: "desc" },
-      take: limit,
-    }).then((props) => props as unknown as Property[]);
-  } catch (error) {
-    if (isConnectionError(error)) {
-      logError("getFeaturedProperties", error, { limit });
-      return mockFeaturedProperties.slice(0, limit);
-    }
-    throw error;
-  }
+export async function getAllProperties(filters?: PropertyFilters) {
+  return prisma.property.findMany({
+    where: {
+      ...(filters?.city && { city: { contains: filters.city, mode: 'insensitive' } }),
+      ...(filters?.type && { type: filters.type }),
+      ...(filters?.status && { status: filters.status }),
+      ...(filters?.search && {
+        OR: [
+          { title: { contains: filters.search, mode: 'insensitive' } },
+          { address: { contains: filters.search, mode: 'insensitive' } },
+        ],
+      }),
+    },
+    include: { images: { orderBy: { order: 'asc' } }, agent: { select: { id: true, name: true, email: true, role: true, createdAt: true, updatedAt: true } } },
+    orderBy: { createdAt: 'desc' },
+  });
 }
 
-/**
- * Get all properties with filters and graceful fallback.
- * Returns mock data if database is unavailable.
- */
-export async function getAllProperties(filters: PropertyFilters = {}): Promise<Property[]> {
-  try {
-    const where: Record<string, unknown> = {};
-    if (filters.type) where.type = filters.type;
-    if (filters.city) where.city = { contains: filters.city, mode: "insensitive" };
-    if (filters.status) where.status = filters.status;
-    else where.status = { not: "INACTIVE" };
-
-    return await prisma.property.findMany({
-      where,
-      include: propertyInclude,
-      orderBy: { createdAt: "desc" },
-    }).then((props) => props as unknown as Property[]);
-  } catch (error) {
-    if (isConnectionError(error)) {
-      logError("getAllProperties", error, { filters });
-      // Simple filter logic on mock data
-      let filtered = [...mockListingProperties];
-      if (filters.type) filtered = filtered.filter((p) => p.type === filters.type);
-      if (filters.city)
-        filtered = filtered.filter((p) =>
-          p.city.toLowerCase().includes(filters.city!.toLowerCase())
-        );
-      if (filters.status) filtered = filtered.filter((p) => p.status === filters.status);
-      return filtered;
-    }
-    throw error;
-  }
+export async function getPropertyBySlug(slug: string) {
+  return prisma.property.findUnique({
+    where: { slug },
+    include: { images: { orderBy: { order: 'asc' } }, agent: true },
+  });
 }
 
-/**
- * Get available cities for filters with graceful fallback.
- * Returns mock cities if database is unavailable.
- */
-export async function getAvailableCities(): Promise<string[]> {
-  try {
-    const results = await prisma.property.findMany({
-      where: { status: { not: "INACTIVE" } },
-      select: { city: true },
-      distinct: ["city"],
-      orderBy: { city: "asc" },
+export async function getAvailableCities() {
+  const cities = await prisma.property.findMany({
+    distinct: ['city'],
+    select: { city: true },
+    where: { status: 'ACTIVE' },
+  });
+  return cities.map((c) => c.city);
+}
+
+export const propertyRepository = {
+  async getAll(filters?: PropertyFilters) {
+    return getAllProperties(filters);
+  },
+
+  async getById(id: string) {
+    return prisma.property.findUnique({
+      where: { id },
+      include: { images: { orderBy: { order: 'asc' } }, agent: true, inquiries: true },
     });
-    return results.map((r) => r.city);
-  } catch (error) {
-    if (isConnectionError(error)) {
-      logError("getAvailableCities", error);
-      return mockCities;
-    }
-    throw error;
-  }
-}
+  },
 
-/**
- * Get property by slug.
- * Returns null if not found (expected behavior).
- * Throws on database errors to allow proper 404 handling.
- * Does not use fallback for detail pages - prefers to show 404.
- */
-export async function getPropertyBySlug(slug: string): Promise<Property | null> {
-  try {
-    return await prisma.property
-      .findUnique({
-        where: { slug },
-        include: propertyInclude,
-      })
-      .then((prop) => (prop ? (prop as unknown as Property) : null));
-  } catch (error) {
-    if (isConnectionError(error)) {
-      logError("getPropertyBySlug", error, { slug });
-    } else {
-      console.error("Database error in getPropertyBySlug:", error);
-    }
-    const mockProperty = [...mockFeaturedProperties, ...mockListingProperties].find(p => p.slug === slug);
-    if (mockProperty) return mockProperty as unknown as Property;
-    return null;
-  }
-}
+  async getBySlug(slug: string) {
+    return getPropertyBySlug(slug);
+  },
+
+  async create(data: {
+    title: string;
+    slug: string;
+    description?: string;
+    price: number;
+    address: string;
+    city: string;
+    state: string;
+    zipCode: string;
+    bedrooms: number;
+    bathrooms: number;
+    squareFeet: number;
+    type: PropertyType;
+    status: PropertyStatus;
+    agentId: string;
+    amenities?: string[];
+  }) {
+    return prisma.property.create({
+      data,
+      include: { images: true },
+    });
+  },
+
+  async update(id: string, data: Partial<any>) {
+    return prisma.property.update({
+      where: { id },
+      data,
+      include: { images: { orderBy: { order: 'asc' } } },
+    });
+  },
+
+  async delete(id: string) {
+    return prisma.property.delete({
+      where: { id },
+    });
+  },
+
+  async checkSlugExists(slug: string, excludeId?: string) {
+    const existing = await prisma.property.findUnique({
+      where: { slug },
+    });
+    return existing && existing.id !== excludeId ? true : false;
+  },
+
+  async addImage(propertyId: string, data: { url: string; alt?: string; order: number }) {
+    return prisma.propertyImage.create({
+      data: {
+        propertyId,
+        url: data.url,
+        alt: data.alt,
+        order: data.order,
+      },
+    });
+  },
+
+  async deleteImage(imageId: string) {
+    return prisma.propertyImage.delete({
+      where: { id: imageId },
+    });
+  },
+
+  async reorderImages(imageIds: string[]) {
+    const updates = imageIds.map((id, index) =>
+      prisma.propertyImage.update({
+        where: { id },
+        data: { order: index + 1 },
+      }),
+    );
+    await Promise.all(updates);
+  },
+};

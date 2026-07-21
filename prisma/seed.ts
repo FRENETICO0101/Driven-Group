@@ -1,11 +1,27 @@
 import { PrismaClient, PropertyType, PropertyStatus, Role } from '@prisma/client'
+import bcrypt from 'bcrypt'
 
 const prisma = new PrismaClient()
 
 async function main() {
-  console.log('🌱 Iniciando seed de propiedades premium...')
+  console.log('🌱 Iniciando seed de usuarios y propiedades...')
 
-  // Crear agente admin (requerido por FK)
+  // Crear usuario admin
+  const hashedPassword = await bcrypt.hash('DrivenAdmin123!', 10)
+  const admin = await prisma.user.upsert({
+    where: { email: 'admin@drivengroup.com' },
+    update: {},
+    create: {
+      email: 'admin@drivengroup.com',
+      hashedPassword,
+      name: 'Driven Admin',
+      role: Role.ADMIN,
+    },
+  })
+
+  console.log('✓ Admin creado:', admin.email)
+
+  // Crear agente (requerido por FK en properties)
   const agent = await prisma.user.upsert({
     where: { email: 'properties@drivengroup.com' },
     update: {},
@@ -13,7 +29,7 @@ async function main() {
       email: 'properties@drivengroup.com',
       name: 'Driven Properties',
       role: Role.AGENT,
-      password: null,
+      hashedPassword: null,
     },
   })
 

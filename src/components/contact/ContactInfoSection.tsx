@@ -8,17 +8,17 @@ const contactItems: ContactItem[] = [
   {
     icon: "location_on",
     title: "Headquarters",
-    details: ["Miami, Florida", "Luxury Tower, Suite 2500", "33130 USA"],
+    details: ["Miami, Florida", "United States", "Mercados en América del Norte y Europa"],
   },
   {
     icon: "phone",
     title: "Phone",
-    details: ["+1 (305) 555-0123", "+1 (305) 555-0124", "Mon - Fri, 9am - 6pm EST"],
+    details: ["Disponible por solicitud", "Respuesta en 24 horas", "Comunicación confidencial"],
   },
   {
     icon: "mail",
     title: "Email",
-    details: ["info@drivengroup.com", "partnerships@drivengroup.com", "careers@drivengroup.com"],
+    details: ["info@drivengroup.com", "partnerships@drivengroup.com"],
   },
 ];
 

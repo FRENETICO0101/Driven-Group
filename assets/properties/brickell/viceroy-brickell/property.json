@@ -1,0 +1,62 @@
+{
+  "id": "viceroy-brickell",
+  "name": "Viceroy Brickell Residences",
+  "slug": "viceroy-brickell",
+
+  "developer": "Related Group & GTIS Partners",
+
+  "architect": "Arquitectonica",
+
+  "interiorDesigner": "Meyer Davis",
+
+  "status": "Completed",
+
+  "propertyType": "Condominium",
+
+  "year": 2026,
+
+  "city": "Miami",
+
+  "district": "Brickell",
+
+  "state": "Florida",
+
+  "country": "USA",
+
+  "address": "77 SE 5th Street",
+
+  "coordinates": {
+    "lat": 25.7693,
+    "lng": -80.1908
+  },
+
+  "residences": 420,
+
+  "stories": 45,
+
+  "bedrooms": [
+    "Studio",
+    "1 Bedroom",
+    "2 Bedroom",
+    "Penthouse"
+  ],
+
+  "features": [
+    "Viceroy Hotel Services",
+    "Resort Pool",
+    "Wellness Center",
+    "Spa",
+    "Fitness Center",
+    "Wine Salon",
+    "Screening Room",
+    "F1 Simulator",
+    "Business Center",
+    "Grand Bay Beach Club Membership"
+  ],
+
+  "heroImage": "viceroy-hero.webp",
+
+  "brochure": "Brochure-FloorPlans.pdf",
+
+  "depositSchedule": ""
+}
