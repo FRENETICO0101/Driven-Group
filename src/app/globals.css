@@ -89,6 +89,15 @@
     );
   }
 
+  /* Prevent sub-pixel seams between Leaflet tiles while maps pan or zoom. */
+  .leaflet-container {
+    background: #e9eef0;
+  }
+
+  .leaflet-tile {
+    outline: 1px solid transparent;
+  }
+
   .quartz-button {
     background: rgba(245, 245, 247, 0.95);
     backdrop-filter: blur(8px);
@@ -175,4 +184,3 @@
     scroll-behavior: smooth;
   }
 }
-

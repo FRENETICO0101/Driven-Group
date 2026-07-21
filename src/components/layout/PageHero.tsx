@@ -10,6 +10,7 @@ interface PageHeroProps {
   /** Image source for the background */
   imageSrc: string;
   imageAlt: string;
+  imagePosition?: string;
   /** Keys resolved against the `hero` translation namespace */
   titleKey: string;
   descKey: string;
@@ -22,6 +23,7 @@ export function PageHero({
   label,
   imageSrc,
   imageAlt,
+  imagePosition = "center center",
   titleKey,
   descKey,
   ctaHref,
@@ -37,11 +39,12 @@ export function PageHero({
           <div className="absolute inset-0 hero-gradient z-10" />
           <Image
             alt={imageAlt}
-            className="image-zoom w-full h-full object-cover"
+            className="image-zoom h-full w-full object-cover"
             src={imageSrc}
             fill
             priority
             sizes="100vw"
+            style={{ objectPosition: imagePosition }}
           />
         </div>
 

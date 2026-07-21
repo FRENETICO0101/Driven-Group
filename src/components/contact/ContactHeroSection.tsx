@@ -9,6 +9,7 @@ export function ContactHeroSection() {
       icon="mail"
       label={t("contact").toUpperCase()}
       imageSrc="/images1/contact-driven-group-miami.png"
+      imagePosition="center 52%"
       imageAlt="Reunión estratégica de Driven Group con vista a Miami"
       titleKey="contact"
       descKey="contactDesc"

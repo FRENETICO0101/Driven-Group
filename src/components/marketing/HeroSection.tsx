@@ -14,11 +14,12 @@ export function HeroSection() {
           {/* Fallback image background */}
           <Image
             alt="Luxury Real Estate - Miami"
-            className="w-full h-full object-cover"
+            className="image-zoom h-full w-full object-cover"
             src="/images1/hero-miami-skyline.png"
             fill
             priority
             sizes="100vw"
+            style={{ objectPosition: "center 55%" }}
           />
 
           {/* Video background (optional) */}

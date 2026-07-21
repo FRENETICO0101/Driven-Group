@@ -6,6 +6,7 @@ export function BusinessHeroSection() {
       icon="trending_up"
       label="BUSINESS"
       imageSrc="/images1/business-hero.jpg"
+      imagePosition="center 40%"
       imageAlt="Business Growth"
       titleKey="business"
       descKey="businessDesc"
