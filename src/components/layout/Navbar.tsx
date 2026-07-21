@@ -1,71 +1,60 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
-interface NavItem {
-  nameKey: string;
-  href: string;
-  index: string;
-}
-
-const navigationKeys: NavItem[] = [
-  { nameKey: "nav.home", href: "/", index: "01" },
-  { nameKey: "nav.realEstate", href: "/real-estate", index: "02" },
-  { nameKey: "nav.business", href: "/business", index: "03" },
-  { nameKey: "nav.academy", href: "/academy", index: "04" },
-  { nameKey: "nav.contact", href: "/contact", index: "05" },
-  { nameKey: "nav.about", href: "/about", index: "06" },
-];
+const navigation = [
+  { key: "home", href: "/", index: "01" },
+  { key: "realEstate", href: "/real-estate", index: "02" },
+  { key: "business", href: "/business", index: "03" },
+  { key: "academy", href: "/academy", index: "04" },
+  { key: "contact", href: "/contact", index: "05" },
+  { key: "about", href: "/about", index: "06" },
+] as const;
 
 const cities = [
-  { label: "Miami",  tz: "America/New_York",      tempBase: 82 },
-  { label: "GDL",    tz: "America/Monterrey",      tempBase: 74 },
-  { label: "CDMX",   tz: "America/Mexico_City",    tempBase: 68 },
-  { label: "NYC",    tz: "America/New_York",        tempBase: 58 },
-  { label: "Madrid", tz: "Europe/Madrid",           tempBase: 63 },
-  { label: "Dubai",  tz: "Asia/Dubai",              tempBase: 95 },
+  { label: "Miami", tz: "America/New_York", tempBase: 82 },
+  { label: "GDL", tz: "America/Monterrey", tempBase: 74 },
+  { label: "CDMX", tz: "America/Mexico_City", tempBase: 68 },
+  { label: "NYC", tz: "America/New_York", tempBase: 58 },
+  { label: "Madrid", tz: "Europe/Madrid", tempBase: 63 },
+  { label: "Dubai", tz: "Asia/Dubai", tempBase: 95 },
 ];
 
-interface CityInfo {
-  time: string;
-  date: string;
-  temp: number;
-}
-
-function getCityInfo(tz: string, tempBase: number): CityInfo {
+function getCityInfo(city: (typeof cities)[number], locale: string) {
   const now = new Date();
+  const formatLocale = locale === "es" ? "es-MX" : "en-US";
+
   return {
-    time: now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: true, timeZone: tz }),
-    date: now.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: tz }),
-    temp: tempBase + Math.floor(Math.sin(now.getMinutes()) * 3),
+    time: now.toLocaleTimeString(formatLocale, { hour: "2-digit", minute: "2-digit", hour12: true, timeZone: city.tz }),
+    date: now.toLocaleDateString(formatLocale, { weekday: "short", month: "short", day: "numeric", timeZone: city.tz }),
+    temp: city.tempBase + Math.floor(Math.sin(now.getMinutes()) * 3),
   };
 }
 
 export function Navbar() {
   const t = useTranslations();
+  const locale = useLocale();
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeCityIdx, setActiveCityIdx] = useState(0);
-  const [cityPickerOpen, setCityPickerOpen] = useState(false);
-  const [tick, setTick] = useState(0);
-  const pickerRef = useRef<HTMLDivElement>(null);
+  const [, setTick] = useState(0);
 
-  // Clock tick every minute
   useEffect(() => {
-    const id = setInterval(() => setTick(t => t + 1), 60000);
-    return () => clearInterval(id);
+    const intervalId = window.setInterval(() => setTick((value) => value + 1), 60_000);
+    return () => window.clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const updateScrollState = () => setIsScrolled(window.scrollY > 50);
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    return () => window.removeEventListener("scroll", updateScrollState);
   }, []);
 
   useEffect(() => {
@@ -73,257 +62,93 @@ export function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [isMenuOpen]);
 
-  // Close picker on outside click
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (pickerRef.current && !pickerRef.current.contains(e.target as Node)) {
-        setCityPickerOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
-
+  const activeCity = cities[activeCityIdx];
+  const cityInfo = getCityInfo(activeCity, locale);
   const overlayVisible = isScrolled || isMenuOpen;
   const isRealEstate = pathname.includes("/real-estate");
   const isBusiness = pathname.includes("/business");
   const isAcademy = pathname.includes("/academy");
-  const activeCity = cities[activeCityIdx];
-  const cityInfo = getCityInfo(activeCity.tz, activeCity.tempBase);
 
   return (
     <>
-      <header
-        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-700 ${
-          overlayVisible
-            ? "bg-white/95 border-b border-light-gray backdrop-blur-md"
-            : "bg-transparent"
-        }`}
-        aria-label="Navegación principal"
-      >
+      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${overlayVisible ? "border-b border-light-gray bg-white/95 backdrop-blur-md" : "bg-transparent"}`} aria-label={t("ui.mainNavigation")}>
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
-          <div className="grid h-16 sm:h-20 items-center" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
-
-            {/* Left — hamburger + compact city/time */}
+          <div className="grid h-16 items-center sm:h-20" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
             <div className="flex items-center gap-5 sm:gap-6">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className={`flex items-center gap-2.5 transition-colors duration-500 focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray rounded ${
-                  overlayVisible ? "text-black" : "text-dark-gray"
-                } hover:text-black`}
-                aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
-                aria-expanded={isMenuOpen}
-              >
-                <div className="w-5 h-4 flex flex-col justify-between">
-                  <span className={`block h-px bg-current transition-all duration-500 origin-center ${isMenuOpen ? "rotate-45 translate-y-1.75" : ""}`} />
-                  <span className={`block h-px bg-current transition-all duration-300 ${isMenuOpen ? "opacity-0 scale-x-0" : ""}`} />
-                  <span className={`block h-px bg-current transition-all duration-500 origin-center ${isMenuOpen ? "-rotate-45 -translate-y-2.25" : ""}`} />
-                </div>
-                <span className="hidden sm:inline editorial-label text-gray">Menu</span>
+              <button onClick={() => setIsMenuOpen((open) => !open)} className="flex items-center gap-2.5 rounded text-dark-gray transition-colors hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={isMenuOpen ? t("ui.closeMenu") : t("ui.openMenu")} aria-expanded={isMenuOpen}>
+                <span className="flex h-4 w-5 flex-col justify-between">
+                  <span className={`block h-px bg-current transition-all ${isMenuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
+                  <span className={`block h-px bg-current transition-all ${isMenuOpen ? "scale-x-0 opacity-0" : ""}`} />
+                  <span className={`block h-px bg-current transition-all ${isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
+                </span>
+                <span className="editorial-label hidden text-gray sm:inline">{t("ui.menu")}</span>
               </button>
-
-              {/* Compact city + time — header bar */}
-              {cityInfo.time && (
-                <div
-                  className={`hidden md:flex items-center gap-3 pl-5 border-l transition-colors duration-700 ${
-                    overlayVisible ? "border-light-gray" : "border-light-gray"
-                  }`}
-                >
-                  <span className="editorial-label text-gray">{activeCity.label}</span>
-                  <span className="editorial-label text-dark-gray tabular-nums">{cityInfo.time}</span>
-                  <span className="editorial-label text-gray tabular-nums">{cityInfo.temp}°F</span>
-                </div>
-              )}
+              <div className="hidden items-center gap-3 border-l border-light-gray pl-5 md:flex">
+                <span className="editorial-label text-gray">{activeCity.label}</span>
+                <span className="editorial-label tabular-nums text-dark-gray">{cityInfo.time}</span>
+                <span className="editorial-label tabular-nums text-gray">{cityInfo.temp}°F</span>
+              </div>
             </div>
 
-            {/* Center — wordmark */}
-            <Link
-              href="/"
-              className="justify-self-center rounded focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray"
-              aria-label="Driven Group — Inicio"
-            >
-              <BrandLogo
-                className={isRealEstate || isBusiness || isAcademy ? "w-28 sm:w-40 md:w-48" : "w-20 sm:w-24"}
-                variant={isRealEstate ? "realEstate" : isBusiness ? "business" : isAcademy ? "academy" : "corporate"}
-              />
+            <Link href="/" className="justify-self-center rounded focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={t("ui.homeAria")}>
+              <BrandLogo className={isRealEstate || isBusiness || isAcademy ? "w-28 sm:w-40 md:w-48" : "w-20 sm:w-24"} variant={isRealEstate ? "realEstate" : isBusiness ? "business" : isAcademy ? "academy" : "corporate"} />
             </Link>
 
-            {/* Right — utility icons */}
             <div className="flex items-center justify-end gap-4 sm:gap-5">
-              <Link
-                href="/contact"
-                className={`hidden sm:flex items-center gap-1.5 transition-colors duration-500 ${overlayVisible ? "text-dark-gray hover:text-black" : "text-dark-gray hover:text-dark-gray"}`}
-                aria-label="Contacto"
-              >
-                <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>phone</span>
-                <span className="hidden lg:inline editorial-label">Contact</span>
+              <Link href="/contact" className="hidden items-center gap-1.5 text-dark-gray transition-colors hover:text-black sm:flex" aria-label={t("ui.contact")}>
+                <span className="material-symbols-outlined text-[18px]">phone</span>
+                <span className="editorial-label hidden lg:inline">{t("ui.contact")}</span>
               </Link>
               <LanguageSwitcher />
-              <button
-                className={`transition-colors duration-500 ${overlayVisible ? "text-dark-gray hover:text-black" : "text-dark-gray hover:text-dark-gray"}`}
-                aria-label="Cuenta"
-              >
-                <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>person</span>
+              <button className="text-dark-gray transition-colors hover:text-black" aria-label={t("ui.account")}>
+                <span className="material-symbols-outlined text-[18px]">person</span>
               </button>
             </div>
-
           </div>
         </div>
       </header>
 
-      {/* Full-screen overlay menu */}
-      <div
-        className={`fixed inset-0 z-40 bg-white transition-all duration-700 ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}
-        aria-hidden={!isMenuOpen}
-      >
-        <div className="flex h-full pt-20 px-8 sm:px-12 lg:px-20">
-
-          {/* Navigation — left column */}
-          <div className="flex flex-col justify-center flex-1 min-w-0">
-            <nav aria-label="Menú principal">
-              <ul className="space-y-0">
-                {navigationKeys.map((item, i) => {
-                  const navKey = item.nameKey.split('.')[1];
-                  const name = t(`nav.${navKey}`);
-                  return (
-                    <li key={item.nameKey}>
-                      <Link
-                        href={item.href}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="group flex items-baseline gap-5 sm:gap-8 py-2.5 sm:py-3"
-                        style={{
-                          opacity: isMenuOpen ? 1 : 0,
-                          transform: isMenuOpen ? "translateY(0)" : "translateY(12px)",
-                          transition: `opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) ${i * 55 + 60}ms, transform 600ms cubic-bezier(0.22, 1, 0.36, 1) ${i * 55 + 60}ms`,
-                        }}
-                      >
-                        <span className="editorial-label text-light-gray w-6 tabular-nums">{item.index}</span>
-                        <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-dark-gray transition-all duration-500 group-hover:text-black group-hover:translate-x-2">
-                          {name}
-                        </span>
-                      </Link>
-                    </li>
-                  );
-                })}
+      <div className={`fixed inset-0 z-40 bg-white transition-all duration-500 ${isMenuOpen ? "visible opacity-100" : "invisible pointer-events-none opacity-0"}`} aria-hidden={!isMenuOpen}>
+        <div className="flex h-full px-8 pt-20 sm:px-12 lg:px-20">
+          <div className="flex min-w-0 flex-1 flex-col justify-center">
+            <nav aria-label={t("ui.mainNavigation")}>
+              <ul>
+                {navigation.map((item, index) => (
+                  <li key={item.key}>
+                    <Link href={item.href} onClick={() => setIsMenuOpen(false)} className="group flex items-baseline gap-5 py-2.5 sm:gap-8 sm:py-3" style={{ opacity: isMenuOpen ? 1 : 0, transform: isMenuOpen ? "translateY(0)" : "translateY(12px)", transition: `opacity 500ms ease ${index * 55 + 60}ms, transform 500ms ease ${index * 55 + 60}ms` }}>
+                      <span className="editorial-label w-6 tabular-nums text-light-gray">{item.index}</span>
+                      <span className="text-3xl font-semibold tracking-tight text-dark-gray transition-all duration-300 group-hover:translate-x-2 group-hover:text-black sm:text-4xl md:text-5xl lg:text-6xl">{t(`nav.${item.key}`)}</span>
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
 
-            {/* Bottom bar */}
-            <div
-              className="mt-auto pb-10 sm:pb-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-t border-light-gray pt-8"
-              style={{
-                opacity: isMenuOpen ? 1 : 0,
-                transition: "opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 440ms",
-              }}
-            >
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-                <a href="mailto:info@drivengroup.com" className="editorial-label text-gray hover:text-black transition-colors">info@drivengroup.com</a>
-              </div>
+            <div className="mt-auto flex flex-col gap-6 border-t border-light-gray pb-10 pt-8 sm:flex-row sm:items-center sm:justify-between sm:pb-12">
+              <a href="mailto:info@drivengroup.com" className="editorial-label text-gray transition-colors hover:text-black">info@drivengroup.com</a>
               <div className="flex gap-6">
-                {["Instagram", "LinkedIn", "YouTube"].map((s) => (
-                  <a key={s} href="#" className="editorial-label text-gray hover:text-dark-gray transition-colors duration-300">{s}</a>
-                ))}
+                {["Instagram", "LinkedIn", "YouTube"].map((name) => <a key={name} href="#" className="editorial-label text-gray transition-colors hover:text-dark-gray">{name}</a>)}
               </div>
             </div>
           </div>
 
-          {/* City widget — right column, desktop only */}
-          <div
-            className="hidden lg:flex flex-col justify-center w-64 xl:w-72 pl-12 xl:pl-16 border-l border-light-gray ml-12 xl:ml-16"
-            style={{
-              opacity: isMenuOpen ? 1 : 0,
-              transition: "opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) 200ms",
-            }}
-            ref={pickerRef}
-          >
-            {/* Active city display */}
-            <div className="mb-8">
-              <p className="editorial-label text-gray mb-5 tracking-[0.2em]">Local Time</p>
-
-              {/* Big time */}
-              <p className="text-5xl xl:text-6xl font-extralight text-black tabular-nums tracking-tight leading-none mb-2">
-                {cityInfo.time}
-              </p>
-
-              {/* Date + temp row */}
-              <div className="flex items-center gap-3 mt-3">
-                <span className="editorial-label text-dark-gray">{cityInfo.date}</span>
-                <span className="text-light-gray">·</span>
-                <span className="editorial-label text-dark-gray tabular-nums">{cityInfo.temp}°F</span>
-              </div>
+          <aside className="ml-12 hidden w-64 flex-col justify-center border-l border-light-gray pl-12 lg:flex xl:ml-16 xl:w-72 xl:pl-16">
+            <p className="editorial-label mb-5 tracking-[0.2em] text-gray">{t("ui.localTime")}</p>
+            <p className="mb-2 text-5xl font-extralight leading-none tracking-tight text-black tabular-nums xl:text-6xl">{cityInfo.time}</p>
+            <div className="mt-3 flex items-center gap-3">
+              <span className="editorial-label text-dark-gray">{cityInfo.date}</span>
+              <span className="text-light-gray">·</span>
+              <span className="editorial-label tabular-nums text-dark-gray">{cityInfo.temp}°F</span>
             </div>
-
-            {/* City selector */}
-            <div>
-              <p className="editorial-label text-gray mb-3 tracking-[0.2em]">City</p>
-              <div className="space-y-0.5">
-                {cities.map((city, idx) => {
-                  const info = getCityInfo(city.tz, city.tempBase);
-                  const isActive = idx === activeCityIdx;
-                  return (
-                    <button
-                      key={city.label}
-                      onClick={() => setActiveCityIdx(idx)}
-                      className={`w-full flex items-center justify-between py-2.5 px-3 rounded transition-all duration-300 group ${
-                        isActive
-                          ? "bg-white text-black"
-                          : "text-gray hover:text-dark-gray hover:bg-white"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        {isActive && (
-                          <span className="w-1 h-1 rounded-full bg-dark-gray shrink-0" />
-                        )}
-                        {!isActive && <span className="w-1 h-1 shrink-0" />}
-                        <span className="editorial-label">{city.label}</span>
-                      </div>
-                      <span className="editorial-label tabular-nums opacity-70">
-                        {info.time}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
+            <p className="editorial-label mb-3 mt-10 tracking-[0.2em] text-gray">{t("ui.city")}</p>
+            <div className="space-y-0.5">
+              {cities.map((city, index) => {
+                const info = getCityInfo(city, locale);
+                const isActive = index === activeCityIdx;
+                return <button key={city.label} onClick={() => setActiveCityIdx(index)} className={`flex w-full items-center justify-between rounded px-3 py-2.5 transition-colors ${isActive ? "bg-light-gray text-black" : "text-gray hover:bg-light-gray/60 hover:text-dark-gray"}`}><span className="editorial-label">{city.label}</span><span className="editorial-label tabular-nums opacity-70">{info.time}</span></button>;
+              })}
             </div>
-          </div>
-
-          {/* City widget — mobile (compact, inside menu below nav) */}
-          {cityInfo.time && (
-            <div
-              className="lg:hidden absolute bottom-20 left-8 right-8 sm:left-12 sm:right-12 border-t border-light-gray pt-6"
-              style={{
-                opacity: isMenuOpen ? 1 : 0,
-                transition: "opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 420ms",
-              }}
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="editorial-label text-gray">{activeCity.label}</span>
-                  <span className="text-light-gray">·</span>
-                  <span className="editorial-label text-dark-gray tabular-nums">{cityInfo.time}</span>
-                  <span className="editorial-label text-gray tabular-nums">{cityInfo.temp}°F</span>
-                  <span className="editorial-label text-gray">{cityInfo.date}</span>
-                </div>
-                {/* Mobile city switcher — horizontal pills */}
-                <div className="flex items-center gap-1.5">
-                  {cities.map((city, idx) => (
-                    <button
-                      key={city.label}
-                      onClick={() => setActiveCityIdx(idx)}
-                      className={`editorial-label px-2 py-1 rounded transition-all duration-300 ${
-                        idx === activeCityIdx
-                          ? "text-black bg-white"
-                          : "text-gray hover:text-dark-gray"
-                      }`}
-                    >
-                      {city.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
+          </aside>
         </div>
       </div>
     </>

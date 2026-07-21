@@ -3,16 +3,26 @@
 import { useRouter as useNextRouter, usePathname as useNextPathname } from "next/navigation";
 import { useLocale } from "next-intl";
 
+const supportedLocales = new Set(['es', 'en']);
+const defaultLocale = 'es';
+
 export function LanguageSwitcher() {
   const locale = useLocale();
   const router = useNextRouter();
   const pathname = useNextPathname();
 
   const handleLanguageChange = (newLocale: string) => {
-    if (locale !== newLocale) {
-      const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
-      router.push(newPathname);
-    }
+    if (locale === newLocale) return;
+
+    const pathSegments = pathname.split('/').filter(Boolean);
+    const hasLocalePrefix = supportedLocales.has(pathSegments[0]);
+    const pathnameWithoutLocale = `/${(hasLocalePrefix ? pathSegments.slice(1) : pathSegments).join('/')}`.replace(/\/$/, '') || '/';
+    const newPathname = newLocale === defaultLocale
+      ? pathnameWithoutLocale
+      : `/${newLocale}${pathnameWithoutLocale === '/' ? '' : pathnameWithoutLocale}`;
+
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; samesite=lax`;
+    router.push(newPathname);
   };
 
   return (

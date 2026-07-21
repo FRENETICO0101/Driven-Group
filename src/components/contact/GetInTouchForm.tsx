@@ -1,21 +1,23 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { sendContactAction } from "@/server/actions/contact.actions";
 
 export function GetInTouchForm() {
+  const t = useTranslations("contactForm");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus("idle");
     setErrorMessage("");
 
     try {
-      const formData = new FormData(e.currentTarget);
+      const formData = new FormData(event.currentTarget);
       const result = await sendContactAction({
         name: String(formData.get("name")),
         email: String(formData.get("email")),
@@ -26,133 +28,58 @@ export function GetInTouchForm() {
 
       if (result.success) {
         setSubmitStatus("success");
-        e.currentTarget.reset();
-        setTimeout(() => setSubmitStatus("idle"), 5000);
+        event.currentTarget.reset();
       } else {
         setSubmitStatus("error");
-        setErrorMessage(result.error || "Failed to send message");
-        setTimeout(() => setSubmitStatus("idle"), 5000);
+        setErrorMessage(result.error || t("error"));
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus("error");
-      setErrorMessage("An unexpected error occurred");
-      console.error("Form submission error:", error);
-      setTimeout(() => setSubmitStatus("idle"), 5000);
+      setErrorMessage(t("unexpectedError"));
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section id="form" className="py-20 sm:py-24 md:py-32 max-w-4xl mx-auto px-6 sm:px-8">
+    <section id="form" className="mx-auto max-w-4xl px-6 py-20 sm:px-8 sm:py-24 md:py-32">
       <div className="mb-16 sm:mb-20">
-        <p className="editorial-label text-gray mb-2">REACH OUT</p>
-        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-black tracking-tight leading-[1.1]">
-          Get In Touch With Us
-        </h2>
+        <p className="editorial-label mb-2 text-gray">{t("eyebrow")}</p>
+        <h2 className="font-serif text-4xl font-black leading-[1.1] tracking-tight text-black sm:text-5xl md:text-6xl">{t("title")}</h2>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-8">
-        {/* Name & Email Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="flex flex-col">
-            <label htmlFor="name" className="editorial-label text-dark-gray mb-3 tracking-wide">
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              className="px-4 py-3 border border-light-gray rounded-lg bg-white text-black placeholder-gray focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all"
-              placeholder="Your name"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="email" className="editorial-label text-dark-gray mb-3 tracking-wide">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              className="px-4 py-3 border border-light-gray rounded-lg bg-white text-black placeholder-gray focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all"
-              placeholder="your@email.com"
-            />
-          </div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <Field id="name" label={t("name")} placeholder={t("namePlaceholder")} required />
+          <Field id="email" type="email" label={t("email")} placeholder="you@email.com" required />
         </div>
-
-        {/* Phone & Subject Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <Field id="phone" type="tel" label={t("phone")} placeholder="+1 (305) 555-0000" />
           <div className="flex flex-col">
-            <label htmlFor="phone" className="editorial-label text-dark-gray mb-3 tracking-wide">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              className="px-4 py-3 border border-light-gray rounded-lg bg-white text-black placeholder-gray focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all"
-              placeholder="+1 (305) 555-0000"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="subject" className="editorial-label text-dark-gray mb-3 tracking-wide">
-              Subject
-            </label>
-            <select
-              id="subject"
-              name="subject"
-              required
-              className="px-4 py-3 border border-light-gray rounded-lg bg-white text-black focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all cursor-pointer"
-            >
-              <option value="">Select a topic</option>
-              <option value="real-estate">Real Estate Inquiry</option>
-              <option value="business">Business Partnership</option>
-              <option value="academy">Academy Programs</option>
-              <option value="general">General Inquiry</option>
+            <label htmlFor="subject" className="editorial-label mb-3 tracking-wide text-dark-gray">{t("subject")}</label>
+            <select id="subject" name="subject" required defaultValue="" className="cursor-pointer rounded-lg border border-light-gray bg-white px-4 py-3 text-black transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-yellow-500">
+              <option value="" disabled>{t("selectTopic")}</option>
+              <option value="real-estate">{t("realEstate")}</option>
+              <option value="business">{t("business")}</option>
+              <option value="academy">{t("academy")}</option>
+              <option value="general">{t("general")}</option>
             </select>
           </div>
         </div>
-
-        {/* Message */}
         <div className="flex flex-col">
-          <label htmlFor="message" className="editorial-label text-dark-gray mb-3 tracking-wide">
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            required
-            rows={6}
-            className="px-4 py-3 border border-light-gray rounded-lg bg-white text-black placeholder-gray focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all resize-none"
-            placeholder="Tell us about your inquiry or partnership opportunity..."
-          />
+          <label htmlFor="message" className="editorial-label mb-3 tracking-wide text-dark-gray">{t("message")}</label>
+          <textarea id="message" name="message" required rows={6} placeholder={t("messagePlaceholder")} className="resize-none rounded-lg border border-light-gray bg-white px-4 py-3 text-black placeholder-gray transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-yellow-500" />
         </div>
-
-        {/* Submit Button & Status */}
-        <div className="flex items-center justify-between pt-4">
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="px-8 py-4 bg-black text-white font-semibold tracking-wide hover:bg-black disabled:opacity-50 disabled:cursor-not-allowed transition-colors rounded-lg"
-          >
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </button>
-
-          {submitStatus === "success" && (
-            <p className="text-green-600 font-semibold tracking-wide text-sm">
-              ✓ Message sent successfully!
-            </p>
-          )}
-          {submitStatus === "error" && (
-            <p className="text-red-600 font-semibold tracking-wide text-sm">
-              ✗ {errorMessage || "Error sending message. Please try again."}
-            </p>
-          )}
+        <div className="flex flex-wrap items-center gap-5 pt-4">
+          <button type="submit" disabled={isSubmitting} className="rounded-lg bg-black px-8 py-4 font-semibold tracking-wide text-white transition-colors hover:bg-dark-gray disabled:cursor-not-allowed disabled:opacity-50">{isSubmitting ? t("sending") : t("send")}</button>
+          {submitStatus === "success" && <p className="text-sm font-semibold tracking-wide text-green-600">✓ {t("success")}</p>}
+          {submitStatus === "error" && <p className="text-sm font-semibold tracking-wide text-red-600">✕ {errorMessage || t("error")}</p>}
         </div>
       </form>
     </section>
   );
+}
+
+function Field({ id, label, placeholder, type = "text", required = false }: { id: string; label: string; placeholder: string; type?: string; required?: boolean }) {
+  return <div className="flex flex-col"><label htmlFor={id} className="editorial-label mb-3 tracking-wide text-dark-gray">{label}</label><input type={type} id={id} name={id} required={required} placeholder={placeholder} className="rounded-lg border border-light-gray bg-white px-4 py-3 text-black placeholder-gray transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-yellow-500" /></div>;
 }
