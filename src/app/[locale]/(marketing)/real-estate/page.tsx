@@ -36,13 +36,13 @@ export const metadata: Metadata = {
 };
 
 interface PageProps {
-  searchParams: Promise<{ type?: string; city?: string; status?: string }>;
+  searchParams: Promise<{ city?: string; status?: string }>;
 }
 
 async function ListingContent({ searchParams }: PageProps) {
   const params = await searchParams;
   const filters = {
-    type: params.type ?? "",
+    type: "RESIDENTIAL",
     city: params.city ?? "",
     status: params.status ?? "",
   };
@@ -56,7 +56,6 @@ async function ListingContent({ searchParams }: PageProps) {
     <>
       <PropertyFilters
         availableCities={cities}
-        currentType={filters.type}
         currentCity={filters.city}
         currentStatus={filters.status}
       />

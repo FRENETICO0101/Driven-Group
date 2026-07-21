@@ -6,14 +6,12 @@ import { useTranslations } from "next-intl";
 
 interface PropertyFiltersProps {
   availableCities: string[];
-  currentType: string;
   currentCity: string;
   currentStatus: string;
 }
 
 export function PropertyFilters({
   availableCities,
-  currentType,
   currentCity,
   currentStatus,
 }: PropertyFiltersProps) {
@@ -21,14 +19,6 @@ export function PropertyFilters({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
-  const PROPERTY_TYPES = [
-    { value: "", label: t("allTypes") },
-    { value: "RESIDENTIAL", label: t("residential") },
-    { value: "COMMERCIAL", label: t("commercial") },
-    { value: "LAND", label: t("land") },
-    { value: "MIXED_USE", label: t("mixedUse") },
-  ];
 
   const PROPERTY_STATUSES = [
     { value: "", label: t("allStatuses") },
@@ -50,7 +40,7 @@ export function PropertyFilters({
     [router, pathname, searchParams]
   );
 
-  const hasActiveFilters = currentType || currentCity || currentStatus;
+  const hasActiveFilters = currentCity || currentStatus;
 
   const clearFilters = () => {
     router.push(pathname);
@@ -60,17 +50,9 @@ export function PropertyFilters({
     <div className="sticky top-16 sm:top-20 z-30 bg-white border-b border-light-gray">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-4">
         <div className="flex flex-wrap items-center gap-3">
-          <select
-            value={currentType}
-            onChange={(e) => updateFilter("type", e.target.value)}
-            className="bg-white border border-light-gray text-black text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-white transition-colors focus:outline-none focus:border-gray min-w-40"
-          >
-            {PROPERTY_TYPES.map((t) => (
-              <option key={t.value} value={t.value} className="bg-white text-black">
-                {t.label}
-              </option>
-            ))}
-          </select>
+          <div className="bg-white border border-light-gray text-black text-sm rounded-lg px-3 py-2 min-w-40" aria-label={t("residential")}>
+            {t("residential")}
+          </div>
 
           <select
             value={currentCity}
