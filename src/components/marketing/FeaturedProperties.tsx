@@ -8,17 +8,9 @@ interface FeaturedPropertiesProps {
   properties: Property[];
 }
 
-function getLocalizedBadge(type: Property["type"], t: ReturnType<typeof useTranslations>) {
-  switch (type) {
-    case "COMMERCIAL": return { label: t("opportunityBadge"), featured: false };
-    case "LAND": return { label: t("landBadge"), featured: false };
-    case "MIXED_USE": return { label: t("exclusiveBadge"), featured: false };
-    default: return { label: t("featuredBadge"), featured: true };
-  }
-}
-
 export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
   const t = useTranslations("properties");
+
   return (
     <section className="py-24 sm:py-28 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
       <div className="mb-16 md:mb-24 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -42,29 +34,13 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
           {properties.map((property) => {
-            const badge = getLocalizedBadge(property.type, t);
             const primaryImage = property.images?.[0];
-            const features = [];
-            if (property.bedrooms > 0)
-              features.push({ icon: "bed", label: `${property.bedrooms} ${t("bedrooms")}` });
-            if (property.bathrooms > 0)
-              features.push({ icon: "bathroom", label: `${property.bathrooms} ${t("bathrooms")}` });
-            const subtitle = [
-              property.bedrooms > 0 ? `${property.bedrooms} ${t("bedroomsShort")}` : null,
-              property.city || null,
-            ].filter(Boolean).join(" · ");
-
             return (
               <PropertyCard
                 key={property.id}
                 image={primaryImage?.url ?? FALLBACK_IMAGE}
                 imageAlt={primaryImage?.alt ?? property.title}
-                badge={badge.label}
-                badgeFeatured={badge.featured}
                 title={property.title}
-                subtitle={subtitle}
-                description={property.description ?? ""}
-                features={features}
                 slug={property.slug}
               />
             );
