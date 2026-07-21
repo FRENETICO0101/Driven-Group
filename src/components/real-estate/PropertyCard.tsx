@@ -61,7 +61,7 @@ export function PropertyCard({
           <h3 className="mt-2 font-serif text-2xl md:text-3xl text-black leading-tight">{title}</h3>
 
           {/* Specs */}
-          <div className="mt-4 flex items-center gap-4 text-sm text-dark-gray">
+          {features.length > 0 && <div className="mt-4 flex items-center gap-4 text-sm text-dark-gray">
             {features.map((feature, idx) => (
               <span key={feature.icon} className="flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-[16px]">{feature.icon}</span>
@@ -69,7 +69,7 @@ export function PropertyCard({
                 {idx < features.length - 1 && <span className="hidden sm:inline h-1 w-1 rounded-full bg-light-gray ml-2" />}
               </span>
             ))}
-          </div>
+          </div>}
         </div>
       </article>
     </Link>

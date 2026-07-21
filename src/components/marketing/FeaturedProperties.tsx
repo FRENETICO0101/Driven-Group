@@ -1,12 +1,20 @@
 import { useTranslations } from "next-intl";
 import type { Property } from "@/lib/types";
-import { formatPropertySubtitle, getPropertyBadge } from "@/lib/property-utils";
 import { PropertyCard } from "@/components/real-estate/PropertyCard";
 
 const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop";
 
 interface FeaturedPropertiesProps {
   properties: Property[];
+}
+
+function getLocalizedBadge(type: Property["type"], t: ReturnType<typeof useTranslations>) {
+  switch (type) {
+    case "COMMERCIAL": return { label: t("opportunityBadge"), featured: false };
+    case "LAND": return { label: t("landBadge"), featured: false };
+    case "MIXED_USE": return { label: t("exclusiveBadge"), featured: false };
+    default: return { label: t("featuredBadge"), featured: true };
+  }
 }
 
 export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
@@ -34,15 +42,17 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
           {properties.map((property) => {
-            const badge = getPropertyBadge(property.type);
+            const badge = getLocalizedBadge(property.type, t);
             const primaryImage = property.images?.[0];
             const features = [];
             if (property.bedrooms > 0)
               features.push({ icon: "bed", label: `${property.bedrooms} ${t("bedrooms")}` });
             if (property.bathrooms > 0)
               features.push({ icon: "bathroom", label: `${property.bathrooms} ${t("bathrooms")}` });
-            if (features.length === 0)
-              features.push({ icon: "aspect_ratio", label: `${property.squareFeet} ${t("sqft")}` });
+            const subtitle = [
+              property.bedrooms > 0 ? `${property.bedrooms} ${t("bedroomsShort")}` : null,
+              property.city || null,
+            ].filter(Boolean).join(" · ");
 
             return (
               <PropertyCard
@@ -52,7 +62,7 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
                 badge={badge.label}
                 badgeFeatured={badge.featured}
                 title={property.title}
-                subtitle={formatPropertySubtitle(property)}
+                subtitle={subtitle}
                 description={property.description ?? ""}
                 features={features}
                 slug={property.slug}

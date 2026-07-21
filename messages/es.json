@@ -155,6 +155,11 @@
   },
   "properties": {
     "featured": "Residencias Destacadas",
+    "featuredBadge": "Destacado",
+    "opportunityBadge": "Oportunidad",
+    "landBadge": "Terreno",
+    "exclusiveBadge": "Colección exclusiva",
+    "bedroomsShort": "hab.",
     "exceptional": "Propiedades\nExcepcionales",
     "viewAll": "Ver Todas las Residencias",
     "empty": "Sin resultados",

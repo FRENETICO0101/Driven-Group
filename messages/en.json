@@ -155,6 +155,11 @@
   },
   "properties": {
     "featured": "Featured Residences",
+    "featuredBadge": "Featured",
+    "opportunityBadge": "Opportunity",
+    "landBadge": "Land",
+    "exclusiveBadge": "Exclusive collection",
+    "bedroomsShort": "beds",
     "exceptional": "Exceptional\nProperties",
     "viewAll": "View All Residences",
     "empty": "No properties found",
