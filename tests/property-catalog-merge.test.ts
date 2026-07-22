@@ -38,16 +38,18 @@ test("an inactive override hides a source property from the public catalog", () 
   assert.equal(managedProperties.find((property) => property.slug === sourceProperty.slug)?.status, "INACTIVE");
 });
 
-test("a database-only property is included in the public catalog", () => {
+test("a database-only property remains available to management but is excluded from the public catalog", () => {
   const created = databaseProperty({ id: "new-property-id", slug: "new-miami-residence", title: "New Miami Residence", status: "ACTIVE", images: [] });
-  const properties = mergePropertySources(catalog, [created]);
+  const publicProperties = mergePropertySources(catalog, [created], {}, false, false);
+  const managedProperties = mergePropertySources(catalog, [created], {}, true, true);
 
-  assert.equal(properties.find((property) => property.slug === "new-miami-residence")?.title, "New Miami Residence");
+  assert.equal(publicProperties.some((property) => property.slug === "new-miami-residence"), false);
+  assert.equal(managedProperties.find((property) => property.slug === "new-miami-residence")?.title, "New Miami Residence");
 });
 
 test("filters apply consistently after catalog and CMS records are merged", () => {
   const created = databaseProperty({ id: "new-property-id", slug: "new-miami-residence", title: "New Miami Residence", city: "Miami", status: "ACTIVE", images: [] });
-  const properties = mergePropertySources(catalog, [created], { type: "RESIDENTIAL", city: "Miami", status: "ACTIVE" });
+  const properties = mergePropertySources(catalog, [created], { type: "RESIDENTIAL", city: "Miami", status: "ACTIVE" }, false, true);
 
   assert.ok(properties.length > 0);
   assert.ok(properties.every((property) => property.type === "RESIDENTIAL" && property.city === "Miami" && property.status === "ACTIVE"));

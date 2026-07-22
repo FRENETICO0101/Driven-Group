@@ -9,14 +9,29 @@ import type { Property, PropertyType, PropertyStatus } from "@/lib/types";
 import { getCatalogProperties, getCatalogPropertyBySlug } from "@/lib/property-catalog";
 import { mergeCatalogProperty, mergePropertySources, type PublicFilters } from "@/server/services/property-catalog-merge";
 
-async function getMergedProperties(filters: PublicFilters = {}, includeInactive = false): Promise<Property[]> {
+const localDatabaseUrl = /(?:localhost|127\.0\.0\.1)/i.test(process.env.DATABASE_URL ?? "");
+const useLocalDatabase = process.env.ENABLE_LOCAL_DATABASE === "true";
+
+function shouldReadDatabaseOverrides() {
+  return !localDatabaseUrl || useLocalDatabase;
+}
+
+async function getMergedProperties(
+  filters: PublicFilters = {},
+  includeInactive = false,
+  includeDatabaseOnly = false,
+): Promise<Property[]> {
   const catalog = getCatalogProperties();
+  if (!shouldReadDatabaseOverrides()) {
+    return mergePropertySources(catalog, [], filters, includeInactive, includeDatabaseOnly);
+  }
+
   try {
     const databaseProperties = await repoGetAll();
-    return mergePropertySources(catalog, databaseProperties, filters, includeInactive);
+    return mergePropertySources(catalog, databaseProperties, filters, includeInactive, includeDatabaseOnly);
   } catch (error) {
     console.error("[Property Service] Unable to load database overrides:", error);
-    return mergePropertySources(catalog, [], filters, includeInactive);
+    return mergePropertySources(catalog, [], filters, includeInactive, includeDatabaseOnly);
   }
 }
 
@@ -49,7 +64,7 @@ export async function getAllProperties(filters: PublicFilters): Promise<Property
 }
 
 export async function getManagedProperties(): Promise<Property[]> {
-  return getMergedProperties({}, true);
+  return getMergedProperties({}, true, true);
 }
 
 export async function getAvailableCities(): Promise<string[]> {
@@ -62,6 +77,13 @@ export async function getPropertyBySlug(slug: string): Promise<Property | null> 
   if (!slug || typeof slug !== "string") return null;
   const normalizedSlug = slug.toLowerCase().trim();
   const catalogProperty = getCatalogPropertyBySlug(normalizedSlug);
+
+  if (!catalogProperty) return null;
+
+  if (!shouldReadDatabaseOverrides()) {
+    return catalogProperty?.status === "INACTIVE" ? null : catalogProperty;
+  }
+
   try {
     const databaseProperty = await repoGetBySlug(normalizedSlug);
     if (catalogProperty && databaseProperty) return databaseProperty.status === "INACTIVE" ? null : mergeCatalogProperty(catalogProperty, databaseProperty);

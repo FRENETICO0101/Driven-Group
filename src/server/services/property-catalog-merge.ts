@@ -27,6 +27,7 @@ export function mergePropertySources(
   databaseProperties: Property[],
   filters: PublicFilters = {},
   includeInactive = false,
+  includeDatabaseOnly = true,
 ): Property[] {
   const databaseBySlug = new Map(databaseProperties.map((property) => [property.slug, property]));
   const catalogSlugs = new Set(catalog.map((property) => property.slug));
@@ -34,6 +35,8 @@ export function mergePropertySources(
     const override = databaseBySlug.get(property.slug);
     return override ? mergeCatalogProperty(property, override) : property;
   });
-  const databaseOnly = databaseProperties.filter((property) => !catalogSlugs.has(property.slug));
+  const databaseOnly = includeDatabaseOnly
+    ? databaseProperties.filter((property) => !catalogSlugs.has(property.slug))
+    : [];
   return [...mergedCatalog, ...databaseOnly].filter((property) => matchesFilters(property, filters, includeInactive));
 }
