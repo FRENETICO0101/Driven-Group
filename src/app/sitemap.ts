@@ -1,9 +1,9 @@
 import { MetadataRoute } from "next";
-import { getCatalogProperties } from "@/lib/property-catalog";
+import { getAllProperties } from "@/server/services/property.service";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://drivengroup.com";
-  const properties = getCatalogProperties();
+  const properties = await getAllProperties({ status: "ACTIVE" });
 
   return [
     {

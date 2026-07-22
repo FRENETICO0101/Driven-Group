@@ -2320,5 +2320,732 @@
       "brochure/edition-buyer-deposit-structure.pdf",
       "brochure/edition-price-ranges.pdf"
     ]
+  },
+  {
+    "id": "catalog-villa-residences",
+    "slug": "villa-residences",
+    "title": "Villa Miami",
+    "description": "Bayfront residences in Edgewater, Miami, conceived around the Major Food Group residential experience.",
+    "price": 0,
+    "address": "710 NE 29th Street, Miami, FL 33137",
+    "city": "Miami",
+    "state": "Florida",
+    "zipCode": "",
+    "latitude": 25.8041578,
+    "longitude": -80.1855471,
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "squareFeet": 0,
+    "type": "RESIDENTIAL",
+    "status": "ACTIVE",
+    "amenities": [],
+    "features": "Overview\n\nVilla Miami is a bayfront residential experience in Edgewater, conceived around the lifestyle and hospitality of Major Food Group. The tower brings dining, wellness, service, and waterfront living into one residential setting on Biscayne Bay.\n\nArchitecture by ODP Architects is paired with interiors by Vicky Charles of Charles & Co and landscape design by Enea Garden Co. The residential experience connects life between land, water, and air, with docks at the bay and a rooftop helipad above the tower.\n\nResidences occupy levels 6 through 52, with full-floor Villa Piano and half-floor Villa Mezzo collections. Penthouses are positioned across levels 53 through 55. The condominium is developed by 710 Edge Property, LLC; Terra and One Thousand Group are associated development teams, while Major Food Group provides the residential lifestyle and branding under license.",
+    "images": [
+      {
+        "id": "villa-residences-exterior-villa-hero.webp",
+        "url": "/property-assets/edgewater/villa-residences/gallery/exterior-villa-hero.webp",
+        "alt": "Villa Miami — exterior villa hero",
+        "order": 0
+      },
+      {
+        "id": "villa-residences-exterior-villa-aerial.webp",
+        "url": "/property-assets/edgewater/villa-residences/gallery/exterior-villa-aerial.webp",
+        "alt": "Villa Miami — exterior villa aerial",
+        "order": 1
+      },
+      {
+        "id": "villa-residences-exterior-villa-arrival.webp",
+        "url": "/property-assets/edgewater/villa-residences/gallery/exterior-villa-arrival.webp",
+        "alt": "Villa Miami — exterior villa arrival",
+        "order": 2
+      },
+      {
+        "id": "villa-residences-exterior-villa-helicopter.webp",
+        "url": "/property-assets/edgewater/villa-residences/gallery/exterior-villa-helicopter.webp",
+        "alt": "Villa Miami — exterior villa helicopter",
+        "order": 3
+      },
+      {
+        "id": "villa-residences-exterior-villa-hero-1.webp",
+        "url": "/property-assets/edgewater/villa-residences/gallery/exterior-villa-hero-1.webp",
+        "alt": "Villa Miami — exterior villa hero 1",
+        "order": 4
+      },
+      {
+        "id": "villa-residences-exterior-villa-hummingbird.webp",
+        "url": "/property-assets/edgewater/villa-residences/gallery/exterior-villa-hummingbird.webp",
+        "alt": "Villa Miami — exterior villa hummingbird",
+        "order": 5
+      },
+      {
+        "id": "villa-residences-exterior-villa-water.webp",
+        "url": "/property-assets/edgewater/villa-residences/gallery/exterior-villa-water.webp",
+        "alt": "Villa Miami — exterior villa water",
+        "order": 6
+      },
+      {
+        "id": "villa-residences-exterior-villa-waterfront-south.webp",
+        "url": "/property-assets/edgewater/villa-residences/gallery/exterior-villa-waterfront-south.webp",
+        "alt": "Villa Miami — exterior villa waterfront south",
+        "order": 7
+      },
+      {
+        "id": "villa-residences-exterior-villa.webp",
+        "url": "/property-assets/edgewater/villa-residences/gallery/exterior-villa.webp",
+        "alt": "Villa Miami — exterior villa",
+        "order": 8
+      }
+    ],
+    "resources": {
+      "floorplans": [
+        {
+          "name": "doppio",
+          "documentUrl": "/property-assets/edgewater/villa-residences/floorplans/doppio.pdf"
+        },
+        {
+          "name": "illustraded-piano-4br-open-kitchen",
+          "documentUrl": "/property-assets/edgewater/villa-residences/floorplans/illustraded-piano-4br-open-kitchen.pdf"
+        },
+        {
+          "name": "illustraded-piano-4br",
+          "documentUrl": "/property-assets/edgewater/villa-residences/floorplans/illustraded-piano-4br.pdf"
+        },
+        {
+          "name": "illustraded-piano-5br-open-kitchen",
+          "documentUrl": "/property-assets/edgewater/villa-residences/floorplans/illustraded-piano-5br-open-kitchen.pdf"
+        },
+        {
+          "name": "illustraded-piano-5br",
+          "documentUrl": "/property-assets/edgewater/villa-residences/floorplans/illustraded-piano-5br.pdf"
+        },
+        {
+          "name": "illustrated-mezzo-3br",
+          "documentUrl": "/property-assets/edgewater/villa-residences/floorplans/illustrated-mezzo-3br.pdf"
+        },
+        {
+          "name": "illustrated-mezzo-4br",
+          "documentUrl": "/property-assets/edgewater/villa-residences/floorplans/illustrated-mezzo-4br.pdf"
+        },
+        {
+          "name": "mezzo",
+          "documentUrl": "/property-assets/edgewater/villa-residences/floorplans/mezzo.pdf"
+        },
+        {
+          "name": "piano",
+          "documentUrl": "/property-assets/edgewater/villa-residences/floorplans/piano.pdf"
+        }
+      ],
+      "brochures": [
+        {
+          "name": "villa-miami-brochure",
+          "url": "/property-assets/edgewater/villa-residences/brochure/villa-miami-brochure.pdf"
+        }
+      ],
+      "galleryDocuments": []
+    },
+    "seo": {
+      "title": "Villa Miami | Edgewater, Miami",
+      "description": "Bayfront residences in Edgewater, Miami, conceived around the Major Food Group residential experience."
+    },
+    "assetBase": "edgewater/villa-residences",
+    "assetFiles": [
+      "gallery/exterior-villa-hero.webp",
+      "gallery/exterior-villa-aerial.webp",
+      "gallery/exterior-villa-arrival.webp",
+      "gallery/exterior-villa-helicopter.webp",
+      "gallery/exterior-villa-hero-1.webp",
+      "gallery/exterior-villa-hummingbird.webp",
+      "gallery/exterior-villa-water.webp",
+      "gallery/exterior-villa-waterfront-south.webp",
+      "gallery/exterior-villa.webp",
+      "floorplans/doppio.pdf",
+      "floorplans/illustraded-piano-4br-open-kitchen.pdf",
+      "floorplans/illustraded-piano-4br.pdf",
+      "floorplans/illustraded-piano-5br-open-kitchen.pdf",
+      "floorplans/illustraded-piano-5br.pdf",
+      "floorplans/illustrated-mezzo-3br.pdf",
+      "floorplans/illustrated-mezzo-4br.pdf",
+      "floorplans/mezzo.pdf",
+      "floorplans/piano.pdf",
+      "brochure/villa-miami-brochure.pdf"
+    ]
+  },
+  {
+    "id": "catalog-the-perigon",
+    "slug": "the-perigon",
+    "title": "The Perigon",
+    "description": "Oceanfront residences by OMA on the shores of Miami Beach.",
+    "price": 0,
+    "address": "5333 Collins Avenue, Miami Beach, FL 33140",
+    "city": "Miami Beach",
+    "state": "Florida",
+    "zipCode": "",
+    "latitude": 25.83207,
+    "longitude": -80.12083,
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "squareFeet": 0,
+    "type": "RESIDENTIAL",
+    "status": "ACTIVE",
+    "amenities": [
+      "Direct beach access",
+      "Beachside swimming pool",
+      "Oceanfront restaurant and residents-only speakeasy",
+      "Spa, salon, and training room",
+      "Lifestyle concierge",
+      "24-hour security and valet service"
+    ],
+    "features": "Overview\n\nThe Perigon is a private oceanfront enclave on Miami Beach, bringing 73 residences to a setting between the Atlantic Ocean and Biscayne Bay. Its cascading form is designed to draw water views and natural light into each home while preserving privacy across both horizons.\n\nArchitecture by OMA — Office for Metropolitan Architecture — is joined by interiors from Tara Bernerd & Partners and landscape design by Gustafson Porter + Bowman. Together, the design teams frame a residential experience shaped by Miami Beach's light, water, and coastal landscape.\n\nThe amenity program extends from the beach to dining, wellness, and entertaining spaces, including a residents-only oceanfront restaurant and speakeasy. Official occupancy is anticipated in Q2 2027.",
+    "images": [
+      {
+        "id": "the-perigon-hero.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/hero.webp",
+        "alt": "The Perigon — hero",
+        "order": 0
+      },
+      {
+        "id": "the-perigon-01-great-room.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/01-great-room.webp",
+        "alt": "The Perigon — 01 great room",
+        "order": 1
+      },
+      {
+        "id": "the-perigon-01-kitchen.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/01-kitchen.webp",
+        "alt": "The Perigon — 01 kitchen",
+        "order": 2
+      },
+      {
+        "id": "the-perigon-02-great-room.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/02-great-room.webp",
+        "alt": "The Perigon — 02 great room",
+        "order": 3
+      },
+      {
+        "id": "the-perigon-02-kitchen.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/02-kitchen.webp",
+        "alt": "The Perigon — 02 kitchen",
+        "order": 4
+      },
+      {
+        "id": "the-perigon-02-primary-bedroom.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/02-primary-bedroom.webp",
+        "alt": "The Perigon — 02 primary bedroom",
+        "order": 5
+      },
+      {
+        "id": "the-perigon-03-great-room.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/03-great-room.webp",
+        "alt": "The Perigon — 03 great room",
+        "order": 6
+      },
+      {
+        "id": "the-perigon-06-great-room-1.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/06-great-room-1.webp",
+        "alt": "The Perigon — 06 great room 1",
+        "order": 7
+      },
+      {
+        "id": "the-perigon-06-great-room-vignette.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/06-great-room-vignette.webp",
+        "alt": "The Perigon — 06 great room vignette",
+        "order": 8
+      },
+      {
+        "id": "the-perigon-06-great-room.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/06-great-room.webp",
+        "alt": "The Perigon — 06 great room",
+        "order": 9
+      },
+      {
+        "id": "the-perigon-06-primary-bathroom.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/06-primary-bathroom.webp",
+        "alt": "The Perigon — 06 primary bathroom",
+        "order": 10
+      },
+      {
+        "id": "the-perigon-06-primary-suite.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/06-primary-suite.webp",
+        "alt": "The Perigon — 06 primary suite",
+        "order": 11
+      },
+      {
+        "id": "the-perigon-604-great-room.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/604-great-room.webp",
+        "alt": "The Perigon — 604 great room",
+        "order": 12
+      },
+      {
+        "id": "the-perigon-aerial-view-hero.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/aerial-view-hero.webp",
+        "alt": "The Perigon — aerial view hero",
+        "order": 13
+      },
+      {
+        "id": "the-perigon-beach-vignette.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/beach-vignette.webp",
+        "alt": "The Perigon — beach vignette",
+        "order": 14
+      },
+      {
+        "id": "the-perigon-facade.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/facade.webp",
+        "alt": "The Perigon — facade",
+        "order": 15
+      },
+      {
+        "id": "the-perigon-fitness-center-vignette.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/fitness-center-vignette.webp",
+        "alt": "The Perigon — fitness center vignette",
+        "order": 16
+      },
+      {
+        "id": "the-perigon-fitness-center.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/fitness-center.webp",
+        "alt": "The Perigon — fitness center",
+        "order": 17
+      },
+      {
+        "id": "the-perigon-from-the-sand.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/from-the-sand.webp",
+        "alt": "The Perigon — from the sand",
+        "order": 18
+      },
+      {
+        "id": "the-perigon-hummingbird.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/hummingbird.webp",
+        "alt": "The Perigon — hummingbird",
+        "order": 19
+      },
+      {
+        "id": "the-perigon-kitchen-vignette-a.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/kitchen-vignette-a.webp",
+        "alt": "The Perigon — kitchen vignette a",
+        "order": 20
+      },
+      {
+        "id": "the-perigon-kitchen-vignette-b.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/kitchen-vignette-b.webp",
+        "alt": "The Perigon — kitchen vignette b",
+        "order": 21
+      },
+      {
+        "id": "the-perigon-kitchen-vignette-c.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/kitchen-vignette-c.webp",
+        "alt": "The Perigon — kitchen vignette c",
+        "order": 22
+      },
+      {
+        "id": "the-perigon-kitchen-vignette-d.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/kitchen-vignette-d.webp",
+        "alt": "The Perigon — kitchen vignette d",
+        "order": 23
+      },
+      {
+        "id": "the-perigon-kitchen-vignette-e.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/kitchen-vignette-e.webp",
+        "alt": "The Perigon — kitchen vignette e",
+        "order": 24
+      },
+      {
+        "id": "the-perigon-pool-beach.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/pool-beach.webp",
+        "alt": "The Perigon — pool beach",
+        "order": 25
+      },
+      {
+        "id": "the-perigon-pool-restaurant.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/pool-restaurant.webp",
+        "alt": "The Perigon — pool restaurant",
+        "order": 26
+      },
+      {
+        "id": "the-perigon-primary-bathroom-vignette-a.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/primary-bathroom-vignette-a.webp",
+        "alt": "The Perigon — primary bathroom vignette a",
+        "order": 27
+      },
+      {
+        "id": "the-perigon-primary-bathroom-vignette-b.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/primary-bathroom-vignette-b.webp",
+        "alt": "The Perigon — primary bathroom vignette b",
+        "order": 28
+      },
+      {
+        "id": "the-perigon-speakseay.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/speakseay.webp",
+        "alt": "The Perigon — speakseay",
+        "order": 29
+      },
+      {
+        "id": "the-perigon-terrace-vignette.webp",
+        "url": "/property-assets/miami-beach/the-perigon/gallery/terrace-vignette.webp",
+        "alt": "The Perigon — terrace vignette",
+        "order": 30
+      }
+    ],
+    "resources": {
+      "floorplans": [
+        {
+          "name": "residence-01-4Bed-5Bath",
+          "documentUrl": "/property-assets/miami-beach/the-perigon/floorplans/residence-01-4Bed-5Bath.pdf"
+        },
+        {
+          "name": "residence-04-2Bed-2Bath",
+          "documentUrl": "/property-assets/miami-beach/the-perigon/floorplans/residence-04-2Bed-2Bath.pdf"
+        },
+        {
+          "name": "residence-05-2Bed-2Bath",
+          "documentUrl": "/property-assets/miami-beach/the-perigon/floorplans/residence-05-2Bed-2Bath.pdf"
+        },
+        {
+          "name": "residence-06-4Bed-5Bath",
+          "documentUrl": "/property-assets/miami-beach/the-perigon/floorplans/residence-06-4Bed-5Bath.pdf"
+        }
+      ],
+      "brochures": [],
+      "galleryDocuments": []
+    },
+    "seo": {
+      "title": "The Perigon | Miami Beach",
+      "description": "Oceanfront residences by OMA on the shores of Miami Beach."
+    },
+    "assetBase": "miami-beach/the-perigon",
+    "assetFiles": [
+      "gallery/hero.webp",
+      "gallery/01-great-room.webp",
+      "gallery/01-kitchen.webp",
+      "gallery/02-great-room.webp",
+      "gallery/02-kitchen.webp",
+      "gallery/02-primary-bedroom.webp",
+      "gallery/03-great-room.webp",
+      "gallery/06-great-room-1.webp",
+      "gallery/06-great-room-vignette.webp",
+      "gallery/06-great-room.webp",
+      "gallery/06-primary-bathroom.webp",
+      "gallery/06-primary-suite.webp",
+      "gallery/604-great-room.webp",
+      "gallery/aerial-view-hero.webp",
+      "gallery/beach-vignette.webp",
+      "gallery/facade.webp",
+      "gallery/fitness-center-vignette.webp",
+      "gallery/fitness-center.webp",
+      "gallery/from-the-sand.webp",
+      "gallery/hummingbird.webp",
+      "gallery/kitchen-vignette-a.webp",
+      "gallery/kitchen-vignette-b.webp",
+      "gallery/kitchen-vignette-c.webp",
+      "gallery/kitchen-vignette-d.webp",
+      "gallery/kitchen-vignette-e.webp",
+      "gallery/pool-beach.webp",
+      "gallery/pool-restaurant.webp",
+      "gallery/primary-bathroom-vignette-a.webp",
+      "gallery/primary-bathroom-vignette-b.webp",
+      "gallery/speakseay.webp",
+      "gallery/terrace-vignette.webp",
+      "floorplans/residence-01-4Bed-5Bath.pdf",
+      "floorplans/residence-04-2Bed-2Bath.pdf",
+      "floorplans/residence-05-2Bed-2Bath.pdf",
+      "floorplans/residence-06-4Bed-5Bath.pdf"
+    ]
+  },
+  {
+    "id": "catalog-nomad-residences",
+    "slug": "nomad-residences",
+    "title": "NoMad Residences Wynwood",
+    "description": "NoMad Residences Wynwood, a furnished residential collection at 2700 NW 2nd Avenue in Miami.",
+    "price": 0,
+    "address": "2700 NW 2nd Avenue, Miami, FL 33127",
+    "city": "Miami",
+    "state": "Florida",
+    "zipCode": "",
+    "latitude": 25.802354,
+    "longitude": -80.199494,
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "squareFeet": 0,
+    "type": "RESIDENTIAL",
+    "status": "ACTIVE",
+    "amenities": [
+      "Casa Tua Cucina",
+      "Rooftop NoMad restaurant and bar",
+      "Rooftop pool, sun deck, and cabanas",
+      "Fitness and wellness center",
+      "Library and co-working spaces",
+      "24-hour concierge, security, and valet"
+    ],
+    "features": "Overview\n\nNoMad Residences Wynwood brings the first residential expression of the NoMad brand to Miami's creative district. Located at 2700 NW 2nd Avenue, the nine-story collection places art, hospitality, and flexible ownership at the center of Wynwood.\n\nThe building is developed by PRH G40 Property Owner, LLC and designed by Arquitectonica, with interiors by DesignAgency. Its 329 residences are fully furnished and curated by NoMad and DesignAgency, with layouts ranging from studios to two-bedroom homes.\n\nAcross the building, food, wellness, social spaces, and services support a residential experience shaped for everyday life and short-term rental flexibility without rental restrictions.",
+    "images": [
+      {
+        "id": "nomad-residences-front.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/front.webp",
+        "alt": "NoMad Residences Wynwood — front",
+        "order": 0
+      },
+      {
+        "id": "nomad-residences-amenity.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/amenity.webp",
+        "alt": "NoMad Residences Wynwood — amenity",
+        "order": 1
+      },
+      {
+        "id": "nomad-residences-bathroom.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/bathroom.webp",
+        "alt": "NoMad Residences Wynwood — bathroom",
+        "order": 2
+      },
+      {
+        "id": "nomad-residences-bedroom.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/bedroom.webp",
+        "alt": "NoMad Residences Wynwood — bedroom",
+        "order": 3
+      },
+      {
+        "id": "nomad-residences-dusk-1.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/dusk-1.webp",
+        "alt": "NoMad Residences Wynwood — dusk 1",
+        "order": 4
+      },
+      {
+        "id": "nomad-residences-dusk-2.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/dusk-2.webp",
+        "alt": "NoMad Residences Wynwood — dusk 2",
+        "order": 5
+      },
+      {
+        "id": "nomad-residences-dusk.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/dusk.webp",
+        "alt": "NoMad Residences Wynwood — dusk",
+        "order": 6
+      },
+      {
+        "id": "nomad-residences-elevation-dusk.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/elevation-dusk.webp",
+        "alt": "NoMad Residences Wynwood — elevation dusk",
+        "order": 7
+      },
+      {
+        "id": "nomad-residences-entrance.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/entrance.webp",
+        "alt": "NoMad Residences Wynwood — entrance",
+        "order": 8
+      },
+      {
+        "id": "nomad-residences-fitness.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/fitness.webp",
+        "alt": "NoMad Residences Wynwood — fitness",
+        "order": 9
+      },
+      {
+        "id": "nomad-residences-flamingo-bar.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/flamingo-bar.webp",
+        "alt": "NoMad Residences Wynwood — flamingo bar",
+        "order": 10
+      },
+      {
+        "id": "nomad-residences-front-1.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/front-1.webp",
+        "alt": "NoMad Residences Wynwood — front 1",
+        "order": 11
+      },
+      {
+        "id": "nomad-residences-front-2.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/front-2.webp",
+        "alt": "NoMad Residences Wynwood — front 2",
+        "order": 12
+      },
+      {
+        "id": "nomad-residences-front-3.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/front-3.webp",
+        "alt": "NoMad Residences Wynwood — front 3",
+        "order": 13
+      },
+      {
+        "id": "nomad-residences-garden-bar-1.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/garden-bar-1.webp",
+        "alt": "NoMad Residences Wynwood — garden bar 1",
+        "order": 14
+      },
+      {
+        "id": "nomad-residences-garden-bar.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/garden-bar.webp",
+        "alt": "NoMad Residences Wynwood — garden bar",
+        "order": 15
+      },
+      {
+        "id": "nomad-residences-kitchen-1.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/kitchen-1.webp",
+        "alt": "NoMad Residences Wynwood — kitchen 1",
+        "order": 16
+      },
+      {
+        "id": "nomad-residences-kitchen.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/kitchen.webp",
+        "alt": "NoMad Residences Wynwood — kitchen",
+        "order": 17
+      },
+      {
+        "id": "nomad-residences-living.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/living.webp",
+        "alt": "NoMad Residences Wynwood — living",
+        "order": 18
+      },
+      {
+        "id": "nomad-residences-lobby.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/lobby.webp",
+        "alt": "NoMad Residences Wynwood — lobby",
+        "order": 19
+      },
+      {
+        "id": "nomad-residences-meeting-room.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/meeting-room.webp",
+        "alt": "NoMad Residences Wynwood — meeting room",
+        "order": 20
+      },
+      {
+        "id": "nomad-residences-parlor.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/parlor.webp",
+        "alt": "NoMad Residences Wynwood — parlor",
+        "order": 21
+      },
+      {
+        "id": "nomad-residences-poker.webp",
+        "url": "/property-assets/wynwood/nomad-residences/gallery/poker.webp",
+        "alt": "NoMad Residences Wynwood — poker",
+        "order": 22
+      }
+    ],
+    "resources": {
+      "floorplans": [
+        {
+          "name": "1-bed-type-b",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/1-bed-type-b.pdf"
+        },
+        {
+          "name": "1bd-1bath-type-a-ada",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/1bd-1bath-type-a-ada.pdf"
+        },
+        {
+          "name": "1bd-1bath-type-a",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/1bd-1bath-type-a.pdf"
+        },
+        {
+          "name": "1bd-1bath-type-b-studio",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/1bd-1bath-type-b-studio.pdf"
+        },
+        {
+          "name": "1bd-1bath-type-b",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/1bd-1bath-type-b.pdf"
+        },
+        {
+          "name": "1bd-2bath-type-c",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/1bd-2bath-type-c.pdf"
+        },
+        {
+          "name": "2bd-2bath-type-a",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/2bd-2bath-type-a.pdf"
+        },
+        {
+          "name": "2bd-2bath-type-b",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/2bd-2bath-type-b.pdf"
+        },
+        {
+          "name": "2bd-2bath-type-c-ada",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/2bd-2bath-type-c-ada.pdf"
+        },
+        {
+          "name": "2bd-2bath-type-c2",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/2bd-2bath-type-c2.pdf"
+        },
+        {
+          "name": "2bd-type-c",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/2bd-type-c.pdf"
+        },
+        {
+          "name": "siteplan-1",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/siteplan-1.pdf"
+        },
+        {
+          "name": "siteplan",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/siteplan.pdf"
+        },
+        {
+          "name": "studio-type-a-ada",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/studio-type-a-ada.pdf"
+        },
+        {
+          "name": "studio-type-a",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/studio-type-a.pdf"
+        },
+        {
+          "name": "studio-type-a2",
+          "documentUrl": "/property-assets/wynwood/nomad-residences/floorplans/studio-type-a2.pdf"
+        }
+      ],
+      "brochures": [],
+      "galleryDocuments": [
+        {
+          "name": "entrance",
+          "url": "/property-assets/wynwood/nomad-residences/gallery/entrance.pdf"
+        },
+        {
+          "name": "front",
+          "url": "/property-assets/wynwood/nomad-residences/gallery/front.pdf"
+        },
+        {
+          "name": "Report",
+          "url": "/property-assets/wynwood/nomad-residences/gallery/Report.pdf"
+        }
+      ]
+    },
+    "seo": {
+      "title": "NoMad Residences Wynwood | Miami",
+      "description": "NoMad Residences Wynwood, a furnished residential collection at 2700 NW 2nd Avenue in Miami."
+    },
+    "assetBase": "wynwood/nomad-residences",
+    "assetFiles": [
+      "gallery/front.webp",
+      "gallery/amenity.webp",
+      "gallery/bathroom.webp",
+      "gallery/bedroom.webp",
+      "gallery/dusk-1.webp",
+      "gallery/dusk-2.webp",
+      "gallery/dusk.webp",
+      "gallery/elevation-dusk.webp",
+      "gallery/entrance.webp",
+      "gallery/fitness.webp",
+      "gallery/flamingo-bar.webp",
+      "gallery/front-1.webp",
+      "gallery/front-2.webp",
+      "gallery/front-3.webp",
+      "gallery/garden-bar-1.webp",
+      "gallery/garden-bar.webp",
+      "gallery/kitchen-1.webp",
+      "gallery/kitchen.webp",
+      "gallery/living.webp",
+      "gallery/lobby.webp",
+      "gallery/meeting-room.webp",
+      "gallery/parlor.webp",
+      "gallery/poker.webp",
+      "floorplans/1-bed-type-b.pdf",
+      "floorplans/1bd-1bath-type-a-ada.pdf",
+      "floorplans/1bd-1bath-type-a.pdf",
+      "floorplans/1bd-1bath-type-b-studio.pdf",
+      "floorplans/1bd-1bath-type-b.pdf",
+      "floorplans/1bd-2bath-type-c.pdf",
+      "floorplans/2bd-2bath-type-a.pdf",
+      "floorplans/2bd-2bath-type-b.pdf",
+      "floorplans/2bd-2bath-type-c-ada.pdf",
+      "floorplans/2bd-2bath-type-c2.pdf",
+      "floorplans/2bd-type-c.pdf",
+      "floorplans/siteplan-1.pdf",
+      "floorplans/siteplan.pdf",
+      "floorplans/studio-type-a-ada.pdf",
+      "floorplans/studio-type-a.pdf",
+      "floorplans/studio-type-a2.pdf",
+      "gallery/entrance.pdf",
+      "gallery/front.pdf",
+      "gallery/Report.pdf"
+    ]
   }
 ]

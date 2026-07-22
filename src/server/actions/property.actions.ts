@@ -4,6 +4,7 @@ import { propertyRepository } from '@/server/repositories/property.repository';
 import { auth } from '@/lib/auth';
 import { z } from 'zod';
 import { PropertyType, PropertyStatus } from '@prisma/client';
+import { getCatalogPropertyBySlug } from '@/lib/property-catalog';
 
 const propertySchema = z.object({
   title: z.string().min(3, 'Title must be at least 3 characters'),
@@ -64,14 +65,43 @@ export async function savePropertyAction(id: string | null, data: z.infer<typeof
   }
 }
 
-export async function deletePropertyAction(id: string) {
+export async function deletePropertyAction(id: string | null, slug: string) {
   try {
     const session = await auth();
     if (session?.user?.role !== 'ADMIN') {
       return { success: false, error: 'Unauthorized' };
     }
 
-    await propertyRepository.delete(id);
+    const catalogProperty = getCatalogPropertyBySlug(slug);
+    const storedProperty = id ? await propertyRepository.getById(id) : await propertyRepository.getBySlug(slug);
+
+    if (catalogProperty) {
+      const sourceData = {
+        title: catalogProperty.title,
+        slug: catalogProperty.slug,
+        description: catalogProperty.description || undefined,
+        price: catalogProperty.price,
+        address: catalogProperty.address,
+        city: catalogProperty.city,
+        state: catalogProperty.state,
+        zipCode: catalogProperty.zipCode || '00000',
+        bedrooms: catalogProperty.bedrooms,
+        bathrooms: catalogProperty.bathrooms,
+        squareFeet: catalogProperty.squareFeet || 1,
+        type: catalogProperty.type as PropertyType,
+        status: PropertyStatus.INACTIVE,
+        amenities: catalogProperty.amenities,
+      };
+      if (storedProperty) {
+        await propertyRepository.update(storedProperty.id, sourceData);
+      } else {
+        await propertyRepository.create({ ...sourceData, agentId: session.user.id });
+      }
+      return { success: true };
+    }
+
+    if (!storedProperty) return { success: false, error: 'Property not found' };
+    await propertyRepository.delete(storedProperty.id);
     return { success: true };
   } catch (error) {
     console.error('Error deleting property:', error);

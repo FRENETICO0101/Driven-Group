@@ -1,17 +1,28 @@
 import {
   getFeaturedProperties as repoGetFeatured,
   getAllProperties as repoGetAll,
-  getAvailableCities as repoGetCities,
   getPropertyBySlug as repoGetBySlug,
   type PropertyFilters,
 } from "@/server/repositories/property.repository";
 import { mockFeaturedProperties, mockListingProperties } from "@/lib/mock/properties";
 import type { Property, PropertyType, PropertyStatus } from "@/lib/types";
 import { getCatalogProperties, getCatalogPropertyBySlug } from "@/lib/property-catalog";
+import { mergeCatalogProperty, mergePropertySources, type PublicFilters } from "@/server/services/property-catalog-merge";
+
+async function getMergedProperties(filters: PublicFilters = {}, includeInactive = false): Promise<Property[]> {
+  const catalog = getCatalogProperties();
+  try {
+    const databaseProperties = await repoGetAll();
+    return mergePropertySources(catalog, databaseProperties, filters, includeInactive);
+  } catch (error) {
+    console.error("[Property Service] Unable to load database overrides:", error);
+    return mergePropertySources(catalog, [], filters, includeInactive);
+  }
+}
 
 export async function getFeaturedProperties(limit = 6): Promise<Property[]> {
-  const catalog = getCatalogProperties();
-  if (catalog.length > 0) return catalog.slice(0, limit);
+  const properties = await getMergedProperties({ status: "ACTIVE" });
+  if (properties.length > 0 || getCatalogProperties().length > 0) return properties.slice(0, limit);
   try {
     const result = await repoGetFeatured(limit);
     return result && result.length > 0 ? result : mockFeaturedProperties.slice(0, limit);
@@ -21,19 +32,9 @@ export async function getFeaturedProperties(limit = 6): Promise<Property[]> {
   }
 }
 
-export async function getAllProperties(filters: {
-  type?: string;
-  city?: string;
-  status?: string;
-}): Promise<Property[]> {
-  const catalog = getCatalogProperties();
-  if (catalog.length > 0) {
-    return catalog.filter((property) =>
-      (!filters.type || property.type === filters.type) &&
-      (!filters.city || property.city.toLowerCase() === filters.city.toLowerCase()) &&
-      (!filters.status || property.status === filters.status),
-    );
-  }
+export async function getAllProperties(filters: PublicFilters): Promise<Property[]> {
+  const properties = await getMergedProperties(filters);
+  if (properties.length > 0 || getCatalogProperties().length > 0) return properties;
   try {
     const cleaned: PropertyFilters = {};
     if (filters.type) cleaned.type = filters.type as PropertyType;
@@ -47,27 +48,26 @@ export async function getAllProperties(filters: {
   }
 }
 
+export async function getManagedProperties(): Promise<Property[]> {
+  return getMergedProperties({}, true);
+}
+
 export async function getAvailableCities(): Promise<string[]> {
-  const catalog = getCatalogProperties();
-  if (catalog.length > 0) return [...new Set(catalog.map((property) => property.city))];
-  try {
-    const result = await repoGetCities();
-    if (result && result.length > 0) return result;
-    return [...new Set(mockListingProperties.map(p => p.city))];
-  } catch (error) {
-    console.error("[Property Service] Error fetching cities:", error);
-    return [...new Set(mockListingProperties.map(p => p.city))];
-  }
+  const properties = await getMergedProperties({ status: "ACTIVE" });
+  if (properties.length > 0) return [...new Set(properties.map((property) => property.city))];
+  return [...new Set(mockListingProperties.map((property) => property.city))];
 }
 
 export async function getPropertyBySlug(slug: string): Promise<Property | null> {
   if (!slug || typeof slug !== "string") return null;
-  const catalogProperty = getCatalogPropertyBySlug(slug);
-  if (catalogProperty) return catalogProperty;
+  const normalizedSlug = slug.toLowerCase().trim();
+  const catalogProperty = getCatalogPropertyBySlug(normalizedSlug);
   try {
-    return await repoGetBySlug(slug.toLowerCase().trim());
+    const databaseProperty = await repoGetBySlug(normalizedSlug);
+    if (catalogProperty && databaseProperty) return databaseProperty.status === "INACTIVE" ? null : mergeCatalogProperty(catalogProperty, databaseProperty);
+    if (databaseProperty) return databaseProperty.status === "INACTIVE" ? null : databaseProperty;
   } catch (error) {
-    console.error("[Property Service] Error fetching property by slug:", error);
-    return null;
+    console.error("[Property Service] Unable to load property override:", error);
   }
+  return catalogProperty?.status === "INACTIVE" ? null : catalogProperty;
 }

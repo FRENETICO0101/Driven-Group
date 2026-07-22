@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { deletePropertyAction, savePropertyAction } from '@/server/actions/property.actions';
 import type { Property, PropertyStatus, PropertyType } from '@/lib/types';
 
@@ -41,6 +42,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const canDelete = Boolean(propertyId || initialData?.slug);
   const [formData, setFormData] = useState<PropertyFormState>({
     title: initialData?.title || '',
     slug: initialData?.slug || '',
@@ -101,12 +103,13 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
         amenities: formData.amenities,
       });
 
-      if (!result.success) {
+      if (!result.success || !result.data) {
         setError(result.error || 'Failed to save property');
         return;
       }
 
-      router.push('/admin/properties');
+      router.push(`/admin/properties/${result.data.slug}`);
+      router.refresh();
     } catch (err) {
       setError('An unexpected error occurred');
       console.error(err);
@@ -116,12 +119,12 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
   };
 
   const handleDelete = async () => {
-    if (!propertyId || !confirm('Are you sure you want to delete this property? This cannot be undone.')) return;
+    if (!canDelete || !confirm('Are you sure you want to remove this property from the public site?')) return;
 
     setError(null);
     setIsDeleting(true);
     try {
-      const result = await deletePropertyAction(propertyId);
+      const result = await deletePropertyAction(propertyId || null, formData.slug);
       if (!result.success) {
         setError(result.error || 'Failed to delete property');
         return;
@@ -351,6 +354,11 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
           Cancel
         </button>
         {propertyId && (
+          <Link href={`/admin/properties/${formData.slug}/gallery`} className="px-8 py-3 border border-light-gray text-black font-semibold rounded-lg hover:bg-light-gray/30 transition-colors">
+            Gestionar galería
+          </Link>
+        )}
+        {canDelete && (
           <button
             type="button"
             onClick={handleDelete}

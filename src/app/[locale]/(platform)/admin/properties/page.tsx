@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 import { auth } from '@/lib/auth'
 
 import AdminPropertiesPage from '@/components/admin/AdminPropertiesPage'
-import { propertyRepository } from '@/server/repositories/property.repository'
+import { getManagedProperties } from '@/server/services/property.service'
 
 export const metadata = {
   title: 'Administrar Propiedades | Driven Group',
@@ -16,6 +16,6 @@ export default async function PropertiesAdminPage() {
     redirect('/login')
   }
 
-  const properties = await propertyRepository.getAll()
+  const properties = await getManagedProperties()
   return <AdminPropertiesPage properties={properties} />
 }

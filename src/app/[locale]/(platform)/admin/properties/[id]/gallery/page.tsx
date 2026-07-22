@@ -12,14 +12,15 @@ export const metadata = {
 export default async function PropertyGalleryPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const session = await auth();
-  if (!session?.user) {
+  if (!session || session.user?.role !== 'ADMIN') {
     redirect('/login');
   }
 
-  const property = await propertyRepository.getById(params.id);
+  const { id: slug } = await params;
+  const property = await propertyRepository.getBySlug(slug);
   if (!property) {
     notFound();
   }
@@ -36,7 +37,7 @@ export default async function PropertyGalleryPage({
             <p className="text-dark-gray mb-4">{property.title}</p>
             <div className="flex gap-3">
               <Link
-                href={`/admin/properties/${property.id}`}
+                href={`/admin/properties/${property.slug}`}
                 className="text-sm text-black hover:underline"
               >
                 ← Back to property

@@ -1,0 +1,52 @@
+{
+  "id": "nomad-residences",
+  "slug": "nomad-residences",
+  "name": "NoMad Residences Wynwood",
+  "district": "Wynwood",
+  "city": "Miami",
+  "state": "Florida",
+  "country": "USA",
+  "address": "2700 NW 2nd Avenue, Miami, FL 33127",
+  "coordinates": {
+    "lat": 25.802354,
+    "lng": -80.199494
+  },
+  "developer": "PRH G40 Property Owner, LLC",
+  "brand": "NoMad",
+  "architect": "Arquitectonica",
+  "interiorDesigner": "DesignAgency",
+  "residences": 329,
+  "stories": 9,
+  "features": [
+    "Casa Tua Cucina",
+    "Rooftop NoMad restaurant and bar",
+    "Rooftop pool, sun deck, and cabanas",
+    "Fitness and wellness center",
+    "Library and co-working spaces",
+    "24-hour concierge, security, and valet"
+  ],
+  "hero": {
+    "title": "NoMad Residences Wynwood",
+    "location": "Wynwood, Miami",
+    "headline": "A New York-born legacy, reimagined for Wynwood.",
+    "image": "gallery/front.jpg"
+  },
+  "gallery": {
+    "totalImages": 23
+  },
+  "floorplans": {
+    "totalLayouts": 16
+  },
+  "content": {
+    "hero": "content/hero.md",
+    "overview": "content/overview.md",
+    "amenities": "content/amenities.md",
+    "location": "content/location.md",
+    "downloads": "content/downloads.md",
+    "residences": "content/residences.md"
+  },
+  "seo": {
+    "title": "NoMad Residences Wynwood | Miami",
+    "description": "NoMad Residences Wynwood, a furnished residential collection at 2700 NW 2nd Avenue in Miami."
+  }
+}

@@ -15,8 +15,7 @@ export function PropertiesMap({ properties }: { properties: Property[] }) {
   const t = useTranslations("properties");
   const tListing = useTranslations("listing");
   const mappedProperties = properties.filter((property) => (
-    property.city.trim().toLocaleLowerCase() === "miami"
-    && Number.isFinite(property.latitude)
+    Number.isFinite(property.latitude)
     && Number.isFinite(property.longitude)
   ));
   const [selected, setSelected] = useState<Property | undefined>(mappedProperties[0]);

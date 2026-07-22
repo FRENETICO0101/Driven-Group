@@ -17,6 +17,37 @@ test.describe('Property Detail Page', () => {
     await expect(page.locator('.leaflet-container')).toBeVisible();
   });
 
+  test('should support property map markers, zoom controls, and expanded view', async ({ page }) => {
+    await page.goto('/en/real-estate');
+
+    const map = page.locator('.leaflet-container').first();
+    await map.scrollIntoViewIfNeeded();
+    await expect(map).toBeVisible();
+    await expect(page.getByText('10 locations available')).toBeVisible();
+    await expect(map.locator('.leaflet-marker-icon')).toHaveCount(10);
+
+    const zoomIn = map.locator('.leaflet-control-zoom-in');
+    const zoomOut = map.locator('.leaflet-control-zoom-out');
+    await expect(zoomIn).toBeVisible();
+    await expect(zoomOut).toBeVisible();
+    await zoomIn.click();
+    await expect(map.locator('.leaflet-marker-icon')).toHaveCount(10);
+    await zoomOut.click();
+    await expect(map.locator('.leaflet-marker-icon')).toHaveCount(10);
+
+    await map.locator('.leaflet-marker-icon').last().click();
+    await expect(map.locator('.leaflet-popup-content')).toContainText('NoMad Residences Wynwood');
+
+    await page.getByRole('button', { name: 'Expand map' }).click();
+    const expandedMap = page.getByRole('dialog');
+    await expect(expandedMap).toBeVisible();
+    await expect(expandedMap.locator('.leaflet-marker-icon')).toHaveCount(10);
+    await expect(expandedMap.locator('.leaflet-control-zoom-in')).toBeVisible();
+
+    await page.getByRole('button', { name: 'Reduce map' }).click();
+    await expect(expandedMap).toBeHidden();
+  });
+
   test('should load property detail page', async ({ page }) => {
     // Navigate through featured properties to find a slug
     await page.goto('/');

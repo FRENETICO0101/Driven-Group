@@ -6,6 +6,7 @@
     "dev": "npm run generate:property-assets && next dev",
     "build": "npm run generate:property-assets && next build",
     "generate:property-assets": "node scripts/generate-property-assets.mjs",
+    "test:unit": "tsx --test tests/property-catalog-merge.test.ts",
     "start": "next start",
     "lint": "eslint",
     "seed": "prisma db seed",

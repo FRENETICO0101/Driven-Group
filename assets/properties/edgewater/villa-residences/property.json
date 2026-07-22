@@ -1,0 +1,47 @@
+{
+  "id": "villa-residences",
+  "slug": "villa-residences",
+  "name": "Villa Miami",
+  "district": "Edgewater",
+  "city": "Miami",
+  "state": "Florida",
+  "country": "USA",
+  "address": "710 NE 29th Street, Miami, FL 33137",
+  "coordinates": {
+    "lat": 25.8041578,
+    "lng": -80.1855471
+  },
+  "developer": "710 Edge Property, LLC",
+  "brand": "Major Food Group",
+  "architect": "ODP Architects",
+  "interiorDesigner": "Charles & Co / Vicky Charles",
+  "stories": 55,
+  "waterfront": true,
+  "hero": {
+    "title": "Villa Miami",
+    "location": "Edgewater, Miami",
+    "headline": "A Major Food Group residential experience on Biscayne Bay.",
+    "image": "gallery/exterior-villa-hero.jpg"
+  },
+  "gallery": {
+    "totalImages": 9
+  },
+  "floorplans": {
+    "totalLayouts": 9
+  },
+  "brochure": {
+    "main": "brochure/villa-miami-brochure.pdf"
+  },
+  "content": {
+    "hero": "content/hero.md",
+    "overview": "content/overview.md",
+    "amenities": "content/amenities.md",
+    "location": "content/location.md",
+    "downloads": "content/downloads.md",
+    "residences": "content/residences.md"
+  },
+  "seo": {
+    "title": "Villa Miami | Edgewater, Miami",
+    "description": "Bayfront residences in Edgewater, Miami, conceived around the Major Food Group residential experience."
+  }
+}

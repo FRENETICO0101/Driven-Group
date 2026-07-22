@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { divIcon, latLngBounds } from "leaflet";
-import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer, useMap, ZoomControl } from "react-leaflet";
 import type { Property } from "@/lib/types";
 
 interface InteractivePropertyMapProps {
@@ -57,6 +57,7 @@ const markerIcon = divIcon({
 });
 
 export function InteractivePropertyMap({ properties, selectedSlug, onSelect, className = "", viewport = "properties", expanded = false, restrictToMiami = false }: InteractivePropertyMapProps) {
+  const [useFallbackTiles, setUseFallbackTiles] = useState(false);
   const mappedProperties = useMemo(
     () => properties.filter((property): property is MappedProperty => Number.isFinite(property.latitude) && Number.isFinite(property.longitude)),
     [properties],
@@ -71,16 +72,34 @@ export function InteractivePropertyMap({ properties, selectedSlug, onSelect, cla
       <MapContainer
         center={initialCenter}
         zoom={viewport === "miami" ? 11 : 13}
-        minZoom={viewport === "miami" || restrictToMiami ? 11 : undefined}
+        minZoom={viewport === "miami" || restrictToMiami ? 10 : undefined}
+        maxZoom={19}
         maxBounds={viewport === "miami" || restrictToMiami ? MIAMI_BOUNDS : undefined}
         maxBoundsViscosity={viewport === "miami" || restrictToMiami ? 1 : undefined}
+        zoomControl={false}
+        wheelPxPerZoomLevel={80}
         scrollWheelZoom
+        touchZoom
+        doubleClickZoom
         className={`${expanded ? "h-full min-h-[24rem]" : "h-64 sm:h-80"} w-full`}
         aria-label="Mapa de propiedades"
       >
+        <ZoomControl position="topright" />
         <TileLayer
-          attribution="Tiles &copy; Esri — Source: Esri, TomTom, Garmin, FAO, NOAA, USGS, OpenStreetMap contributors, and the GIS User Community"
-          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+          key={useFallbackTiles ? "esri-topographic-fallback" : "carto-voyager"}
+          attribution={useFallbackTiles
+            ? "Tiles &copy; Esri &mdash; Source: Esri, TomTom, Garmin, FAO, NOAA, USGS, OpenStreetMap contributors, and the GIS User Community"
+            : "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors &copy; <a href=\"https://carto.com/attributions\">CARTO</a>"}
+          url={useFallbackTiles
+            ? "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
+            : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"}
+          subdomains="abcd"
+          keepBuffer={4}
+          eventHandlers={{
+            tileerror: () => {
+              if (!useFallbackTiles) setUseFallbackTiles(true);
+            },
+          }}
         />
         <MapViewport properties={mappedProperties} selectedSlug={selectedSlug} viewport={viewport} expanded={expanded} />
         {mappedProperties.map((property) => (

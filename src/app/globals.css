@@ -150,6 +150,24 @@ html[data-theme="night"] header [data-brand-variant="corporate"] img {
     outline: 1px solid transparent;
   }
 
+  /* Balanced, legible cartography without a dominant warm or cool cast. */
+  .leaflet-tile-pane {
+    filter: saturate(1.14) contrast(1.02);
+  }
+
+  /* Required provider attribution, visually restrained without removing credit. */
+  .leaflet-control-attribution {
+    padding: 1px 4px !important;
+    background: rgba(255, 255, 255, 0.72) !important;
+    color: #6b6b6b !important;
+    font-size: 8px !important;
+    line-height: 1.2 !important;
+  }
+
+  .leaflet-control-attribution a {
+    color: #5a6e86 !important;
+  }
+
   .quartz-button {
     background: rgba(245, 245, 247, 0.95);
     backdrop-filter: blur(8px);

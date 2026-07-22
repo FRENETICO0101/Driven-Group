@@ -1,0 +1,51 @@
+{
+  "id": "the-perigon",
+  "slug": "the-perigon",
+  "name": "The Perigon",
+  "district": "Miami Beach",
+  "city": "Miami Beach",
+  "state": "Florida",
+  "country": "USA",
+  "address": "5333 Collins Avenue, Miami Beach, FL 33140",
+  "coordinates": {
+    "lat": 25.83207,
+    "lng": -80.12083
+  },
+  "architect": "OMA — Office for Metropolitan Architecture",
+  "interiorDesigner": "Tara Bernerd & Partners",
+  "residences": 73,
+  "completion": "Q2 2027",
+  "waterfront": true,
+  "features": [
+    "Direct beach access",
+    "Beachside swimming pool",
+    "Oceanfront restaurant and residents-only speakeasy",
+    "Spa, salon, and training room",
+    "Lifestyle concierge",
+    "24-hour security and valet service"
+  ],
+  "hero": {
+    "title": "The Perigon",
+    "location": "Miami Beach, Florida",
+    "headline": "A residential masterpiece on the shores of Miami Beach.",
+    "image": "gallery/hero.jpg"
+  },
+  "gallery": {
+    "totalImages": 31
+  },
+  "floorplans": {
+    "totalLayouts": 4
+  },
+  "content": {
+    "hero": "content/hero.md",
+    "overview": "content/overview.md",
+    "amenities": "content/amenities.md",
+    "location": "content/location.md",
+    "downloads": "content/downloads.md",
+    "residences": "content/residences.md"
+  },
+  "seo": {
+    "title": "The Perigon | Miami Beach",
+    "description": "Oceanfront residences by OMA on the shores of Miami Beach."
+  }
+}
