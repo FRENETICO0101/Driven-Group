@@ -152,7 +152,7 @@ html[data-theme="night"] header [data-brand-variant="corporate"] img {
 
   /* Balanced, legible cartography without a dominant warm or cool cast. */
   .leaflet-tile-pane {
-    filter: saturate(1.42) contrast(1.06);
+    filter: saturate(1.24) contrast(1.05) hue-rotate(4deg);
   }
 
   /* Required provider attribution, visually restrained without removing credit. */

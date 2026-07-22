@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { divIcon, latLngBounds } from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer, useMap, ZoomControl } from "react-leaflet";
 import type { Property } from "@/lib/types";
@@ -57,8 +57,6 @@ const markerIcon = divIcon({
 });
 
 export function InteractivePropertyMap({ properties, selectedSlug, onSelect, className = "", viewport = "properties", expanded = false, restrictToMiami = false }: InteractivePropertyMapProps) {
-  const [useFallbackTiles, setUseFallbackTiles] = useState(false);
-  const primaryTileErrorCount = useRef(0);
   const mappedProperties = useMemo(
     () => properties.filter((property): property is MappedProperty => Number.isFinite(property.latitude) && Number.isFinite(property.longitude)),
     [properties],
@@ -87,25 +85,12 @@ export function InteractivePropertyMap({ properties, selectedSlug, onSelect, cla
       >
         <ZoomControl position="topright" />
         <TileLayer
-          key={useFallbackTiles ? "openstreetmap-fallback" : "openstreetmap-humanitarian"}
-          attribution={useFallbackTiles
-            ? "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
-            : "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors, style by <a href=\"https://www.hotosm.org/\">Humanitarian OpenStreetMap Team</a>"}
-          url={useFallbackTiles
-            ? "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            : "https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"}
+          attribution={'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           subdomains="abc"
           keepBuffer={6}
           updateWhenZooming={false}
           updateWhenIdle
-          eventHandlers={{
-            tileerror: () => {
-              if (useFallbackTiles) return;
-              primaryTileErrorCount.current += 1;
-              if (primaryTileErrorCount.current >= 4) setUseFallbackTiles(true);
-            },
-            tileload: () => { primaryTileErrorCount.current = 0; },
-          }}
         />
         <MapViewport properties={mappedProperties} selectedSlug={selectedSlug} viewport={viewport} expanded={expanded} />
         {mappedProperties.map((property) => (
