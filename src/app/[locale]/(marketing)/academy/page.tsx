@@ -117,7 +117,7 @@ export default async function AcademyPage() {
   const displayedBonuses = isEnglish ? englishBonuses : bonuses;
   const displayedFaqs = isEnglish ? englishFaqs : faqs;
   return (
-    <main>
+    <main className="academy-page">
       <AcademyHeroSection />
 
       <section className="mx-auto grid max-w-7xl gap-14 px-6 py-20 sm:px-8 sm:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24 md:py-32">
@@ -134,12 +134,12 @@ export default async function AcademyPage() {
           </p>
         </div>
 
-        <aside className="rounded-2xl border border-light-gray bg-[#f7f7f7] p-7 sm:p-10">
+        <aside className="academy-challenge-card rounded-2xl border border-light-gray bg-[#f7f7f7] p-7 sm:p-10">
           <p className="editorial-label mb-5 text-gray">{isEnglish ? "IS THIS FOR YOU?" : "¿ESTO ES PARA TI?"}</p>
           <h3 className="font-serif text-2xl font-black leading-tight text-black sm:text-3xl">{isEnglish ? "If you identify with any of these situations, you are not alone." : "Si te identificas con una de estas situaciones, no estás solo."}</h3>
           <div className="mt-7 space-y-4">
             {displayedChallenges.map((challenge) => (
-              <div key={challenge} className="flex gap-3 border-t border-black/10 pt-4 first:border-0 first:pt-0">
+              <div key={challenge} className="academy-challenge-item flex gap-3 border-t border-black/10 pt-4 first:border-0 first:pt-0">
                 <span className="material-symbols-outlined mt-0.5 text-lg text-black">arrow_forward</span>
                 <p className="text-sm leading-relaxed text-dark-gray sm:text-base">{challenge}</p>
               </div>
@@ -203,7 +203,7 @@ export default async function AcademyPage() {
         </div>
       </section>
 
-      <section className="bg-[#f3f3f3] py-20 sm:py-24 md:py-32">
+      <section className="academy-bonus-section bg-[#f3f3f3] py-20 sm:py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
             <div>
@@ -213,7 +213,7 @@ export default async function AcademyPage() {
             </div>
             <div className="space-y-3">
               {displayedBonuses.map((bonus) => (
-                <article key={bonus.number} className="group flex gap-5 rounded-xl border border-black/10 bg-white p-6 transition-shadow hover:shadow-lg sm:gap-7 sm:p-7">
+                <article key={bonus.number} className="academy-bonus-card group flex gap-5 rounded-xl border border-black/10 bg-white p-6 transition-shadow hover:shadow-lg sm:gap-7 sm:p-7">
                   <span className="font-serif text-3xl font-black text-gray">{bonus.number}</span>
                   <div>
                     <h3 className="font-serif text-xl font-black text-black">{bonus.title}</h3>
