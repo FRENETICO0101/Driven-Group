@@ -173,6 +173,8 @@
     "propertyMap": "Property map",
     "expandMap": "Expand map",
     "collapseMap": "Reduce map",
+    "mapHowTo": "Map guide",
+    "mapHowToDescription": "Select a marker to view the property. Explore the area with the zoom controls, mouse wheel, or by dragging the map.",
     "locationsAvailable": "{count, plural, one {# location available} other {# locations available}}"
   },
   "cta": {
@@ -193,6 +195,13 @@
     "pending": "Pending",
     "sold": "Sold",
     "allCities": "All Cities",
+    "location": "Location",
+    "miami": "Miami",
+    "mexico": "Mexico",
+    "madrid": "Madrid",
+    "retail": "Retail Spaces",
+    "warehouse": "Warehouses",
+    "availability": "Availability",
     "clear": "Clear"
   },
   "listing": {

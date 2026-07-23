@@ -69,11 +69,11 @@
     "digitalCommerce": "Comercio Digital",
     "digitalCommerceDesc": "Participación en el desarrollo y operación de modelos comerciales en entornos digitales, integrando posicionamiento de marca, canales de venta y ejecución orientada a la eficiencia y escalabilidad.",
     "globalMarkets": "Mercados Globales",
-    "globalMarketsDesc": "Presencia en mercados internacionales, con actividad en Europa y América del Norte, mediante estructuras comerciales que permiten la expansión y consolidación de negocios en distintos contextos.",
+    "globalMarketsDesc": "Presencia en mercados internacionales, con presencia en Europa y América del Norte, mediante estructuras comerciales que permiten la expansión y consolidación de negocios en distintos contextos.",
     "strategicAlliances": "Alianzas Estratégicas",
     "strategicAlliancesDesc": "Colaboración con socios y organizaciones en la construcción de proyectos empresariales, enfocada en la generación de valor conjunto y el fortalecimiento de capacidades.",
     "luxuryAssets": "Activos de Lujo",
-    "luxuryAssetsDesc": "Participación en la gestión y desarrollo de activos de alto valor, bajo una visión patrimonial, enfocados en exclusividad, calidad y posicionamiento dentro de mercados premium.",
+    "luxuryAssetsDesc": "Participación en la gestión y desarrollo de activos de alto valor bajo un enfoque patrimonial, con absoluta discreción, confidencialidad y un servicio altamente personalizado, orientado a clientes y oportunidades dentro de los mercados más exclusivos.",
     "explore": "Explorar divisiones",
     "partnershipLabel": "Oportunidades de colaboración",
     "partnershipTitle": "Construyamos valor estratégico juntos",
@@ -173,6 +173,8 @@
     "propertyMap": "Mapa de propiedades",
     "expandMap": "Ampliar mapa",
     "collapseMap": "Reducir mapa",
+    "mapHowTo": "Guía del mapa",
+    "mapHowToDescription": "Selecciona un marcador para consultar la propiedad. Explora el entorno con los controles de zoom, la rueda del mouse o arrastrando el mapa.",
     "locationsAvailable": "{count, plural, one {# ubicación disponible} other {# ubicaciones disponibles}}"
   },
   "cta": {
@@ -193,6 +195,13 @@
     "pending": "En negociación",
     "sold": "Vendido",
     "allCities": "Todas las ciudades",
+    "location": "Ubicación",
+    "miami": "Miami",
+    "mexico": "México",
+    "madrid": "Madrid",
+    "retail": "Locales",
+    "warehouse": "Bodegas",
+    "availability": "Disponibilidad",
     "clear": "Limpiar"
   },
   "listing": {
