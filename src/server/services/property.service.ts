@@ -54,6 +54,7 @@ export async function getAllProperties(filters: PublicFilters): Promise<Property
     const cleaned: PropertyFilters = {};
     if (filters.type) cleaned.type = filters.type as PropertyType;
     if (filters.city) cleaned.city = filters.city;
+    if (filters.cities?.length) cleaned.cities = [...filters.cities];
     if (filters.status) cleaned.status = filters.status as PropertyStatus;
     const result = await repoGetAll(cleaned);
     return result && result.length > 0 ? result : mockListingProperties;

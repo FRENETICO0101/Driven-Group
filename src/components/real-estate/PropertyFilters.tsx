@@ -5,81 +5,113 @@ import { useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 interface PropertyFiltersProps {
-  availableCities: string[];
-  currentCity: string;
-  currentStatus: string;
+  currentType: "RESIDENTIAL" | "COMMERCIAL";
+  currentCommercialUse: string;
+  currentLocation: string;
 }
 
 export function PropertyFilters({
-  availableCities,
-  currentCity,
-  currentStatus,
+  currentType,
+  currentCommercialUse,
+  currentLocation,
 }: PropertyFiltersProps) {
   const t = useTranslations("filters");
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const PROPERTY_STATUSES = [
-    { value: "", label: t("allStatuses") },
-    { value: "ACTIVE", label: t("available") },
-    { value: "PENDING", label: t("pending") },
-    { value: "SOLD", label: t("sold") },
-  ];
-
-  const updateFilter = useCallback(
-    (key: string, value: string) => {
+  const updateFilters = useCallback(
+    (updates: Record<string, string>) => {
       const params = new URLSearchParams(searchParams.toString());
-      if (value) {
-        params.set(key, value);
-      } else {
-        params.delete(key);
-      }
-      router.push(`${pathname}?${params.toString()}`);
+      Object.entries(updates).forEach(([key, value]) => {
+        if (value) params.set(key, value);
+        else params.delete(key);
+      });
+      const query = params.toString();
+      router.push(query ? `${pathname}?${query}` : pathname);
     },
     [router, pathname, searchParams]
   );
 
-  const hasActiveFilters = currentCity || currentStatus;
+  const hasActiveFilters = currentType !== "RESIDENTIAL" || currentCommercialUse || currentLocation;
 
   const clearFilters = () => {
     router.push(pathname);
   };
 
   return (
-    <div className="sticky top-16 sm:top-20 z-30 bg-white border-b border-light-gray">
+    <div className="sticky top-16 z-[500] border-b border-light-gray bg-white sm:top-20">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-4">
         <div className="flex flex-wrap items-center gap-3">
-          <div className="bg-white border border-light-gray text-black text-sm rounded-lg px-3 py-2 min-w-40" aria-label={t("residential")}>
+          <button
+            type="button"
+            onClick={() => updateFilters({ type: "RESIDENTIAL", commercialUse: "" })}
+            aria-pressed={currentType === "RESIDENTIAL"}
+            className={`min-w-40 rounded-lg border bg-white px-3 py-2 text-left text-sm text-black transition-colors ${currentType === "RESIDENTIAL" ? "border-dark-gray" : "border-light-gray hover:border-dark-gray"}`}
+          >
             {t("residential")}
-          </div>
+          </button>
 
-          <select
-            value={currentCity}
-            onChange={(e) => updateFilter("city", e.target.value)}
-            className="bg-white border border-light-gray text-black text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-white transition-colors focus:outline-none focus:border-gray min-w-40"
-          >
-            <option value="" className="bg-white text-black">
-              {t("allCities")}
-            </option>
-            {availableCities.map((city) => (
-              <option key={city} value={city} className="bg-white text-black">
-                {city}
-              </option>
-            ))}
-          </select>
+          <details className="group relative z-[600]">
+            <summary
+              aria-label={t("commercial")}
+              className={`flex min-w-40 cursor-pointer list-none items-center justify-between gap-3 rounded-lg border bg-white px-3 py-2 text-sm text-black transition-colors [&::-webkit-details-marker]:hidden ${currentType === "COMMERCIAL" ? "border-dark-gray" : "border-light-gray hover:border-dark-gray"}`}
+            >
+              {currentCommercialUse ? t(currentCommercialUse) : t("commercial")}
+              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3 w-3 transition-transform group-open:rotate-180">
+                <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </summary>
+            <div className="absolute left-0 z-40 mt-2 min-w-40 overflow-hidden rounded-lg border border-light-gray bg-white p-1 shadow-lg">
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.currentTarget.closest("details")?.removeAttribute("open");
+                  updateFilters({ type: "COMMERCIAL", commercialUse: "retail" });
+                }}
+                className={`block w-full rounded-md px-3 py-2 text-left text-sm text-black transition-colors hover:bg-light-gray/30 ${currentCommercialUse === "retail" ? "bg-light-gray/30" : ""}`}
+              >
+                {t("retail")}
+              </button>
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.currentTarget.closest("details")?.removeAttribute("open");
+                  updateFilters({ type: "COMMERCIAL", commercialUse: "warehouse" });
+                }}
+                className={`block w-full rounded-md px-3 py-2 text-left text-sm text-black transition-colors hover:bg-light-gray/30 ${currentCommercialUse === "warehouse" ? "bg-light-gray/30" : ""}`}
+              >
+                {t("warehouse")}
+              </button>
+            </div>
+          </details>
 
-          <select
-            value={currentStatus}
-            onChange={(e) => updateFilter("status", e.target.value)}
-            className="bg-white border border-light-gray text-black text-sm rounded-lg px-3 py-2 appearance-none cursor-pointer hover:bg-white transition-colors focus:outline-none focus:border-gray min-w-40"
-          >
-            {PROPERTY_STATUSES.map((s) => (
-              <option key={s.value} value={s.value} className="bg-white text-black">
-                {s.label}
-              </option>
-            ))}
-          </select>
+          <details className="group relative z-[600]">
+            <summary
+              aria-label={t("location")}
+              className={`flex min-w-40 cursor-pointer list-none items-center justify-between gap-3 rounded-lg border bg-white px-3 py-2 text-sm text-black transition-colors [&::-webkit-details-marker]:hidden ${currentLocation ? "border-dark-gray" : "border-light-gray hover:border-dark-gray"}`}
+            >
+              {currentLocation ? t(currentLocation) : t("location")}
+              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3 w-3 transition-transform group-open:rotate-180">
+                <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </summary>
+            <div className="absolute left-0 z-40 mt-2 min-w-40 overflow-hidden rounded-lg border border-light-gray bg-white p-1 shadow-lg">
+              {(["miami", "madrid", "mexico"] as const).map((location) => (
+                <button
+                  key={location}
+                  type="button"
+                  onClick={(event) => {
+                    event.currentTarget.closest("details")?.removeAttribute("open");
+                    updateFilters({ location, city: "" });
+                  }}
+                  className={`block w-full rounded-md px-3 py-2 text-left text-sm text-black transition-colors hover:bg-light-gray/30 ${currentLocation === location ? "bg-light-gray/30" : ""}`}
+                >
+                  {t(location)}
+                </button>
+              ))}
+            </div>
+          </details>
 
           {hasActiveFilters && (
             <button

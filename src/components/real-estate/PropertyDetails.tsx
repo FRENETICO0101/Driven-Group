@@ -8,25 +8,27 @@ interface PropertyDetailsProps {
 }
 
 const copy = {
-  es: { specifications: "Especificaciones", yearBuilt: "Año construido", lot: "Lote", status: "Estado", available: "Disponible", type: "Tipo", amenities: "Servicios y amenidades", description: "Descripción", floorplans: "Planos de planta", viewFloorplan: "Ver plano PDF", documents: "Brochures y documentos" },
-  en: { specifications: "Specifications", yearBuilt: "Year built", lot: "Lot", status: "Status", available: "Available", type: "Type", amenities: "Amenities", description: "Description", floorplans: "Floor plans", viewFloorplan: "View floor plan PDF", documents: "Brochures and documents" },
+  es: { specifications: "Especificaciones", bedrooms: "Habitaciones", priceFrom: "Precio desde", surface: "Superficie", deliveryDate: "Fecha de entrega", toBeConfirmed: "Por confirmar", amenities: "Servicios y amenidades", description: "Descripción", floorplans: "Planos de planta", viewFloorplan: "Ver plano PDF", documents: "Brochures y documentos" },
+  en: { specifications: "Specifications", bedrooms: "Bedrooms", priceFrom: "Price from", surface: "Surface", deliveryDate: "Delivery date", toBeConfirmed: "To be confirmed", amenities: "Amenities", description: "Description", floorplans: "Floor plans", viewFloorplan: "View floor plan PDF", documents: "Brochures and documents" },
 };
 
 export async function PropertyDetails({ property }: PropertyDetailsProps) {
   const locale = await getLocale();
   const t = copy[locale === "en" ? "en" : "es"];
+  const formatNumber = new Intl.NumberFormat(locale === "en" ? "en-US" : "es-MX");
   const specs = [
-    { label: t.yearBuilt, value: property.yearBuilt?.toString() },
-    { label: t.status, value: property.status === "ACTIVE" ? t.available : property.status },
-    { label: t.type, value: property.type },
-  ].filter((spec) => spec.value !== null && spec.value !== undefined);
+    { label: t.bedrooms, value: property.bedrooms > 0 ? formatNumber.format(property.bedrooms) : t.toBeConfirmed },
+    { label: t.priceFrom, value: property.price > 0 ? `$${formatNumber.format(property.price)} USD` : t.toBeConfirmed },
+    { label: t.surface, value: property.squareFeet > 0 ? `${formatNumber.format(property.squareFeet)} ft²` : t.toBeConfirmed },
+    { label: t.deliveryDate, value: t.toBeConfirmed },
+  ];
   const amenities = property.amenities || [];
 
   return (
     <div className="space-y-10 sm:space-y-14">
       <section>
         <h2 className="mb-4 text-xl font-bold text-black sm:mb-6 sm:text-2xl">{t.specifications}</h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {specs.map((spec) => <div key={spec.label} className="rounded-xl border border-light-gray bg-white p-4 text-center shadow-[0_8px_20px_rgba(37,37,37,0.04)] sm:p-5"><p className="mb-2 text-xs font-semibold uppercase text-gray">{spec.label}</p><p className="text-base font-bold text-black sm:text-lg">{spec.value}</p></div>)}
         </div>
       </section>

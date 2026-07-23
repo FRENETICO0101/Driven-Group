@@ -3,6 +3,7 @@ import { PropertyType, PropertyStatus } from '@prisma/client';
 
 export type PropertyFilters = {
   city?: string;
+  cities?: string[];
   type?: PropertyType;
   status?: PropertyStatus;
   search?: string;
@@ -20,7 +21,11 @@ export async function getFeaturedProperties(limit = 6) {
 export async function getAllProperties(filters?: PropertyFilters) {
   return prisma.property.findMany({
     where: {
-      ...(filters?.city && { city: { contains: filters.city, mode: 'insensitive' } }),
+      ...(filters?.cities?.length
+        ? { city: { in: filters.cities, mode: 'insensitive' } }
+        : filters?.city
+          ? { city: { contains: filters.city, mode: 'insensitive' } }
+          : {}),
       ...(filters?.type && { type: filters.type }),
       ...(filters?.status && { status: filters.status }),
       ...(filters?.search && {

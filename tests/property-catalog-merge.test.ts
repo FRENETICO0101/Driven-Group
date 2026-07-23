@@ -54,3 +54,15 @@ test("filters apply consistently after catalog and CMS records are merged", () =
   assert.ok(properties.length > 0);
   assert.ok(properties.every((property) => property.type === "RESIDENTIAL" && property.city === "Miami" && property.status === "ACTIVE"));
 });
+
+test("location filters support grouped cities for a single market", () => {
+  const properties = mergePropertySources(catalog, [], {
+    type: "RESIDENTIAL",
+    cities: ["Miami", "Miami Beach"],
+    status: "ACTIVE",
+  });
+
+  assert.ok(properties.length > 0);
+  assert.ok(properties.some((property) => property.city === "Miami Beach"));
+  assert.ok(properties.every((property) => ["Miami", "Miami Beach"].includes(property.city)));
+});

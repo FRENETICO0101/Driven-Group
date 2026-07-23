@@ -1,6 +1,27 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Property Detail Page', () => {
+  test('should provide residential, commercial, and location portfolio filters', async ({ page }) => {
+    await page.goto('/en/real-estate');
+
+    await expect(page.getByRole('button', { name: 'Residential' })).toBeVisible();
+
+    const commercial = page.locator('summary[aria-label="Commercial"]');
+    await expect(commercial).toBeVisible();
+    await commercial.click();
+    await expect(page.getByRole('button', { name: 'Retail Spaces' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Warehouses' })).toBeVisible();
+    await page.getByRole('button', { name: 'Retail Spaces' }).click();
+    await expect(page).toHaveURL(/type=COMMERCIAL&commercialUse=retail/);
+
+    const location = page.locator('summary[aria-label="Location"]');
+    await expect(location).toBeVisible();
+    await location.click();
+    await expect(page.getByRole('button', { name: 'Miami' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Madrid' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Mexico' })).toBeVisible();
+  });
+
   test('should render Mandarin PDF renderings in the gallery', async ({ page }) => {
     await page.goto('/en/real-estate/mandarin-oriental-residences');
 

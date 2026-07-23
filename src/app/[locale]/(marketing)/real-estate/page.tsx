@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { getAllProperties, getAvailableCities } from "@/server/services/property.service";
+import { getAllProperties } from "@/server/services/property.service";
 import { RealEstateHeroSection } from "@/components/real-estate/RealEstateHeroSection";
 import { PropertyFilters } from "@/components/real-estate/PropertyFilters";
 import { PropertyListing } from "@/components/real-estate/PropertyListing";
@@ -36,28 +36,41 @@ export const metadata: Metadata = {
 };
 
 interface PageProps {
-  searchParams: Promise<{ city?: string; status?: string }>;
+  searchParams: Promise<{
+    city?: string;
+    commercialUse?: string;
+    location?: string;
+    type?: string;
+  }>;
 }
+
+const locationCities = {
+  miami: ["Miami", "Miami Beach"],
+  mexico: ["Mexico City", "Mexico"],
+  madrid: ["Madrid"],
+} as const;
 
 async function ListingContent({ searchParams }: PageProps) {
   const params = await searchParams;
+  const type = params.type === "COMMERCIAL" ? "COMMERCIAL" : "RESIDENTIAL";
+  const location = params.location && params.location in locationCities ? params.location : "";
+  const commercialUse = type === "COMMERCIAL" && (params.commercialUse === "retail" || params.commercialUse === "warehouse")
+    ? params.commercialUse
+    : "";
   const filters = {
-    type: "RESIDENTIAL",
+    type,
     city: params.city ?? "",
-    status: params.status ?? "",
+    ...(location ? { cities: locationCities[location as keyof typeof locationCities] } : {}),
   };
 
-  const [properties, cities] = await Promise.all([
-    getAllProperties(filters),
-    getAvailableCities(),
-  ]);
+  const properties = await getAllProperties(filters);
 
   return (
     <>
       <PropertyFilters
-        availableCities={cities}
-        currentCity={filters.city}
-        currentStatus={filters.status}
+        currentType={type}
+        currentCommercialUse={commercialUse}
+        currentLocation={location}
       />
       <PropertiesMap properties={properties} />
       <section id="listings">

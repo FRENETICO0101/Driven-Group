@@ -1,7 +1,7 @@
 import type { Property } from "@/lib/types";
 import type { CatalogProperty } from "@/lib/property-catalog";
 
-export type PublicFilters = { type?: string; city?: string; status?: string };
+export type PublicFilters = { type?: string; city?: string; cities?: readonly string[]; status?: string };
 
 export function mergeCatalogProperty(catalogProperty: CatalogProperty, override: Property): CatalogProperty {
   return {
@@ -18,6 +18,7 @@ function matchesFilters(property: Property, filters: PublicFilters, includeInact
   return (
     (!filters.type || property.type === filters.type) &&
     (!filters.city || property.city.toLowerCase() === filters.city.toLowerCase()) &&
+    (!filters.cities?.length || filters.cities.some((city) => property.city.toLowerCase() === city.toLowerCase())) &&
     (!filters.status || property.status === filters.status)
   );
 }
