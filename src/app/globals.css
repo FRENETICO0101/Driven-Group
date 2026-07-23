@@ -37,6 +37,12 @@ html[data-theme="night"] body {
   color: #f4f4f4;
 }
 
+.menu-brand-panel {
+  background:
+    radial-gradient(circle at center, rgba(88, 88, 88, 0.24) 0%, rgba(31, 31, 31, 0.42) 28%, rgba(21, 21, 21, 0) 58%),
+    linear-gradient(145deg, #181818 0%, #121212 52%, #171717 100%);
+}
+
 html[data-theme="night"] .bg-white,
 html[data-theme="night"] [class*="bg-white/"] {
   background-color: #1b1b1b !important;
@@ -62,6 +68,21 @@ html[data-theme="night"] .text-gray {
 html[data-theme="night"] .border-light-gray,
 html[data-theme="night"] .divide-light-gray > :not([hidden]) ~ :not([hidden]) {
   border-color: #444444 !important;
+}
+
+/* Academy keeps a few editorial light surfaces in the daytime design. */
+html[data-theme="night"] .academy-page .academy-challenge-card,
+html[data-theme="night"] .academy-page .academy-bonus-section {
+  background-color: #181818 !important;
+}
+
+html[data-theme="night"] .academy-page .academy-challenge-card,
+html[data-theme="night"] .academy-page .academy-bonus-card {
+  border-color: #4a4a4a !important;
+}
+
+html[data-theme="night"] .academy-page .academy-challenge-item {
+  border-color: rgba(255, 255, 255, 0.16) !important;
 }
 
 html[data-theme="night"] header [data-brand-variant="corporate"] img {

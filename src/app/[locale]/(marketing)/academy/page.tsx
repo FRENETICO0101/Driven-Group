@@ -108,6 +108,20 @@ const englishFaqs = [
   { question: "What if the program is not for me?", answer: "The first generation includes a 7-day guarantee so you can evaluate whether the method meets your expectations." },
 ];
 
+const academyPurpose = [
+  "Driven Academy nació con un propósito claro: compartir conocimiento que genere un impacto real y perdure en el tiempo.",
+  "Creemos que la experiencia solo adquiere verdadero valor cuando se transmite para impulsar el crecimiento de otros. Por ello, reunimos años de trayectoria en liderazgo, estrategia, finanzas y desarrollo empresarial para crear programas prácticos, relevantes y orientados a resultados.",
+  "Nuestro compromiso es acercar información útil, confiable y de alto valor que permita a las personas tomar mejores decisiones, fortalecer sus capacidades y construir un futuro con mayor propósito y libertad.",
+  "En Driven Academy no solo enseñamos conocimientos; compartimos experiencias que inspiran, transforman y trascienden.",
+];
+
+const englishAcademyPurpose = [
+  "Driven Academy was born with a clear purpose: to share knowledge that creates a real and lasting impact.",
+  "We believe experience gains its true value when it is shared to support the growth of others. That is why we bring together years of experience in leadership, strategy, finance, and business development to create practical, relevant, results-oriented programs.",
+  "Our commitment is to provide useful, reliable, high-value information that helps people make better decisions, strengthen their capabilities, and build a future with greater purpose and freedom.",
+  "At Driven Academy, we do not only teach knowledge; we share experiences that inspire, transform, and endure.",
+];
+
 export default async function AcademyPage() {
   const locale = await getLocale();
   const isEnglish = locale === "en";
@@ -116,9 +130,22 @@ export default async function AcademyPage() {
   const displayedIncluded = isEnglish ? englishIncluded : included;
   const displayedBonuses = isEnglish ? englishBonuses : bonuses;
   const displayedFaqs = isEnglish ? englishFaqs : faqs;
+  const displayedAcademyPurpose = isEnglish ? englishAcademyPurpose : academyPurpose;
   return (
     <main className="academy-page">
       <AcademyHeroSection />
+
+      <section className="mx-auto max-w-4xl px-6 py-20 sm:px-8 sm:py-24 md:py-32">
+        <p className="editorial-label mb-3 text-gray">{isEnglish ? "OUR PURPOSE" : "NUESTRO PROPÓSITO"}</p>
+        <h2 className="max-w-3xl font-serif text-4xl font-black leading-[1.1] tracking-tight text-black sm:text-5xl md:text-6xl">
+          {isEnglish ? "Knowledge that creates a lasting impact." : "Conocimiento que genera un impacto real."}
+        </h2>
+        <div className="mt-10 space-y-6 border-l border-black/15 pl-6 sm:pl-8">
+          {displayedAcademyPurpose.map((paragraph, index) => (
+            <p key={paragraph} className={index === 3 ? "font-serif text-xl font-black leading-relaxed text-black sm:text-2xl" : "text-base font-light leading-[1.8] text-dark-gray sm:text-lg"}>{paragraph}</p>
+          ))}
+        </div>
+      </section>
 
       <section className="mx-auto grid max-w-7xl gap-14 px-6 py-20 sm:px-8 sm:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24 md:py-32">
         <div>

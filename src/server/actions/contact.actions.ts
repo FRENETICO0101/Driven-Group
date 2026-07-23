@@ -34,7 +34,9 @@ export async function sendContactAction(
       name: validatedData.name,
       email: validatedData.email,
       phone: validatedData.phone || "",
-      message: validatedData.message,
+      message: validatedData.subject === "academy"
+        ? `[Driven Academy] ${validatedData.message}`
+        : validatedData.message,
       source: sourceMap[validatedData.subject] || "FORM_POPUP",
       propertyId: null,
       status: "NEW",

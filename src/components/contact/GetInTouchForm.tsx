@@ -4,7 +4,9 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { sendContactAction } from "@/server/actions/contact.actions";
 
-export function GetInTouchForm() {
+type ContactSubject = "real-estate" | "business" | "academy" | "general";
+
+export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { defaultSubject?: ContactSubject; sectionId?: string }) {
   const t = useTranslations("contactForm");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
@@ -22,7 +24,7 @@ export function GetInTouchForm() {
         name: String(formData.get("name")),
         email: String(formData.get("email")),
         phone: String(formData.get("phone") || ""),
-        subject: formData.get("subject") as "real-estate" | "business" | "academy" | "general",
+        subject: formData.get("subject") as ContactSubject,
         message: String(formData.get("message")),
       });
 
@@ -42,7 +44,7 @@ export function GetInTouchForm() {
   };
 
   return (
-    <section id="form" className="mx-auto max-w-4xl px-6 py-20 sm:px-8 sm:py-24 md:py-32">
+    <section id={sectionId} className="mx-auto max-w-4xl px-6 py-20 sm:px-8 sm:py-24 md:py-32">
       <div className="mb-16 sm:mb-20">
         <p className="editorial-label mb-2 text-gray">{t("eyebrow")}</p>
         <h2 className="font-serif text-4xl font-black leading-[1.1] tracking-tight text-black sm:text-5xl md:text-6xl">{t("title")}</h2>
@@ -55,7 +57,9 @@ export function GetInTouchForm() {
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <Field id="phone" type="tel" label={t("phone")} placeholder="+1 (305) 555-0000" />
-          <div className="flex flex-col">
+          {defaultSubject ? (
+            <input type="hidden" name="subject" value={defaultSubject} />
+          ) : <div className="flex flex-col">
             <label htmlFor="subject" className="editorial-label mb-3 tracking-wide text-dark-gray">{t("subject")}</label>
             <select id="subject" name="subject" required defaultValue="" className="cursor-pointer rounded-lg border border-light-gray bg-white px-4 py-3 text-black transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-yellow-500">
               <option value="" disabled>{t("selectTopic")}</option>
@@ -64,7 +68,7 @@ export function GetInTouchForm() {
               <option value="academy">{t("academy")}</option>
               <option value="general">{t("general")}</option>
             </select>
-          </div>
+          </div>}
         </div>
         <div className="flex flex-col">
           <label htmlFor="message" className="editorial-label mb-3 tracking-wide text-dark-gray">{t("message")}</label>
