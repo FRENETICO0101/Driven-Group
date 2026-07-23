@@ -19,11 +19,8 @@ const navigation = [
 
 const cities = [
   { label: "Miami", tz: "America/New_York", tempBase: 82 },
-  { label: "GDL", tz: "America/Monterrey", tempBase: 74 },
-  { label: "CDMX", tz: "America/Mexico_City", tempBase: 68 },
-  { label: "NYC", tz: "America/New_York", tempBase: 58 },
+  { label: "Mexico", tz: "America/Mexico_City", tempBase: 68 },
   { label: "Madrid", tz: "Europe/Madrid", tempBase: 63 },
-  { label: "Dubai", tz: "Asia/Dubai", tempBase: 95 },
 ];
 
 function getCityInfo(city: (typeof cities)[number], locale: string) {
@@ -73,7 +70,7 @@ export function Navbar() {
 
   return (
     <>
-      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${overlayVisible ? "border-b border-light-gray bg-white/95 backdrop-blur-md" : "bg-transparent"}`} aria-label={t("ui.mainNavigation")}>
+      <header className={`fixed inset-x-0 top-0 ${isMenuOpen ? "z-[1210]" : "z-50"} transition-all duration-700 ${overlayVisible ? "border-b border-light-gray bg-white/95 backdrop-blur-md" : "bg-transparent"}`} aria-label={t("ui.mainNavigation")}>
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
           <div className="grid h-16 items-center sm:h-20" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
             <div className="flex items-center gap-5 sm:gap-6">
@@ -111,16 +108,16 @@ export function Navbar() {
         </div>
       </header>
 
-      <div className={`fixed inset-0 z-40 bg-white transition-all duration-500 ${isMenuOpen ? "visible opacity-100" : "invisible pointer-events-none opacity-0"}`} aria-hidden={!isMenuOpen}>
-        <div className="flex h-full px-8 pt-20 sm:px-12 lg:px-20">
-          <div className="flex min-w-0 flex-1 flex-col justify-center">
+      <div className={`fixed inset-0 z-[1200] bg-white transition-all duration-500 ${isMenuOpen ? "visible opacity-100" : "invisible pointer-events-none opacity-0"}`} aria-hidden={!isMenuOpen}>
+        <div className="grid h-full grid-cols-1 pt-20 xl:grid-cols-[minmax(19rem,20vw)_minmax(0,1fr)_minmax(15rem,17vw)]">
+          <div className="relative z-10 flex min-w-0 flex-col justify-center px-8 sm:px-12 lg:px-20 xl:px-10 2xl:px-12">
             <nav aria-label={t("ui.mainNavigation")}>
               <ul>
                 {navigation.map((item, index) => (
                   <li key={item.key}>
                     <Link href={item.href} onClick={() => setIsMenuOpen(false)} className="group flex items-baseline gap-5 py-2.5 sm:gap-8 sm:py-3" style={{ opacity: isMenuOpen ? 1 : 0, transform: isMenuOpen ? "translateY(0)" : "translateY(12px)", transition: `opacity 500ms ease ${index * 55 + 60}ms, transform 500ms ease ${index * 55 + 60}ms` }}>
                       <span className="editorial-label w-6 tabular-nums text-light-gray">{item.index}</span>
-                      <span className="text-3xl font-semibold tracking-tight text-dark-gray transition-all duration-300 group-hover:translate-x-2 group-hover:text-black sm:text-4xl md:text-5xl lg:text-6xl">{t(`nav.${item.key}`)}</span>
+                      <span className="text-3xl font-semibold tracking-tight text-dark-gray transition-all duration-300 group-hover:translate-x-2 group-hover:text-black sm:text-4xl xl:text-5xl 2xl:text-6xl">{item.key === "realEstate" ? "Real Estate" : item.key === "business" ? "Business" : item.key === "academy" ? "Academy" : t(`nav.${item.key}`)}</span>
                     </Link>
                   </li>
                 ))}
@@ -129,13 +126,14 @@ export function Navbar() {
 
             <div className="mt-auto flex flex-col gap-6 border-t border-light-gray pb-10 pt-8 sm:flex-row sm:items-center sm:justify-between sm:pb-12">
               <a href="mailto:info@drivengroup.com" className="editorial-label text-gray transition-colors hover:text-black">info@drivengroup.com</a>
-              <div className="flex gap-6">
-                {["Instagram", "LinkedIn", "YouTube"].map((name) => <a key={name} href="#" className="editorial-label text-gray transition-colors hover:text-dark-gray">{name}</a>)}
-              </div>
             </div>
           </div>
 
-          <aside className="ml-12 hidden w-64 flex-col justify-center border-l border-light-gray pl-12 lg:flex xl:ml-16 xl:w-72 xl:pl-16">
+          <div className="menu-brand-panel relative hidden overflow-hidden border-x border-white/10 xl:flex xl:items-center xl:justify-center">
+            <BrandLogo className="relative z-10 w-64 drop-shadow-[0_12px_28px_rgba(0,0,0,0.45)] 2xl:w-72" imageClassName="brightness-0 invert" />
+          </div>
+
+          <aside className="relative z-10 hidden flex-col justify-center border-l border-light-gray px-8 xl:flex 2xl:px-10">
             <p className="editorial-label mb-5 tracking-[0.2em] text-gray">{t("ui.localTime")}</p>
             <p className="mb-2 text-5xl font-extralight leading-none tracking-tight text-black tabular-nums xl:text-6xl">{cityInfo.time}</p>
             <div className="mt-3 flex items-center gap-3">

@@ -44,7 +44,6 @@ export function Footer() {
             { href: '/', label: t('home') },
             { href: '/about', label: t('about') },
             { href: '/contact', label: t('contact') },
-            { href: '/careers', label: t('careers') },
           ]} />
         </div>
 
