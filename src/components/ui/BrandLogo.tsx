@@ -6,11 +6,12 @@ import academyLogo from "../../../assets/logos/academy-blanco.png";
 import realEstateDarkLogo from "../../../assets/logos/logo-re-negro.png";
 import businessDarkLogo from "../../../assets/logos/logo-bussines-negro.png";
 import academyDarkLogo from "../../../assets/logos/academy-negro.png";
+import menuLogo from "../../../assets/logos/logo-dg-blanco.png";
 
 interface BrandLogoProps {
   className?: string;
   imageClassName?: string;
-  variant?: "corporate" | "realEstate" | "business" | "academy";
+  variant?: "corporate" | "realEstate" | "business" | "academy" | "menu";
   dark?: boolean;
 }
 
@@ -22,9 +23,11 @@ export function BrandLogo({ className = "w-24", imageClassName = "", variant = "
       ? (dark ? businessDarkLogo : businessLogo)
       : variant === "academy"
         ? (dark ? academyDarkLogo : academyLogo)
+        : variant === "menu"
+          ? menuLogo
         : corporateLogo;
-  const aspectRatio = isDivisionLogo ? "aspect-[3.16]" : "aspect-[1.42]";
-  const sizes = isDivisionLogo ? "(max-width: 640px) 112px, 192px" : "(max-width: 640px) 80px, 160px";
+  const aspectRatio = variant === "menu" ? "aspect-square" : isDivisionLogo ? "aspect-[3.16]" : "aspect-[1.42]";
+  const sizes = variant === "menu" ? "(max-width: 1279px) 0px, 256px" : isDivisionLogo ? "(max-width: 640px) 112px, 192px" : "(max-width: 640px) 80px, 160px";
 
   return (
     <span data-brand-variant={variant} className={`relative block overflow-hidden ${aspectRatio} ${className}`}>
@@ -33,7 +36,7 @@ export function BrandLogo({ className = "w-24", imageClassName = "", variant = "
         alt="Driven Group"
         fill
         sizes={sizes}
-        className={`object-cover object-center ${imageClassName}`}
+        className={`${variant === "menu" ? "object-contain" : "object-cover"} object-center ${imageClassName}`}
       />
     </span>
   );

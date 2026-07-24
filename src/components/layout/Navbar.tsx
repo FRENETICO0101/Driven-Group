@@ -138,7 +138,7 @@ export function Navbar() {
           </div>
 
           <div className="menu-brand-panel relative hidden overflow-hidden border-x border-white/10 xl:flex xl:items-center xl:justify-center">
-            <BrandLogo className="menu-brand-logo relative z-10 w-72 2xl:w-80" imageClassName="brightness-0 invert" />
+            <BrandLogo variant="menu" className="menu-brand-logo relative z-10 w-52 2xl:w-60" />
           </div>
 
           <aside className="relative z-10 hidden flex-col justify-center border-l border-light-gray px-8 xl:flex 2xl:px-10">

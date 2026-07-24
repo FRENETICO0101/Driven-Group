@@ -41,8 +41,8 @@ const AUTO_ADVANCE_DELAY = 16_000;
 const THEME_EVENT = "driven-theme-change";
 
 const nightCopy = {
-  es: { label: "MIAMI AFTER DARK", action: "Explorar propiedades" },
-  en: { label: "MIAMI AFTER DARK", action: "Explore properties" },
+  es: { label: "DRIVEN GROUP", action: "Explorar propiedades" },
+  en: { label: "DRIVEN GROUP", action: "Explore properties" },
 } as const;
 
 export function HeroSection() {
