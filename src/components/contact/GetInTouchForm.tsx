@@ -50,7 +50,7 @@ export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { default
         <h2 className="font-serif text-4xl font-black leading-[1.1] tracking-tight text-black sm:text-5xl md:text-6xl">{t("title")}</h2>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-8">
+      <form onSubmit={handleSubmit} className="space-y-8 rounded-2xl border border-light-gray bg-white p-5 shadow-[0_18px_42px_rgba(37,37,37,0.045)] sm:p-8 md:p-10">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <Field id="name" label={t("name")} placeholder={t("namePlaceholder")} required />
           <Field id="email" type="email" label={t("email")} placeholder="you@email.com" required />
@@ -61,7 +61,7 @@ export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { default
             <input type="hidden" name="subject" value={defaultSubject} />
           ) : <div className="flex flex-col">
             <label htmlFor="subject" className="editorial-label mb-3 tracking-wide text-dark-gray">{t("subject")}</label>
-            <select id="subject" name="subject" required defaultValue="" className="cursor-pointer rounded-lg border border-light-gray bg-white px-4 py-3 text-black transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-yellow-500">
+            <select id="subject" name="subject" required defaultValue="" className="cursor-pointer rounded-lg border border-light-gray bg-white px-4 py-3 text-black transition-all focus:border-dark-gray focus:outline-none focus:ring-4 focus:ring-dark-gray/10">
               <option value="" disabled>{t("selectTopic")}</option>
               <option value="real-estate">{t("realEstate")}</option>
               <option value="business">{t("business")}</option>
@@ -72,7 +72,7 @@ export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { default
         </div>
         <div className="flex flex-col">
           <label htmlFor="message" className="editorial-label mb-3 tracking-wide text-dark-gray">{t("message")}</label>
-          <textarea id="message" name="message" required rows={6} placeholder={t("messagePlaceholder")} className="resize-none rounded-lg border border-light-gray bg-white px-4 py-3 text-black placeholder-gray transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+          <textarea id="message" name="message" required rows={6} placeholder={t("messagePlaceholder")} className="resize-none rounded-lg border border-light-gray bg-white px-4 py-3 text-black placeholder-gray transition-all focus:border-dark-gray focus:outline-none focus:ring-4 focus:ring-dark-gray/10" />
         </div>
         <div className="flex flex-wrap items-center gap-5 pt-4">
           <button type="submit" disabled={isSubmitting} className="rounded-lg bg-black px-8 py-4 font-semibold tracking-wide text-white transition-colors hover:bg-dark-gray disabled:cursor-not-allowed disabled:opacity-50">{isSubmitting ? t("sending") : t("send")}</button>
@@ -85,5 +85,5 @@ export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { default
 }
 
 function Field({ id, label, placeholder, type = "text", required = false }: { id: string; label: string; placeholder: string; type?: string; required?: boolean }) {
-  return <div className="flex flex-col"><label htmlFor={id} className="editorial-label mb-3 tracking-wide text-dark-gray">{label}</label><input type={type} id={id} name={id} required={required} placeholder={placeholder} className="rounded-lg border border-light-gray bg-white px-4 py-3 text-black placeholder-gray transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-yellow-500" /></div>;
+  return <div className="flex flex-col"><label htmlFor={id} className="editorial-label mb-3 tracking-wide text-dark-gray">{label}</label><input type={type} id={id} name={id} required={required} placeholder={placeholder} className="rounded-lg border border-light-gray bg-white px-4 py-3 text-black placeholder-gray transition-all focus:border-dark-gray focus:outline-none focus:ring-4 focus:ring-dark-gray/10" /></div>;
 }

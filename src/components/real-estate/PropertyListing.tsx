@@ -37,7 +37,7 @@ export function PropertyListing({ properties }: PropertyListingProps) {
     <section className="px-6 sm:px-8 max-w-7xl mx-auto pb-24">
       <div className="space-y-16 sm:space-y-20">
         {properties.map((property) => (
-          <article key={property.id} className="group grid grid-cols-1 gap-8 rounded-2xl border border-light-gray bg-white p-5 shadow-[0_16px_40px_rgba(37,37,37,0.06)] sm:p-7 lg:grid-cols-2 lg:gap-12 lg:p-8 xl:gap-16">
+          <article key={property.id} className="wealth-interactive group grid grid-cols-1 gap-8 rounded-2xl border border-light-gray bg-white p-5 shadow-[0_16px_40px_rgba(37,37,37,0.06)] sm:p-7 lg:grid-cols-2 lg:gap-12 lg:p-8 xl:gap-16">
             {/* Left: Info */}
             <div className="flex flex-col justify-center lg:py-4">
               {/* Location */}

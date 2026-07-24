@@ -61,6 +61,14 @@ export function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMenuOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, []);
+
   const activeCity = cities[activeCityIdx];
   const cityInfo = getCityInfo(activeCity, locale);
   const overlayVisible = isScrolled || isMenuOpen;
@@ -74,7 +82,7 @@ export function Navbar() {
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
           <div className="grid h-16 items-center sm:h-20" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
             <div className="flex items-center gap-5 sm:gap-6">
-              <button onClick={() => setIsMenuOpen((open) => !open)} className="flex items-center gap-2.5 rounded text-dark-gray transition-colors hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={isMenuOpen ? t("ui.closeMenu") : t("ui.openMenu")} aria-expanded={isMenuOpen}>
+              <button onClick={() => setIsMenuOpen((open) => !open)} className="flex items-center gap-2.5 rounded text-dark-gray transition-colors hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={isMenuOpen ? t("ui.closeMenu") : t("ui.openMenu")} aria-controls="driven-main-menu" aria-expanded={isMenuOpen}>
                 <span className="flex h-4 w-5 flex-col justify-between">
                   <span className={`block h-px bg-current transition-all ${isMenuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
                   <span className={`block h-px bg-current transition-all ${isMenuOpen ? "scale-x-0 opacity-0" : ""}`} />
@@ -100,15 +108,15 @@ export function Navbar() {
               </Link>
               <LanguageSwitcher />
               <ThemeToggle onThemeChange={setIsNight} />
-              <button className="text-dark-gray transition-colors hover:text-black" aria-label={t("ui.account")}>
+              <Link href={`/${locale}/login`} className="rounded text-dark-gray transition-colors hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={t("ui.account")}>
                 <span className="material-symbols-outlined text-[18px]">person</span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
       </header>
 
-      <div className={`fixed inset-0 z-[1200] bg-white transition-all duration-500 ${isMenuOpen ? "visible opacity-100" : "invisible pointer-events-none opacity-0"}`} aria-hidden={!isMenuOpen}>
+      <div id="driven-main-menu" role="dialog" aria-modal="true" className={`fixed inset-0 z-[1200] bg-white transition-all duration-500 ${isMenuOpen ? "visible opacity-100" : "invisible pointer-events-none opacity-0"}`} aria-hidden={!isMenuOpen}>
         <div className="grid h-full grid-cols-1 pt-20 xl:grid-cols-[minmax(19rem,20vw)_minmax(0,1fr)_minmax(15rem,17vw)]">
           <div className="relative z-10 flex min-w-0 flex-col justify-center px-8 sm:px-12 lg:px-20 xl:px-10 2xl:px-12">
             <nav aria-label={t("ui.mainNavigation")}>
@@ -130,7 +138,7 @@ export function Navbar() {
           </div>
 
           <div className="menu-brand-panel relative hidden overflow-hidden border-x border-white/10 xl:flex xl:items-center xl:justify-center">
-            <BrandLogo className="relative z-10 w-64 drop-shadow-[0_12px_28px_rgba(0,0,0,0.45)] 2xl:w-72" imageClassName="brightness-0 invert" />
+            <BrandLogo className="menu-brand-logo relative z-10 w-72 2xl:w-80" imageClassName="brightness-0 invert" />
           </div>
 
           <aside className="relative z-10 hidden flex-col justify-center border-l border-light-gray px-8 xl:flex 2xl:px-10">

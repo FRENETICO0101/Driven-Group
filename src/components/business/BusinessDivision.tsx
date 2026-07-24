@@ -13,7 +13,7 @@ interface BusinessDivisionProps {
 export function BusinessDivision({ id, index, title, description, longDescription, image, imageAlt, highlights, reversed }: BusinessDivisionProps) {
   return (
     <section id={id} className="scroll-mt-24 px-6 py-12 sm:px-8 sm:py-16 md:py-20">
-      <div className={`mx-auto grid max-w-6xl items-center gap-8 rounded-2xl border border-light-gray bg-white p-5 shadow-[0_14px_36px_rgba(37,37,37,0.04)] sm:p-8 md:grid-cols-2 md:gap-12 lg:p-10 ${reversed ? 'md:grid-flow-col-dense' : ''}`}>
+      <div className={`wealth-interactive mx-auto grid max-w-6xl items-center gap-8 rounded-2xl border border-light-gray bg-white p-5 shadow-[0_14px_36px_rgba(37,37,37,0.04)] sm:p-8 md:grid-cols-2 md:gap-12 lg:p-10 ${reversed ? 'md:grid-flow-col-dense' : ''}`}>
         <div className={reversed ? 'md:col-start-2' : ''}>
           <div className="mb-5 flex items-center gap-3">
             <span className="editorial-label text-gray">{index}</span>

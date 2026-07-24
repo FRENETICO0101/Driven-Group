@@ -24,22 +24,22 @@ export function Footer() {
             </div>
           </div>
 
-          <FooterColumn title={t('divisions')} links={[
-            { href: '/real-estate', label: t('realEstate') },
-            { href: '/business', label: t('business') },
-            { href: '/academy', label: t('academy') },
+          <FooterColumn title="Divisions" links={[
+            { href: '/real-estate', label: 'Real Estate' },
+            { href: '/business', label: 'Business' },
+            { href: '/academy', label: 'Academy' },
           ]} />
-          <FooterColumn title={t('business')} links={[
+          <FooterColumn title="Business" links={[
             { href: '/business#digital-commerce', label: t('digitalCommerce') },
             { href: '/business#global-markets', label: t('globalMarkets') },
             { href: '/business#strategic-alliances', label: t('strategicAlliances') },
             { href: '/business#luxury-assets', label: t('luxuryAssets') },
           ]} />
-          <FooterColumn title={t('academy')} links={[
-            { href: '/academy#courses', label: t('courses') },
-            { href: '/academy#mentoring', label: t('mentoring') },
-            { href: '/academy#mastering', label: t('mastering') },
-          ]} extra={<p className="text-sm text-gray">{t('comingSoon')}</p>} />
+          <FooterColumn title="Academy" links={[
+            { href: '/academy#driven-academy', label: 'Driven Academy' },
+            { href: 'https://driven-academy.com/modo-rico', label: 'Modo Rico', external: true },
+            { href: '/academy#nexora', label: 'Nexora®' },
+          ]} />
           <FooterColumn title={t('company')} links={[
             { href: '/', label: t('home') },
             { href: '/about', label: t('about') },
@@ -60,13 +60,19 @@ export function Footer() {
   );
 }
 
-function FooterColumn({ title, links, extra }: { title: string; links: Array<{ href: string; label: string }>; extra?: React.ReactNode }) {
+function FooterColumn({ title, links, extra }: { title: string; links: Array<{ href: string; label: string; external?: boolean }>; extra?: React.ReactNode }) {
   return (
     <div>
       <h4 className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-gray">{title}</h4>
       <ul className="space-y-3">
         {links.map((link) => (
-          <li key={link.href}><Link href={link.href} className="text-sm text-light-gray transition-colors hover:text-white">{link.label}</Link></li>
+          <li key={link.href}>
+            {link.external ? (
+              <a href={link.href} target="_blank" rel="noreferrer" className="text-sm text-light-gray transition-colors hover:text-white">{link.label}</a>
+            ) : (
+              <Link href={link.href} className="text-sm text-light-gray transition-colors hover:text-white">{link.label}</Link>
+            )}
+          </li>
         ))}
         {extra && <li>{extra}</li>}
       </ul>

@@ -34,9 +34,9 @@ export function ContactInfoSection() {
           );
 
           return item.href ? (
-            <a key={item.title} href={item.href} className="group rounded-2xl border border-light-gray bg-white p-6 transition-all hover:-translate-y-1 hover:border-dark-gray hover:shadow-[0_14px_32px_rgba(37,37,37,0.08)] sm:p-7">{content}</a>
+            <a key={item.title} href={item.href} className="wealth-interactive group rounded-2xl border border-light-gray bg-white p-6 sm:p-7">{content}</a>
           ) : (
-            <article key={item.title} className="rounded-2xl border border-light-gray bg-white p-6 sm:p-7">{content}</article>
+            <article key={item.title} className="wealth-interactive rounded-2xl border border-light-gray bg-white p-6 sm:p-7">{content}</article>
           );
         })}
       </div>
