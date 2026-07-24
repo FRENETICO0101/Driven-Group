@@ -1,14 +1,78 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useLocale } from "next-intl";
 
-const copy = {
-  es: { label: "LANZAMIENTO OFICIAL — DRIVEN ACADEMY", subtitle1: "Una nueva forma de entender el dinero.", subtitle2: "Una nueva forma de vivir.", cta: "QUIERO APLICAR ESTE MÉTODO" },
-  en: { label: "OFFICIAL LAUNCH — DRIVEN ACADEMY", subtitle1: "A new way to understand money.", subtitle2: "A new way to live.", cta: "I WANT TO APPLY THIS METHOD" },
-};
+type Language = "es" | "en";
+
+const slides = [
+  {
+    image: "/images1/academy-driven-financial-workshop.png",
+    position: "60% center",
+    href: "#driven-academy",
+    external: false,
+    copy: {
+      es: { label: "DRIVEN ACADEMY", title: "Conocimiento que impulsa decisiones con propósito.", action: "Conocer Academy" },
+      en: { label: "DRIVEN ACADEMY", title: "Knowledge that empowers purposeful decisions.", action: "Discover Academy" },
+    },
+  },
+  {
+    image: "/images1/academy-digital-learning-v1.webp",
+    position: "center center",
+    href: "https://driven-academy.com/modo-rico",
+    external: true,
+    copy: {
+      es: { label: "MODO RICO", title: "Una metodología práctica para ordenar tus finanzas.", action: "Ir a Modo Rico" },
+      en: { label: "MODO RICO", title: "A practical methodology for organizing your finances.", action: "Visit Modo Rico" },
+    },
+  },
+  {
+    image: "/images1/academy-nexora-platform-v1.webp",
+    position: "center center",
+    href: "#nexora",
+    external: false,
+    copy: {
+      es: { label: "NEXORA", title: "Inteligencia para visualizar tu patrimonio en un solo lugar.", action: "Conocer Nexora" },
+      en: { label: "NEXORA", title: "Intelligence to view your wealth in one place.", action: "Discover Nexora" },
+    },
+  },
+] as const;
+
+const AUTO_ADVANCE_DELAY = 12_000;
 
 export function AcademyHeroSection() {
-  const locale = useLocale(); const t = copy[locale === "en" ? "en" : "es"];
-  return <header className="relative bg-white pt-16 sm:pt-20"><div className="relative flex min-h-screen items-center overflow-hidden sm:min-h-[85vh] md:min-h-[90vh]"><div className="absolute inset-0 z-0"><div className="hero-gradient absolute inset-0 z-10" /><Image alt="Driven Academy financial learning session" className="image-zoom h-full w-full object-cover" src="/images1/academy-driven-financial-workshop.png" fill priority sizes="100vw" style={{ objectPosition: "60% center" }} /></div><div className="absolute right-8 top-8 z-30 text-center"><span className="material-symbols-outlined block text-2xl text-white">school</span><p className="mt-2 text-xs font-semibold tracking-widest text-white">ACADEMY</p></div><div className="relative z-20 mx-auto w-full max-w-7xl px-6 sm:px-8"><div className="max-w-3xl"><p className="editorial-label fade-in-delay-50 mb-4 text-white/60">{t.label}</p><h1 className="fade-in-delay-100 mb-4 font-serif text-5xl italic leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">Modo Rico</h1><p className="fade-in-delay-150 mb-2 text-lg font-light text-white/80 sm:text-xl">{t.subtitle1}</p><p className="fade-in-delay-150 mb-10 text-lg font-light text-gray sm:text-xl">{t.subtitle2}</p><a href="#academy-cta" className="fade-in-delay-200 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-gray transition-colors hover:text-white sm:text-base"><span>{t.cta}</span><span className="material-symbols-outlined text-lg">north_east</span></a></div></div></div></header>;
+  const locale = useLocale();
+  const language: Language = locale === "en" ? "en" : "es";
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const activeSlide = slides[activeIndex];
+  const copy = activeSlide.copy[language];
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = window.setInterval(() => setActiveIndex((current) => (current + 1) % slides.length), AUTO_ADVANCE_DELAY);
+    return () => window.clearInterval(timer);
+  }, [isPaused]);
+
+  return (
+    <header className="relative bg-white pt-16 sm:pt-20">
+      <section className="relative flex min-h-[calc(100svh-4rem)] items-end overflow-hidden sm:min-h-[85vh] md:min-h-[90vh]" aria-roledescription="carousel" aria-label="Driven Academy" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+        {slides.map((slide, index) => <Image key={slide.href} src={slide.image} alt={slide.copy[language].label} fill priority={index === 0} sizes="100vw" style={{ objectPosition: slide.position }} className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-out ${index === activeIndex ? "scale-100 opacity-100" : "scale-[1.025] opacity-0"}`} />)}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-7 px-6 pb-10 sm:px-8 sm:pb-14 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl border-l border-white/70 pl-5 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:pl-6">
+            <p className="text-[11px] font-semibold tracking-[0.28em] text-white/70">{copy.label === "NEXORA" ? <>NEXORA<sup className="ml-0.5 text-[0.55em] align-super">®</sup></> : copy.label}</p>
+            <h1 className="mt-3 font-serif text-4xl italic leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">{copy.title}</h1>
+            <a href={activeSlide.href} target={activeSlide.external ? "_blank" : undefined} rel={activeSlide.external ? "noreferrer" : undefined} className="mt-6 inline-flex items-center gap-3 border-b border-white/45 pb-2 text-sm font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:border-white hover:text-white/75">
+              {copy.action}<span className="material-symbols-outlined text-base">north_east</span>
+            </a>
+          </div>
+          <div className="flex items-center self-start gap-2 opacity-70 transition-opacity hover:opacity-100 focus-within:opacity-100 lg:self-auto">
+            {slides.map((slide, index) => <button key={slide.href} type="button" onClick={() => setActiveIndex(index)} aria-label={slide.copy[language].label} aria-current={index === activeIndex ? "true" : undefined} className={`h-1.5 rounded-full transition-all duration-300 ${index === activeIndex ? "w-8 bg-white" : "w-1.5 bg-white/50 hover:bg-white"}`} />)}
+          </div>
+        </div>
+      </section>
+    </header>
+  );
 }
