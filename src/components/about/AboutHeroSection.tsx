@@ -44,7 +44,12 @@ export function AboutHeroSection() {
 
         <div className="relative mx-auto flex min-h-[34rem] max-w-[1440px] items-center px-7 py-12 sm:min-h-[38rem] sm:px-12 lg:px-20">
           <div className="flex w-full max-w-[19rem] items-center justify-center border border-white/20 bg-black/20 px-9 py-12 shadow-[0_28px_72px_rgba(0,0,0,.40)] backdrop-blur-[2px] sm:max-w-md sm:px-14 sm:py-16">
-            <BrandLogo variant={activeSlide.variant} imageClassName="brightness-0 invert contrast-125" className="w-full max-w-[15rem] sm:max-w-[18rem]" />
+            <BrandLogo
+              variant={activeSlide.variant}
+              imageClassName="brightness-0 invert contrast-125"
+              className="w-full max-w-[15rem] sm:max-w-[18rem]"
+              sizes="(max-width: 640px) 240px, 288px"
+            />
           </div>
         </div>
 

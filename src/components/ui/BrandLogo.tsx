@@ -13,9 +13,10 @@ interface BrandLogoProps {
   imageClassName?: string;
   variant?: "corporate" | "realEstate" | "business" | "academy" | "menu";
   dark?: boolean;
+  sizes?: string;
 }
 
-export function BrandLogo({ className = "w-24", imageClassName = "", variant = "corporate", dark = false }: BrandLogoProps) {
+export function BrandLogo({ className = "w-24", imageClassName = "", variant = "corporate", dark = false, sizes: sizesOverride }: BrandLogoProps) {
   const isDivisionLogo = variant === "realEstate" || variant === "business" || variant === "academy";
   const logo = variant === "realEstate"
     ? (dark ? realEstateDarkLogo : realEstateLogo)
@@ -29,7 +30,7 @@ export function BrandLogo({ className = "w-24", imageClassName = "", variant = "
   // Division brand files are square canvases. Keeping their intrinsic ratio
   // prevents the mark from being compressed into a shallow horizontal slot.
   const aspectRatio = variant === "menu" || isDivisionLogo ? "aspect-square" : "aspect-[1.42]";
-  const sizes = variant === "menu" ? "(max-width: 1279px) 0px, 256px" : isDivisionLogo ? "(max-width: 640px) 64px, 96px" : "(max-width: 640px) 80px, 160px";
+  const sizes = sizesOverride ?? (variant === "menu" ? "(max-width: 1279px) 0px, 256px" : isDivisionLogo ? "(max-width: 640px) 64px, 96px" : "(max-width: 640px) 80px, 160px");
 
   return (
     <span data-brand-variant={variant} className={`relative block overflow-hidden ${aspectRatio} ${className}`}>
