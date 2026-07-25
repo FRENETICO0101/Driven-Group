@@ -15,6 +15,8 @@ const propertySchema = z.object({
   city: z.string().min(1, 'City is required'),
   state: z.string().min(1, 'State is required'),
   zipCode: z.string().min(1, 'Zip code is required'),
+  latitude: z.number().min(-90).max(90).optional(),
+  longitude: z.number().min(-180).max(180).optional(),
   bedrooms: z.number().int().min(0),
   bathrooms: z.number().min(0),
   squareFeet: z.number().min(1, 'Square feet must be positive'),

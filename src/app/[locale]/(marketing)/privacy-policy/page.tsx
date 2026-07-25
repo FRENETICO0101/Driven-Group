@@ -1,5 +1,18 @@
 import { getLocale } from "next-intl/server";
 import { LegalDocument } from "@/components/legal/LegalDocument";
+import { buildLocalizedMetadata } from "@/lib/seo";
+
+export async function generateMetadata() {
+  const locale = await getLocale();
+  const isEnglish = locale === "en";
+  return buildLocalizedMetadata({
+    locale,
+    pathname: "/privacy-policy",
+    title: isEnglish ? "Privacy Policy | Driven Group" : "Política de privacidad | Driven Group",
+    description: isEnglish ? "How Driven Group handles personal information." : "Cómo Driven Group trata la información personal.",
+    imageAlt: "Driven Group",
+  });
+}
 
 export default async function PrivacyPolicyPage() {
   const locale = (await getLocale()) === "en" ? "en" : "es";

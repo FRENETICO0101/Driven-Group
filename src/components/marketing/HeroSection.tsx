@@ -30,8 +30,6 @@ export function HeroSection() {
 
   const activeSlide = slides[activeIndex];
   const copy = activeSlide.copy[language];
-  const previous = () => setActiveIndex((current) => (current - 1 + slides.length) % slides.length);
-  const next = () => setActiveIndex((current) => (current + 1) % slides.length);
 
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
@@ -50,10 +48,8 @@ export function HeroSection() {
             </Link>
           </div>
 
-          <div className="group flex items-center self-start gap-2 opacity-65 transition-opacity hover:opacity-100 focus-within:opacity-100 lg:self-auto" aria-label="Carousel controls">
-            <button type="button" onClick={previous} className="inline-flex h-7 w-7 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-black/25 hover:text-white focus-visible:bg-black/25 focus-visible:outline focus-visible:outline-1 focus-visible:outline-white/70" aria-label={language === "es" ? "Imagen anterior" : "Previous image"}><Icon name="arrow_back" className="h-4 w-4" /></button>
-            <div className="flex items-center gap-1.5">{slides.map((slide, index) => <button key={slide.href} type="button" onClick={() => setActiveIndex(index)} className={`h-1 rounded-full transition-all duration-300 ${index === activeIndex ? "w-6 bg-white" : "w-1 bg-white/45 hover:bg-white/80"}`} aria-label={slide.copy[language].label} aria-current={index === activeIndex ? "true" : undefined} />)}</div>
-            <button type="button" onClick={next} className="inline-flex h-7 w-7 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-black/25 hover:text-white focus-visible:bg-black/25 focus-visible:outline focus-visible:outline-1 focus-visible:outline-white/70" aria-label={language === "es" ? "Siguiente imagen" : "Next image"}><Icon name="arrow_forward" className="h-4 w-4" /></button>
+          <div className="flex items-center self-start gap-1.5 opacity-65 transition-opacity hover:opacity-100 focus-within:opacity-100 lg:self-auto" aria-label="Carousel controls">
+            {slides.map((slide, index) => <button key={slide.href} type="button" onClick={() => setActiveIndex(index)} className={`h-1.5 rounded-full transition-all duration-300 ${index === activeIndex ? "w-8 bg-white" : "w-1.5 bg-white/50 hover:bg-white"}`} aria-label={slide.copy[language].label} aria-current={index === activeIndex ? "true" : undefined} />)}
           </div>
         </div>
       </section>

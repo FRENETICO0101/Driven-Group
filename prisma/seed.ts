@@ -1,10 +1,17 @@
 import { PrismaClient, PropertyType, PropertyStatus, Role } from '@prisma/client'
 import bcrypt from 'bcrypt'
+import dotenv from 'dotenv'
+
+// Prisma CLI only loads `.env` by default. The application keeps local
+// development credentials in `.env.local`, so load it explicitly for seeds.
+// Existing deployment environment variables always take precedence.
+dotenv.config({ path: '.env.local', override: false })
 
 const prisma = new PrismaClient()
 
 async function main() {
   console.log('🌱 Iniciando seed de usuarios y propiedades...')
+  const seedLegacyProperties = process.env.SEED_LEGACY_PROPERTIES === 'true'
 
   // Crear usuario admin
   const hashedPassword = await bcrypt.hash('DrivenAdmin123!', 10)
@@ -35,6 +42,7 @@ async function main() {
 
   console.log('✓ Agente creado:', agent.email)
 
+  if (seedLegacyProperties) {
   // Propiedad 1: Torre Corporativa Miami
   const property1 = await prisma.property.upsert({
     where: { slug: 'torre-corporativa-miami' },
@@ -489,13 +497,16 @@ async function main() {
   })
 
   console.log('✓ Propiedades 4-10 creadas: 7 residencias premium adicionales')
+  } else {
+    console.log('ℹ️ Propiedades de demostración omitidas. El catálogo se gestiona desde assets/properties y el panel administrativo.')
+  }
 
   console.log('\n✅ Seed completado exitosamente')
   console.log(`
     📊 Resumen:
     - Agent: ${agent.name}
-    - Propiedades: 10
-    - Imágenes: 28
+    - Propiedades de demostración: ${seedLegacyProperties ? '10' : 'omitidas'}
+    - Imágenes de demostración: ${seedLegacyProperties ? '28' : 'omitidas'}
   `)
 }
 

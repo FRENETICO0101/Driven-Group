@@ -93,6 +93,40 @@ html[data-theme="night"] .divide-light-gray > :not([hidden]) ~ :not([hidden]) {
   border-color: #444444 !important;
 }
 
+/* Authentication remains a neutral, high-contrast workspace regardless of the
+   public site's day/night preference. */
+html[data-theme="night"] .auth-shell {
+  color-scheme: light;
+  background-color: #f8f8f8 !important;
+  color: #252525;
+}
+
+html[data-theme="night"] .auth-shell .bg-white,
+html[data-theme="night"] .auth-shell [class*="bg-white/"] {
+  background-color: #ffffff !important;
+}
+
+html[data-theme="night"] .auth-shell .bg-light-gray,
+html[data-theme="night"] .auth-shell [class*="bg-light-gray/"] {
+  background-color: #f4f4f4 !important;
+}
+
+html[data-theme="night"] .auth-shell .text-black {
+  color: #252525 !important;
+}
+
+html[data-theme="night"] .auth-shell .text-dark-gray {
+  color: #494849 !important;
+}
+
+html[data-theme="night"] .auth-shell .text-gray {
+  color: #737373 !important;
+}
+
+html[data-theme="night"] .auth-shell .border-light-gray {
+  border-color: #cccccc !important;
+}
+
 /* Academy keeps a few editorial light surfaces in the daytime design. */
 html[data-theme="night"] .academy-page .academy-challenge-card,
 html[data-theme="night"] .academy-page .academy-bonus-section {

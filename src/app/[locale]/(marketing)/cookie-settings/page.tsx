@@ -1,6 +1,19 @@
 import { getLocale } from "next-intl/server";
 import { CookieSettingsPanel } from "@/components/legal/CookieSettingsPanel";
 import { LegalDocument } from "@/components/legal/LegalDocument";
+import { buildLocalizedMetadata } from "@/lib/seo";
+
+export async function generateMetadata() {
+  const locale = await getLocale();
+  const isEnglish = locale === "en";
+  return buildLocalizedMetadata({
+    locale,
+    pathname: "/cookie-settings",
+    title: isEnglish ? "Cookie Settings | Driven Group" : "Configuración de cookies | Driven Group",
+    description: isEnglish ? "Cookie and privacy preferences for the Driven Group website." : "Preferencias de cookies y privacidad del sitio web de Driven Group.",
+    imageAlt: "Driven Group",
+  });
+}
 
 export default async function CookieSettingsPage() {
   const locale = (await getLocale()) === "en" ? "en" : "es";

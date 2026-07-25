@@ -60,3 +60,25 @@ export async function getInquiriesByProperty(propertyId: string): Promise<Inquir
     },
   }) as unknown as Inquiry[];
 }
+
+export async function updateInquiryStatus(id: string, status: InquiryStatus): Promise<Inquiry> {
+  return prisma.inquiry.update({
+    where: { id },
+    data: { status },
+    include: {
+      property: { include: { images: true, agent: true } },
+      agent: true,
+    },
+  }) as unknown as Inquiry;
+}
+
+export async function updateInquiryNotes(id: string, notes: string | null): Promise<Inquiry> {
+  return prisma.inquiry.update({
+    where: { id },
+    data: { notes },
+    include: {
+      property: { include: { images: true, agent: true } },
+      agent: true,
+    },
+  }) as unknown as Inquiry;
+}

@@ -1,35 +1,24 @@
-import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 import { ContactHeroSection } from "@/components/contact/ContactHeroSection";
-
-export const dynamic = 'force-dynamic';
 import { ContactInfoSection } from "@/components/contact/ContactInfoSection";
 import { GetInTouchForm } from "@/components/contact/GetInTouchForm";
+import { buildLocalizedMetadata } from "@/lib/seo";
 
-const siteUrl = "https://drivengroup.com";
+export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Contact Us — Driven Group",
-  description:
-    "Get in touch with Driven Group. We're ready to discuss your real estate, business, or partnership inquiries.",
-  openGraph: {
-    title: "Contact Us — Driven Group",
-    description:
-      "Get in touch with Driven Group. We're ready to discuss your real estate, business, or partnership inquiries.",
-    url: `${siteUrl}/contact`,
-    type: "website",
-    images: [
-      {
-        url: `${siteUrl}/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: "Contact Driven Group",
-      },
-    ],
-  },
-  alternates: {
-    canonical: `${siteUrl}/contact`,
-  },
-};
+export async function generateMetadata() {
+  const locale = await getLocale();
+  const isEnglish = locale === "en";
+  return buildLocalizedMetadata({
+    locale,
+    pathname: "/contact",
+    title: isEnglish ? "Contact Driven Group" : "Contacto | Driven Group",
+    description: isEnglish
+      ? "Talk with Driven Group about real estate, business, partnerships, and strategic opportunities."
+      : "Habla con Driven Group sobre real estate, negocios, alianzas y oportunidades estratégicas.",
+    imageAlt: isEnglish ? "Contact Driven Group" : "Contacto | Driven Group",
+  });
+}
 
 export default function ContactPage() {
   return (

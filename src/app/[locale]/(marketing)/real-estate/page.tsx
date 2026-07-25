@@ -1,17 +1,19 @@
-import type { Metadata } from "next";
 import { Suspense } from "react";
+import { getLocale } from "next-intl/server";
 import { getAllProperties } from "@/server/services/property.service";
 import { RealEstateHeroSection } from "@/components/real-estate/RealEstateHeroSection";
 import { PropertyFilters } from "@/components/real-estate/PropertyFilters";
 import { PropertyListing } from "@/components/real-estate/PropertyListing";
 import { PropertiesMap } from "@/components/real-estate/PropertiesMap";
 import { PropertyListingSkeleton } from "@/components/loading/PropertyListingSkeleton";
+import { buildLocalizedMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
 const siteUrl = "https://drivengroup.com";
 
-export const metadata: Metadata = {
+/*
+const metadata = {
   title: "Portafolio de Activos — Driven Group",
   description:
     "Selección curada de inmuebles comerciales, residenciales y patrimoniales. Inversión estratégica corporativa con visión de ecosistema.",
@@ -34,6 +36,22 @@ export const metadata: Metadata = {
     canonical: `${siteUrl}/real-estate`,
   },
 };
+
+*/
+
+export async function generateMetadata() {
+  const locale = await getLocale();
+  const isEnglish = locale === "en";
+  return buildLocalizedMetadata({
+    locale,
+    pathname: "/real-estate",
+    title: isEnglish ? "Real Estate Portfolio | Driven Group" : "Portafolio inmobiliario | Driven Group",
+    description: isEnglish
+      ? "A curated portfolio of residential, commercial, and strategic real estate assets."
+      : "Portafolio curado de activos inmobiliarios residenciales, comerciales y estratégicos.",
+    imageAlt: isEnglish ? "Driven Group real estate portfolio" : "Portafolio inmobiliario de Driven Group",
+  });
+}
 
 interface PageProps {
   searchParams: Promise<{

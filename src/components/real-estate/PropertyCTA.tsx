@@ -24,7 +24,15 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); setState("loading"); setErrorMsg("");
     const data = new FormData(event.currentTarget);
-    const result = await createLeadAction({ name: data.get("name") as string, email: data.get("email") as string, phone: data.get("phone") as string, message: (data.get("message") as string) || undefined, propertyId: property.id.startsWith("catalog-") ? undefined : property.id });
+    const visitorMessage = String(data.get("message") ?? "").trim();
+    const propertyContext = `[${locale === "en" ? "Property" : "Propiedad"}: ${property.title}]`;
+    const result = await createLeadAction({
+      name: data.get("name") as string,
+      email: data.get("email") as string,
+      phone: data.get("phone") as string,
+      message: visitorMessage ? `${propertyContext} ${visitorMessage}` : propertyContext,
+      propertyId: property.id.startsWith("catalog-") ? undefined : property.id,
+    });
     if (result.success) { setState("success"); formRef.current?.reset(); } else { setState("error"); setErrorMsg(result.error ?? t.error); }
   };
 

@@ -20,6 +20,8 @@ interface PropertyFormState {
   city: string;
   state: string;
   zipCode: string;
+  latitude: number | '';
+  longitude: number | '';
   bedrooms: number;
   bathrooms: number;
   squareFeet: number;
@@ -52,6 +54,8 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
     city: initialData?.city || '',
     state: initialData?.state || '',
     zipCode: initialData?.zipCode || '',
+    latitude: initialData?.latitude ?? '',
+    longitude: initialData?.longitude ?? '',
     bedrooms: initialData?.bedrooms || 0,
     bathrooms: initialData?.bathrooms || 0,
     squareFeet: initialData?.squareFeet || 0,
@@ -95,6 +99,8 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
         city: formData.city,
         state: formData.state,
         zipCode: formData.zipCode,
+        latitude: formData.latitude === '' ? undefined : Number(formData.latitude),
+        longitude: formData.longitude === '' ? undefined : Number(formData.longitude),
         bedrooms: Number(formData.bedrooms),
         bathrooms: Number(formData.bathrooms),
         squareFeet: Number(formData.squareFeet),
@@ -230,6 +236,34 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
               onChange={(e) => setFormData((prev) => ({ ...prev, zipCode: e.target.value }))}
               className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
               required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-black mb-2">Latitud</label>
+            <input
+              type="number"
+              min="-90"
+              max="90"
+              step="any"
+              value={formData.latitude}
+              onChange={(e) => setFormData((prev) => ({ ...prev, latitude: e.target.value === '' ? '' : Number(e.target.value) }))}
+              placeholder="25.7617"
+              className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-black mb-2">Longitud</label>
+            <input
+              type="number"
+              min="-180"
+              max="180"
+              step="any"
+              value={formData.longitude}
+              onChange={(e) => setFormData((prev) => ({ ...prev, longitude: e.target.value === '' ? '' : Number(e.target.value) }))}
+              placeholder="-80.1918"
+              className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
             />
           </div>
         </div>

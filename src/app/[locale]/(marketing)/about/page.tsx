@@ -1,36 +1,25 @@
-import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 import { AboutHeroSection } from "@/components/about/AboutHeroSection";
 import { CEOsSection } from "@/components/about/CEOsSection";
 import { ValuesSection } from "@/components/about/ValuesSection";
 import { ReputationSection } from "@/components/about/ReputationSection";
+import { buildLocalizedMetadata } from "@/lib/seo";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
-const siteUrl = "https://drivengroup.com";
-
-export const metadata: Metadata = {
-  title: "About Us — Driven Group",
-  description:
-    "Meet the leadership behind Driven Group. Over two decades of excellence in luxury real estate, strategic investment, and transformative partnerships.",
-  openGraph: {
-    title: "About Us — Driven Group",
-    description:
-      "Meet the leadership behind Driven Group. Over two decades of excellence in luxury real estate, strategic investment, and transformative partnerships.",
-    url: `${siteUrl}/about`,
-    type: "website",
-    images: [
-      {
-        url: `${siteUrl}/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: "About Driven Group",
-      },
-    ],
-  },
-  alternates: {
-    canonical: `${siteUrl}/about`,
-  },
-};
+export async function generateMetadata() {
+  const locale = await getLocale();
+  const isEnglish = locale === "en";
+  return buildLocalizedMetadata({
+    locale,
+    pathname: "/about",
+    title: isEnglish ? "About Driven Group" : "Nosotros | Driven Group",
+    description: isEnglish
+      ? "Meet the leadership and strategic vision behind Driven Group."
+      : "Conoce el liderazgo y la visión estratégica que impulsan Driven Group.",
+    imageAlt: isEnglish ? "About Driven Group" : "Nosotros | Driven Group",
+  });
+}
 
 export default function AboutPage() {
   return (

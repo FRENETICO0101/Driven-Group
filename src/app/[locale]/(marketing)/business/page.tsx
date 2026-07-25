@@ -2,8 +2,24 @@ import { useTranslations } from 'next-intl';
 import { BusinessHeroSection } from '@/components/business/BusinessHeroSection';
 import { BusinessDivision } from '@/components/business/BusinessDivision';
 import { BusinessCTA } from '@/components/business/BusinessCTA';
+import { getLocale } from 'next-intl/server';
+import { buildLocalizedMetadata } from '@/lib/seo';
 
 export const dynamic = 'force-dynamic';
+
+export async function generateMetadata() {
+  const locale = await getLocale();
+  const isEnglish = locale === 'en';
+  return buildLocalizedMetadata({
+    locale,
+    pathname: '/business',
+    title: isEnglish ? 'Driven Business | Strategic Business Divisions' : 'Driven Business | Divisiones empresariales estratégicas',
+    description: isEnglish
+      ? 'Digital commerce, global markets, strategic alliances, and luxury assets built for enduring value.'
+      : 'Comercio digital, mercados globales, alianzas estratégicas y activos de lujo para crear valor duradero.',
+    imageAlt: 'Driven Business',
+  });
+}
 
 const divisions = [
   { id: 'digital-commerce', index: '01', title: 'digitalCommerce', description: 'digitalCommerceDesc', image: '/images1/business-digital.jpg', imageAlt: 'Digital Commerce Technology Platform' },

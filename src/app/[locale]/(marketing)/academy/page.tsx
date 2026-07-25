@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { getLocale } from "next-intl/server";
 import { AcademyHeroSection } from "@/components/academy/AcademyHeroSection";
 import { AcademyCTA } from "@/components/academy/AcademyCTA";
+import { buildLocalizedMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
 const siteUrl = "https://drivengroup.com";
 
-export const metadata: Metadata = {
+/*
+const metadata = {
   title: "Driven Academy — Knowledge with purpose",
   description: "Driven Academy creates practical programs and intelligent tools for leadership, strategy, finance, and personal growth.",
   openGraph: {
@@ -20,6 +21,22 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${siteUrl}/academy` },
 };
+
+*/
+
+export async function generateMetadata() {
+  const locale = await getLocale();
+  const isEnglish = locale === "en";
+  return buildLocalizedMetadata({
+    locale,
+    pathname: "/academy",
+    title: isEnglish ? "Driven Academy | Knowledge with purpose" : "Driven Academy | Conocimiento con propósito",
+    description: isEnglish
+      ? "Practical programs and intelligent tools for leadership, strategy, finance, and personal growth."
+      : "Programas prácticos y herramientas inteligentes para liderazgo, estrategia, finanzas y crecimiento personal.",
+    imageAlt: "Driven Academy",
+  });
+}
 
 const content = {
   es: {
@@ -35,7 +52,7 @@ const content = {
     cards: [
       { index: "01", title: "Driven Academy", description: "La plataforma de conocimiento de Driven Group: programas, contenidos y experiencias creadas para desarrollar criterio, liderazgo y capacidades aplicables.", image: "/images1/academy-driven-financial-workshop.webp", alt: "Sesión de aprendizaje de Driven Academy", action: "Conocer Academy", href: "#driven-academy", external: false },
       { index: "02", title: "Modo Rico", description: "Una metodología práctica para recuperar el control de tus finanzas, construir estabilidad y avanzar con dirección hacia tu patrimonio.", image: "/images1/academy-digital-learning-v1.webp", alt: "Modo Rico, aprendizaje financiero digital", action: "Ir a Modo Rico", href: "https://driven-academy.com/modo-rico", external: true },
-      { index: "03", title: "Nexora", description: "Plataforma inteligente de finanzas personales impulsada por IA para visualizar ingresos, gastos, deudas, inversiones, patrimonio y metas en un solo lugar.", image: "/images1/academy-nexora-platform-v1.webp", alt: "Plataforma financiera Nexora", action: "Conocer Nexora", href: "#nexora", external: false },
+      { index: "03", title: "NEXORAMR", description: "Plataforma inteligente de finanzas personales impulsada por IA para visualizar ingresos, gastos, deudas, inversiones, patrimonio y metas en un solo lugar.", image: "/images1/academy-nexora-platform-v1.webp", alt: "Plataforma financiera NEXORAMR", action: "Conocer NEXORAMR", href: "#nexora", external: false },
     ],
   },
   en: {
@@ -51,13 +68,13 @@ const content = {
     cards: [
       { index: "01", title: "Driven Academy", description: "Driven Group's knowledge platform: programs, content, and experiences designed to develop judgment, leadership, and applicable capabilities.", image: "/images1/academy-driven-financial-workshop.webp", alt: "Driven Academy learning session", action: "Discover Academy", href: "#driven-academy", external: false },
       { index: "02", title: "Modo Rico", description: "A practical methodology to regain control of your finances, build stability, and move purposefully toward your wealth goals.", image: "/images1/academy-digital-learning-v1.webp", alt: "Modo Rico digital financial learning", action: "Visit Modo Rico", href: "https://driven-academy.com/modo-rico", external: true },
-      { index: "03", title: "Nexora", description: "An AI-powered personal finance platform to view income, spending, debt, investments, wealth, and goals in one place.", image: "/images1/academy-nexora-platform-v1.webp", alt: "Nexora financial platform", action: "Discover Nexora", href: "#nexora", external: false },
+      { index: "03", title: "NEXORAMR", description: "An AI-powered personal finance platform to view income, spending, debt, investments, wealth, and goals in one place.", image: "/images1/academy-nexora-platform-v1.webp", alt: "NEXORAMR financial platform", action: "Discover NEXORAMR", href: "#nexora", external: false },
     ],
   },
 } as const;
 
 function AcademyBrandName({ name }: { name: string }) {
-  return name === "Nexora" ? "NEXORAMR" : name;
+  return name;
 }
 
 export default async function AcademyPage() {

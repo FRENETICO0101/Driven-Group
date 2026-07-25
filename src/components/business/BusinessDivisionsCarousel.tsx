@@ -23,7 +23,7 @@ export function BusinessDivisionsCarousel() {
 
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
-      <section className="relative flex min-h-screen items-center overflow-hidden sm:min-h-[85vh] md:min-h-[90vh]">
+      <section className="relative flex aspect-video max-h-[68svh] items-center overflow-hidden bg-black sm:aspect-auto sm:max-h-none sm:min-h-[85vh] md:min-h-[90vh]">
         <div className="absolute inset-0">
           {divisions.map((division, index) => (
             <Image
@@ -33,7 +33,7 @@ export function BusinessDivisionsCarousel() {
               fill
               priority={index === 0}
               sizes="100vw"
-              className={`object-cover transition-all duration-1000 ${index === activeIndex ? "scale-100 opacity-100" : "scale-105 opacity-0"}`}
+              className={`object-contain transition-opacity duration-[1800ms] ease-in-out sm:object-cover ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
               style={{ objectPosition: division.position }}
             />
           ))}

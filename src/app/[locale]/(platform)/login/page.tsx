@@ -6,6 +6,13 @@ import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import { BrandLogo } from '@/components/ui/BrandLogo';
 
+const demoCredentials = {
+  email: 'admin@drivengroup.com',
+  password: 'DrivenAdmin123!',
+};
+
+const showDemoCredentials = process.env.NODE_ENV !== 'production';
+
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState('');
@@ -13,8 +20,14 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const fillDemoCredentials = () => {
+    setEmail(demoCredentials.email);
+    setPassword(demoCredentials.password);
+    setError('');
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
     setError('');
     setLoading(true);
 
@@ -26,104 +39,94 @@ export default function LoginPage() {
       });
 
       if (!result || result.error) {
-        setError('Credenciales inválidas');
-        setLoading(false);
+        setError('Las credenciales no son válidas. Verifica los datos e intenta nuevamente.');
         return;
       }
 
-      // Redirect to admin dashboard
-      router.push('/admin');
-    } catch (err) {
-      setError('An error occurred. Please try again.');
+      router.replace('/admin');
+      router.refresh();
+    } catch {
+      setError('No fue posible iniciar sesión. Intenta nuevamente.');
+    } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center px-6">
+    <div className="auth-shell flex min-h-screen items-center justify-center bg-[#f8f8f8] px-6 py-12">
       <div className="w-full max-w-md">
-        {/* Logo */}
-        <div className="flex justify-center mb-12">
+        <div className="mb-10 flex justify-center">
           <Link href="/" aria-label="Driven Group">
             <BrandLogo className="w-32" />
           </Link>
         </div>
 
-        {/* Form */}
-        <div>
-          <h1 className="font-serif text-3xl md:text-4xl text-black mb-2">Admin Access</h1>
-          <p className="text-dark-gray text-sm mb-8">Ingresa tus credenciales para acceder al panel administrativo</p>
+        <div className="rounded-2xl border border-light-gray bg-white p-6 shadow-sm sm:p-8">
+          <p className="editorial-label text-gray">PLATAFORMA PRIVADA</p>
+          <h1 className="mt-3 text-3xl font-semibold text-black">Gestión de propiedades</h1>
+          <p className="mt-3 text-sm leading-6 text-dark-gray">
+            Inicia sesión para administrar el inventario, las galerías y las consultas recibidas.
+          </p>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Email */}
+          <form onSubmit={handleSubmit} className="mt-8 space-y-5">
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-black mb-2">
-                Email
-              </label>
+              <label htmlFor="email" className="mb-2 block text-sm font-semibold text-black">Correo electrónico</label>
               <input
                 id="email"
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(event) => setEmail(event.target.value)}
                 disabled={loading}
-                className="w-full px-4 py-3 bg-white border border-light-gray rounded-lg text-black placeholder-gray focus:outline-none focus:border-black transition-colors disabled:opacity-50"
+                className="w-full rounded-lg border border-light-gray bg-white px-4 py-3 text-black placeholder-gray outline-none transition-colors focus:border-black disabled:opacity-50"
                 placeholder="admin@drivengroup.com"
+                autoComplete="email"
                 required
               />
             </div>
 
-            {/* Password */}
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-black mb-2">
-                Contraseña
-              </label>
+              <label htmlFor="password" className="mb-2 block text-sm font-semibold text-black">Contraseña</label>
               <input
                 id="password"
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(event) => setPassword(event.target.value)}
                 disabled={loading}
-                className="w-full px-4 py-3 bg-white border border-light-gray rounded-lg text-black placeholder-gray focus:outline-none focus:border-black transition-colors disabled:opacity-50"
-                placeholder="••••••••"
+                className="w-full rounded-lg border border-light-gray bg-white px-4 py-3 text-black placeholder-gray outline-none transition-colors focus:border-black disabled:opacity-50"
+                placeholder="••••••••••••"
+                autoComplete="current-password"
                 required
               />
             </div>
 
-            {/* Error Message */}
             {error && (
-              <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-sm text-red-700">{error}</p>
-              </div>
+              <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">{error}</div>
             )}
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-8 py-3 bg-black text-white font-semibold rounded-lg hover:bg-black/90 transition-colors disabled:opacity-50"
+              className="w-full rounded-lg bg-black px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-black/90 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {loading ? 'Ingresando...' : 'Ingresar'}
+              {loading ? 'Ingresando…' : 'Ingresar al panel'}
             </button>
           </form>
 
-          {/* Demo Credentials */}
-          <div className="mt-8 p-4 bg-light-gray/50 rounded-lg border border-light-gray">
-            <p className="text-xs font-semibold text-gray mb-2">DEMO CREDENTIALS</p>
-            <p className="text-xs text-dark-gray">
-              Email: <span className="font-mono">admin@drivengroup.com</span>
-            </p>
-            <p className="text-xs text-dark-gray">
-              Password: <span className="font-mono">DrivenAdmin123!</span>
-            </p>
-          </div>
+          {showDemoCredentials && (
+            <div className="mt-6 rounded-xl border border-light-gray bg-[#f8f8f8] p-4">
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-xs font-semibold tracking-[0.14em] text-gray">ACCESO DE PRUEBA</p>
+                <button type="button" onClick={fillDemoCredentials} className="text-xs font-semibold text-black underline underline-offset-4">
+                  Usar datos
+                </button>
+              </div>
+              <p className="mt-3 text-xs text-dark-gray">Correo: <span className="font-mono text-black">{demoCredentials.email}</span></p>
+              <p className="mt-1 text-xs text-dark-gray">Contraseña: <span className="font-mono text-black">{demoCredentials.password}</span></p>
+            </div>
+          )}
         </div>
 
-        {/* Footer */}
-        <div className="mt-12 pt-8 border-t border-light-gray text-center">
-          <p className="text-xs text-gray">
-            © {new Date().getFullYear()} Driven Group. All rights reserved.
-          </p>
-        </div>
+        <p className="mt-8 text-center text-xs text-gray">© {new Date().getFullYear()} Driven Group. Todos los derechos reservados.</p>
       </div>
     </div>
   );

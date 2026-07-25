@@ -17,7 +17,10 @@ export function proxy(request: NextRequest) {
       request.cookies.get('next-auth.session-token')?.value;
 
     if (!sessionToken) {
-      const locale = pathname.split('/')[1] || defaultLocale;
+      const localeSegment = pathname.split('/')[1];
+      const locale = locales.includes(localeSegment as (typeof locales)[number])
+        ? localeSegment
+        : defaultLocale;
       return NextResponse.redirect(new URL(`/${locale}/login`, request.url));
     }
   }

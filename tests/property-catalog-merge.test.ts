@@ -38,12 +38,12 @@ test("an inactive override hides a source property from the public catalog", () 
   assert.equal(managedProperties.find((property) => property.slug === sourceProperty.slug)?.status, "INACTIVE");
 });
 
-test("a database-only property remains available to management but is excluded from the public catalog", () => {
+test("an active database-only property is available in the public catalog", () => {
   const created = databaseProperty({ id: "new-property-id", slug: "new-miami-residence", title: "New Miami Residence", status: "ACTIVE", images: [] });
-  const publicProperties = mergePropertySources(catalog, [created], {}, false, false);
+  const publicProperties = mergePropertySources(catalog, [created]);
   const managedProperties = mergePropertySources(catalog, [created], {}, true, true);
 
-  assert.equal(publicProperties.some((property) => property.slug === "new-miami-residence"), false);
+  assert.equal(publicProperties.find((property) => property.slug === "new-miami-residence")?.title, "New Miami Residence");
   assert.equal(managedProperties.find((property) => property.slug === "new-miami-residence")?.title, "New Miami Residence");
 });
 

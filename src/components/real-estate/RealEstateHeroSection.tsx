@@ -23,10 +23,10 @@ export function RealEstateHeroSection() {
 
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
-      <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-black sm:min-h-[85vh] md:min-h-[90vh]">
+      <section className="relative aspect-video max-h-[68svh] overflow-hidden bg-black sm:aspect-auto sm:max-h-none sm:min-h-[85vh] md:min-h-[90vh]">
         <video
           key={isNight ? "night" : "day"}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-contain sm:object-cover"
           autoPlay
           muted
           loop

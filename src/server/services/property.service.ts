@@ -36,7 +36,7 @@ async function getMergedProperties(
 }
 
 export async function getFeaturedProperties(limit = 6): Promise<Property[]> {
-  const properties = await getMergedProperties({ status: "ACTIVE" });
+  const properties = await getMergedProperties({ status: "ACTIVE" }, false, true);
   if (properties.length > 0 || getCatalogProperties().length > 0) return properties.slice(0, limit);
   try {
     const result = await repoGetFeatured(limit);
@@ -48,7 +48,7 @@ export async function getFeaturedProperties(limit = 6): Promise<Property[]> {
 }
 
 export async function getAllProperties(filters: PublicFilters): Promise<Property[]> {
-  const properties = await getMergedProperties(filters);
+  const properties = await getMergedProperties(filters, false, true);
   if (properties.length > 0 || getCatalogProperties().length > 0) return properties;
   try {
     const cleaned: PropertyFilters = {};
@@ -69,7 +69,7 @@ export async function getManagedProperties(): Promise<Property[]> {
 }
 
 export async function getAvailableCities(): Promise<string[]> {
-  const properties = await getMergedProperties({ status: "ACTIVE" });
+  const properties = await getMergedProperties({ status: "ACTIVE" }, false, true);
   if (properties.length > 0) return [...new Set(properties.map((property) => property.city))];
   return [...new Set(mockListingProperties.map((property) => property.city))];
 }
@@ -79,9 +79,9 @@ export async function getPropertyBySlug(slug: string): Promise<Property | null> 
   const normalizedSlug = slug.toLowerCase().trim();
   const catalogProperty = getCatalogPropertyBySlug(normalizedSlug);
 
-  if (!catalogProperty) return null;
+  if (!catalogProperty && !shouldReadDatabaseOverrides()) return null;
 
-  if (!shouldReadDatabaseOverrides()) {
+  if (catalogProperty && !shouldReadDatabaseOverrides()) {
     return catalogProperty?.status === "INACTIVE" ? null : catalogProperty;
   }
 

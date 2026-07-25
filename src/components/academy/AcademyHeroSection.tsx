@@ -34,8 +34,8 @@ const slides = [
     href: "#nexora",
     external: false,
     copy: {
-      es: { label: "NEXORA", title: "Inteligencia para visualizar tu patrimonio en un solo lugar.", action: "Conocer Nexora" },
-      en: { label: "NEXORA", title: "Intelligence to view your wealth in one place.", action: "Discover Nexora" },
+      es: { label: "NEXORAMR", title: "Inteligencia para visualizar tu patrimonio en un solo lugar.", action: "Conocer NEXORAMR" },
+      en: { label: "NEXORAMR", title: "Intelligence to view your wealth in one place.", action: "Discover NEXORAMR" },
     },
   },
 ] as const;
@@ -58,14 +58,16 @@ export function AcademyHeroSection() {
 
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
-      <section className="relative flex min-h-[calc(100svh-4rem)] items-end overflow-hidden sm:min-h-[85vh] md:min-h-[90vh]" aria-roledescription="carousel" aria-label="Driven Academy" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-        {slides.map((slide, index) => <Image key={slide.href} src={slide.image} alt={slide.copy[language].label} fill priority={index === 0} sizes="100vw" style={{ objectPosition: slide.position }} className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-out ${index === activeIndex ? "scale-100 opacity-100" : "scale-[1.025] opacity-0"}`} />)}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/68 via-black/24 to-black/5" />
-        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-7 px-6 pb-10 sm:px-8 sm:pb-14 lg:flex-row lg:items-end lg:justify-between">
+      <section className="relative overflow-hidden bg-black sm:flex sm:min-h-[85vh] sm:items-end md:min-h-[90vh]" aria-roledescription="carousel" aria-label="Driven Academy" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+        <div className="relative aspect-video bg-black sm:absolute sm:inset-0 sm:aspect-auto">
+          {slides.map((slide, index) => <Image key={slide.href} src={slide.image} alt={slide.copy[language].label} fill priority={index === 0} sizes="100vw" style={{ objectPosition: slide.position }} className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-[1800ms] ease-in-out sm:object-cover ${index === activeIndex ? "opacity-100" : "opacity-0"}`} />)}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent sm:from-black/68 sm:via-black/24 sm:to-black/5" />
+        </div>
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-6 bg-black px-6 py-7 sm:gap-7 sm:bg-transparent sm:px-8 sm:pb-14 sm:pt-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl border-l border-white/70 pl-5 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:pl-6">
-            <p className="text-[11px] font-semibold tracking-[0.28em] text-white/70">{copy.label === "NEXORA" ? "NEXORAMR" : copy.label}</p>
-            <h1 className="mt-3 font-serif text-4xl italic leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">{copy.title}</h1>
-            <a href={activeSlide.href} target={activeSlide.external ? "_blank" : undefined} rel={activeSlide.external ? "noreferrer" : undefined} className="mt-6 inline-flex items-center gap-3 border-b border-white/45 pb-2 text-sm font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:border-white hover:text-white/75">
+            <p className="text-[11px] font-semibold tracking-[0.28em] text-white/70">{copy.label}</p>
+            <h1 className="mt-3 font-serif text-3xl italic leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">{copy.title}</h1>
+            <a href={activeSlide.href} target={activeSlide.external ? "_blank" : undefined} rel={activeSlide.external ? "noreferrer" : undefined} className="mt-5 inline-flex items-center gap-3 border-b border-white/45 pb-2 text-xs font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:border-white hover:text-white/75 sm:mt-6 sm:text-sm">
               {copy.action}<Icon name="north_east" className="h-4 w-4" />
             </a>
           </div>

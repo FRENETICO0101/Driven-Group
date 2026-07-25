@@ -81,6 +81,8 @@ export const propertyRepository = {
     city: string;
     state: string;
     zipCode: string;
+    latitude?: number;
+    longitude?: number;
     bedrooms: number;
     bathrooms: number;
     squareFeet: number;

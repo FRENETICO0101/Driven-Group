@@ -1,5 +1,18 @@
 import { getLocale } from "next-intl/server";
 import { LegalDocument } from "@/components/legal/LegalDocument";
+import { buildLocalizedMetadata } from "@/lib/seo";
+
+export async function generateMetadata() {
+  const locale = await getLocale();
+  const isEnglish = locale === "en";
+  return buildLocalizedMetadata({
+    locale,
+    pathname: "/terms-of-service",
+    title: isEnglish ? "Terms of Service | Driven Group" : "Términos de servicio | Driven Group",
+    description: isEnglish ? "Terms governing use of the Driven Group website." : "Términos que regulan el uso del sitio web de Driven Group.",
+    imageAlt: "Driven Group",
+  });
+}
 
 export default async function TermsOfServicePage() {
   const locale = (await getLocale()) === "en" ? "en" : "es";
