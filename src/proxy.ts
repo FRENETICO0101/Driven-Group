@@ -13,7 +13,11 @@ export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   if (pathname.includes('/admin')) {
-    const sessionToken = request.cookies.get('authjs.session-token')?.value ||
+    // NextAuth uses a `__Secure-` cookie name on HTTPS deployments (such as
+    // Vercel) and the unprefixed name during local HTTP development.
+    const sessionToken = request.cookies.get('__Secure-authjs.session-token')?.value ||
+      request.cookies.get('__Secure-next-auth.session-token')?.value ||
+      request.cookies.get('authjs.session-token')?.value ||
       request.cookies.get('next-auth.session-token')?.value;
 
     if (!sessionToken) {
