@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { Icon } from "@/components/ui/Icon";
 
 const divisions = [
   { id: "digital-commerce", image: "/images1/business-digital-hero-v2.webp", title: "digitalCommerce", position: "center" },
@@ -40,7 +41,7 @@ export function BusinessDivisionsCarousel() {
         </div>
 
         <div className="absolute right-6 top-8 z-20 text-center sm:right-8">
-          <span className="material-symbols-outlined block text-2xl text-white">trending_up</span>
+          <Icon name="trending_up" className="block h-6 w-6 text-white" />
           <p className="mt-2 text-xs font-semibold tracking-widest text-white">BUSINESS</p>
         </div>
       </section>

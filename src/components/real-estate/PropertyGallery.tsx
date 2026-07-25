@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import type { PropertyImage } from '@/lib/types';
 import type { CatalogProperty } from '@/lib/property-catalog';
+import { Icon } from '@/components/ui/Icon';
 
 interface PropertyGalleryProps {
   images: PropertyImage[];
@@ -118,7 +119,7 @@ export function PropertyGallery({ images, title, galleryDocuments = [] }: Proper
           aria-label={`Ampliar imagen de ${title}`}
         >
           <span className="inline-flex items-center gap-2 rounded-lg bg-black/80 px-3 py-2 text-xs font-semibold opacity-100 shadow-sm backdrop-blur-sm transition-transform sm:translate-y-2 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
-            <span className="material-symbols-outlined text-base">fullscreen</span>
+            <Icon name="fullscreen" className="h-4 w-4" />
             Ampliar imagen
           </span>
         </button>
@@ -133,9 +134,9 @@ export function PropertyGallery({ images, title, galleryDocuments = [] }: Proper
             rel="noreferrer"
             className="inline-flex items-center gap-1.5 font-semibold transition-colors hover:text-black"
           >
-            <span className="material-symbols-outlined text-base">picture_as_pdf</span>
+            <Icon name="picture_as_pdf" className="h-4 w-4" />
             Ver PDF original
-            <span className="material-symbols-outlined text-base">open_in_new</span>
+            <Icon name="open_in_new" className="h-4 w-4" />
           </a>
         )}
       </div>
@@ -176,7 +177,7 @@ export function PropertyGallery({ images, title, galleryDocuments = [] }: Proper
                 <p className="mt-0.5 text-xs text-white/65">Imagen {selectedIndex + 1} de {images.length}</p>
               </div>
               <button type="button" onClick={() => setIsLightboxOpen(false)} className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-white/10 px-3 py-2 text-xs font-semibold hover:bg-white/20">
-                <span className="material-symbols-outlined text-base">close</span>
+                <Icon name="close" className="h-4 w-4" />
                 Cerrar
               </button>
             </div>
@@ -193,10 +194,10 @@ export function PropertyGallery({ images, title, galleryDocuments = [] }: Proper
               {images.length > 1 && (
                 <>
                   <button type="button" onClick={showPrevious} className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/65 p-2 text-white transition-colors hover:bg-black sm:left-5 sm:p-3" aria-label="Imagen anterior">
-                    <span className="material-symbols-outlined">chevron_left</span>
+                    <Icon name="chevron_left" className="h-5 w-5" />
                   </button>
                   <button type="button" onClick={showNext} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/65 p-2 text-white transition-colors hover:bg-black sm:right-5 sm:p-3" aria-label="Imagen siguiente">
-                    <span className="material-symbols-outlined">chevron_right</span>
+                    <Icon name="chevron_right" className="h-5 w-5" />
                   </button>
                 </>
               )}

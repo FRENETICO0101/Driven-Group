@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Icon } from "@/components/ui/Icon";
 
 const THEME_KEY = "driven-theme";
 const THEME_EVENT = "driven-theme-change";
@@ -40,7 +41,7 @@ export function ThemeToggle({ variant = "navigation", onThemeChange }: { variant
       aria-label={isNight ? "Switch to day mode" : "Switch to night mode"}
       className={hero ? "group text-center text-white transition-opacity hover:opacity-75" : "inline-flex h-8 w-8 items-center justify-center rounded-full text-dark-gray transition-colors hover:bg-light-gray/50 hover:text-black"}
     >
-      <span className={`material-symbols-outlined block ${hero ? "text-2xl" : "text-[19px]"}`}>{isNight ? "dark_mode" : "light_mode"}</span>
+      <Icon name={isNight ? "dark_mode" : "light_mode"} className={hero ? "block h-6 w-6" : "h-[19px] w-[19px]"} />
       {hero && <span className="mt-2 block text-xs font-semibold tracking-widest">{isNight ? "NIGHT" : "DAY"}</span>}
     </button>
   );

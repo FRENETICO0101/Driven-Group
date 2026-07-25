@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import type { Property } from "@/lib/types";
+import { Icon } from "@/components/ui/Icon";
 
 const InteractivePropertyMap = dynamic(
   () => import("./InteractivePropertyMap").then((module) => module.InteractivePropertyMap),
@@ -45,7 +46,7 @@ export function PropertyMap({ property }: PropertyMapProps) {
             onClick={() => setIsExpanded(true)}
             className="inline-flex items-center gap-2 rounded-lg border border-light-gray px-3 py-2 text-sm font-semibold text-black transition-colors hover:border-dark-gray hover:bg-light-gray/10"
           >
-            <span className="material-symbols-outlined text-base">open_in_full</span>
+            <Icon name="open_in_full" className="h-4 w-4" />
             {t("expandMap")}
           </button>
         )}
@@ -54,7 +55,7 @@ export function PropertyMap({ property }: PropertyMapProps) {
         <InteractivePropertyMap properties={[property]} selectedSlug={property.slug} restrictToMiami />
       ) : (
         <div className="flex min-h-64 flex-col items-center justify-center rounded-xl border border-light-gray bg-light-gray/10 p-6 text-center sm:min-h-80">
-          <span className="material-symbols-outlined mb-3 text-4xl text-black">location_on</span>
+          <Icon name="location_on" className="mb-3 h-10 w-10 text-black" />
           <p className="font-bold text-black">{property.city}</p>
           <p className="mt-1 max-w-md text-sm text-dark-gray">{fullAddress}</p>
           <a
@@ -64,7 +65,7 @@ export function PropertyMap({ property }: PropertyMapProps) {
             rel="noreferrer"
           >
             {t("viewLocation")}
-            <span className="material-symbols-outlined text-base">open_in_new</span>
+            <Icon name="open_in_new" className="h-4 w-4" />
           </a>
         </div>
       )}
@@ -81,7 +82,7 @@ export function PropertyMap({ property }: PropertyMapProps) {
                 onClick={() => setIsExpanded(false)}
                 className="inline-flex items-center gap-2 rounded-lg bg-black px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-dark-gray"
               >
-                <span className="material-symbols-outlined text-base">close</span>
+                <Icon name="close" className="h-4 w-4" />
                 {t("collapseMap")}
               </button>
             </div>

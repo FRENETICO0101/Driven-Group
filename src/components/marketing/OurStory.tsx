@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { Icon } from "@/components/ui/Icon";
 
 export function OurStory() {
   const t = useTranslations('about');
@@ -41,7 +42,7 @@ export function OurStory() {
             className="group inline-flex items-center gap-3 text-dark-gray hover:text-black transition-colors pt-4"
           >
             <span className="editorial-label tracking-[0.15em]">{t('readMore')}</span>
-            <span className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1.5">arrow_forward</span>
+            <Icon name="arrow_forward" className="h-[18px] w-[18px] transition-transform group-hover:translate-x-1.5" />
           </Link>
         </div>
 

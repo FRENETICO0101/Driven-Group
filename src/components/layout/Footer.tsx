@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { BrandLogo } from '@/components/ui/BrandLogo';
+import { Icon } from '@/components/ui/Icon';
 
 export function Footer() {
   const t = useTranslations('footer');
@@ -18,9 +19,9 @@ export function Footer() {
               <p>{t('location')}</p>
             </div>
             <div className="flex gap-4">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-white" aria-label="Instagram"><span className="material-symbols-outlined text-lg">photo_camera</span></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-white" aria-label="LinkedIn"><span className="material-symbols-outlined text-lg">business</span></a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-white" aria-label="YouTube"><span className="material-symbols-outlined text-lg">play_circle</span></a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-white" aria-label="Instagram"><Icon name="photo_camera" className="h-[18px] w-[18px]" /></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-white" aria-label="LinkedIn"><Icon name="business" className="h-[18px] w-[18px]" /></a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-white" aria-label="YouTube"><Icon name="play_circle" className="h-[18px] w-[18px]" /></a>
             </div>
           </div>
 

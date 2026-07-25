@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import type { Property } from "@/lib/types";
+import { Icon } from "@/components/ui/Icon";
 
 const InteractivePropertyMap = dynamic(
   () => import("./InteractivePropertyMap").then((module) => module.InteractivePropertyMap),
@@ -55,7 +56,7 @@ export function PropertiesMap({ properties }: { properties: Property[] }) {
               aria-pressed={isExpanded}
               className="inline-flex items-center gap-2 rounded-lg border border-light-gray px-3 py-2 text-sm font-semibold text-black transition-colors hover:border-dark-gray hover:bg-light-gray/10"
             >
-              <span className="material-symbols-outlined text-base">open_in_full</span>
+              <Icon name="open_in_full" className="h-4 w-4" />
               {t("expandMap")}
             </button>
           </div>
@@ -71,7 +72,7 @@ export function PropertiesMap({ properties }: { properties: Property[] }) {
               <p className="mt-1 text-sm text-dark-gray">{selected.address}, {selected.city}</p>
             </div>
             <Link href={`/real-estate/${selected.slug}`} className="inline-flex items-center justify-center gap-2 rounded-lg bg-black px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-dark-gray">
-              {tListing("viewDetails")} <span className="material-symbols-outlined text-base">arrow_forward</span>
+              {tListing("viewDetails")} <Icon name="arrow_forward" className="h-4 w-4" />
             </Link>
           </div>
         )}
@@ -89,7 +90,7 @@ export function PropertiesMap({ properties }: { properties: Property[] }) {
                 onClick={() => setIsExpanded(false)}
                 className="inline-flex items-center gap-2 rounded-lg bg-black px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-dark-gray"
               >
-                <span className="material-symbols-outlined text-base">close</span>
+                <Icon name="close" className="h-4 w-4" />
                 {t("collapseMap")}
               </button>
             </div>

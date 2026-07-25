@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import type { Property } from "@/lib/types";
 import { PropertyCard } from "@/components/real-estate/PropertyCard";
+import { Icon } from "@/components/ui/Icon";
 
 const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop";
 
@@ -25,7 +26,7 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
           className="group inline-flex items-center gap-3 text-[13px] tracking-wide text-dark-gray transition-colors hover:text-black"
         >
           {t("viewAll")}
-          <span className="material-symbols-outlined text-base transition-transform duration-500 group-hover:translate-x-1">arrow_outward</span>
+          <Icon name="arrow_outward" className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
         </a>
       </div>
 
@@ -33,7 +34,7 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
         <p className="text-gray text-center py-24 editorial-label">{t("empty")}</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
-          {properties.map((property) => {
+          {properties.map((property, index) => {
             const primaryImage = property.images?.[0];
             return (
               <PropertyCard
@@ -42,6 +43,7 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
                 imageAlt={primaryImage?.alt ?? property.title}
                 title={property.title}
                 slug={property.slug}
+                priority={index < 4}
               />
             );
           })}

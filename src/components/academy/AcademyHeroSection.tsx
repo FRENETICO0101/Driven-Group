@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useLocale } from "next-intl";
+import { Icon } from "@/components/ui/Icon";
 
 type Language = "es" | "en";
 
@@ -65,7 +66,7 @@ export function AcademyHeroSection() {
             <p className="text-[11px] font-semibold tracking-[0.28em] text-white/70">{copy.label === "NEXORA" ? "NEXORAMR" : copy.label}</p>
             <h1 className="mt-3 font-serif text-4xl italic leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">{copy.title}</h1>
             <a href={activeSlide.href} target={activeSlide.external ? "_blank" : undefined} rel={activeSlide.external ? "noreferrer" : undefined} className="mt-6 inline-flex items-center gap-3 border-b border-white/45 pb-2 text-sm font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:border-white hover:text-white/75">
-              {copy.action}<span className="material-symbols-outlined text-base">north_east</span>
+              {copy.action}<Icon name="north_east" className="h-4 w-4" />
             </a>
           </div>
           <div className="flex items-center self-start gap-2 opacity-70 transition-opacity hover:opacity-100 focus-within:opacity-100 lg:self-auto">

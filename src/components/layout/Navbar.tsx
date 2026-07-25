@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Icon } from "@/components/ui/Icon";
 
 const navigation = [
   { key: "home", href: "/", index: "01" },
@@ -79,9 +80,9 @@ export function Navbar() {
   return (
     <>
       <header className={`fixed inset-x-0 top-0 ${isMenuOpen ? "z-[1210]" : "z-50"} transition-all duration-700 ${overlayVisible ? "border-b border-light-gray bg-white/95 backdrop-blur-md" : "bg-transparent"}`} aria-label={t("ui.mainNavigation")}>
-        <div className="mx-auto max-w-7xl px-6 sm:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <div className="grid h-16 items-center sm:h-20" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
-            <div className="flex items-center gap-5 sm:gap-6">
+            <div className="flex min-w-0 items-center gap-3 sm:gap-6">
               <button onClick={() => setIsMenuOpen((open) => !open)} className="flex items-center gap-2.5 rounded text-dark-gray transition-colors hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={isMenuOpen ? t("ui.closeMenu") : t("ui.openMenu")} aria-controls="driven-main-menu" aria-expanded={isMenuOpen}>
                 <span className="flex h-4 w-5 flex-col justify-between">
                   <span className={`block h-px bg-current transition-all ${isMenuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
@@ -97,19 +98,19 @@ export function Navbar() {
               </div>
             </div>
 
-            <Link href="/" className="justify-self-center rounded focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={t("ui.homeAria")}>
-              <BrandLogo className={isRealEstate || isBusiness || isAcademy ? "w-28 sm:w-40 md:w-48" : "w-20 sm:w-24"} variant={isRealEstate ? "realEstate" : isBusiness ? "business" : isAcademy ? "academy" : "corporate"} dark={isNight} />
+            <Link href="/" className="min-w-0 justify-self-center rounded focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={t("ui.homeAria")}>
+              <BrandLogo className={isRealEstate || isBusiness || isAcademy ? "w-24 sm:w-40 md:w-48" : "w-[4.5rem] sm:w-24"} variant={isRealEstate ? "realEstate" : isBusiness ? "business" : isAcademy ? "academy" : "corporate"} dark={isNight} />
             </Link>
 
-            <div className="flex items-center justify-end gap-4 sm:gap-5">
+            <div className="flex shrink-0 items-center justify-end gap-2 sm:gap-5">
               <Link href="/contact" className="hidden items-center gap-1.5 text-dark-gray transition-colors hover:text-black sm:flex" aria-label={t("ui.contact")}>
-                <span className="material-symbols-outlined text-[18px]">phone</span>
+                <Icon name="phone" className="h-[18px] w-[18px]" />
                 <span className="editorial-label hidden lg:inline">{t("ui.contact")}</span>
               </Link>
               <LanguageSwitcher />
               <ThemeToggle onThemeChange={setIsNight} />
               <Link href={`/${locale}/login`} className="rounded text-dark-gray transition-colors hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={t("ui.account")}>
-                <span className="material-symbols-outlined text-[18px]">person</span>
+                <Icon name="person" className="h-[18px] w-[18px]" />
               </Link>
             </div>
           </div>

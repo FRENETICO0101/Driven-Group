@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useLocale } from "next-intl";
+import { Icon } from "@/components/ui/Icon";
 
 type Locale = "es" | "en";
 
@@ -45,14 +46,14 @@ export function HeroSection() {
             <h1 className="sr-only">{copy.label}</h1>
             <p className="text-[11px] font-semibold tracking-[0.28em] text-white/70">{copy.label}</p>
             <Link href={activeSlide.href} className="mt-4 inline-flex items-center gap-3 border-b border-white/45 pb-2 text-sm font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:border-white hover:text-white/75">
-              {copy.action}<span className="material-symbols-outlined text-base">north_east</span>
+              {copy.action}<Icon name="north_east" className="h-4 w-4" />
             </Link>
           </div>
 
           <div className="group flex items-center self-start gap-2 opacity-65 transition-opacity hover:opacity-100 focus-within:opacity-100 lg:self-auto" aria-label="Carousel controls">
-            <button type="button" onClick={previous} className="inline-flex h-7 w-7 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-black/25 hover:text-white focus-visible:bg-black/25 focus-visible:outline focus-visible:outline-1 focus-visible:outline-white/70" aria-label={language === "es" ? "Imagen anterior" : "Previous image"}><span className="material-symbols-outlined text-base">arrow_back</span></button>
+            <button type="button" onClick={previous} className="inline-flex h-7 w-7 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-black/25 hover:text-white focus-visible:bg-black/25 focus-visible:outline focus-visible:outline-1 focus-visible:outline-white/70" aria-label={language === "es" ? "Imagen anterior" : "Previous image"}><Icon name="arrow_back" className="h-4 w-4" /></button>
             <div className="flex items-center gap-1.5">{slides.map((slide, index) => <button key={slide.href} type="button" onClick={() => setActiveIndex(index)} className={`h-1 rounded-full transition-all duration-300 ${index === activeIndex ? "w-6 bg-white" : "w-1 bg-white/45 hover:bg-white/80"}`} aria-label={slide.copy[language].label} aria-current={index === activeIndex ? "true" : undefined} />)}</div>
-            <button type="button" onClick={next} className="inline-flex h-7 w-7 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-black/25 hover:text-white focus-visible:bg-black/25 focus-visible:outline focus-visible:outline-1 focus-visible:outline-white/70" aria-label={language === "es" ? "Siguiente imagen" : "Next image"}><span className="material-symbols-outlined text-base">arrow_forward</span></button>
+            <button type="button" onClick={next} className="inline-flex h-7 w-7 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-black/25 hover:text-white focus-visible:bg-black/25 focus-visible:outline focus-visible:outline-1 focus-visible:outline-white/70" aria-label={language === "es" ? "Siguiente imagen" : "Next image"}><Icon name="arrow_forward" className="h-4 w-4" /></button>
           </div>
         </div>
       </section>

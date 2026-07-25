@@ -36,7 +36,7 @@ export function BrandLogo({ className = "w-24", imageClassName = "", variant = "
         alt="Driven Group"
         fill
         sizes={sizes}
-        className={`${variant === "menu" ? "object-contain brightness-0 invert" : "object-cover"} object-center ${imageClassName}`}
+        className={`${variant === "menu" ? "object-contain brightness-0 invert" : "object-contain"} object-center ${imageClassName}`}
       />
     </span>
   );

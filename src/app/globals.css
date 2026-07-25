@@ -142,6 +142,15 @@ html[data-theme="night"] header [data-brand-variant="corporate"] img {
     color: var(--theme-charcoal);
     font-feature-settings: "kern", "liga", "clig", "calt";
     line-height: 1.5;
+    overflow-x: clip;
+  }
+
+  img, video {
+    max-width: 100%;
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings: "opsz" 24, "wght" 400, "FILL" 0, "GRAD" 0;
   }
 
   h1, h2, h3, h4, h5, h6 {
