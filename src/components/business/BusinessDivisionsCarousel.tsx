@@ -36,8 +36,7 @@ export function BusinessDivisionsCarousel() {
               style={{ objectPosition: division.position }}
             />
           ))}
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.76)_0%,rgba(0,0,0,0.46)_45%,rgba(0,0,0,0.18)_100%)]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/10" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/5" />
         </div>
 
         <div className="absolute right-6 top-8 z-20 text-center sm:right-8">

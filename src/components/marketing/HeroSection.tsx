@@ -107,7 +107,7 @@ export function HeroSection() {
             />
           ))
         )}
-        <div className={`absolute inset-0 ${isNight ? "night-hero-gradient" : "bg-gradient-to-t from-black/80 via-black/35 to-black/10"}`} />
+        <div className={`absolute inset-0 ${isNight ? "night-hero-gradient" : "bg-gradient-to-t from-black/68 via-black/25 to-black/5"}`} />
 
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-end gap-7 px-6 pb-9 sm:px-8 sm:pb-12 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-sm border-l border-white/70 pl-5 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:pl-6">

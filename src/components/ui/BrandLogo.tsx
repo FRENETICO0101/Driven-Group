@@ -6,7 +6,7 @@ import academyLogo from "../../../assets/logos/academy-blanco.png";
 import realEstateDarkLogo from "../../../assets/logos/logo-re-negro.png";
 import businessDarkLogo from "../../../assets/logos/logo-bussines-negro.png";
 import academyDarkLogo from "../../../assets/logos/academy-negro.png";
-import menuLogo from "../../../assets/logos/logo-dg-blanco.png";
+import menuLogo from "../../../assets/logos/logo-dg.png";
 
 interface BrandLogoProps {
   className?: string;
@@ -36,7 +36,7 @@ export function BrandLogo({ className = "w-24", imageClassName = "", variant = "
         alt="Driven Group"
         fill
         sizes={sizes}
-        className={`${variant === "menu" ? "object-contain" : "object-cover"} object-center ${imageClassName}`}
+        className={`${variant === "menu" ? "object-contain brightness-0 invert" : "object-cover"} object-center ${imageClassName}`}
       />
     </span>
   );

@@ -59,7 +59,7 @@ export function AcademyHeroSection() {
     <header className="relative bg-white pt-16 sm:pt-20">
       <section className="relative flex min-h-[calc(100svh-4rem)] items-end overflow-hidden sm:min-h-[85vh] md:min-h-[90vh]" aria-roledescription="carousel" aria-label="Driven Academy" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
         {slides.map((slide, index) => <Image key={slide.href} src={slide.image} alt={slide.copy[language].label} fill priority={index === 0} sizes="100vw" style={{ objectPosition: slide.position }} className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-out ${index === activeIndex ? "scale-100 opacity-100" : "scale-[1.025] opacity-0"}`} />)}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/68 via-black/24 to-black/5" />
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-7 px-6 pb-10 sm:px-8 sm:pb-14 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl border-l border-white/70 pl-5 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:pl-6">
             <p className="text-[11px] font-semibold tracking-[0.28em] text-white/70">{copy.label === "NEXORA" ? <>NEXORA<sup className="ml-0.5 text-[0.55em] align-super">®</sup></> : copy.label}</p>
