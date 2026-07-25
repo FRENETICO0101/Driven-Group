@@ -6,7 +6,7 @@ export function ContactHeroSection() {
     <header className="relative bg-white pt-16 sm:pt-20">
       <section className="relative min-h-[56svh] overflow-hidden bg-[#151515] sm:min-h-[62vh]" aria-label="Driven Group">
         <Image
-          src="/images1/contact-driven-group-miami.png"
+          src="/images1/contact-driven-group-miami.webp"
           alt="Driven Group en Miami"
           fill
           priority

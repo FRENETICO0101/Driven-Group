@@ -38,7 +38,7 @@ export function Footer() {
           <FooterColumn title="Academy" links={[
             { href: '/academy#driven-academy', label: 'Driven Academy' },
             { href: 'https://driven-academy.com/modo-rico', label: 'Modo Rico', external: true },
-            { href: '/academy#nexora', label: 'Nexora®' },
+            { href: '/academy#nexora', label: 'NEXORAMR' },
           ]} />
           <FooterColumn title={t('company')} links={[
             { href: '/', label: t('home') },

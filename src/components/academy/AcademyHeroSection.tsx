@@ -8,7 +8,7 @@ type Language = "es" | "en";
 
 const slides = [
   {
-    image: "/images1/academy-driven-financial-workshop.png",
+    image: "/images1/academy-driven-financial-workshop.webp",
     position: "60% center",
     href: "#driven-academy",
     external: false,
@@ -62,7 +62,7 @@ export function AcademyHeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/68 via-black/24 to-black/5" />
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-7 px-6 pb-10 sm:px-8 sm:pb-14 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl border-l border-white/70 pl-5 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:pl-6">
-            <p className="text-[11px] font-semibold tracking-[0.28em] text-white/70">{copy.label === "NEXORA" ? <>NEXORA<sup className="ml-0.5 text-[0.55em] align-super">®</sup></> : copy.label}</p>
+            <p className="text-[11px] font-semibold tracking-[0.28em] text-white/70">{copy.label === "NEXORA" ? "NEXORAMR" : copy.label}</p>
             <h1 className="mt-3 font-serif text-4xl italic leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">{copy.title}</h1>
             <a href={activeSlide.href} target={activeSlide.external ? "_blank" : undefined} rel={activeSlide.external ? "noreferrer" : undefined} className="mt-6 inline-flex items-center gap-3 border-b border-white/45 pb-2 text-sm font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:border-white hover:text-white/75">
               {copy.action}<span className="material-symbols-outlined text-base">north_east</span>

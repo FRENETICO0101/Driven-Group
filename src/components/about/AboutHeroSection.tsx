@@ -6,7 +6,7 @@ import { BrandLogo } from "@/components/ui/BrandLogo";
 
 const slides = [
   { title: "Driven Real Estate", variant: "realEstate", image: "/property-assets/brickell/1428-brickell/gallery/private-dining-hummingbird.webp", position: "center center", fit: "contain" },
-  { title: "Driven Academy", variant: "academy", image: "/images1/academy-driven-financial-workshop.png", position: "center center", fit: "cover" },
+  { title: "Driven Academy", variant: "academy", image: "/images1/academy-driven-financial-workshop.webp", position: "center center", fit: "cover" },
   { title: "Driven Business", variant: "business", image: "/images1/business-executive-miami-v1.webp", position: "center center", fit: "cover" },
 ] as const;
 

@@ -8,9 +8,9 @@ import { useLocale } from "next-intl";
 type Locale = "es" | "en";
 
 const slides = [
-  { href: "/real-estate", image: "/images1/real-estate-miami-vertical-developments.png", position: "center center", copy: { es: { label: "DRIVEN REAL ESTATE", action: "Explorar propiedades" }, en: { label: "DRIVEN REAL ESTATE", action: "Explore properties" } } },
+  { href: "/real-estate", image: "/images1/real-estate-miami-vertical-developments.webp", position: "center center", copy: { es: { label: "DRIVEN REAL ESTATE", action: "Explorar propiedades" }, en: { label: "DRIVEN REAL ESTATE", action: "Explore properties" } } },
   { href: "/business", image: "/images1/business-alliances-hero-v2.webp", position: "center center", copy: { es: { label: "DRIVEN BUSINESS", action: "Conocer Business" }, en: { label: "DRIVEN BUSINESS", action: "Discover Business" } } },
-  { href: "/academy", image: "/images1/academy-driven-financial-workshop.png", position: "60% center", copy: { es: { label: "DRIVEN ACADEMY", action: "Conocer Academy" }, en: { label: "DRIVEN ACADEMY", action: "Discover Academy" } } },
+  { href: "/academy", image: "/images1/academy-driven-financial-workshop.webp", position: "60% center", copy: { es: { label: "DRIVEN ACADEMY", action: "Conocer Academy" }, en: { label: "DRIVEN ACADEMY", action: "Discover Academy" } } },
 ] as const;
 
 const AUTO_ADVANCE_DELAY = 16_000;
