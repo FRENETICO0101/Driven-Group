@@ -26,8 +26,10 @@ export function BrandLogo({ className = "w-24", imageClassName = "", variant = "
         : variant === "menu"
           ? menuLogo
         : corporateLogo;
-  const aspectRatio = variant === "menu" ? "aspect-square" : isDivisionLogo ? "aspect-[3.16]" : "aspect-[1.42]";
-  const sizes = variant === "menu" ? "(max-width: 1279px) 0px, 256px" : isDivisionLogo ? "(max-width: 640px) 112px, 192px" : "(max-width: 640px) 80px, 160px";
+  // Division brand files are square canvases. Keeping their intrinsic ratio
+  // prevents the mark from being compressed into a shallow horizontal slot.
+  const aspectRatio = variant === "menu" || isDivisionLogo ? "aspect-square" : "aspect-[1.42]";
+  const sizes = variant === "menu" ? "(max-width: 1279px) 0px, 256px" : isDivisionLogo ? "(max-width: 640px) 64px, 96px" : "(max-width: 640px) 80px, 160px";
 
   return (
     <span data-brand-variant={variant} className={`relative block overflow-hidden ${aspectRatio} ${className}`}>

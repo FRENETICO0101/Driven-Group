@@ -13,7 +13,13 @@ const THEME_EVENT = "driven-theme-change";
 export function RealEstateHeroSection() {
   const locale = useLocale();
   const isEnglish = locale === "en";
-  const [isNight, setIsNight] = useState(() => typeof document !== "undefined" && document.documentElement.dataset.theme === "night");
+  // Match the server's initial markup and switch to a persisted night theme
+  // only after hydration.
+  const [isNight, setIsNight] = useState(false);
+
+  useEffect(() => {
+    setIsNight(document.documentElement.dataset.theme === "night");
+  }, []);
 
   useEffect(() => {
     const syncTheme = (event: Event) => setIsNight((event as CustomEvent<boolean>).detail);

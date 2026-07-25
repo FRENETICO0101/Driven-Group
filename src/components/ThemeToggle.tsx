@@ -13,7 +13,15 @@ function applyTheme(isNight: boolean) {
 }
 
 export function ThemeToggle({ variant = "navigation", onThemeChange }: { variant?: "navigation" | "hero"; onThemeChange?: (isNight: boolean) => void }) {
-  const [isNight, setIsNight] = useState(() => typeof document !== "undefined" && (document.documentElement.dataset.theme === "night" || localStorage.getItem(THEME_KEY) === "night"));
+  // Do not consult localStorage while rendering: SSR always starts in day mode.
+  // Synchronizing in an effect prevents hydration mismatches in the navbar.
+  const [isNight, setIsNight] = useState(false);
+
+  useEffect(() => {
+    const nextNight = document.documentElement.dataset.theme === "night" || localStorage.getItem(THEME_KEY) === "night";
+    setIsNight(nextNight);
+    onThemeChange?.(nextNight);
+  }, [onThemeChange]);
 
   useEffect(() => {
     const syncTheme = (event: Event) => {

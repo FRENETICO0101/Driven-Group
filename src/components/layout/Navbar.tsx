@@ -42,12 +42,18 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeCityIdx, setActiveCityIdx] = useState(0);
-  const [isNight, setIsNight] = useState(() => typeof document !== "undefined" && document.documentElement.dataset.theme === "night");
+  // Keep the first client render identical to SSR. The persisted theme is read
+  // after hydration, otherwise the logo source can differ from server HTML.
+  const [isNight, setIsNight] = useState(false);
   const [, setTick] = useState(0);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => setTick((value) => value + 1), 60_000);
     return () => window.clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    setIsNight(document.documentElement.dataset.theme === "night");
   }, []);
 
   useEffect(() => {
@@ -99,7 +105,7 @@ export function Navbar() {
             </div>
 
             <Link href="/" className="min-w-0 justify-self-center rounded focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={t("ui.homeAria")}>
-              <BrandLogo className={isRealEstate || isBusiness || isAcademy ? "w-24 sm:w-40 md:w-48" : "w-[4.5rem] sm:w-24"} variant={isRealEstate ? "realEstate" : isBusiness ? "business" : isAcademy ? "academy" : "corporate"} dark={isNight} />
+              <BrandLogo className={isRealEstate || isBusiness || isAcademy ? "w-16 sm:w-20 md:w-24" : "w-[4.5rem] sm:w-24"} variant={isRealEstate ? "realEstate" : isBusiness ? "business" : isAcademy ? "academy" : "corporate"} dark={isNight} />
             </Link>
 
             <div className="flex shrink-0 items-center justify-end gap-2 sm:gap-5">
