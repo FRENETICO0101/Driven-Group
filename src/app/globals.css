@@ -66,33 +66,6 @@ html[data-theme="night"] body {
   transform: scale(1.035);
 }
 
-.about-division-hero {
-  background: #151515;
-  isolation: isolate;
-  transition: background 900ms ease;
-}
-
-.about-division-hero[data-division="realEstate"] {
-  background: radial-gradient(ellipse 56% 48% at 50% 45%, rgba(74, 111, 132, 0.28), transparent 66%), #151515;
-}
-
-.about-division-hero[data-division="academy"] {
-  background: radial-gradient(ellipse 56% 48% at 50% 45%, rgba(132, 102, 71, 0.27), transparent 66%), #151515;
-}
-
-.about-division-hero[data-division="business"] {
-  background: radial-gradient(ellipse 56% 48% at 50% 45%, rgba(110, 99, 142, 0.25), transparent 66%), #151515;
-}
-
-.about-division-logo-frame {
-  transition: border-color 900ms ease, background-color 900ms ease, transform 700ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 700ms ease;
-}
-
-.about-division-hero:hover .about-division-logo-frame {
-  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.42);
-  transform: translateY(-2px);
-}
-
 html[data-theme="night"] .bg-white,
 html[data-theme="night"] [class*="bg-white/"] {
   background-color: #1b1b1b !important;
