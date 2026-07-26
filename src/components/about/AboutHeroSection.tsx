@@ -10,7 +10,7 @@ const slides = [
   { title: "Driven Business", variant: "business", image: "/images1/business-executive-miami-v1.webp", position: "center center", fit: "cover" },
 ] as const;
 
-const AUTO_ADVANCE_DELAY = 15_000;
+const AUTO_ADVANCE_DELAY = 5_000;
 
 export function AboutHeroSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -25,7 +25,7 @@ export function AboutHeroSection() {
 
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
-      <section className="relative min-h-[34rem] overflow-hidden bg-[#151515] sm:min-h-[38rem]" aria-roledescription="carousel" aria-label="Driven Group" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+      <section className="relative h-[46svh] min-h-[20rem] overflow-hidden bg-[#151515] sm:h-[64svh] sm:min-h-[36rem] md:h-[68svh]" aria-roledescription="carousel" aria-label="Driven Group" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
         {slides.map((slide, index) => (
           <div key={slide.title} className={`absolute inset-0 transition-opacity duration-[1400ms] ease-out ${index === activeIndex ? "opacity-100" : "opacity-0"}`}>
             {slide.fit === "contain" && <Image src={slide.image} alt="" fill sizes="100vw" aria-hidden className="scale-110 object-cover opacity-35 blur-xl" />}
@@ -42,7 +42,7 @@ export function AboutHeroSection() {
         ))}
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(12,12,12,.96)_0%,rgba(12,12,12,.82)_35%,rgba(12,12,12,.20)_66%,rgba(12,12,12,.08)_100%)]" />
 
-        <div className="relative mx-auto flex min-h-[34rem] max-w-[1440px] items-center px-7 py-12 sm:min-h-[38rem] sm:px-12 lg:px-20">
+        <div className="relative mx-auto flex h-full max-w-[1440px] items-center px-7 py-12 sm:px-12 lg:px-20">
           <div className="flex w-full max-w-[19rem] items-center justify-center border border-white/20 bg-black/20 px-9 py-12 shadow-[0_28px_72px_rgba(0,0,0,.40)] backdrop-blur-[2px] sm:max-w-md sm:px-14 sm:py-16">
             <BrandLogo
               variant={activeSlide.variant}
@@ -53,9 +53,9 @@ export function AboutHeroSection() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-7 z-10 flex gap-2 sm:bottom-10 sm:left-12 lg:left-20">
+        <div className="absolute bottom-8 left-7 z-10 flex items-center gap-2 sm:bottom-10 sm:left-12 lg:left-20">
           {slides.map((slide, index) => (
-            <button key={slide.title} type="button" onClick={() => setActiveIndex(index)} aria-label={slide.title} aria-current={index === activeIndex ? "true" : undefined} className={`h-1.5 rounded-full transition-all duration-300 ${index === activeIndex ? "w-9 bg-white" : "w-2 bg-white/45 hover:bg-white/80"}`} />
+            <button key={slide.title} type="button" onClick={() => setActiveIndex(index)} aria-label={slide.title} aria-current={index === activeIndex ? "true" : undefined} className={`rounded-full shadow-[0_1px_3px_rgba(0,0,0,0.7)] transition-all duration-300 ${index === activeIndex ? "h-1.5 w-7 bg-white" : "h-1.5 w-1.5 bg-white/65 hover:bg-white"}`} />
           ))}
         </div>
       </section>

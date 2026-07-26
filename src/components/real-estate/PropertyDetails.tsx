@@ -17,9 +17,9 @@ export async function PropertyDetails({ property }: PropertyDetailsProps) {
   const t = copy[locale === "en" ? "en" : "es"];
   const formatNumber = new Intl.NumberFormat(locale === "en" ? "en-US" : "es-MX");
   const specs = [
-    { label: t.bedrooms, value: property.bedrooms > 0 ? formatNumber.format(property.bedrooms) : t.toBeConfirmed },
     { label: t.priceFrom, value: property.price > 0 ? `$${formatNumber.format(property.price)} USD` : t.toBeConfirmed },
     { label: t.surface, value: property.squareFeet > 0 ? `${formatNumber.format(property.squareFeet)} ft²` : t.toBeConfirmed },
+    { label: t.bedrooms, value: property.bedrooms > 0 ? formatNumber.format(property.bedrooms) : t.toBeConfirmed },
     { label: t.deliveryDate, value: t.toBeConfirmed },
   ];
   const amenities = property.amenities || [];

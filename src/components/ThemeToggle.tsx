@@ -18,9 +18,12 @@ export function ThemeToggle({ variant = "navigation", onThemeChange }: { variant
   const [isNight, setIsNight] = useState(false);
 
   useEffect(() => {
-    const nextNight = document.documentElement.dataset.theme === "night" || localStorage.getItem(THEME_KEY) === "night";
-    setIsNight(nextNight);
-    onThemeChange?.(nextNight);
+    const timer = window.setTimeout(() => {
+      const nextNight = document.documentElement.dataset.theme === "night" || localStorage.getItem(THEME_KEY) === "night";
+      setIsNight(nextNight);
+      onThemeChange?.(nextNight);
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, [onThemeChange]);
 
   useEffect(() => {

@@ -88,6 +88,23 @@ html[data-theme="night"] .text-gray {
   color: #a8a8a8 !important;
 }
 
+.story-brand-logo {
+  object-fit: cover;
+  object-position: center;
+}
+
+.story-brand-logo--dark {
+  display: none;
+}
+
+html[data-theme="night"] .story-brand-logo--light {
+  display: none;
+}
+
+html[data-theme="night"] .story-brand-logo--dark {
+  display: block;
+}
+
 html[data-theme="night"] .border-light-gray,
 html[data-theme="night"] .divide-light-gray > :not([hidden]) ~ :not([hidden]) {
   border-color: #444444 !important;

@@ -15,7 +15,7 @@ export function Footer() {
             <div className="mb-6"><BrandLogo className="w-32 sm:w-40" imageClassName="brightness-0 invert" /></div>
             <p className="mb-8 max-w-sm text-sm leading-relaxed text-light-gray">{t('description')}</p>
             <div className="mb-8 space-y-2 text-sm text-gray">
-              <a href="mailto:info@drivengroup.com" className="transition-colors hover:text-white">info@drivengroup.com</a>
+              <a href="mailto:administracion@drivengroup.com.mx" className="transition-colors hover:text-white">administracion@drivengroup.com.mx</a>
               <p>{t('location')}</p>
             </div>
             <div className="flex gap-4">
@@ -39,7 +39,7 @@ export function Footer() {
           <FooterColumn title="Academy" links={[
             { href: '/academy#driven-academy', label: 'Driven Academy' },
             { href: 'https://driven-academy.com/modo-rico', label: 'Modo Rico', external: true },
-            { href: '/academy#nexora', label: 'NEXORAMR' },
+            { href: 'https://driven-academy.com/modo-rico', label: 'NEXORAMR', external: true },
           ]} />
           <FooterColumn title={t('company')} links={[
             { href: '/', label: t('home') },
@@ -67,7 +67,7 @@ function FooterColumn({ title, links, extra }: { title: string; links: Array<{ h
       <h4 className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-gray">{title}</h4>
       <ul className="space-y-3">
         {links.map((link) => (
-          <li key={link.href}>
+          <li key={`${link.href}-${link.label}`}>
             {link.external ? (
               <a href={link.href} target="_blank" rel="noreferrer" className="text-sm text-light-gray transition-colors hover:text-white">{link.label}</a>
             ) : (

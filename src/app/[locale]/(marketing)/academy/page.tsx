@@ -7,6 +7,7 @@ import { buildLocalizedMetadata } from "@/lib/seo";
 export const dynamic = "force-dynamic";
 
 const siteUrl = "https://drivengroup.com";
+const modoRicoUrl = "https://driven-academy.com/modo-rico";
 
 /*
 const metadata = {
@@ -50,9 +51,9 @@ const content = {
     ],
     ecosystemLabel: "ECOSISTEMA DE APRENDIZAJE",
     cards: [
-      { index: "01", title: "Driven Academy", description: "La plataforma de conocimiento de Driven Group: programas, contenidos y experiencias creadas para desarrollar criterio, liderazgo y capacidades aplicables.", image: "/images1/academy-driven-financial-workshop.webp", alt: "Sesión de aprendizaje de Driven Academy", action: "Conocer Academy", href: "#driven-academy", external: false },
-      { index: "02", title: "Modo Rico", description: "Una metodología práctica para recuperar el control de tus finanzas, construir estabilidad y avanzar con dirección hacia tu patrimonio.", image: "/images1/academy-digital-learning-v1.webp", alt: "Modo Rico, aprendizaje financiero digital", action: "Ir a Modo Rico", href: "https://driven-academy.com/modo-rico", external: true },
-      { index: "03", title: "NEXORAMR", description: "Plataforma inteligente de finanzas personales impulsada por IA para visualizar ingresos, gastos, deudas, inversiones, patrimonio y metas en un solo lugar.", image: "/images1/academy-nexora-platform-v1.webp", alt: "Plataforma financiera NEXORAMR", action: "Conocer NEXORAMR", href: "#nexora", external: false },
+      { index: "01", title: "Driven Academy", description: "La plataforma de conocimiento de Driven Group: programas educativos, contenidos y experiencias creadas para desarrollar criterio, liderazgo y capacidades aplicables.", image: "/images1/academy-virtual-classroom.webp", alt: "Sesión de aprendizaje de Driven Academy", action: "Conocer Academy", href: modoRicoUrl, external: true },
+      { index: "02", title: "Modo Rico", description: "Una metodología práctica para recuperar el control de tus finanzas, construir estabilidad y avanzar con dirección hacia tu libertad financiera.", image: "/images1/academy-nexora-platform-v1.webp", alt: "Modo Rico, aprendizaje financiero digital", action: "Ir a Modo Rico", href: modoRicoUrl, external: true },
+      { index: "03", title: "NEXORAMR", description: "Plataforma inteligente de finanzas personales impulsada por IA para visualizar ingresos, gastos, deudas, inversiones, patrimonio y metas en un solo lugar.", image: "/images1/academy-digital-learning-v1.webp", alt: "Plataforma financiera NEXORAMR", action: "Conocer NEXORAMR", href: modoRicoUrl, external: true },
     ],
   },
   en: {
@@ -66,15 +67,25 @@ const content = {
     ],
     ecosystemLabel: "LEARNING ECOSYSTEM",
     cards: [
-      { index: "01", title: "Driven Academy", description: "Driven Group's knowledge platform: programs, content, and experiences designed to develop judgment, leadership, and applicable capabilities.", image: "/images1/academy-driven-financial-workshop.webp", alt: "Driven Academy learning session", action: "Discover Academy", href: "#driven-academy", external: false },
-      { index: "02", title: "Modo Rico", description: "A practical methodology to regain control of your finances, build stability, and move purposefully toward your wealth goals.", image: "/images1/academy-digital-learning-v1.webp", alt: "Modo Rico digital financial learning", action: "Visit Modo Rico", href: "https://driven-academy.com/modo-rico", external: true },
-      { index: "03", title: "NEXORAMR", description: "An AI-powered personal finance platform to view income, spending, debt, investments, wealth, and goals in one place.", image: "/images1/academy-nexora-platform-v1.webp", alt: "NEXORAMR financial platform", action: "Discover NEXORAMR", href: "#nexora", external: false },
+      { index: "01", title: "Driven Academy", description: "Driven Group's knowledge platform: programs, content, and experiences designed to develop judgment, leadership, and applicable capabilities.", image: "/images1/academy-virtual-classroom.webp", alt: "Driven Academy learning session", action: "Discover Academy", href: modoRicoUrl, external: true },
+      { index: "02", title: "Modo Rico", description: "A practical methodology to regain control of your finances, build stability, and move purposefully toward your wealth goals.", image: "/images1/academy-nexora-platform-v1.webp", alt: "Modo Rico digital financial learning", action: "Visit Modo Rico", href: modoRicoUrl, external: true },
+      { index: "03", title: "NEXORAMR", description: "An AI-powered personal finance platform to view income, spending, debt, investments, wealth, and goals in one place.", image: "/images1/academy-digital-learning-v1.webp", alt: "NEXORAMR financial platform", action: "Discover NEXORAMR", href: modoRicoUrl, external: true },
     ],
   },
 } as const;
 
 function AcademyBrandName({ name }: { name: string }) {
   return name;
+}
+
+function AcademyCardTitle({ name }: { name: string }) {
+  if (name !== "Modo Rico") return <>{name}</>;
+
+  return (
+    <span className="relative block h-20 w-full max-w-[20rem] overflow-hidden bg-[#17140f] p-3 sm:h-24 sm:p-4">
+      <Image src="/images1/modo-rico-logo.png" alt="Modo Rico" fill sizes="(max-width: 640px) 100vw, 320px" className="object-contain p-3 sm:p-4" />
+    </span>
+  );
 }
 
 export default async function AcademyPage() {
@@ -104,7 +115,7 @@ export default async function AcademyPage() {
                 <article key={card.title} className={`group grid items-center gap-7 rounded-2xl border border-light-gray bg-white p-5 shadow-[0_14px_36px_rgba(37,37,37,0.05)] sm:p-8 md:grid-cols-2 md:gap-12 lg:p-10 ${isReversed ? "md:grid-flow-col-dense" : ""}`}>
                   <div className={isReversed ? "md:col-start-2" : ""}>
                     <div className="flex items-center gap-3"><span className="editorial-label text-gray">{card.index}</span><span className="h-px w-10 bg-light-gray" /><span className="editorial-label text-gray">DRIVEN ACADEMY</span></div>
-                  <h3 className="mt-5 font-serif text-3xl font-black leading-[1.08] text-black sm:text-4xl md:text-5xl"><AcademyBrandName name={card.title} /></h3>
+                  <h3 className="mt-5 font-serif text-3xl font-black leading-[1.08] text-black sm:text-4xl md:text-5xl"><AcademyCardTitle name={card.title} /></h3>
                     <p className="mt-5 text-base leading-relaxed text-dark-gray sm:text-lg">{card.description}</p>
                     <a href={card.href} target={card.external ? "_blank" : undefined} rel={card.external ? "noreferrer" : undefined} className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-black transition-transform hover:translate-x-1">{card.action}<span className="material-symbols-outlined text-base">north_east</span></a>
                   </div>

@@ -13,7 +13,9 @@ const localDatabaseUrl = /(?:localhost|127\.0\.0\.1)/i.test(process.env.DATABASE
 const useLocalDatabase = process.env.ENABLE_LOCAL_DATABASE === "true";
 
 function shouldReadDatabaseOverrides() {
-  return !localDatabaseUrl || useLocalDatabase;
+  // Local development is catalog-first. This prevents an unavailable remote
+  // database from breaking SSR while still allowing an explicit local DB setup.
+  return useLocalDatabase || (process.env.NODE_ENV === "production" && !localDatabaseUrl);
 }
 
 async function getMergedProperties(

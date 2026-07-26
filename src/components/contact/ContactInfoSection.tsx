@@ -3,9 +3,9 @@ import { useTranslations } from 'next-intl';
 export function ContactInfoSection() {
   const t = useTranslations('contact');
   const contactItems = [
-    { icon: 'location_on', title: t('headquarters'), details: [t('miami'), t('markets')], href: undefined },
+    { icon: 'location_on', title: t('headquarters'), details: [t('officeAddress')], href: undefined },
     { icon: 'phone', title: t('phone'), details: [t('phoneAvailability'), t('phoneResponse')], href: '#form' },
-    { icon: 'mail', title: t('email'), details: ['info@drivengroup.com', 'partnerships@drivengroup.com'], href: 'mailto:info@drivengroup.com' },
+    { icon: 'mail', title: t('email'), details: ['administracion@drivengroup.com.mx'], href: 'mailto:administracion@drivengroup.com.mx' },
   ];
 
   return (

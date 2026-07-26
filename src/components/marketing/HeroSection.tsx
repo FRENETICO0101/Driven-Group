@@ -33,7 +33,7 @@ export function HeroSection() {
 
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
-      <section aria-roledescription="carousel" aria-label="Driven Group" className="relative flex min-h-[calc(100svh-4rem)] items-end overflow-hidden sm:min-h-[85vh] md:min-h-[90vh]" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+      <section aria-roledescription="carousel" aria-label="Driven Group" className="relative flex h-[46svh] min-h-[20rem] items-end overflow-hidden sm:h-[64svh] sm:min-h-[36rem] md:h-[68svh]" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
         {slides.map((slide, index) => (
           <Image key={slide.href} src={slide.image} alt={slide.copy[language].label} fill priority={index === 0} sizes="100vw" className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1600ms] ease-out ${index === activeIndex ? "scale-100 opacity-100" : "scale-[1.025] opacity-0"}`} style={{ objectPosition: slide.position }} />
         ))}
@@ -48,8 +48,8 @@ export function HeroSection() {
             </Link>
           </div>
 
-          <div className="flex items-center self-start gap-1.5 opacity-65 transition-opacity hover:opacity-100 focus-within:opacity-100 lg:self-auto" aria-label="Carousel controls">
-            {slides.map((slide, index) => <button key={slide.href} type="button" onClick={() => setActiveIndex(index)} className={`h-1.5 rounded-full transition-all duration-300 ${index === activeIndex ? "w-8 bg-white" : "w-1.5 bg-white/50 hover:bg-white"}`} aria-label={slide.copy[language].label} aria-current={index === activeIndex ? "true" : undefined} />)}
+          <div className="flex items-center self-start gap-2 lg:self-auto" aria-label="Carousel controls">
+            {slides.map((slide, index) => <button key={slide.href} type="button" onClick={() => setActiveIndex(index)} className={`rounded-full shadow-[0_1px_3px_rgba(0,0,0,0.7)] transition-all duration-300 ${index === activeIndex ? "h-1.5 w-7 bg-white" : "h-1.5 w-1.5 bg-white/65 hover:bg-white"}`} aria-label={slide.copy[language].label} aria-current={index === activeIndex ? "true" : undefined} />)}
           </div>
         </div>
       </section>

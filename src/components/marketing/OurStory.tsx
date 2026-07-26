@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { Icon } from "@/components/ui/Icon";
+import lightModeLogo from "../../../assets/logos/logo-dg-negro.png";
+import darkModeLogo from "../../../assets/logos/logo-dg.png";
 
 export function OurStory() {
   const t = useTranslations('about');
@@ -9,7 +11,10 @@ export function OurStory() {
   return (
     <section className="py-20 sm:py-24 md:py-32 max-w-7xl mx-auto px-6 sm:px-8">
       <div className="mb-16 sm:mb-20">
-        <p className="editorial-label text-gray mb-2">{t('driven')}</p>
+        <div className="relative mb-2 h-8 w-48 overflow-hidden">
+          <Image src={lightModeLogo} alt="Driven Group" fill sizes="192px" className="story-brand-logo story-brand-logo--light" />
+          <Image src={darkModeLogo} alt="" aria-hidden fill sizes="192px" className="story-brand-logo story-brand-logo--dark" />
+        </div>
         <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-black tracking-tight leading-[1.1]">
           {t('ourStory')}
         </h2>

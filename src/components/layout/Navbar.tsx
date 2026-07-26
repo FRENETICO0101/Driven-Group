@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { BrandLogo } from "@/components/ui/BrandLogo";
@@ -20,9 +21,10 @@ const navigation = [
 
 const cities = [
   { label: "Miami", tz: "America/New_York", tempBase: 82 },
-  { label: "Mexico", tz: "America/Mexico_City", tempBase: 68 },
   { label: "Madrid", tz: "Europe/Madrid", tempBase: 63 },
 ];
+
+const localCity = { label: "Mexico", tz: "America/Mexico_City", tempBase: 68 };
 
 function getCityInfo(city: (typeof cities)[number], locale: string) {
   const now = new Date();
@@ -41,7 +43,7 @@ export function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeCityIdx, setActiveCityIdx] = useState(0);
+  const [activeCityIdx, setActiveCityIdx] = useState<number | null>(null);
   // Keep the first client render identical to SSR. The persisted theme is read
   // after hydration, otherwise the logo source can differ from server HTML.
   const [isNight, setIsNight] = useState(false);
@@ -53,7 +55,8 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    setIsNight(document.documentElement.dataset.theme === "night");
+    const timer = window.setTimeout(() => setIsNight(document.documentElement.dataset.theme === "night"), 0);
+    return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -76,12 +79,13 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, []);
 
-  const activeCity = cities[activeCityIdx];
+  const activeCity = activeCityIdx === null ? localCity : cities[activeCityIdx];
   const cityInfo = getCityInfo(activeCity, locale);
   const overlayVisible = isScrolled || isMenuOpen;
   const isRealEstate = pathname.includes("/real-estate");
   const isBusiness = pathname.includes("/business");
   const isAcademy = pathname.includes("/academy");
+  const isAbout = pathname.includes("/about") || pathname.includes("/nosotros");
 
   return (
     <>
@@ -105,7 +109,13 @@ export function Navbar() {
             </div>
 
             <Link href="/" className="min-w-0 justify-self-center rounded focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={t("ui.homeAria")}>
-              <BrandLogo className={isRealEstate || isBusiness || isAcademy ? "w-16 sm:w-20 md:w-24" : "w-[4.5rem] sm:w-24"} variant={isRealEstate ? "realEstate" : isBusiness ? "business" : isAcademy ? "academy" : "corporate"} dark={isNight} />
+              {isAbout ? (
+                <span className="relative block h-6 w-32 sm:h-7 sm:w-40 md:h-8 md:w-48">
+                  <Image src={isNight ? "/images1/logo-dg-blanco-cropped.png" : "/images1/logo-dg-negro-cropped.png"} alt="Driven Group" fill priority unoptimized className="object-contain" />
+                </span>
+              ) : (
+                <BrandLogo className={isRealEstate || isBusiness || isAcademy ? "w-[4.5rem] sm:w-24 md:w-28" : "w-24 sm:w-28 md:w-32"} variant={isRealEstate ? "realEstate" : isBusiness ? "business" : isAcademy ? "academy" : "corporate"} dark={isNight} />
+              )}
             </Link>
 
             <div className="flex shrink-0 items-center justify-end gap-2 sm:gap-5">
@@ -145,7 +155,7 @@ export function Navbar() {
           </div>
 
           <div className="menu-brand-panel relative hidden overflow-hidden border-x border-white/10 xl:flex xl:items-center xl:justify-center">
-            <BrandLogo variant="menu" className="menu-brand-logo relative z-10 w-52 2xl:w-60" />
+            <BrandLogo variant="menu" className="menu-brand-logo relative z-10 w-72 2xl:w-96" />
           </div>
 
           <aside className="relative z-10 hidden flex-col justify-center border-l border-light-gray px-8 xl:flex 2xl:px-10">
@@ -161,7 +171,7 @@ export function Navbar() {
               {cities.map((city, index) => {
                 const info = getCityInfo(city, locale);
                 const isActive = index === activeCityIdx;
-                return <button key={city.label} onClick={() => setActiveCityIdx(index)} className={`flex w-full items-center justify-between rounded px-3 py-2.5 transition-colors ${isActive ? "bg-light-gray text-black" : "text-gray hover:bg-light-gray/60 hover:text-dark-gray"}`}><span className="editorial-label">{city.label}</span><span className="editorial-label tabular-nums opacity-70">{info.time}</span></button>;
+                return <button key={city.label} type="button" onClick={() => setActiveCityIdx(index)} aria-pressed={isActive} className={`flex w-full items-center justify-between rounded px-3 py-2.5 transition-colors ${isActive ? "bg-light-gray text-black" : "text-gray hover:bg-light-gray/60 hover:text-dark-gray"}`}><span className="editorial-label">{city.label}</span><span className="editorial-label tabular-nums opacity-70">{info.time}</span></button>;
               })}
             </div>
           </aside>
