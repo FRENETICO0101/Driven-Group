@@ -14,10 +14,16 @@ async function main() {
   const seedLegacyProperties = process.env.SEED_LEGACY_PROPERTIES === 'true'
 
   // Crear usuario admin
-  const hashedPassword = await bcrypt.hash('DrivenAdmin123!', 10)
+  const adminPassword = process.env.ADMIN_SEED_PASSWORD ?? 'DrivenAdmin123!'
+  const resetAdminPassword = process.env.RESET_ADMIN_PASSWORD === 'true'
+  const hashedPassword = await bcrypt.hash(adminPassword, 10)
   const admin = await prisma.user.upsert({
     where: { email: 'admin@drivengroup.com' },
-    update: {},
+    // A regular seed preserves existing credentials. Set
+    // RESET_ADMIN_PASSWORD=true only for a deliberate password reset.
+    update: resetAdminPassword
+      ? { hashedPassword, name: 'Driven Admin', role: Role.ADMIN }
+      : {},
     create: {
       email: 'admin@drivengroup.com',
       hashedPassword,

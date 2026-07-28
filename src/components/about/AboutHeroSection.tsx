@@ -14,18 +14,19 @@ const AUTO_ADVANCE_DELAY = 5_000;
 
 export function AboutHeroSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const activeSlide = slides[activeIndex];
 
   useEffect(() => {
-    if (isPaused) return;
-    const timer = window.setInterval(() => setActiveIndex((current) => (current + 1) % slides.length), AUTO_ADVANCE_DELAY);
-    return () => window.clearInterval(timer);
-  }, [isPaused]);
+    const timer = window.setTimeout(
+      () => setActiveIndex((current) => (current + 1) % slides.length),
+      AUTO_ADVANCE_DELAY,
+    );
+    return () => window.clearTimeout(timer);
+  }, [activeIndex]);
 
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
-      <section className="relative h-[46svh] min-h-[20rem] overflow-hidden bg-[#151515] sm:h-[64svh] sm:min-h-[36rem] md:h-[68svh]" aria-roledescription="carousel" aria-label="Driven Group" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+      <section className="relative h-[46svh] min-h-[20rem] overflow-hidden bg-[#151515] sm:h-[64svh] sm:min-h-[36rem] md:h-[68svh]" aria-roledescription="carousel" aria-label="Driven Group">
         {slides.map((slide, index) => (
           <div key={slide.title} className={`absolute inset-0 transition-opacity duration-[1400ms] ease-out ${index === activeIndex ? "opacity-100" : "opacity-0"}`}>
             {slide.fit === "contain" && <Image src={slide.image} alt="" fill sizes="100vw" aria-hidden className="scale-110 object-cover opacity-35 blur-xl" />}

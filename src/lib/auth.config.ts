@@ -21,10 +21,18 @@ const authConfig: NextAuthOptions = {
           return null;
         }
 
-        const user = await authService.validateCredentials(
-          parsed.data.email,
-          parsed.data.password,
-        );
+        let user;
+        try {
+          user = await authService.validateCredentials(
+            parsed.data.email,
+            parsed.data.password,
+          );
+        } catch (error) {
+          // The browser receives a generic failure, while Vercel logs retain
+          // the technical cause (for example, Neon connectivity).
+          console.error('[auth] Credential validation failed:', error);
+          return null;
+        }
 
         if (!user) {
           return null;
