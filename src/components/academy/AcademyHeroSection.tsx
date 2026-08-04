@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useLocale } from "next-intl";
 import { Icon } from "@/components/ui/Icon";
+import { AcademyBrandLogo } from "@/components/academy/AcademyBrandLogo";
 
 type Language = "es" | "en";
 const MODO_RICO_URL = "https://driven-academy.com/modo-rico";
@@ -50,6 +51,7 @@ export function AcademyHeroSection() {
   const [isPaused, setIsPaused] = useState(false);
   const activeSlide = slides[activeIndex];
   const copy = activeSlide.copy[language];
+  const activeBrand = activeIndex === 1 ? "modo-rico" : activeIndex === 2 ? "nexoramr" : null;
 
   useEffect(() => {
     if (isPaused) return;
@@ -72,7 +74,11 @@ export function AcademyHeroSection() {
         </div>
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-6 bg-black px-6 py-7 sm:gap-7 sm:bg-transparent sm:px-8 sm:pb-14 sm:pt-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl border-l border-white/70 pl-5 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:pl-6">
-            <p className="text-[11px] font-semibold tracking-[0.28em] text-white/70">{copy.label}</p>
+            {activeBrand ? (
+              <AcademyBrandLogo brand={activeBrand} tone="dark" className="w-40 sm:w-52" />
+            ) : (
+              <p className="text-[11px] font-semibold tracking-[0.28em] text-white/70">{copy.label}</p>
+            )}
             <h1 className="mt-3 font-serif text-3xl italic leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">{copy.title}</h1>
             <a href={activeSlide.href} target={activeSlide.external ? "_blank" : undefined} rel={activeSlide.external ? "noreferrer" : undefined} className="mt-5 inline-flex items-center gap-3 border-b border-white/45 pb-2 text-xs font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:border-white hover:text-white/75 sm:mt-6 sm:text-sm">
               {copy.action}<Icon name="north_east" className="h-4 w-4" />

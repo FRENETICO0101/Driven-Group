@@ -2,6 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { Icon } from "@/components/ui/Icon";
+import { AcademyBrandLogo } from "@/components/academy/AcademyBrandLogo";
 
 const copy = {
   es: {
@@ -31,13 +32,13 @@ export function AcademyCTA() {
   return (
     <section className="mx-auto grid max-w-6xl gap-5 px-6 py-20 sm:px-8 sm:py-24 md:grid-cols-2 md:py-32">
       <article className="rounded-2xl bg-black p-8 text-white sm:p-10">
-        <p className="editorial-label text-white/45">{t.modoLabel}</p>
+        <AcademyBrandLogo brand="modo-rico" tone="dark" className="max-w-[14rem]" />
         <h2 className="mt-4 max-w-md font-serif text-4xl font-black leading-[1.1] sm:text-5xl">{t.modoTitle}</h2>
         <p className="mt-5 max-w-md text-base leading-relaxed text-white/65">{t.modoBody}</p>
         <a href="https://driven-academy.com/modo-rico" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-bold text-black transition-transform hover:-translate-y-0.5">{t.modoAction}<Icon name="north_east" className="h-4 w-4" /></a>
       </article>
       <article id="nexora" className="scroll-mt-24 rounded-2xl border border-light-gray bg-white p-8 sm:p-10">
-        <p className="editorial-label text-gray">{t.nexoraLabel}</p>
+        <AcademyBrandLogo brand="nexoramr" className="max-w-[14rem]" />
         <h2 className="mt-4 max-w-md font-serif text-4xl font-black leading-[1.1] text-black sm:text-5xl">{t.nexoraTitle}</h2>
         <p className="mt-5 max-w-md text-base leading-relaxed text-dark-gray">{t.nexoraBody}</p>
       </article>

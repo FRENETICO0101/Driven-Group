@@ -16,7 +16,7 @@ export async function GET() {
       },
       { status: 200 }
     );
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       {
         status: "unhealthy",

@@ -163,6 +163,18 @@ html[data-theme="night"] header [data-brand-variant="corporate"] img {
   filter: invert(1);
 }
 
+.academy-brand-logo-on-dark {
+  display: none;
+}
+
+html[data-theme="night"] .academy-brand-logo-on-light {
+  display: none;
+}
+
+html[data-theme="night"] .academy-brand-logo-on-dark {
+  display: block;
+}
+
 @theme {
   /* Mapeo de Tailwind a nuestras variables CSS */
   --font-sans: var(--font-principal);

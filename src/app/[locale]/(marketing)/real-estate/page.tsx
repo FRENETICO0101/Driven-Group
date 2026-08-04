@@ -10,8 +10,6 @@ import { buildLocalizedMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
-const siteUrl = "https://drivengroup.com";
-
 /*
 const metadata = {
   title: "Portafolio de Activos — Driven Group",

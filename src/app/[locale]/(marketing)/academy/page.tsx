@@ -2,11 +2,11 @@ import Image from "next/image";
 import { getLocale } from "next-intl/server";
 import { AcademyHeroSection } from "@/components/academy/AcademyHeroSection";
 import { AcademyCTA } from "@/components/academy/AcademyCTA";
+import { AcademyBrandLogo } from "@/components/academy/AcademyBrandLogo";
 import { buildLocalizedMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
-const siteUrl = "https://drivengroup.com";
 const modoRicoUrl = "https://driven-academy.com/modo-rico";
 
 /*
@@ -74,18 +74,18 @@ const content = {
   },
 } as const;
 
-function AcademyBrandName({ name }: { name: string }) {
-  return name;
-}
-
 function AcademyCardTitle({ name }: { name: string }) {
-  if (name !== "Modo Rico") return <>{name}</>;
+  if (name === "Driven Academy") {
+    return <AcademyBrandLogo brand="driven-academy" className="mt-1 max-w-[16rem]" />;
+  }
 
-  return (
-    <span className="relative block h-20 w-full max-w-[20rem] overflow-hidden bg-[#17140f] p-3 sm:h-24 sm:p-4">
-      <Image src="/images1/modo-rico-logo.png" alt="Modo Rico" fill sizes="(max-width: 640px) 100vw, 320px" className="object-contain p-3 sm:p-4" />
-    </span>
-  );
+  if (name === "Modo Rico") {
+    return <AcademyBrandLogo brand="modo-rico" className="mt-1 max-w-[20rem]" />;
+  }
+
+  if (name === "NEXORAMR") return <AcademyBrandLogo brand="nexoramr" className="mt-1 max-w-[20rem]" />;
+
+  return <>{name}</>;
 }
 
 export default async function AcademyPage() {
@@ -114,13 +114,13 @@ export default async function AcademyPage() {
               return (
                 <article key={card.title} className={`group grid items-center gap-7 rounded-2xl border border-light-gray bg-white p-5 shadow-[0_14px_36px_rgba(37,37,37,0.05)] sm:p-8 md:grid-cols-2 md:gap-12 lg:p-10 ${isReversed ? "md:grid-flow-col-dense" : ""}`}>
                   <div className={isReversed ? "md:col-start-2" : ""}>
-                    <div className="flex items-center gap-3"><span className="editorial-label text-gray">{card.index}</span><span className="h-px w-10 bg-light-gray" /><span className="editorial-label text-gray">DRIVEN ACADEMY</span></div>
+                    <div className="flex items-center gap-3"><span className="editorial-label text-gray">{card.index}</span><span className="h-px w-10 bg-light-gray" /><span className="editorial-label text-gray">{card.title}</span></div>
                   <h3 className="mt-5 font-serif text-3xl font-black leading-[1.08] text-black sm:text-4xl md:text-5xl"><AcademyCardTitle name={card.title} /></h3>
                     <p className="mt-5 text-base leading-relaxed text-dark-gray sm:text-lg">{card.description}</p>
                     <a href={card.href} target={card.external ? "_blank" : undefined} rel={card.external ? "noreferrer" : undefined} className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-black transition-transform hover:translate-x-1">{card.action}<span className="material-symbols-outlined text-base">north_east</span></a>
                   </div>
                   <div className={isReversed ? "md:col-start-1 md:row-start-1" : ""}>
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-light-gray/20"><Image src={card.image} alt={card.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" /><div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 to-transparent p-5"><p className="text-xs font-semibold uppercase tracking-[0.16em] text-white"><AcademyBrandName name={card.title} /></p></div></div>
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-light-gray/20"><Image src={card.image} alt={card.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" /><div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 to-transparent p-5"><p className="text-xs font-semibold uppercase tracking-[0.16em] text-white">{card.title}</p></div></div>
                   </div>
                 </article>
               );
