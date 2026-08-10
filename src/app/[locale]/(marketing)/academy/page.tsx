@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { getLocale } from "next-intl/server";
 import { AcademyHeroSection } from "@/components/academy/AcademyHeroSection";
-import { AcademyCTA } from "@/components/academy/AcademyCTA";
 import { AcademyBrandLogo } from "@/components/academy/AcademyBrandLogo";
 import { buildLocalizedMetadata } from "@/lib/seo";
 
@@ -52,7 +51,7 @@ const content = {
     ecosystemLabel: "ECOSISTEMA DE APRENDIZAJE",
     cards: [
       { index: "01", title: "Driven Academy", description: "La plataforma de conocimiento de Driven Group: programas educativos, contenidos y experiencias creadas para desarrollar criterio, liderazgo y capacidades aplicables.", image: "/images1/academy-virtual-classroom.webp", alt: "Sesión de aprendizaje de Driven Academy", action: "Conocer Academy", href: modoRicoUrl, external: true },
-      { index: "02", title: "Modo Rico", description: "Una metodología práctica para recuperar el control de tus finanzas, construir estabilidad y avanzar con dirección hacia tu libertad financiera.", image: "/images1/academy-nexora-platform-v1.webp", alt: "Modo Rico, aprendizaje financiero digital", action: "Ir a Modo Rico", href: modoRicoUrl, external: true },
+      { index: "02", title: "Modo Rico", description: "Una metodología práctica para recuperar el control de tus finanzas, construir estabilidad y avanzar con dirección hacia tu libertad financiera.", image: "/images1/modo-rico-course-ecosystem-v1.webp", alt: "Curso online de finanzas personales Modo Rico", action: "Ir a Modo Rico", href: modoRicoUrl, external: true },
       { index: "03", title: "NEXORAMR", description: "Plataforma inteligente de finanzas personales impulsada por IA para visualizar ingresos, gastos, deudas, inversiones, patrimonio y metas en un solo lugar.", image: "/images1/academy-digital-learning-v1.webp", alt: "Plataforma financiera NEXORAMR", action: "Conocer NEXORAMR", href: modoRicoUrl, external: true },
     ],
   },
@@ -68,7 +67,7 @@ const content = {
     ecosystemLabel: "LEARNING ECOSYSTEM",
     cards: [
       { index: "01", title: "Driven Academy", description: "Driven Group's knowledge platform: programs, content, and experiences designed to develop judgment, leadership, and applicable capabilities.", image: "/images1/academy-virtual-classroom.webp", alt: "Driven Academy learning session", action: "Discover Academy", href: modoRicoUrl, external: true },
-      { index: "02", title: "Modo Rico", description: "A practical methodology to regain control of your finances, build stability, and move purposefully toward your wealth goals.", image: "/images1/academy-nexora-platform-v1.webp", alt: "Modo Rico digital financial learning", action: "Visit Modo Rico", href: modoRicoUrl, external: true },
+      { index: "02", title: "Modo Rico", description: "A practical methodology to regain control of your finances, build stability, and move purposefully toward your wealth goals.", image: "/images1/modo-rico-course-ecosystem-v1.webp", alt: "Modo Rico online personal finance course", action: "Visit Modo Rico", href: modoRicoUrl, external: true },
       { index: "03", title: "NEXORAMR", description: "An AI-powered personal finance platform to view income, spending, debt, investments, wealth, and goals in one place.", image: "/images1/academy-digital-learning-v1.webp", alt: "NEXORAMR financial platform", action: "Discover NEXORAMR", href: modoRicoUrl, external: true },
     ],
   },
@@ -128,8 +127,6 @@ export default async function AcademyPage() {
           </div>
         </div>
       </section>
-
-      <AcademyCTA />
     </main>
   );
 }

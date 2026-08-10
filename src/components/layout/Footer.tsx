@@ -20,8 +20,8 @@ export function Footer() {
             </div>
             <div className="flex gap-4">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-white" aria-label="Instagram"><Icon name="photo_camera" className="h-[18px] w-[18px]" /></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-white" aria-label="LinkedIn"><Icon name="business" className="h-[18px] w-[18px]" /></a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-white" aria-label="YouTube"><Icon name="play_circle" className="h-[18px] w-[18px]" /></a>
+              <a href="https://www.linkedin.com/company/driven-academy-m%C3%A9xico" target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-white" aria-label="LinkedIn"><Icon name="business" className="h-[18px] w-[18px]" /></a>
+              <a href="https://www.youtube.com/@DrivenAcademyMx" target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-white" aria-label="YouTube"><Icon name="play_circle" className="h-[18px] w-[18px]" /></a>
             </div>
           </div>
 

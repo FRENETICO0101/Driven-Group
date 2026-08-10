@@ -21,7 +21,7 @@ const slides = [
     },
   },
   {
-    image: "/images1/academy-nexora-platform-v1.webp",
+    image: "/images1/modo-rico-course-ecosystem-v1.webp",
     position: "center center",
     href: MODO_RICO_URL,
     external: true,
@@ -42,7 +42,7 @@ const slides = [
   },
 ] as const;
 
-const AUTO_ADVANCE_DELAY = 12_000;
+const AUTO_ADVANCE_DELAY = 3_000;
 
 export function AcademyHeroSection() {
   const locale = useLocale();
@@ -65,8 +65,7 @@ export function AcademyHeroSection() {
         <div className="absolute inset-0 bg-black">
           {slides.map((slide, index) => (
             <div key={slide.href} className={`absolute inset-0 transition-opacity duration-[1800ms] ease-in-out ${index === activeIndex ? "opacity-100" : "opacity-0"}`}>
-              <Image src={slide.image} alt="" fill priority={index === 0} sizes="100vw" style={{ objectPosition: slide.position }} className="scale-110 object-cover blur-2xl" />
-              <Image src={slide.image} alt={slide.copy[language].label} fill priority={index === 0} sizes="100vw" style={{ objectPosition: slide.position }} className="object-contain" />
+              <Image src={slide.image} alt={slide.copy[language].label} fill priority={index === 0} quality={90} sizes="100vw" style={{ objectPosition: slide.position }} className="object-cover" />
             </div>
           ))}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.78)_0%,rgba(0,0,0,0.42)_18%,transparent_42%,transparent_62%,rgba(0,0,0,0.32)_82%,rgba(0,0,0,0.68)_100%)]" />
@@ -79,7 +78,7 @@ export function AcademyHeroSection() {
             ) : (
               <p className="text-[11px] font-semibold tracking-[0.28em] text-white/70">{copy.label}</p>
             )}
-            <h1 className="mt-3 font-serif text-3xl italic leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">{copy.title}</h1>
+            <h1 className="mt-3 max-w-xl font-serif text-2xl italic leading-[1.16] tracking-tight sm:text-4xl md:text-5xl">{copy.title}</h1>
             <a href={activeSlide.href} target={activeSlide.external ? "_blank" : undefined} rel={activeSlide.external ? "noreferrer" : undefined} className="mt-5 inline-flex items-center gap-3 border-b border-white/45 pb-2 text-xs font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:border-white hover:text-white/75 sm:mt-6 sm:text-sm">
               {copy.action}<Icon name="north_east" className="h-4 w-4" />
             </a>

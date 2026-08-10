@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 
 const slides = [
-  { title: "Driven Real Estate", variant: "realEstate", image: "/property-assets/brickell/1428-brickell/gallery/private-dining-hummingbird.webp", position: "center center", fit: "contain" },
-  { title: "Driven Academy", variant: "academy", image: "/images1/academy-driven-financial-workshop.webp", position: "center center", fit: "cover" },
-  { title: "Driven Business", variant: "business", image: "/images1/business-executive-miami-v1.webp", position: "center center", fit: "cover" },
+  { title: "Driven Real Estate", variant: "realEstate", image: "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-ph-crowd.webp", position: "52% 46%", zoom: true },
+  { title: "Driven Academy", variant: "academy", image: "/images1/academy-virtual-classroom.webp", position: "center center", zoom: false },
+  { title: "Driven Business", variant: "business", image: "/images1/business-executive-miami-v1.webp", position: "center center", zoom: false },
 ] as const;
 
-const AUTO_ADVANCE_DELAY = 5_000;
+const AUTO_ADVANCE_DELAY = 3_000;
 
 export function AboutHeroSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -29,22 +29,22 @@ export function AboutHeroSection() {
       <section className="relative h-[46svh] min-h-[20rem] overflow-hidden bg-[#151515] sm:h-[64svh] sm:min-h-[36rem] md:h-[68svh]" aria-roledescription="carousel" aria-label="Driven Group">
         {slides.map((slide, index) => (
           <div key={slide.title} className={`absolute inset-0 transition-opacity duration-[1400ms] ease-out ${index === activeIndex ? "opacity-100" : "opacity-0"}`}>
-            {slide.fit === "contain" && <Image src={slide.image} alt="" fill sizes="100vw" aria-hidden className="scale-110 object-cover opacity-35 blur-xl" />}
             <Image
               src={slide.image}
               alt={slide.title}
               fill
               priority={index === 0}
+              quality={90}
               sizes="100vw"
               style={{ objectPosition: slide.position }}
-              className={`h-full w-full ${slide.fit === "contain" ? "object-contain" : "object-cover"}`}
+              className={`h-full w-full object-cover ${slide.zoom ? "scale-[1.12]" : ""}`}
             />
           </div>
         ))}
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(12,12,12,.96)_0%,rgba(12,12,12,.82)_35%,rgba(12,12,12,.20)_66%,rgba(12,12,12,.08)_100%)]" />
 
         <div className="relative mx-auto flex h-full max-w-[1440px] items-center px-7 py-12 sm:px-12 lg:px-20">
-          <div className="flex w-full max-w-[19rem] items-center justify-center border border-white/20 bg-black/20 px-9 py-12 shadow-[0_28px_72px_rgba(0,0,0,.40)] backdrop-blur-[2px] sm:max-w-md sm:px-14 sm:py-16">
+          <div className="flex w-full max-w-[19rem] items-center justify-center px-9 py-12 sm:max-w-md sm:px-14 sm:py-16">
             <BrandLogo
               variant={activeSlide.variant}
               imageClassName="brightness-0 invert contrast-125"

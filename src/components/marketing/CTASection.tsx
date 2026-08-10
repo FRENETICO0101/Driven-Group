@@ -17,7 +17,7 @@ export function CTASection() {
             {t("body")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-            <a href="/contact" className="bg-white px-8 sm:px-10 py-4 rounded-lg sm:rounded-xl font-semibold text-base text-black transition-all hover:bg-light-gray hover:-translate-y-0.5 inline-block text-center shadow-lg">
+            <a href="/contact#form" className="bg-white px-8 sm:px-10 py-4 rounded-lg sm:rounded-xl font-semibold text-base text-black transition-all hover:bg-light-gray hover:-translate-y-0.5 inline-block text-center shadow-lg">
               {t("scheduleBtn")}
               <Icon name="arrow_forward" className="ml-2 inline-block h-[18px] w-[18px] align-middle" />
             </a>

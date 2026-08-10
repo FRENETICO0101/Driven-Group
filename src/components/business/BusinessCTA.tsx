@@ -11,7 +11,7 @@ export function BusinessCTA() {
         <h2 className="mx-auto mt-4 max-w-3xl font-serif text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">{t('partnershipTitle')}</h2>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">{t('partnershipDescription')}</p>
         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-          <Link href="/contact" className="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-light-gray">{t('contactCta')}</Link>
+          <Link href="/contact#contact-information" className="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-light-gray">{t('contactCta')}</Link>
           <Link href="/about" className="rounded-lg border border-white/35 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10">{t('learnMoreCta')}</Link>
         </div>
       </div>

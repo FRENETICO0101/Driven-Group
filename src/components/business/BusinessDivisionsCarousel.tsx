@@ -12,7 +12,7 @@ const divisions = [
   { id: "strategic-alliances", image: "/images1/business-alliances-hero-v2.webp", title: "strategicAlliances", position: "center" },
 ] as const;
 
-const AUTO_ADVANCE_DELAY = 6_000;
+const AUTO_ADVANCE_DELAY = 3_000;
 
 export function BusinessDivisionsCarousel() {
   const t = useTranslations("business");
@@ -34,8 +34,9 @@ export function BusinessDivisionsCarousel() {
               alt={t(division.title)}
               fill
               priority={index === 0}
+              quality={90}
               sizes="100vw"
-              className={`object-contain transition-opacity duration-[1800ms] ease-in-out sm:object-cover ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
+              className={`object-cover transition-opacity duration-[1800ms] ease-in-out ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
               style={{ objectPosition: division.position }}
             />
           ))}

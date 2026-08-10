@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -86,6 +86,15 @@ export function Navbar() {
   const isBusiness = pathname.includes("/business");
   const isAcademy = pathname.includes("/academy");
   const isAbout = pathname.includes("/about") || pathname.includes("/nosotros");
+  const isHomeRoute = pathname === "/" || pathname === `/${locale}`;
+
+  const handleHomeNavigation = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (!isHomeRoute) return;
+
+    event.preventDefault();
+    setIsMenuOpen(false);
+    window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
+  };
 
   return (
     <>
@@ -108,7 +117,7 @@ export function Navbar() {
               </div>
             </div>
 
-            <Link href="/" className="min-w-0 justify-self-center rounded focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={t("ui.homeAria")}>
+            <Link href="/" onClick={handleHomeNavigation} className="min-w-0 justify-self-center rounded focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={t("ui.homeAria")}>
               {isAbout ? (
                 <span className="relative block h-6 w-32 sm:h-7 sm:w-40 md:h-8 md:w-48">
                   <Image src={isNight ? "/images1/logo-dg-blanco-cropped.png" : "/images1/logo-dg-negro-cropped.png"} alt="Driven Group" fill priority unoptimized className="object-contain" />
@@ -140,9 +149,9 @@ export function Navbar() {
               <ul>
                 {navigation.map((item, index) => (
                   <li key={item.key}>
-                    <Link href={item.href} onClick={() => setIsMenuOpen(false)} className="group flex items-baseline gap-5 py-2.5 sm:gap-8 sm:py-3" style={{ opacity: isMenuOpen ? 1 : 0, transform: isMenuOpen ? "translateY(0)" : "translateY(12px)", transition: `opacity 500ms ease ${index * 55 + 60}ms, transform 500ms ease ${index * 55 + 60}ms` }}>
+                    <Link href={item.href} onClick={(event) => { if (item.key === "home") handleHomeNavigation(event); else setIsMenuOpen(false); }} className="group flex items-baseline gap-5 py-2.5 sm:gap-8 sm:py-3" style={{ opacity: isMenuOpen ? 1 : 0, transform: isMenuOpen ? "translateY(0)" : "translateY(12px)", transition: `opacity 500ms ease ${index * 55 + 60}ms, transform 500ms ease ${index * 55 + 60}ms` }}>
                       <span className="editorial-label w-6 tabular-nums text-light-gray">{item.index}</span>
-                      <span className="text-3xl font-semibold tracking-tight text-dark-gray transition-all duration-300 group-hover:translate-x-2 group-hover:text-black sm:text-4xl xl:text-5xl 2xl:text-6xl">{item.key === "realEstate" ? "Real Estate" : item.key === "business" ? "Business" : item.key === "academy" ? "Academy" : t(`nav.${item.key}`)}</span>
+                      <span className="text-2xl font-medium tracking-tight text-dark-gray transition-all duration-300 group-hover:translate-x-2 group-hover:text-black sm:text-3xl xl:text-4xl 2xl:text-[2.7rem]">{item.key === "realEstate" ? "Real Estate" : item.key === "business" ? "Business" : item.key === "academy" ? "Academy" : t(`nav.${item.key}`)}</span>
                     </Link>
                   </li>
                 ))}
@@ -155,7 +164,7 @@ export function Navbar() {
           </div>
 
           <div className="menu-brand-panel relative hidden overflow-hidden border-x border-white/10 xl:flex xl:items-center xl:justify-center">
-            <BrandLogo variant="menu" className="menu-brand-logo relative z-10 w-72 2xl:w-96" />
+            <BrandLogo variant="menu" className="menu-brand-logo relative z-10 w-80 2xl:w-[26rem]" />
           </div>
 
           <aside className="relative z-10 hidden flex-col justify-center border-l border-light-gray px-8 xl:flex 2xl:px-10">

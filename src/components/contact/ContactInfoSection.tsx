@@ -9,7 +9,7 @@ export function ContactInfoSection() {
   ];
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 sm:py-24 md:py-28">
+    <section id="contact-information" className="mx-auto max-w-7xl scroll-mt-24 px-6 py-20 sm:px-8 sm:py-24 md:py-28">
       <div className="mb-12 flex flex-col gap-4 sm:mb-14 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="editorial-label text-gray">{t('eyebrow')}</p>
