@@ -78,8 +78,8 @@ export function PropertiesMap({ properties }: { properties: Property[] }) {
         )}
       </div>
       {isExpanded && (
-        <div className="fixed inset-0 z-[1100] bg-black/80 p-3 sm:p-6" role="dialog" aria-modal="true" aria-label={t("propertyMap")}>
-          <div className="mx-auto flex h-full max-w-[1600px] flex-col rounded-xl bg-white p-4 shadow-2xl sm:rounded-2xl sm:p-6">
+        <div className="fixed inset-0 z-[1400] flex items-center justify-center bg-black/80 p-3 sm:p-6" role="dialog" aria-modal="true" aria-label={t("propertyMap")}>
+          <div className="mx-auto flex h-[calc(100dvh-1.5rem)] w-full max-w-[1600px] flex-col rounded-xl bg-white p-4 shadow-2xl sm:h-[calc(100dvh-3rem)] sm:rounded-2xl sm:p-6">
             <div className="mb-4 flex shrink-0 items-center justify-between gap-4">
               <div>
                 <p className="editorial-label text-gray">{t("exploreByLocation")}</p>
