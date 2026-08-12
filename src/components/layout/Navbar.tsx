@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -50,6 +50,7 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUtilityMenuOpen, setIsUtilityMenuOpen] = useState(false);
   const [activeCityIdx, setActiveCityIdx] = useState<number | null>(null);
+  const utilityMenuRef = useRef<HTMLDivElement>(null);
   // Keep the first client render identical to SSR. The persisted theme is read
   // after hydration, otherwise the logo source can differ from server HTML.
   const [isNight, setIsNight] = useState(false);
@@ -66,7 +67,11 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    const updateScrollState = () => setIsScrolled(window.scrollY > 50);
+    const updateScrollState = () => {
+      setIsScrolled(window.scrollY > 50);
+      setIsMenuOpen(false);
+      setIsUtilityMenuOpen(false);
+    };
     updateScrollState();
     window.addEventListener("scroll", updateScrollState, { passive: true });
     return () => window.removeEventListener("scroll", updateScrollState);
@@ -86,6 +91,17 @@ export function Navbar() {
     };
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
+  }, []);
+
+  useEffect(() => {
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      if (utilityMenuRef.current && !utilityMenuRef.current.contains(event.target as Node)) {
+        setIsUtilityMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsidePointer);
+    return () => document.removeEventListener("pointerdown", closeOnOutsidePointer);
   }, []);
 
   const activeCity = activeCityIdx === null ? localCity : cities[activeCityIdx];
@@ -146,7 +162,7 @@ export function Navbar() {
                 <LanguageSwitcher />
                 <ThemeToggle onThemeChange={setIsNight} />
               </div>
-              <div className="relative sm:hidden">
+              <div ref={utilityMenuRef} className="relative sm:hidden">
                 <button
                   type="button"
                   onClick={() => setIsUtilityMenuOpen((open) => !open)}
@@ -163,11 +179,15 @@ export function Navbar() {
                 >
                   <div className="flex items-center justify-between gap-4 border-b border-light-gray pb-3">
                     <span className="editorial-label text-gray">{locale === "es" ? "Idioma" : "Language"}</span>
-                    <LanguageSwitcher />
+                    <div onClickCapture={() => setIsUtilityMenuOpen(false)}>
+                      <LanguageSwitcher />
+                    </div>
                   </div>
                   <div className="flex items-center justify-between gap-4 pt-3">
                     <span className="editorial-label text-gray">{locale === "es" ? "Apariencia" : "Appearance"}</span>
-                    <ThemeToggle onThemeChange={setIsNight} />
+                    <div onClickCapture={() => setIsUtilityMenuOpen(false)}>
+                      <ThemeToggle onThemeChange={setIsNight} />
+                    </div>
                   </div>
                 </div>
               </div>
