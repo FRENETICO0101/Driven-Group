@@ -9,6 +9,7 @@ import { BrandLogo } from "@/components/ui/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Icon } from "@/components/ui/Icon";
+import menuBrandLogo from "../../../assets/logos/logo-dg-blanco.png";
 
 const navigation = [
   { key: "home", href: "/", index: "01" },
@@ -197,13 +198,13 @@ export function Navbar() {
           </div>
 
           <div className="menu-brand-panel relative hidden overflow-hidden border-x border-white/10 xl:flex xl:items-center xl:justify-center">
-            <div className="menu-brand-logo relative z-10 h-28 w-96 2xl:h-32 2xl:w-[30rem]">
+            <div className="menu-brand-logo relative z-10 h-32 w-[28rem] 2xl:h-36 2xl:w-[34rem]">
               <Image
-                src="/images1/logo-dg-negro-cropped.png"
+                src={menuBrandLogo}
                 alt="Driven Group"
                 fill
-                sizes="(max-width: 1536px) 384px, 480px"
-                className="object-contain brightness-0 invert contrast-125"
+                sizes="(max-width: 1536px) 448px, 544px"
+                className="object-cover object-center"
               />
             </div>
           </div>
