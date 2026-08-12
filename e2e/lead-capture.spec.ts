@@ -2,19 +2,25 @@ import { test, expect } from '@playwright/test';
 
 const hasTestDatabase = process.env.E2E_DATABASE_AVAILABLE === 'true';
 
+async function openLeadForm(page: import('@playwright/test').Page) {
+  await page.waitForLoadState('networkidle');
+  await page.getByRole('button', { name: /solicitar información/i }).click();
+  await expect(page.locator('input[name="name"]')).toBeVisible();
+}
+
 test.describe('Lead Capture Form', () => {
   test('should submit lead form successfully', async ({ page }) => {
     test.skip(!hasTestDatabase, 'Requires a provisioned E2E PostgreSQL database.');
-    await page.goto('/en/real-estate/1428-brickell');
+    await page.goto('/es/real-estate/1428-brickell');
     
     // Open form
-    await page.getByRole('button', { name: /solicitar información/i }).click();
+    await openLeadForm(page);
     
     // Fill form
-    await page.getByPlaceholder(/nombre completo/i).fill('Juan Pérez');
-    await page.getByPlaceholder(/email/i).fill('juan@example.com');
-    await page.getByPlaceholder(/teléfono/i).fill('+56912345678');
-    await page.getByPlaceholder(/mensaje/i).fill('Estoy interesado en esta propiedad');
+    await page.locator('input[name="name"]').fill('Juan Pérez');
+    await page.locator('input[name="email"]').fill('juan@example.com');
+    await page.locator('input[name="phone"]').fill('+56912345678');
+    await page.locator('textarea[name="message"]').fill('Estoy interesado en esta propiedad');
     
     // Submit
     await page.getByRole('button', { name: /^enviar$/i }).click();
@@ -25,29 +31,29 @@ test.describe('Lead Capture Form', () => {
   });
 
   test('should validate required fields', async ({ page }) => {
-    await page.goto('/en/real-estate/1428-brickell');
+    await page.goto('/es/real-estate/1428-brickell');
     
-    await page.getByRole('button', { name: /solicitar información/i }).click();
+    await openLeadForm(page);
     
     // HTML5 validation should prevent submission
-    const isRequired = await page.getByPlaceholder(/nombre completo/i).evaluate(
+    const isRequired = await page.locator('input[name="name"]').evaluate(
       (el: HTMLInputElement) => el.required
     );
     expect(isRequired).toBe(true);
   });
 
   test('should validate email format', async ({ page }) => {
-    await page.goto('/en/real-estate/1428-brickell');
+    await page.goto('/es/real-estate/1428-brickell');
     
-    await page.getByRole('button', { name: /solicitar información/i }).click();
+    await openLeadForm(page);
     
     // Fill with invalid email
-    await page.getByPlaceholder(/nombre completo/i).fill('Juan');
-    await page.getByPlaceholder(/email/i).fill('invalid-email');
-    await page.getByPlaceholder(/teléfono/i).fill('+56912345678');
+    await page.locator('input[name="name"]').fill('Juan');
+    await page.locator('input[name="email"]').fill('invalid-email');
+    await page.locator('input[name="phone"]').fill('+56912345678');
     
     // HTML5 validation
-    const emailInput = page.getByPlaceholder(/email/i);
+    const emailInput = page.locator('input[name="email"]');
     const isEmail = await emailInput.evaluate(
       (el: HTMLInputElement) => el.type === 'email'
     );
@@ -55,13 +61,13 @@ test.describe('Lead Capture Form', () => {
   });
 
   test('should allow form reset', async ({ page }) => {
-    await page.goto('/en/real-estate/1428-brickell');
+    await page.goto('/es/real-estate/1428-brickell');
     
-    await page.getByRole('button', { name: /solicitar información/i }).click();
+    await openLeadForm(page);
     
     // Fill form
-    await page.getByPlaceholder(/nombre completo/i).fill('Juan');
-    await page.getByPlaceholder(/email/i).fill('juan@example.com');
+    await page.locator('input[name="name"]').fill('Juan');
+    await page.locator('input[name="email"]').fill('juan@example.com');
     
     // Click cancel
     await page.getByRole('button', { name: /cancelar/i }).click();
@@ -72,9 +78,9 @@ test.describe('Lead Capture Form', () => {
 
   test('mobile: should have responsive form layout', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/en/real-estate/1428-brickell');
+    await page.goto('/es/real-estate/1428-brickell');
     
-    await page.getByRole('button', { name: /solicitar información/i }).click();
+    await openLeadForm(page);
     
     // Form should be visible and full width
     const form = page.locator('form').first();
@@ -85,14 +91,14 @@ test.describe('Lead Capture Form', () => {
 
   test('should show loading state during submission', async ({ page }) => {
     test.skip(!hasTestDatabase, 'Requires a provisioned E2E PostgreSQL database.');
-    await page.goto('/en/real-estate/1428-brickell');
+    await page.goto('/es/real-estate/1428-brickell');
     
-    await page.getByRole('button', { name: /solicitar información/i }).click();
+    await openLeadForm(page);
     
     // Fill form
-    await page.getByPlaceholder(/nombre completo/i).fill('Juan Pérez');
-    await page.getByPlaceholder(/email/i).fill('juan@example.com');
-    await page.getByPlaceholder(/teléfono/i).fill('+56912345678');
+    await page.locator('input[name="name"]').fill('Juan Pérez');
+    await page.locator('input[name="email"]').fill('juan@example.com');
+    await page.locator('input[name="phone"]').fill('+56912345678');
     
     // Submit and check button changes to loading
     const submitBtn = page.getByRole('button', { name: /^enviar$/i });

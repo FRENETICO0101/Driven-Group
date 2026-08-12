@@ -23,24 +23,29 @@ export function PropertyCTA({ property }: PropertyCTAProps) {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); setState("loading"); setErrorMsg("");
-    const data = new FormData(event.currentTarget);
-    const visitorMessage = String(data.get("message") ?? "").trim();
-    const propertyContext = `[${locale === "en" ? "Property" : "Propiedad"}: ${property.title}]`;
-    const result = await createLeadAction({
-      name: data.get("name") as string,
-      email: data.get("email") as string,
-      phone: data.get("phone") as string,
-      message: visitorMessage ? `${propertyContext} ${visitorMessage}` : propertyContext,
-      propertyId: property.id.startsWith("catalog-") ? undefined : property.id,
-    });
-    if (result.success) { setState("success"); formRef.current?.reset(); } else { setState("error"); setErrorMsg(result.error ?? t.error); }
+    try {
+      const data = new FormData(event.currentTarget);
+      const visitorMessage = String(data.get("message") ?? "").trim();
+      const propertyContext = `[${locale === "en" ? "Property" : "Propiedad"}: ${property.title}]`;
+      const result = await createLeadAction({
+        name: data.get("name") as string,
+        email: data.get("email") as string,
+        phone: data.get("phone") as string,
+        message: visitorMessage ? `${propertyContext} ${visitorMessage}` : propertyContext,
+        propertyId: property.id.startsWith("catalog-") ? undefined : property.id,
+      });
+      if (result.success) { setState("success"); formRef.current?.reset(); } else { setState("error"); setErrorMsg(result.error ?? t.error); }
+    } catch {
+      setState("error");
+      setErrorMsg(t.error);
+    }
   };
 
   return <div className="sticky top-20 space-y-4 rounded-lg border border-light-gray bg-white p-4 shadow-sm sm:top-24 sm:space-y-6 sm:rounded-xl sm:p-6 md:p-8">
     <div><h2 className="mb-2 text-xl font-bold text-black sm:text-2xl">{t.title}</h2><p className="text-sm text-gray sm:text-base">{t.body}</p></div>
-    {state === "idle" && <button onClick={() => setState("form")} className="w-full rounded-lg bg-black py-2.5 text-sm font-semibold text-white transition-transform hover:scale-105 hover:bg-dark-gray sm:py-3 sm:text-base">{t.request}</button>}
+    {state === "idle" && <button onClick={() => setState("form")} className="w-full rounded-lg bg-black py-2.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-dark-gray sm:py-3 sm:text-base">{t.request}</button>}
     {state === "success" && <div className="space-y-2 py-4 text-center"><p className="text-sm font-semibold text-black sm:text-base">{t.received}</p><p className="text-xs text-gray sm:text-sm">{t.reply}</p><button onClick={() => setState("idle")} className="mt-2 text-xs text-primary/70 transition-colors hover:text-primary sm:text-sm">{t.another}</button></div>}
-    {(state === "form" || state === "loading" || state === "error") && <form ref={formRef} onSubmit={handleSubmit} className="space-y-3 sm:space-y-4"><input name="name" required disabled={state === "loading"} placeholder={t.name} className={inputClass} /><input name="email" type="email" required disabled={state === "loading"} placeholder={t.email} className={inputClass} /><input name="phone" type="tel" required disabled={state === "loading"} placeholder={t.phone} className={inputClass} /><textarea name="message" rows={3} disabled={state === "loading"} placeholder={t.message} className={inputClass} />{state === "error" && <p className="text-xs text-red-400 sm:text-sm">{errorMsg}</p>}<div className="flex gap-2 sm:gap-3"><button type="submit" disabled={state === "loading"} className="flex-1 rounded-lg bg-black py-2.5 text-xs font-semibold text-white transition-colors hover:bg-dark-gray disabled:opacity-50 sm:py-3 sm:text-sm">{state === "loading" ? t.sending : t.send}</button><button type="button" disabled={state === "loading"} onClick={() => { setState("idle"); setErrorMsg(""); }} className="flex-1 rounded-lg border border-light-gray bg-white py-2.5 text-xs font-semibold text-black transition-colors hover:bg-light-gray disabled:opacity-50 sm:py-3 sm:text-sm">{t.cancel}</button></div></form>}
+    {(state === "form" || state === "loading" || state === "error") && <form ref={formRef} onSubmit={handleSubmit} className="space-y-3 sm:space-y-4"><input name="name" required disabled={state === "loading"} placeholder={t.name} className={inputClass} /><input name="email" type="email" required disabled={state === "loading"} placeholder={t.email} className={inputClass} /><input name="phone" type="tel" required disabled={state === "loading"} placeholder={t.phone} className={inputClass} /><textarea name="message" rows={3} disabled={state === "loading"} placeholder={t.message} className={inputClass} />{state === "error" && <p aria-live="polite" className="text-xs text-red-500 sm:text-sm">{errorMsg}</p>}<div className="flex gap-2 sm:gap-3"><button type="submit" disabled={state === "loading"} aria-busy={state === "loading"} className="flex-1 rounded-lg bg-black py-2.5 text-xs font-semibold text-white transition-colors hover:bg-dark-gray disabled:opacity-50 sm:py-3 sm:text-sm">{state === "loading" ? t.sending : t.send}</button><button type="button" disabled={state === "loading"} onClick={() => { setState("idle"); setErrorMsg(""); }} className="flex-1 rounded-lg border border-light-gray bg-white py-2.5 text-xs font-semibold text-black transition-colors hover:bg-light-gray disabled:opacity-50 sm:py-3 sm:text-sm">{t.cancel}</button></div></form>}
     <div className="border-t border-dark-gray/30 pt-4 sm:pt-6"><p className="mb-2 text-xs font-medium uppercase tracking-tight text-gray sm:text-sm">{t.direct}</p><div className="space-y-1"><p className="text-sm font-semibold text-black sm:text-base">{realEstateContact.name}</p><a href={`mailto:${realEstateContact.email}`} className="break-all text-xs text-dark-gray underline underline-offset-2 transition-colors hover:text-black sm:text-sm">{realEstateContact.email}</a></div></div>
   </div>;
 }

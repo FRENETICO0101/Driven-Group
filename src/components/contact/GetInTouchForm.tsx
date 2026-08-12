@@ -50,7 +50,7 @@ export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { default
         <h2 className="font-serif text-4xl font-black leading-[1.1] tracking-tight text-black sm:text-5xl md:text-6xl">{t("title")}</h2>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-8 rounded-2xl border border-light-gray bg-white p-5 shadow-[0_18px_42px_rgba(37,37,37,0.045)] sm:p-8 md:p-10">
+      <form onSubmit={handleSubmit} className="space-y-7 rounded-2xl border border-light-gray bg-white p-5 shadow-[0_18px_42px_rgba(37,37,37,0.045)] sm:p-8 md:p-10">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <Field id="name" label={t("name")} placeholder={t("namePlaceholder")} required />
           <Field id="email" type="email" label={t("email")} placeholder="you@email.com" required />
@@ -74,10 +74,10 @@ export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { default
           <label htmlFor="message" className="editorial-label mb-3 tracking-wide text-dark-gray">{t("message")}</label>
           <textarea id="message" name="message" required rows={6} placeholder={t("messagePlaceholder")} className="resize-none rounded-lg border border-light-gray bg-white px-4 py-3 text-black placeholder-gray transition-all focus:border-dark-gray focus:outline-none focus:ring-4 focus:ring-dark-gray/10" />
         </div>
-        <div className="flex flex-wrap items-center gap-5 pt-4">
-          <button type="submit" disabled={isSubmitting} className="rounded-lg bg-black px-8 py-4 font-semibold tracking-wide text-white transition-colors hover:bg-dark-gray disabled:cursor-not-allowed disabled:opacity-50">{isSubmitting ? t("sending") : t("send")}</button>
-          {submitStatus === "success" && <p className="text-sm font-semibold tracking-wide text-green-600">✓ {t("success")}</p>}
-          {submitStatus === "error" && <p className="text-sm font-semibold tracking-wide text-red-600">✕ {errorMessage || t("error")}</p>}
+        <div className="flex flex-wrap items-center gap-4 pt-3">
+          <button type="submit" disabled={isSubmitting} aria-busy={isSubmitting} className="min-w-48 rounded-lg bg-black px-8 py-4 font-semibold tracking-wide text-white transition-all hover:-translate-y-0.5 hover:bg-dark-gray disabled:cursor-not-allowed disabled:opacity-50">{isSubmitting ? t("sending") : t("send")}</button>
+          {submitStatus === "success" && <p aria-live="polite" className="text-sm font-medium tracking-wide text-green-700">{t("success")}</p>}
+          {submitStatus === "error" && <p aria-live="polite" className="text-sm font-medium tracking-wide text-red-700">{errorMessage || t("error")}</p>}
         </div>
       </form>
     </section>

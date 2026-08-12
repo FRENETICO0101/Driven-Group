@@ -58,21 +58,21 @@ export function CEOsSection() {
         section: "bg-[#171717]",
         eyebrow: "text-white/45",
         shell: "border-white/15 bg-[#1d1d1d] shadow-[0_18px_44px_rgba(0,0,0,0.34)]",
-        media: "bg-[#3f3f3f]",
         divider: "divide-white/15",
         name: "text-white",
         role: "text-white/55",
         copy: "text-white/75",
+        accent: "bg-[#c8a03a]",
       }
     : {
         section: "bg-[#f5f5f3]",
         eyebrow: "text-dark-gray/60",
         shell: "border-[#d4d2cf] bg-white shadow-[0_18px_44px_rgba(37,37,37,0.09)]",
-        media: "bg-[#a8a8a8]",
         divider: "divide-[#d4d2cf]",
         name: "text-black",
         role: "text-dark-gray/65",
         copy: "text-dark-gray/85",
+        accent: "bg-[#c8a03a]",
       };
 
   return (
@@ -80,29 +80,28 @@ export function CEOsSection() {
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <p className={`mb-7 editorial-label sm:mb-9 ${colors.eyebrow}`}>{t.eyebrow}</p>
 
-        <div className={`overflow-hidden rounded-2xl border transition-colors duration-500 ${colors.shell}`}>
-          <div className={`relative min-h-[24rem] overflow-hidden ${colors.media} sm:min-h-[32rem] lg:min-h-[36rem]`}>
-            <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/20 to-transparent" />
-            <div className="absolute inset-y-0 left-1/2 w-px bg-white/35" />
-            <div className="relative mx-auto h-full min-h-[24rem] w-[min(100%,24rem)] sm:min-h-[32rem] sm:w-[min(100%,28rem)] lg:min-h-[36rem]">
+        <div className={`grid overflow-hidden rounded-2xl border transition-colors duration-500 lg:grid-cols-[minmax(23rem,0.9fr)_minmax(0,1.1fr)] ${colors.shell}`}>
+          <div className="relative min-h-[30rem] overflow-hidden border-b lg:min-h-full lg:border-r lg:border-b-0">
+            <div className="relative mx-auto h-full min-h-[30rem] w-full max-w-[38rem] lg:min-h-[43rem]">
               <Image
                 src="/images2/Ambos/img-9.png"
                 alt={t.title}
                 fill
                 priority={false}
-                className="object-contain object-bottom"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 28rem, 28rem"
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 42vw"
               />
             </div>
           </div>
 
-          <div className={`grid grid-cols-1 divide-y lg:grid-cols-2 lg:divide-x lg:divide-y-0 ${colors.divider}`}>
+          <div className={`grid content-center divide-y ${colors.divider}`}>
             {t.leaders.map((leader) => (
-              <article key={leader.name} className="p-6 sm:p-8 lg:p-10">
+              <article key={leader.name} className="group relative p-8 sm:p-10 lg:px-12 lg:py-11">
+                <div className={`mb-6 h-px w-10 ${colors.accent}`} />
                 <p className={`editorial-label ${colors.role}`}>DRIVEN GROUP</p>
-                <h3 className={`mt-3 font-serif text-2xl font-medium tracking-tight sm:text-3xl ${colors.name}`}>{leader.name}</h3>
+                <h3 className={`mt-3 max-w-[85%] font-serif text-[1.8rem] font-medium tracking-tight sm:text-[2.1rem] ${colors.name}`}>{leader.name}</h3>
                 <p className={`editorial-label mt-2 ${colors.role}`}>{leader.role}</p>
-                <p className={`mt-6 text-base font-light leading-[1.8] sm:text-lg ${colors.copy}`}>{leader.bio}</p>
+                <p className={`mt-6 max-w-2xl text-[0.95rem] font-light leading-[1.8] sm:text-base ${colors.copy}`}>{leader.bio}</p>
               </article>
             ))}
           </div>
