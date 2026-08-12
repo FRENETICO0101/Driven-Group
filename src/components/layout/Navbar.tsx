@@ -197,15 +197,15 @@ export function Navbar() {
       </header>
 
       <div id="driven-main-menu" role="dialog" aria-modal="true" className={`fixed inset-0 z-[1200] bg-white transition-all duration-500 ${isMenuOpen ? "visible opacity-100" : "invisible pointer-events-none opacity-0"}`} aria-hidden={!isMenuOpen}>
-        <div className="grid h-full grid-cols-1 pt-20 xl:grid-cols-[minmax(15rem,20vw)_minmax(0,1fr)_minmax(13rem,18vw)] 2xl:grid-cols-[minmax(19rem,20vw)_minmax(0,1fr)_minmax(21rem,23vw)]">
-          <div className="relative z-10 flex min-w-0 flex-col justify-center px-8 sm:px-12 lg:px-20 xl:px-10 2xl:px-12">
+        <div className="grid h-full grid-cols-1 pt-20 xl:grid-cols-[minmax(15rem,19vw)_minmax(0,1fr)_minmax(18rem,22vw)] 2xl:grid-cols-[minmax(19rem,20vw)_minmax(0,1fr)_minmax(21rem,23vw)]">
+          <div className="relative z-10 flex min-w-0 flex-col justify-center px-8 sm:px-12 lg:px-20 xl:px-5 2xl:px-12">
             <nav aria-label={t("ui.mainNavigation")}>
               <ul>
                 {navigation.map((item, index) => (
                   <li key={item.key}>
                     <Link href={item.href} onClick={(event) => { if (item.key === "home") handleHomeNavigation(event); else setIsMenuOpen(false); }} className="group flex items-baseline gap-5 py-2.5 sm:gap-8 sm:py-3" style={{ opacity: isMenuOpen ? 1 : 0, transform: isMenuOpen ? "translateY(0)" : "translateY(12px)", transition: `opacity 500ms ease ${index * 55 + 60}ms, transform 500ms ease ${index * 55 + 60}ms` }}>
                       <span className="editorial-label w-6 tabular-nums text-light-gray">{item.index}</span>
-                      <span className="text-2xl font-medium tracking-tight text-dark-gray transition-all duration-300 group-hover:translate-x-2 group-hover:text-black sm:text-3xl xl:text-[2rem] 2xl:text-[2.7rem]">{item.key === "realEstate" ? "Real Estate" : item.key === "business" ? "Business" : item.key === "academy" ? "Academy" : t(`nav.${item.key}`)}</span>
+                      <span className="whitespace-nowrap text-2xl font-medium tracking-tight text-dark-gray transition-all duration-300 group-hover:translate-x-2 group-hover:text-black sm:text-3xl xl:text-[1.8rem] 2xl:text-[2.7rem]">{item.key === "realEstate" ? "Real Estate" : item.key === "business" ? "Business" : item.key === "academy" ? "Academy" : t(`nav.${item.key}`)}</span>
                     </Link>
                   </li>
                 ))}
@@ -213,7 +213,7 @@ export function Navbar() {
             </nav>
 
             <div className="mt-auto flex min-w-0 flex-col gap-6 border-t border-light-gray pb-10 pt-8 sm:flex-row sm:items-center sm:justify-between sm:pb-12">
-              <a href="mailto:administracion@drivengroup.com.mx" className="editorial-label max-w-full break-all text-gray transition-colors hover:text-black">administracion@drivengroup.com.mx</a>
+              <a href="mailto:administracion@drivengroup.com.mx" className="editorial-label block max-w-full whitespace-nowrap text-[0.5rem] leading-relaxed tracking-[0.06em] text-gray transition-colors hover:text-black 2xl:text-[0.625rem] 2xl:tracking-[0.16em]">administracion@drivengroup.com.mx</a>
             </div>
           </div>
 
@@ -229,9 +229,9 @@ export function Navbar() {
             </div>
           </div>
 
-          <aside className="relative z-10 hidden min-w-0 flex-col justify-center border-l border-light-gray px-5 xl:flex 2xl:px-10">
+          <aside className="relative z-10 hidden min-w-0 flex-col justify-center overflow-hidden border-l border-light-gray px-4 xl:flex 2xl:px-10">
             <p className="editorial-label mb-5 tracking-[0.2em] text-gray">{t("ui.localTime")}</p>
-            <p className="mb-2 whitespace-nowrap text-[clamp(2.75rem,4vw,4rem)] font-extralight leading-none tracking-tight text-black tabular-nums">{cityInfo.time}</p>
+            <p className="mb-2 whitespace-nowrap text-[clamp(2.5rem,3.5vw,3.5rem)] font-extralight leading-none tracking-tight text-black tabular-nums">{cityInfo.time}</p>
             <div className="mt-3 flex items-center gap-3">
               <span className="editorial-label text-dark-gray">{cityInfo.date}</span>
               <span className="text-light-gray">·</span>
