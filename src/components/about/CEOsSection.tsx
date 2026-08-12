@@ -63,6 +63,7 @@ export function CEOsSection() {
         role: "text-white/55",
         copy: "text-white/75",
         accent: "bg-[#c8a03a]",
+        imageSurface: "bg-[#101010]",
       }
     : {
         section: "bg-[#f5f5f3]",
@@ -73,6 +74,7 @@ export function CEOsSection() {
         role: "text-dark-gray/65",
         copy: "text-dark-gray/85",
         accent: "bg-[#c8a03a]",
+        imageSurface: "bg-[#d8d6d2]",
       };
 
   return (
@@ -80,28 +82,25 @@ export function CEOsSection() {
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <p className={`mb-7 editorial-label sm:mb-9 ${colors.eyebrow}`}>{t.eyebrow}</p>
 
-        <div className={`grid overflow-hidden rounded-2xl border transition-colors duration-500 lg:grid-cols-[minmax(23rem,0.9fr)_minmax(0,1.1fr)] ${colors.shell}`}>
-          <div className="relative min-h-[30rem] overflow-hidden border-b lg:min-h-full lg:border-r lg:border-b-0">
-            <div className="relative mx-auto h-full min-h-[30rem] w-full max-w-[38rem] lg:min-h-[43rem]">
-              <Image
-                src="/images2/Ambos/img-9.png"
-                alt={t.title}
-                fill
-                priority={false}
-                className="object-cover object-center"
-                sizes="(max-width: 1024px) 100vw, 42vw"
-              />
-            </div>
+        <div className={`overflow-hidden rounded-2xl border transition-colors duration-500 ${colors.shell}`}>
+          <div className={`relative flex min-h-[20rem] items-center justify-center overflow-hidden p-4 transition-colors duration-500 sm:min-h-[28rem] sm:p-8 ${colors.imageSurface}`}>
+            <Image
+              src="/images1/imagen-nosotros.png"
+              alt={t.title}
+              fill
+              priority={false}
+              className="object-contain"
+              sizes="(max-width: 1280px) 100vw, 1152px"
+            />
           </div>
 
-          <div className={`grid content-center divide-y ${colors.divider}`}>
+          <div className={`grid divide-y lg:grid-cols-2 lg:divide-x lg:divide-y-0 ${colors.divider}`}>
             {t.leaders.map((leader) => (
-              <article key={leader.name} className="group relative p-8 sm:p-10 lg:px-12 lg:py-11">
-                <div className={`mb-6 h-px w-10 ${colors.accent}`} />
+              <article key={leader.name} className="p-6 sm:p-8 lg:p-10">
                 <p className={`editorial-label ${colors.role}`}>DRIVEN GROUP</p>
-                <h3 className={`mt-3 max-w-[85%] font-serif text-[1.8rem] font-medium tracking-tight sm:text-[2.1rem] ${colors.name}`}>{leader.name}</h3>
+                <h3 className={`mt-3 font-serif text-2xl font-medium tracking-tight sm:text-3xl ${colors.name}`}>{leader.name}</h3>
                 <p className={`editorial-label mt-2 ${colors.role}`}>{leader.role}</p>
-                <p className={`mt-6 max-w-2xl text-[0.95rem] font-light leading-[1.8] sm:text-base ${colors.copy}`}>{leader.bio}</p>
+                <p className={`mt-6 text-base font-light leading-[1.8] sm:text-lg ${colors.copy}`}>{leader.bio}</p>
               </article>
             ))}
           </div>

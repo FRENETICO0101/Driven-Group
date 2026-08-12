@@ -75,14 +75,14 @@ const content = {
 
 function AcademyCardTitle({ name }: { name: string }) {
   if (name === "Driven Academy") {
-    return <AcademyBrandLogo brand="driven-academy" className="mt-1 max-w-[16rem]" />;
+    return <AcademyBrandLogo brand="driven-academy" className="mt-1 w-full max-w-[10rem] sm:max-w-[11rem]" />;
   }
 
   if (name === "Modo Rico") {
-    return <AcademyBrandLogo brand="modo-rico" className="mt-1 max-w-[20rem]" />;
+    return <AcademyBrandLogo brand="modo-rico" className="mt-1 w-full max-w-[10rem] sm:max-w-[11rem]" />;
   }
 
-  if (name === "NEXORAMR") return <AcademyBrandLogo brand="nexoramr" className="mt-1 max-w-[20rem]" />;
+  if (name === "NEXORAMR") return <AcademyBrandLogo brand="nexoramr" className="mt-1 w-full max-w-[10rem] sm:max-w-[11rem]" />;
 
   return <>{name}</>;
 }

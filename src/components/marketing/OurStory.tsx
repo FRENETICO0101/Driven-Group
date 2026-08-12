@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { Icon } from "@/components/ui/Icon";
 import lightModeLogo from "../../../assets/logos/logo-dg-negro.png";
-import darkModeLogo from "../../../assets/logos/logo-dg.png";
+import darkModeLogo from "../../../assets/logos/logo-dg-blanco.png";
 
 export function OurStory() {
   const t = useTranslations('about');

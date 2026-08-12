@@ -28,7 +28,7 @@ export function AboutHeroSection() {
 
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
-      <section className="relative h-[46svh] min-h-[20rem] overflow-hidden bg-[#151515] sm:h-[64svh] sm:min-h-[36rem] md:h-[68svh]" aria-roledescription="carousel" aria-label="Driven Group">
+      <section className="relative h-[62svh] min-h-[31rem] overflow-hidden bg-[#151515] sm:h-[64svh] sm:min-h-[36rem] md:h-[68svh]" aria-roledescription="carousel" aria-label="Driven Group">
         {slides.map((slide, index) => (
           <div key={slide.title} className={`absolute inset-0 transition-opacity duration-[1400ms] ease-out ${index === activeIndex ? "opacity-100" : "opacity-0"}`}>
             <Image
@@ -36,22 +36,22 @@ export function AboutHeroSection() {
               alt={slide.title}
               fill
               priority={index === 0}
-              quality={90}
+              quality={100}
               sizes="100vw"
               style={{ objectPosition: slide.position }}
-              className={`h-full w-full object-cover ${slide.zoom ? "scale-[1.12]" : ""}`}
+              className={`h-full w-full object-cover ${slide.zoom ? "sm:scale-[1.12]" : ""}`}
             />
           </div>
         ))}
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(12,12,12,.96)_0%,rgba(12,12,12,.82)_35%,rgba(12,12,12,.20)_66%,rgba(12,12,12,.08)_100%)]" />
 
         <div className="relative mx-auto flex h-full max-w-[1440px] items-center px-7 py-12 sm:px-12 lg:px-20">
-          <div className="relative flex w-full max-w-[19rem] items-center justify-center px-9 py-12 sm:max-w-md sm:px-14 sm:py-16">
+          <div className="relative flex w-full max-w-[12rem] items-center justify-center px-5 py-8 sm:max-w-md sm:px-14 sm:py-16">
             <Image
               src={activeSlide.logo}
               alt={activeSlide.title}
-              className="h-auto w-full max-w-[15rem] object-contain sm:max-w-[18rem]"
-              sizes="(max-width: 640px) 240px, 288px"
+              className="h-auto w-full max-w-[9rem] object-contain sm:max-w-[18rem]"
+              sizes="(max-width: 640px) 144px, 288px"
             />
           </div>
         </div>

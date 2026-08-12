@@ -47,6 +47,7 @@ export function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUtilityMenuOpen, setIsUtilityMenuOpen] = useState(false);
   const [activeCityIdx, setActiveCityIdx] = useState<number | null>(null);
   // Keep the first client render identical to SSR. The persisted theme is read
   // after hydration, otherwise the logo source can differ from server HTML.
@@ -77,7 +78,10 @@ export function Navbar() {
 
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsMenuOpen(false);
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+        setIsUtilityMenuOpen(false);
+      }
     };
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
@@ -103,11 +107,11 @@ export function Navbar() {
 
   return (
     <>
-      <header className={`fixed inset-x-0 top-0 ${isMenuOpen ? "z-[1210]" : "z-50"} transition-all duration-700 ${overlayVisible ? "border-b border-light-gray bg-white/95 backdrop-blur-md" : "bg-transparent"}`} aria-label={t("ui.mainNavigation")}>
+      <header className={`fixed inset-x-0 top-0 z-[1300] isolate transition-all duration-700 ${overlayVisible ? "border-b border-light-gray bg-white/95 backdrop-blur-md" : "bg-transparent"}`} aria-label={t("ui.mainNavigation")}>
         <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <div className="grid h-16 items-center sm:h-20" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
             <div className="flex min-w-0 items-center gap-3 sm:gap-6">
-              <button onClick={() => setIsMenuOpen((open) => !open)} className="flex items-center gap-2.5 rounded text-dark-gray transition-colors hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={isMenuOpen ? t("ui.closeMenu") : t("ui.openMenu")} aria-controls="driven-main-menu" aria-expanded={isMenuOpen}>
+              <button onClick={() => { setIsUtilityMenuOpen(false); setIsMenuOpen((open) => !open); }} className="flex items-center gap-2.5 rounded text-dark-gray transition-colors hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={isMenuOpen ? t("ui.closeMenu") : t("ui.openMenu")} aria-controls="driven-main-menu" aria-expanded={isMenuOpen}>
                 <span className="flex h-4 w-5 flex-col justify-between">
                   <span className={`block h-px bg-current transition-all ${isMenuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
                   <span className={`block h-px bg-current transition-all ${isMenuOpen ? "scale-x-0 opacity-0" : ""}`} />
@@ -137,8 +141,35 @@ export function Navbar() {
                 <Icon name="phone" className="h-[18px] w-[18px]" />
                 <span className="editorial-label hidden lg:inline">{t("ui.contact")}</span>
               </Link>
-              <LanguageSwitcher />
-              <ThemeToggle onThemeChange={setIsNight} />
+              <div className="hidden items-center gap-2 sm:flex sm:gap-5">
+                <LanguageSwitcher />
+                <ThemeToggle onThemeChange={setIsNight} />
+              </div>
+              <div className="relative sm:hidden">
+                <button
+                  type="button"
+                  onClick={() => setIsUtilityMenuOpen((open) => !open)}
+                  aria-expanded={isUtilityMenuOpen}
+                  aria-controls="driven-mobile-preferences"
+                  aria-label={locale === "es" ? "Abrir preferencias" : "Open preferences"}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-light-gray bg-white/90 text-dark-gray shadow-sm transition-colors hover:bg-light-gray focus:outline-none focus-visible:ring-1 focus-visible:ring-dark-gray"
+                >
+                  <Icon name="tune" className="h-[18px] w-[18px]" />
+                </button>
+                <div
+                  id="driven-mobile-preferences"
+                  className={`absolute right-0 top-[calc(100%+0.65rem)] z-[1301] w-52 origin-top-right rounded-xl border border-light-gray bg-white p-3 shadow-xl transition-all duration-200 ${isUtilityMenuOpen ? "visible translate-y-0 opacity-100" : "invisible pointer-events-none -translate-y-1 opacity-0"}`}
+                >
+                  <div className="flex items-center justify-between gap-4 border-b border-light-gray pb-3">
+                    <span className="editorial-label text-gray">{locale === "es" ? "Idioma" : "Language"}</span>
+                    <LanguageSwitcher />
+                  </div>
+                  <div className="flex items-center justify-between gap-4 pt-3">
+                    <span className="editorial-label text-gray">{locale === "es" ? "Apariencia" : "Appearance"}</span>
+                    <ThemeToggle onThemeChange={setIsNight} />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -61,20 +61,20 @@ export function AcademyHeroSection() {
 
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
-      <section className="relative flex h-[46svh] min-h-[20rem] items-end overflow-hidden bg-black sm:h-[64svh] sm:min-h-[36rem] md:h-[68svh]" aria-roledescription="carousel" aria-label="Driven Academy" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+      <section className="relative flex h-[62svh] min-h-[31rem] items-end overflow-hidden bg-black sm:h-[64svh] sm:min-h-[36rem] md:h-[68svh]" aria-roledescription="carousel" aria-label="Driven Academy" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
         <div className="absolute inset-0 bg-black">
           {slides.map((slide, index) => (
             <div key={slide.href} className={`absolute inset-0 transition-opacity duration-[1800ms] ease-in-out ${index === activeIndex ? "opacity-100" : "opacity-0"}`}>
-              <Image src={slide.image} alt={slide.copy[language].label} fill priority={index === 0} quality={90} sizes="100vw" style={{ objectPosition: slide.position }} className="object-cover" />
+              <Image src={slide.image} alt={slide.copy[language].label} fill priority={index === 0} quality={100} sizes="100vw" style={{ objectPosition: slide.position }} className="object-cover" />
             </div>
           ))}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.78)_0%,rgba(0,0,0,0.42)_18%,transparent_42%,transparent_62%,rgba(0,0,0,0.32)_82%,rgba(0,0,0,0.68)_100%)]" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent sm:from-black/68 sm:via-black/24 sm:to-black/5" />
         </div>
-        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-6 bg-black px-6 py-7 sm:gap-7 sm:bg-transparent sm:px-8 sm:pb-14 sm:pt-8 lg:flex-row lg:items-end lg:justify-between">
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-6 bg-gradient-to-t from-black via-black/90 to-transparent px-6 pb-7 pt-20 sm:gap-7 sm:bg-transparent sm:px-8 sm:pb-14 sm:pt-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl border-l border-white/55 pl-5 text-white drop-shadow-[0_1px_7px_rgba(0,0,0,0.32)] sm:pl-6">
             {activeBrand ? (
-              <AcademyBrandLogo brand={activeBrand} tone="dark" className="w-40 sm:w-52" />
+              <AcademyBrandLogo brand={activeBrand} tone="dark" className="w-28 sm:w-52" />
             ) : (
               <p className="text-[9px] font-normal tracking-[0.2em] text-white/60">{copy.label}</p>
             )}

@@ -25,7 +25,7 @@ export function BusinessDivisionsCarousel() {
 
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
-      <section className="relative h-[46svh] min-h-[20rem] overflow-hidden bg-black sm:h-[64svh] sm:min-h-[36rem] md:h-[68svh]" aria-roledescription="carousel" aria-label="Business divisions">
+      <section className="relative h-[62svh] min-h-[31rem] overflow-hidden bg-black sm:h-[64svh] sm:min-h-[36rem] md:h-[68svh]" aria-roledescription="carousel" aria-label="Business divisions">
         <div className="absolute inset-0">
           {divisions.map((division, index) => (
             <Image
@@ -34,7 +34,7 @@ export function BusinessDivisionsCarousel() {
               alt={t(division.title)}
               fill
               priority={index === 0}
-              quality={90}
+              quality={100}
               sizes="100vw"
               className={`object-cover transition-opacity duration-[1800ms] ease-in-out ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
               style={{ objectPosition: division.position }}
