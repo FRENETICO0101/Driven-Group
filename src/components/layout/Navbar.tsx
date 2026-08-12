@@ -37,6 +37,10 @@ function getCityInfo(city: (typeof cities)[number], locale: string) {
   };
 }
 
+function formatTemperature(fahrenheit: number, locale: string) {
+  return locale === "es" ? `${Math.round((fahrenheit - 32) * 5 / 9)}°C` : `${fahrenheit}°F`;
+}
+
 export function Navbar() {
   const t = useTranslations();
   const locale = useLocale();
@@ -81,6 +85,7 @@ export function Navbar() {
 
   const activeCity = activeCityIdx === null ? localCity : cities[activeCityIdx];
   const cityInfo = getCityInfo(activeCity, locale);
+  const temperature = formatTemperature(cityInfo.temp, locale);
   const overlayVisible = isScrolled || isMenuOpen;
   const isRealEstate = pathname.includes("/real-estate");
   const isBusiness = pathname.includes("/business");
@@ -113,7 +118,7 @@ export function Navbar() {
               <div className="hidden items-center gap-3 border-l border-light-gray pl-5 md:flex">
                 <span className="editorial-label text-gray">{activeCity.label}</span>
                 <span className="editorial-label tabular-nums text-dark-gray">{cityInfo.time}</span>
-                <span className="editorial-label tabular-nums text-gray">{cityInfo.temp}°F</span>
+                <span className="editorial-label tabular-nums text-gray">{temperature}</span>
               </div>
             </div>
 
@@ -123,7 +128,7 @@ export function Navbar() {
                   <Image src={isNight ? "/images1/logo-dg-blanco-cropped.png" : "/images1/logo-dg-negro-cropped.png"} alt="Driven Group" fill priority unoptimized className="object-contain" />
                 </span>
               ) : (
-                <BrandLogo className={isRealEstate || isBusiness || isAcademy ? "w-[4.5rem] sm:w-24 md:w-28" : "w-24 sm:w-28 md:w-32"} variant={isRealEstate ? "realEstate" : isBusiness ? "business" : isAcademy ? "academy" : "corporate"} dark={isNight} />
+                <BrandLogo className={isRealEstate || isBusiness || isAcademy ? "w-20 sm:w-28 md:w-32" : "w-14 sm:w-[4.5rem] md:w-20"} variant={isRealEstate ? "realEstate" : isBusiness ? "business" : isAcademy ? "academy" : "corporate"} dark={isNight} />
               )}
             </Link>
 
@@ -134,9 +139,6 @@ export function Navbar() {
               </Link>
               <LanguageSwitcher />
               <ThemeToggle onThemeChange={setIsNight} />
-              <Link href={`/${locale}/login`} className="rounded text-dark-gray transition-colors hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-light-gray" aria-label={t("ui.account")}>
-                <Icon name="person" className="h-[18px] w-[18px]" />
-              </Link>
             </div>
           </div>
         </div>
@@ -159,28 +161,36 @@ export function Navbar() {
             </nav>
 
             <div className="mt-auto flex flex-col gap-6 border-t border-light-gray pb-10 pt-8 sm:flex-row sm:items-center sm:justify-between sm:pb-12">
-              <a href="mailto:info@drivengroup.com" className="editorial-label text-gray transition-colors hover:text-black">info@drivengroup.com</a>
+              <a href="mailto:administracion@drivengroup.com.mx" className="editorial-label text-gray transition-colors hover:text-black">administracion@drivengroup.com.mx</a>
             </div>
           </div>
 
           <div className="menu-brand-panel relative hidden overflow-hidden border-x border-white/10 xl:flex xl:items-center xl:justify-center">
-            <BrandLogo variant="menu" className="menu-brand-logo relative z-10 w-80 2xl:w-[26rem]" />
+            <div className="menu-brand-logo relative z-10 h-28 w-96 2xl:h-32 2xl:w-[30rem]">
+              <Image
+                src="/images1/logo-dg-negro-cropped.png"
+                alt="Driven Group"
+                fill
+                sizes="(max-width: 1536px) 384px, 480px"
+                className="object-contain brightness-0 invert contrast-125"
+              />
+            </div>
           </div>
 
           <aside className="relative z-10 hidden flex-col justify-center border-l border-light-gray px-8 xl:flex 2xl:px-10">
             <p className="editorial-label mb-5 tracking-[0.2em] text-gray">{t("ui.localTime")}</p>
-            <p className="mb-2 text-5xl font-extralight leading-none tracking-tight text-black tabular-nums xl:text-6xl">{cityInfo.time}</p>
+            <p className="mb-2 whitespace-nowrap text-5xl font-extralight leading-none tracking-tight text-black tabular-nums xl:text-6xl">{cityInfo.time}</p>
             <div className="mt-3 flex items-center gap-3">
               <span className="editorial-label text-dark-gray">{cityInfo.date}</span>
               <span className="text-light-gray">·</span>
-              <span className="editorial-label tabular-nums text-dark-gray">{cityInfo.temp}°F</span>
+              <span className="editorial-label tabular-nums text-dark-gray">{temperature}</span>
             </div>
-            <p className="editorial-label mb-3 mt-10 tracking-[0.2em] text-gray">{t("ui.city")}</p>
+            <p className="editorial-label mb-3 mt-10 px-3 tracking-[0.2em] text-gray">{t("ui.city")}</p>
             <div className="space-y-0.5">
               {cities.map((city, index) => {
                 const info = getCityInfo(city, locale);
                 const isActive = index === activeCityIdx;
-                return <button key={city.label} type="button" onClick={() => setActiveCityIdx(index)} aria-pressed={isActive} className={`flex w-full items-center justify-between rounded px-3 py-2.5 transition-colors ${isActive ? "bg-light-gray text-black" : "text-gray hover:bg-light-gray/60 hover:text-dark-gray"}`}><span className="editorial-label">{city.label}</span><span className="editorial-label tabular-nums opacity-70">{info.time}</span></button>;
+                return <button key={city.label} type="button" onClick={() => setActiveCityIdx(index)} aria-pressed={isActive} className={`grid w-full grid-cols-[minmax(0,1fr)_9.5rem] items-center gap-3 rounded px-3 py-2.5 text-left transition-colors ${isActive ? "bg-light-gray text-black" : "text-gray hover:bg-light-gray/60 hover:text-dark-gray"}`}><span className="editorial-label justify-self-start truncate">{city.label}</span><span className="flex justify-self-end gap-2 whitespace-nowrap text-right"><span className="editorial-label tabular-nums opacity-60">{formatTemperature(info.temp, locale)}</span><span className="editorial-label min-w-[4.8rem] tabular-nums opacity-70">{info.time}</span></span></button>;
               })}
             </div>
           </aside>

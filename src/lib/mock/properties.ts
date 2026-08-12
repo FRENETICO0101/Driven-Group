@@ -9,7 +9,7 @@ import type { Property } from "@/lib/types";
 const mockAgent = {
   id: "agent-fallback",
   name: "Driven Group Team",
-  email: "info@drivengroup.com",
+  email: "administracion@drivengroup.com.mx",
   role: "AGENT" as const,
   createdAt: new Date("2024-01-01"),
   updatedAt: new Date("2024-01-01"),

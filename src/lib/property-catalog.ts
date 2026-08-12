@@ -4,7 +4,7 @@ import type { Property, PropertyStatus } from "@/lib/types";
 const defaultAgent = {
   id: "driven-group",
   name: "Driven Group",
-  email: "info@drivengroup.com",
+  email: "administracion@drivengroup.com.mx",
   role: "AGENT" as const,
   createdAt: new Date(0),
   updatedAt: new Date(0),

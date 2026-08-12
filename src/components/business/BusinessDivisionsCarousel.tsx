@@ -44,10 +44,10 @@ export function BusinessDivisionsCarousel() {
         </div>
 
         <div className="absolute right-6 top-8 z-20 text-center sm:right-8">
-          <Icon name="trending_up" className="block h-6 w-6 text-white" />
-          <p className="mt-2 text-xs font-semibold tracking-widest text-white">BUSINESS</p>
+          <Icon name="trending_up" className="block h-5 w-5 text-white/80" />
+          <p className="mt-1.5 text-[9px] font-normal tracking-[0.18em] text-white/70">BUSINESS</p>
         </div>
-        <p className="absolute bottom-5 left-6 z-20 text-sm font-semibold uppercase tracking-[0.16em] text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] sm:bottom-8 sm:left-8 sm:text-base">{t(divisions[activeIndex].title)}</p>
+        <p className="absolute bottom-5 left-6 z-20 text-[10px] font-normal uppercase tracking-[0.12em] text-white/85 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] sm:bottom-8 sm:left-8 sm:text-xs">{t(divisions[activeIndex].title)}</p>
         <div className="absolute bottom-5 right-6 z-20 flex items-center gap-2 sm:bottom-8 sm:right-8">
           {divisions.map((division, index) => <button key={division.id} type="button" onClick={() => setActiveIndex(index)} aria-label={t(division.title)} aria-current={index === activeIndex ? "true" : undefined} className={`rounded-full shadow-[0_1px_3px_rgba(0,0,0,0.7)] transition-all duration-300 ${index === activeIndex ? "h-1.5 w-7 bg-white" : "h-1.5 w-1.5 bg-white/65 hover:bg-white"}`} />)}
         </div>

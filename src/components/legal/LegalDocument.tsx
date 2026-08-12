@@ -51,7 +51,7 @@ export function LegalDocument({ eyebrow, title, updated, introduction, sections,
         {children && <div className="mt-8">{children}</div>}
 
         <div className="mt-10 border-t border-light-gray pt-8 text-sm text-dark-gray">
-          <p>{contactLabel} <a className="font-semibold text-black underline underline-offset-4" href="mailto:info@drivengroup.com">info@drivengroup.com</a></p>
+          <p>{contactLabel} <a className="font-semibold text-black underline underline-offset-4" href="mailto:administracion@drivengroup.com.mx">administracion@drivengroup.com.mx</a></p>
           <Link href={`/${locale}`} className="mt-5 inline-flex text-sm font-semibold text-black underline underline-offset-4">← Driven Group</Link>
         </div>
       </article>

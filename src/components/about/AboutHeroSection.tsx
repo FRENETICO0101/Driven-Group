@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { BrandLogo } from "@/components/ui/BrandLogo";
+import realEstateLogo from "../../../assets/logos/logo-re-negro.png";
+import academyLogo from "../../../assets/logos/academy-negro.png";
+import businessLogo from "../../../assets/logos/logo-bussines-negro.png";
 
 const slides = [
-  { title: "Driven Real Estate", variant: "realEstate", image: "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-ph-crowd.webp", position: "52% 46%", zoom: true },
-  { title: "Driven Academy", variant: "academy", image: "/images1/academy-virtual-classroom.webp", position: "center center", zoom: false },
-  { title: "Driven Business", variant: "business", image: "/images1/business-executive-miami-v1.webp", position: "center center", zoom: false },
+  { title: "Driven Real Estate", logo: realEstateLogo, image: "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-ph-crowd.webp", position: "52% 46%", zoom: true },
+  { title: "Driven Academy", logo: academyLogo, image: "/images1/academy-virtual-classroom.webp", position: "center center", zoom: false },
+  { title: "Driven Business", logo: businessLogo, image: "/images1/business-executive-miami-v1.webp", position: "center center", zoom: false },
 ] as const;
 
 const AUTO_ADVANCE_DELAY = 3_000;
@@ -44,11 +46,11 @@ export function AboutHeroSection() {
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(12,12,12,.96)_0%,rgba(12,12,12,.82)_35%,rgba(12,12,12,.20)_66%,rgba(12,12,12,.08)_100%)]" />
 
         <div className="relative mx-auto flex h-full max-w-[1440px] items-center px-7 py-12 sm:px-12 lg:px-20">
-          <div className="flex w-full max-w-[19rem] items-center justify-center px-9 py-12 sm:max-w-md sm:px-14 sm:py-16">
-            <BrandLogo
-              variant={activeSlide.variant}
-              imageClassName="brightness-0 invert contrast-125"
-              className="w-full max-w-[15rem] sm:max-w-[18rem]"
+          <div className="relative flex w-full max-w-[19rem] items-center justify-center px-9 py-12 sm:max-w-md sm:px-14 sm:py-16">
+            <Image
+              src={activeSlide.logo}
+              alt={activeSlide.title}
+              className="h-auto w-full max-w-[15rem] object-contain sm:max-w-[18rem]"
               sizes="(max-width: 640px) 240px, 288px"
             />
           </div>

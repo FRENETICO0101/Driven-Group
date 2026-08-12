@@ -11,7 +11,7 @@ type Locale = "es" | "en";
 const slides = [
   { href: "/real-estate", image: "/property-assets/brickell/mandarin-oriental-residences/gallery/mandarin-oriental-miami-ph-crowd.webp", position: "52% 46%", crop: "scale-[1.12]", copy: { es: { label: "DRIVEN REAL ESTATE", action: "Explorar propiedades" }, en: { label: "DRIVEN REAL ESTATE", action: "Explore properties" } } },
   { href: "/business", image: "/images1/business-alliances-hero-v2.webp", position: "center center", crop: "scale-100", copy: { es: { label: "DRIVEN BUSINESS", action: "Conocer Business" }, en: { label: "DRIVEN BUSINESS", action: "Discover Business" } } },
-  { href: "/academy", image: "/images1/academy-driven-financial-workshop.webp", position: "60% center", crop: "scale-100", copy: { es: { label: "DRIVEN ACADEMY", action: "Conocer Academy" }, en: { label: "DRIVEN ACADEMY", action: "Discover Academy" } } },
+  { href: "/academy", image: "/images1/academy-virtual-classroom.webp", position: "60% center", crop: "scale-100", copy: { es: { label: "DRIVEN ACADEMY", action: "Conocer Academy" }, en: { label: "DRIVEN ACADEMY", action: "Discover Academy" } } },
 ] as const;
 
 const AUTO_ADVANCE_DELAY = 3_000;
@@ -42,8 +42,8 @@ export function HeroSection() {
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-end gap-7 px-6 pb-9 sm:px-8 sm:pb-12 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-sm border-l border-white/70 pl-5 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:pl-6">
             <h1 className="sr-only">{copy.label}</h1>
-            <p className="text-[11px] font-semibold tracking-[0.28em] text-white/70">{copy.label}</p>
-            <Link href={activeSlide.href} className="mt-4 inline-flex items-center gap-2 border-b border-white/35 pb-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-white/85 transition-colors hover:border-white hover:text-white">
+            <p className="text-[9px] font-normal tracking-[0.22em] text-white/60">{copy.label}</p>
+            <Link href={activeSlide.href} className="mt-3 inline-flex items-center gap-1.5 border-b border-white/30 pb-1 text-[10px] font-normal uppercase tracking-[0.1em] text-white/78 transition-colors hover:border-white hover:text-white">
               {copy.action}<Icon name="north_east" className="h-4 w-4" />
             </Link>
           </div>

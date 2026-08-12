@@ -8,7 +8,7 @@ import type { Property } from "@/lib/types";
 type FormState = "idle" | "form" | "loading" | "success" | "error";
 interface PropertyCTAProps { property: Property; }
 const inputClass = "w-full rounded-lg border border-light-gray bg-white px-3 py-2 text-sm text-black placeholder-gray focus:border-primary/50 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 sm:px-4 sm:py-3 sm:text-base";
-const realEstateContact = { name: "Driven Group Real Estate", email: "administracion@drivengroup.com.mx" };
+const realEstateContact = { name: "Driven Real Estate", email: "administracion@drivengroup.com.mx" };
 const copy = {
   es: { title: "Agendar consulta", body: "Nuestro equipo está disponible para discutir esta oportunidad de inversión.", request: "Solicitar información", received: "Consulta recibida", reply: "Un asesor se pondrá en contacto en las próximas 24 horas.", another: "Enviar otra consulta", name: "Nombre completo", email: "Correo electrónico", phone: "Teléfono", message: "Mensaje (opcional)", send: "Enviar", sending: "Enviando...", cancel: "Cancelar", direct: "Contacto directo", error: "No fue posible enviar la consulta." },
   en: { title: "Schedule a consultation", body: "Our team is available to discuss this investment opportunity.", request: "Request information", received: "Inquiry received", reply: "An advisor will contact you within the next 24 hours.", another: "Send another inquiry", name: "Full name", email: "Email address", phone: "Phone number", message: "Message (optional)", send: "Send", sending: "Sending...", cancel: "Cancel", direct: "Direct contact", error: "We couldn't send your inquiry." },

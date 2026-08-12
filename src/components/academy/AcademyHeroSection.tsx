@@ -72,14 +72,14 @@ export function AcademyHeroSection() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent sm:from-black/68 sm:via-black/24 sm:to-black/5" />
         </div>
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-6 bg-black px-6 py-7 sm:gap-7 sm:bg-transparent sm:px-8 sm:pb-14 sm:pt-8 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-2xl border-l border-white/70 pl-5 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:pl-6">
+          <div className="max-w-2xl border-l border-white/55 pl-5 text-white drop-shadow-[0_1px_7px_rgba(0,0,0,0.32)] sm:pl-6">
             {activeBrand ? (
               <AcademyBrandLogo brand={activeBrand} tone="dark" className="w-40 sm:w-52" />
             ) : (
-              <p className="text-[11px] font-semibold tracking-[0.28em] text-white/70">{copy.label}</p>
+              <p className="text-[9px] font-normal tracking-[0.2em] text-white/60">{copy.label}</p>
             )}
-            <h1 className="mt-3 max-w-xl font-serif text-2xl italic leading-[1.16] tracking-tight sm:text-4xl md:text-5xl">{copy.title}</h1>
-            <a href={activeSlide.href} target={activeSlide.external ? "_blank" : undefined} rel={activeSlide.external ? "noreferrer" : undefined} className="mt-5 inline-flex items-center gap-3 border-b border-white/45 pb-2 text-xs font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:border-white hover:text-white/75 sm:mt-6 sm:text-sm">
+            <h1 className="mt-2.5 max-w-md font-serif text-base font-[300] italic leading-[1.28] tracking-tight text-white/88 sm:text-xl md:text-2xl">{copy.title}</h1>
+            <a href={activeSlide.href} target={activeSlide.external ? "_blank" : undefined} rel={activeSlide.external ? "noreferrer" : undefined} className="mt-3.5 inline-flex items-center gap-1.5 border-b border-white/35 pb-1 text-[10px] font-normal uppercase tracking-[0.09em] text-white/82 transition-colors hover:border-white hover:text-white/75 sm:mt-4 sm:text-[11px]">
               {copy.action}<Icon name="north_east" className="h-4 w-4" />
             </a>
           </div>
