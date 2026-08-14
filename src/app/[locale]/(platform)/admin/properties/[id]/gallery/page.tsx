@@ -1,7 +1,6 @@
 import { auth } from '@/lib/auth';
 import { redirect, notFound } from 'next/navigation';
 import Link from 'next/link';
-import { AdminNavbar } from '@/components/admin/AdminNavbar';
 import { PropertyGallery } from '@/components/admin/PropertyGallery';
 import { propertyRepository } from '@/server/repositories/property.repository';
 
@@ -26,10 +25,8 @@ export default async function PropertyGalleryPage({
   }
 
   return (
-    <>
-      <AdminNavbar />
-      <main className="min-h-screen bg-light-gray/30">
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 py-12">
+    <main className="min-h-screen bg-light-gray/30">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 py-12">
           <div className="mb-8">
             <div className="flex items-center gap-4 mb-2">
               <h1 className="font-serif text-4xl md:text-5xl text-black">Gallery</h1>
@@ -53,8 +50,7 @@ export default async function PropertyGalleryPage({
           </div>
 
           <PropertyGallery propertyId={property.id} images={property.images} />
-        </div>
-      </main>
-    </>
+      </div>
+    </main>
   );
 }
