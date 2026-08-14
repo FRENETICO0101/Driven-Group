@@ -15,16 +15,16 @@ interface PropertyFormState {
   title: string;
   slug: string;
   description: string;
-  price: number;
+  price: number | '';
   address: string;
   city: string;
   state: string;
   zipCode: string;
   latitude: number | '';
   longitude: number | '';
-  bedrooms: number;
-  bathrooms: number;
-  squareFeet: number;
+  bedrooms: number | '';
+  bathrooms: number | '';
+  squareFeet: number | '';
   type: PropertyType;
   status: PropertyStatus;
   amenities: string[];
@@ -49,16 +49,16 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
     title: initialData?.title || '',
     slug: initialData?.slug || '',
     description: initialData?.description || '',
-    price: initialData?.price || 0,
+    price: initialData?.price ?? '',
     address: initialData?.address || '',
     city: initialData?.city || '',
     state: initialData?.state || '',
     zipCode: initialData?.zipCode || '',
     latitude: initialData?.latitude ?? '',
     longitude: initialData?.longitude ?? '',
-    bedrooms: initialData?.bedrooms || 0,
-    bathrooms: initialData?.bathrooms || 0,
-    squareFeet: initialData?.squareFeet || 0,
+    bedrooms: initialData?.bedrooms ?? '',
+    bathrooms: initialData?.bathrooms ?? '',
+    squareFeet: initialData?.squareFeet ?? '',
     type: initialData?.type || 'RESIDENTIAL',
     status: initialData?.status || 'ACTIVE',
     amenities: initialData?.amenities || [],
@@ -125,7 +125,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
   };
 
   const handleDelete = async () => {
-    if (!canDelete || !confirm('Are you sure you want to remove this property from the public site?')) return;
+    if (!canDelete) return;
 
     setError(null);
     setIsDeleting(true);
@@ -154,11 +154,11 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
       )}
 
       <div className="bg-white border border-light-gray rounded-xl p-8 space-y-6">
-        <h2 className="text-2xl font-serif text-black">Basic Information</h2>
+        <h2 className="text-2xl font-serif text-black">Información básica</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">Title</label>
+            <label className="block text-sm font-semibold text-black mb-2">Título</label>
             <input
               type="text"
               value={formData.title}
@@ -169,7 +169,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">Slug (auto-generated)</label>
+            <label className="block text-sm font-semibold text-black mb-2">Slug (generado automáticamente)</label>
             <input
               type="text"
               value={formData.slug}
@@ -181,7 +181,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-black mb-2">Description</label>
+          <label className="block text-sm font-semibold text-black mb-2">Descripción</label>
           <textarea
             value={formData.description}
             onChange={(e) => setFormData((prev) => ({ ...prev, description: e.target.value }))}
@@ -192,11 +192,11 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
       </div>
 
       <div className="bg-white border border-light-gray rounded-xl p-8 space-y-6">
-        <h2 className="text-2xl font-serif text-black">Location & Details</h2>
+        <h2 className="text-2xl font-serif text-black">Ubicación y detalles</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">Address</label>
+            <label className="block text-sm font-semibold text-black mb-2">Dirección</label>
             <input
               type="text"
               value={formData.address}
@@ -207,7 +207,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">City</label>
+            <label className="block text-sm font-semibold text-black mb-2">Ciudad</label>
             <input
               type="text"
               value={formData.city}
@@ -218,7 +218,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">State</label>
+            <label className="block text-sm font-semibold text-black mb-2">Estado</label>
             <input
               type="text"
               value={formData.state}
@@ -229,7 +229,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">Zip Code</label>
+            <label className="block text-sm font-semibold text-black mb-2">Código postal</label>
             <input
               type="text"
               value={formData.zipCode}
@@ -270,39 +270,39 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
       </div>
 
       <div className="bg-white border border-light-gray rounded-xl p-8 space-y-6">
-        <h2 className="text-2xl font-serif text-black">Specifications</h2>
+        <h2 className="text-2xl font-serif text-black">Especificaciones</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">Bedrooms</label>
+            <label className="block text-sm font-semibold text-black mb-2">Recámaras</label>
             <input
               type="number"
               min="0"
               value={formData.bedrooms}
-              onChange={(e) => setFormData((prev) => ({ ...prev, bedrooms: Number(e.target.value) }))}
+              onChange={(e) => setFormData((prev) => ({ ...prev, bedrooms: e.target.value === '' ? '' : Number(e.target.value) }))}
               className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">Bathrooms</label>
+            <label className="block text-sm font-semibold text-black mb-2">Baños</label>
             <input
               type="number"
               min="0"
               step="0.5"
               value={formData.bathrooms}
-              onChange={(e) => setFormData((prev) => ({ ...prev, bathrooms: Number(e.target.value) }))}
+              onChange={(e) => setFormData((prev) => ({ ...prev, bathrooms: e.target.value === '' ? '' : Number(e.target.value) }))}
               className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">Square Feet</label>
+            <label className="block text-sm font-semibold text-black mb-2">Pies cuadrados</label>
             <input
               type="number"
               min="1"
               value={formData.squareFeet}
-              onChange={(e) => setFormData((prev) => ({ ...prev, squareFeet: Number(e.target.value) }))}
+              onChange={(e) => setFormData((prev) => ({ ...prev, squareFeet: e.target.value === '' ? '' : Number(e.target.value) }))}
               className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
               required
             />
@@ -311,61 +311,61 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">Price</label>
+            <label className="block text-sm font-semibold text-black mb-2">Precio</label>
             <input
               type="number"
               min="0"
               value={formData.price}
-              onChange={(e) => setFormData((prev) => ({ ...prev, price: Number(e.target.value) }))}
+              onChange={(e) => setFormData((prev) => ({ ...prev, price: e.target.value === '' ? '' : Number(e.target.value) }))}
               className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">Type</label>
+            <label className="block text-sm font-semibold text-black mb-2">Tipo</label>
             <select
               value={formData.type}
               onChange={(e) => setFormData((prev) => ({ ...prev, type: e.target.value as PropertyType }))}
               className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
               required
             >
-              <option value="RESIDENTIAL">Residential</option>
-              <option value="COMMERCIAL">Commercial</option>
-              <option value="LAND">Land</option>
-              <option value="MIXED_USE">Mixed Use</option>
+              <option value="RESIDENTIAL">Residencial</option>
+              <option value="COMMERCIAL">Comercial</option>
+              <option value="LAND">Terreno</option>
+              <option value="MIXED_USE">Uso mixto</option>
             </select>
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-black mb-2">Status</label>
+          <label className="block text-sm font-semibold text-black mb-2">Estatus</label>
           <select
             value={formData.status}
               onChange={(e) => setFormData((prev) => ({ ...prev, status: e.target.value as PropertyStatus }))}
             className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
             required
           >
-            <option value="ACTIVE">Active</option>
-            <option value="PENDING">Pending</option>
-            <option value="SOLD">Sold</option>
-            <option value="INACTIVE">Inactive</option>
+            <option value="ACTIVE">Activa</option>
+            <option value="PENDING">Pendiente</option>
+            <option value="SOLD">Vendida</option>
+            <option value="INACTIVE">Inactiva</option>
           </select>
         </div>
       </div>
 
       <div className="bg-white border border-light-gray rounded-xl p-8 space-y-6">
-        <h2 className="text-2xl font-serif text-black">Amenities</h2>
+        <h2 className="text-2xl font-serif text-black">Amenidades</h2>
 
         <div>
           <label className="block text-sm font-semibold text-black mb-2">
-            Amenities (comma-separated)
+            Amenidades (separadas por comas)
           </label>
           <textarea
             value={formData.amenities.join(', ')}
             onChange={handleAmenitiesChange}
             rows={3}
-            placeholder="e.g., Pool, Gym, Parking, Garden"
+            placeholder="Ej. alberca, gimnasio, estacionamiento, jardín"
             className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
           />
         </div>
@@ -377,7 +377,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
           disabled={isLoading}
           className="px-8 py-3 bg-black text-white font-semibold rounded-lg hover:bg-black/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
-          {isLoading ? 'Saving...' : 'Save Property'}
+          {isLoading ? 'Guardando...' : 'Guardar propiedad'}
         </button>
 
         <button
@@ -385,7 +385,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
           onClick={() => router.back()}
           className="px-8 py-3 border border-light-gray text-black font-semibold rounded-lg hover:bg-light-gray/30 transition-colors"
         >
-          Cancel
+          Cancelar
         </button>
         {propertyId && (
           <Link href={`/admin/properties/${formData.slug}/gallery`} className="px-8 py-3 border border-light-gray text-black font-semibold rounded-lg hover:bg-light-gray/30 transition-colors">
@@ -399,7 +399,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
             disabled={isLoading || isDeleting}
             className="ml-auto px-8 py-3 border border-red-200 text-red-700 font-semibold rounded-lg hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            {isDeleting ? 'Deleting...' : 'Delete Property'}
+            {isDeleting ? 'Eliminando...' : 'Eliminar propiedad'}
           </button>
         )}
       </div>

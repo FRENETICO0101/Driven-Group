@@ -5,7 +5,7 @@ import { PropertyGallery } from '@/components/admin/PropertyGallery';
 import { propertyRepository } from '@/server/repositories/property.repository';
 
 export const metadata = {
-  title: 'Property Gallery - Admin',
+  title: 'Galería de propiedad | Administración',
 };
 
 export default async function PropertyGalleryPage({
@@ -29,7 +29,7 @@ export default async function PropertyGalleryPage({
       <div className="max-w-4xl mx-auto px-6 sm:px-8 py-12">
           <div className="mb-8">
             <div className="flex items-center gap-4 mb-2">
-              <h1 className="font-serif text-4xl md:text-5xl text-black">Gallery</h1>
+            <h1 className="font-serif text-4xl md:text-5xl text-black">Galería</h1>
             </div>
             <p className="text-dark-gray mb-4">{property.title}</p>
             <div className="flex gap-3">
@@ -44,7 +44,7 @@ export default async function PropertyGalleryPage({
                 href="/admin/properties"
                 className="text-sm text-dark-gray hover:text-black"
               >
-                All properties
+                Todas las propiedades
               </Link>
             </div>
           </div>

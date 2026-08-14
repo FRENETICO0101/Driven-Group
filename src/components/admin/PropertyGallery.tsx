@@ -26,8 +26,8 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
   const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    if (!uploadUrl.trim()) {
-      setError('Please enter an image URL');
+    if (!uploadFile && !uploadUrl.trim()) {
+      setError('Selecciona una imagen o ingresa una URL');
       return;
     }
 
@@ -40,7 +40,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
         : await uploadPropertyImageAction(propertyId, uploadUrl, uploadAlt || undefined);
 
       if (!result.success || !result.data) {
-        setError(result.error || 'Failed to upload image');
+        setError(result.error || 'No fue posible subir la imagen');
         return;
       }
 
@@ -50,7 +50,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
       setUploadFile(null);
       form.reset();
     } catch (err) {
-      setError('An unexpected error occurred');
+      setError('Ocurrió un error inesperado');
       console.error(err);
     } finally {
       setIsLoading(false);
@@ -73,7 +73,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
 
       setImages(images.filter((img) => img.id !== imageId));
     } catch (err) {
-      setError('An unexpected error occurred');
+      setError('Ocurrió un error inesperado');
       console.error(err);
     } finally {
       setIsLoading(false);
@@ -96,7 +96,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
     try {
       await reorderPropertyImagesAction(newImages.map((img) => img.id));
     } catch (err) {
-      setError('Failed to reorder images');
+      setError('No fue posible reordenar las imágenes');
       console.error(err);
       setImages(images);
     } finally {
@@ -120,7 +120,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
     try {
       await reorderPropertyImagesAction(newImages.map((img) => img.id));
     } catch (err) {
-      setError('Failed to reorder images');
+      setError('No fue posible reordenar las imágenes');
       console.error(err);
       setImages(images);
     } finally {
@@ -138,12 +138,12 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
 
       {/* Upload Form */}
       <div className="bg-white border border-light-gray rounded-xl p-8">
-        <h2 className="text-2xl font-serif text-black mb-2">Add Image</h2>
-        <p className="mb-6 text-sm text-dark-gray">Upload a file (JPG, PNG, WebP; up to 10 MB) or add an existing image URL.</p>
+        <h2 className="text-2xl font-serif text-black mb-2">Agregar imagen</h2>
+        <p className="mb-6 text-sm text-dark-gray">Sube un archivo (JPG, PNG, WebP; hasta 10 MB) o agrega la URL de una imagen existente.</p>
 
         <form onSubmit={handleUpload} className="space-y-4">
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">Image file</label>
+            <label className="block text-sm font-semibold text-black mb-2">Archivo de imagen</label>
             <input
               name="file"
               type="file"
@@ -153,7 +153,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">Image URL</label>
+            <label className="block text-sm font-semibold text-black mb-2">URL de imagen</label>
             <input
               type="url"
               value={uploadUrl}
@@ -165,13 +165,13 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">Alt Text (optional)</label>
+            <label className="block text-sm font-semibold text-black mb-2">Texto alternativo (opcional)</label>
             <input
               type="text"
               name="alt"
               value={uploadAlt}
               onChange={(e) => setUploadAlt(e.target.value)}
-              placeholder="Description of the image"
+              placeholder="Descripción de la imagen"
               className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
             />
           </div>
@@ -181,7 +181,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
             disabled={isLoading}
             className="px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-black/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            {isLoading ? 'Uploading...' : 'Add Image'}
+            {isLoading ? 'Subiendo...' : 'Agregar imagen'}
           </button>
         </form>
       </div>
@@ -189,12 +189,12 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
       {/* Gallery */}
       <div className="bg-white border border-light-gray rounded-xl p-8">
         <h2 className="text-2xl font-serif text-black mb-6">
-          Gallery ({images.length} images)
+          Galería ({images.length} imágenes)
         </h2>
 
         {images.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-dark-gray">No images yet. Add one above to get started.</p>
+            <p className="text-dark-gray">Aún no hay imágenes. Agrega una arriba para comenzar.</p>
           </div>
         ) : (
           <div className="space-y-4">
@@ -208,7 +208,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
                   <div className="relative w-24 h-24 flex-shrink-0 bg-light-gray rounded-lg overflow-hidden">
                     <Image
                       src={image.url}
-                      alt={image.alt || 'Property image'}
+                      alt={image.alt || 'Imagen de propiedad'}
                       fill
                       className="object-cover"
                       onError={(e) => {
@@ -220,9 +220,9 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
 
                   {/* Info */}
                   <div className="flex-grow min-w-0">
-                    <p className="text-sm font-semibold text-black truncate">{image.alt || 'Image'}</p>
+                    <p className="text-sm font-semibold text-black truncate">{image.alt || 'Imagen'}</p>
                     <p className="text-xs text-dark-gray truncate">{image.url}</p>
-                    <p className="text-xs text-gray mt-1">Order: {image.order}</p>
+                    <p className="text-xs text-gray mt-1">Orden: {image.order}</p>
                   </div>
 
                   {/* Actions */}
@@ -231,7 +231,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
                       onClick={() => handleMoveUp(index)}
                       disabled={index === 0 || isLoading}
                       className="px-3 py-2 border border-light-gray rounded-lg text-xs font-semibold hover:bg-light-gray/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                      title="Move up"
+                      title="Mover arriba"
                     >
                       ↑
                     </button>
@@ -240,7 +240,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
                       onClick={() => handleMoveDown(index)}
                       disabled={index === images.length - 1 || isLoading}
                       className="px-3 py-2 border border-light-gray rounded-lg text-xs font-semibold hover:bg-light-gray/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                      title="Move down"
+                      title="Mover abajo"
                     >
                       ↓
                     </button>
@@ -250,7 +250,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
                       disabled={isLoading}
                       className="px-3 py-2 border border-red-200 text-red-700 rounded-lg text-xs font-semibold hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
-                      Delete
+                      Eliminar
                     </button>
                   </div>
                 </div>
