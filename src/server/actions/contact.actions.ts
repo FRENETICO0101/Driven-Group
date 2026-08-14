@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { createInquiry } from "@/server/repositories/inquiry.repository";
 import type { ApiResponse } from "@/lib/types";
+import { notifyNewLead } from '@/server/services/lead-notification.service';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -42,9 +43,7 @@ export async function sendContactAction(
       status: "NEW",
     });
 
-    // TODO: Send email notification via Resend when configured
-    // For now, just log that we would send an email
-    console.log(`[Contact Form] New inquiry from ${validatedData.name} (${validatedData.email})`);
+    await notifyNewLead(inquiry);
 
     return {
       success: true,

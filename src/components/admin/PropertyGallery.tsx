@@ -5,6 +5,7 @@ import Image from 'next/image';
 import {
   deletePropertyImageAction,
   reorderPropertyImagesAction,
+  uploadPropertyImageFileAction,
   uploadPropertyImageAction,
 } from '@/server/actions/property.actions';
 import type { PropertyImage } from '@/lib/types';
@@ -20,10 +21,11 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
   const [error, setError] = useState<string | null>(null);
   const [uploadUrl, setUploadUrl] = useState('');
   const [uploadAlt, setUploadAlt] = useState('');
-  const [draggedImageId, setDraggedImageId] = useState<string | null>(null);
+  const [uploadFile, setUploadFile] = useState<File | null>(null);
 
   const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
     if (!uploadUrl.trim()) {
       setError('Please enter an image URL');
       return;
@@ -33,7 +35,9 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
     setIsLoading(true);
 
     try {
-      const result = await uploadPropertyImageAction(propertyId, uploadUrl, uploadAlt || undefined);
+      const result = uploadFile
+        ? await uploadPropertyImageFileAction(propertyId, new FormData(form))
+        : await uploadPropertyImageAction(propertyId, uploadUrl, uploadAlt || undefined);
 
       if (!result.success || !result.data) {
         setError(result.error || 'Failed to upload image');
@@ -43,6 +47,8 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
       setImages([...images, result.data]);
       setUploadUrl('');
       setUploadAlt('');
+      setUploadFile(null);
+      form.reset();
     } catch (err) {
       setError('An unexpected error occurred');
       console.error(err);
@@ -132,9 +138,20 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
 
       {/* Upload Form */}
       <div className="bg-white border border-light-gray rounded-xl p-8">
-        <h2 className="text-2xl font-serif text-black mb-6">Add Image</h2>
+        <h2 className="text-2xl font-serif text-black mb-2">Add Image</h2>
+        <p className="mb-6 text-sm text-dark-gray">Upload a file (JPG, PNG, WebP; up to 10 MB) or add an existing image URL.</p>
 
         <form onSubmit={handleUpload} className="space-y-4">
+          <div>
+            <label className="block text-sm font-semibold text-black mb-2">Image file</label>
+            <input
+              name="file"
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/avif"
+              onChange={(e) => setUploadFile(e.target.files?.[0] || null)}
+              className="block w-full text-sm text-dark-gray file:mr-4 file:rounded-lg file:border-0 file:bg-black file:px-4 file:py-2.5 file:text-sm file:font-semibold file:text-white hover:file:bg-black/90"
+            />
+          </div>
           <div>
             <label className="block text-sm font-semibold text-black mb-2">Image URL</label>
             <input
@@ -143,7 +160,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
               onChange={(e) => setUploadUrl(e.target.value)}
               placeholder="https://example.com/image.jpg"
               className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-              required
+              required={!uploadFile}
             />
           </div>
 
@@ -151,6 +168,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
             <label className="block text-sm font-semibold text-black mb-2">Alt Text (optional)</label>
             <input
               type="text"
+              name="alt"
               value={uploadAlt}
               onChange={(e) => setUploadAlt(e.target.value)}
               placeholder="Description of the image"
@@ -184,8 +202,6 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
               <div
                 key={image.id}
                 className="border border-light-gray rounded-lg overflow-hidden hover:border-black/30 transition-colors"
-                onDragStart={() => setDraggedImageId(image.id)}
-                onDragEnd={() => setDraggedImageId(null)}
               >
                 <div className="flex items-center gap-4 p-4">
                   {/* Thumbnail */}

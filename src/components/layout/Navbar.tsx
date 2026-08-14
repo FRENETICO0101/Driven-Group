@@ -12,12 +12,12 @@ import { Icon } from "@/components/ui/Icon";
 import menuBrandLogo from "../../../assets/logos/logo-dg-blanco.png";
 
 const navigation = [
-  { key: "home", href: "/", index: "01" },
-  { key: "realEstate", href: "/real-estate", index: "02" },
-  { key: "business", href: "/business", index: "03" },
-  { key: "academy", href: "/academy", index: "04" },
-  { key: "contact", href: "/contact", index: "05" },
-  { key: "about", href: "/about", index: "06" },
+  { key: "home", href: "/" },
+  { key: "realEstate", href: "/real-estate" },
+  { key: "business", href: "/business" },
+  { key: "academy", href: "/academy" },
+  { key: "contact", href: "/contact" },
+  { key: "about", href: "/about" },
 ] as const;
 
 const cities = [
@@ -203,8 +203,7 @@ export function Navbar() {
               <ul>
                 {navigation.map((item, index) => (
                   <li key={item.key}>
-                    <Link href={item.href} onClick={(event) => { if (item.key === "home") handleHomeNavigation(event); else setIsMenuOpen(false); }} className="group flex items-baseline gap-5 py-2.5 sm:gap-8 sm:py-3" style={{ opacity: isMenuOpen ? 1 : 0, transform: isMenuOpen ? "translateY(0)" : "translateY(12px)", transition: `opacity 500ms ease ${index * 55 + 60}ms, transform 500ms ease ${index * 55 + 60}ms` }}>
-                      <span className="editorial-label w-6 tabular-nums text-light-gray">{item.index}</span>
+                    <Link href={item.href} onClick={(event) => { if (item.key === "home") handleHomeNavigation(event); else setIsMenuOpen(false); }} className="group flex items-baseline py-2.5 sm:py-3" style={{ opacity: isMenuOpen ? 1 : 0, transform: isMenuOpen ? "translateY(0)" : "translateY(12px)", transition: `opacity 500ms ease ${index * 55 + 60}ms, transform 500ms ease ${index * 55 + 60}ms` }}>
                       <span className="whitespace-nowrap text-2xl font-medium tracking-tight text-dark-gray transition-all duration-300 group-hover:translate-x-2 group-hover:text-black sm:text-3xl xl:text-[1.8rem] 2xl:text-[2.7rem]">{item.key === "realEstate" ? "Real Estate" : item.key === "business" ? "Business" : item.key === "academy" ? "Academy" : t(`nav.${item.key}`)}</span>
                     </Link>
                   </li>
@@ -212,7 +211,7 @@ export function Navbar() {
               </ul>
             </nav>
 
-            <div className="mt-auto flex min-w-0 flex-col gap-6 border-t border-light-gray pb-10 pt-8 sm:flex-row sm:items-center sm:justify-between sm:pb-12">
+            <div className="mt-auto flex min-w-0 flex-col gap-6 pb-10 pt-8 sm:flex-row sm:items-center sm:justify-between sm:pb-12">
               <a href="mailto:administracion@drivengroup.com.mx" title="administracion@drivengroup.com.mx" className="editorial-label block max-w-full whitespace-nowrap text-[0.42rem] leading-relaxed tracking-[0.025em] text-gray transition-colors hover:text-black xl:text-[0.45rem] 2xl:text-[0.625rem] 2xl:tracking-[0.12em]">administracion@drivengroup.com.mx</a>
             </div>
           </div>
@@ -237,15 +236,22 @@ export function Navbar() {
               <span className="text-light-gray">·</span>
               <span className="editorial-label tabular-nums text-dark-gray">{temperature}</span>
             </div>
-            <p className="editorial-label mb-3 mt-10 px-3 tracking-[0.2em] text-gray">{t("ui.city")}</p>
-            <div className="space-y-0.5">
+            <div className="mt-9 border-t border-light-gray pt-5">
+              <p className="editorial-label mb-2 tracking-[0.2em] text-gray">{t("ui.city")}</p>
+              <div className="space-y-0.5">
               {cities.map((city, index) => {
                 const info = getCityInfo(city, locale);
                 const isActive = index === activeCityIdx;
-                return <button key={city.label} type="button" onClick={() => setActiveCityIdx(index)} aria-pressed={isActive} className={`grid w-full grid-cols-[minmax(0,1fr)_8.75rem] items-center gap-2 rounded px-3 py-2.5 text-left transition-colors ${isActive ? "bg-light-gray text-black" : "text-gray hover:bg-light-gray/60 hover:text-dark-gray"}`}><span className="editorial-label justify-self-start truncate">{city.label}</span><span className="flex justify-self-end gap-1.5 whitespace-nowrap text-right"><span className="editorial-label tabular-nums opacity-60">{formatTemperature(info.temp, locale)}</span><span className="editorial-label min-w-[4.25rem] tabular-nums opacity-70">{info.time}</span></span></button>;
+                return <button key={city.label} type="button" onClick={() => setActiveCityIdx(index)} aria-pressed={isActive} className={`grid w-full grid-cols-[5rem_3rem_auto] items-center gap-3 rounded py-2.5 text-left transition-colors ${isActive ? "bg-light-gray text-black" : "text-gray hover:bg-light-gray/60 hover:text-dark-gray"}`}><span className="editorial-label truncate">{city.label}</span><span className="editorial-label tabular-nums opacity-60">{formatTemperature(info.temp, locale)}</span><span className="editorial-label whitespace-nowrap tabular-nums opacity-70">{info.time}</span></button>;
               })}
+              </div>
             </div>
           </aside>
+        </div>
+        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-[5.625rem] z-20 hidden xl:grid xl:grid-cols-[minmax(15rem,19vw)_minmax(0,1fr)_minmax(18rem,22vw)] 2xl:grid-cols-[minmax(19rem,20vw)_minmax(0,1fr)_minmax(21rem,23vw)]">
+          <span className="border-t border-light-gray" />
+          <span />
+          <span className="border-t border-light-gray" />
         </div>
       </div>
     </>

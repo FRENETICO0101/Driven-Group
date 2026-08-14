@@ -7,7 +7,9 @@ export function mergeCatalogProperty(catalogProperty: CatalogProperty, override:
   return {
     ...catalogProperty,
     ...override,
-    images: catalogProperty.images.length > 0 ? catalogProperty.images : override.images,
+    // Admin-managed images take precedence, so gallery changes made in the
+    // dashboard are reflected immediately for catalog-backed properties too.
+    images: override.images.length > 0 ? override.images : catalogProperty.images,
     resources: catalogProperty.resources,
     seo: catalogProperty.seo,
   };

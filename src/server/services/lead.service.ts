@@ -1,6 +1,7 @@
 import { createInquiry } from "@/server/repositories/inquiry.repository";
 import { InquiryFormSchema } from "@/lib/validation";
 import type { Inquiry } from "@/lib/types";
+import { notifyNewLead } from '@/server/services/lead-notification.service';
 
 export type CreateLeadResult =
   | { success: true; data: Inquiry }
@@ -15,5 +16,6 @@ export async function createLead(input: unknown): Promise<CreateLeadResult> {
   }
 
   const lead = await createInquiry(parsed.data);
+  await notifyNewLead(lead);
   return { success: true, data: lead };
 }

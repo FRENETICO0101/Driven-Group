@@ -74,7 +74,7 @@ export function CEOsSection() {
         role: "text-dark-gray/65",
         copy: "text-dark-gray/85",
         accent: "bg-[#c8a03a]",
-        imageSurface: "bg-[#d8d6d2]",
+        imageSurface: "bg-[#101010]",
       };
 
   return (
