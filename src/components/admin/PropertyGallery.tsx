@@ -15,6 +15,8 @@ interface PropertyGalleryProps {
   images: PropertyImage[];
 }
 
+type ImageSource = 'file' | 'url';
+
 export function PropertyGallery({ propertyId, images: initialImages }: PropertyGalleryProps) {
   const [images, setImages] = useState(initialImages);
   const [isLoading, setIsLoading] = useState(false);
@@ -22,12 +24,17 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
   const [uploadUrl, setUploadUrl] = useState('');
   const [uploadAlt, setUploadAlt] = useState('');
   const [uploadFile, setUploadFile] = useState<File | null>(null);
+  const [imageSource, setImageSource] = useState<ImageSource>('file');
 
   const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    if (!uploadFile && !uploadUrl.trim()) {
-      setError('Selecciona una imagen o ingresa una URL');
+    if (imageSource === 'file' && !uploadFile) {
+      setError('Selecciona una imagen para subir');
+      return;
+    }
+    if (imageSource === 'url' && !uploadUrl.trim()) {
+      setError('Ingresa el enlace de la imagen');
       return;
     }
 
@@ -35,7 +42,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
     setIsLoading(true);
 
     try {
-      const result = uploadFile
+      const result = imageSource === 'file'
         ? await uploadPropertyImageFileAction(propertyId, new FormData(form))
         : await uploadPropertyImageAction(propertyId, uploadUrl, uploadAlt || undefined);
 
@@ -48,6 +55,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
       setUploadUrl('');
       setUploadAlt('');
       setUploadFile(null);
+      setImageSource('file');
       form.reset();
     } catch (err) {
       setError('Ocurrió un error inesperado');
@@ -139,30 +147,44 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
       {/* Upload Form */}
       <div className="bg-white border border-light-gray rounded-xl p-8">
         <h2 className="text-2xl font-serif text-black mb-2">Agregar imagen</h2>
-        <p className="mb-6 text-sm text-dark-gray">Sube un archivo (JPG, PNG, WebP; hasta 10 MB) o agrega la URL de una imagen existente.</p>
+        <p className="mb-6 text-sm text-dark-gray">Elige cómo deseas agregar la imagen.</p>
 
         <form onSubmit={handleUpload} className="space-y-4">
-          <div>
-            <label className="block text-sm font-semibold text-black mb-2">Archivo de imagen</label>
-            <input
-              name="file"
-              type="file"
-              accept="image/jpeg,image/png,image/webp,image/avif"
-              onChange={(e) => setUploadFile(e.target.files?.[0] || null)}
-              className="block w-full text-sm text-dark-gray file:mr-4 file:rounded-lg file:border-0 file:bg-black file:px-4 file:py-2.5 file:text-sm file:font-semibold file:text-white hover:file:bg-black/90"
-            />
+          <div className="inline-flex rounded-lg border border-light-gray bg-light-gray/30 p-1">
+            <button type="button" onClick={() => { setImageSource('file'); setError(null); }} className={`rounded-md px-4 py-2 text-sm font-semibold transition-colors ${imageSource === 'file' ? 'bg-black text-white shadow-sm' : 'text-dark-gray hover:text-black'}`}>
+              Subir archivo
+            </button>
+            <button type="button" onClick={() => { setImageSource('url'); setError(null); }} className={`rounded-md px-4 py-2 text-sm font-semibold transition-colors ${imageSource === 'url' ? 'bg-black text-white shadow-sm' : 'text-dark-gray hover:text-black'}`}>
+              Usar enlace
+            </button>
           </div>
-          <div>
-            <label className="block text-sm font-semibold text-black mb-2">URL de imagen</label>
-            <input
-              type="url"
-              value={uploadUrl}
-              onChange={(e) => setUploadUrl(e.target.value)}
-              placeholder="https://example.com/image.jpg"
-              className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-              required={!uploadFile}
-            />
-          </div>
+
+          {imageSource === 'file' ? (
+            <div>
+              <label className="block text-sm font-semibold text-black mb-2">Selecciona una imagen</label>
+              <input
+                name="file"
+                type="file"
+                accept="image/jpeg,image/png,image/webp,image/avif"
+                onChange={(e) => setUploadFile(e.target.files?.[0] || null)}
+                className="block w-full text-sm text-dark-gray file:mr-4 file:rounded-lg file:border-0 file:bg-black file:px-4 file:py-2.5 file:text-sm file:font-semibold file:text-white hover:file:bg-black/90"
+              />
+              <p className="mt-2 text-xs text-gray">JPG, PNG, WebP o AVIF; máximo 10 MB.</p>
+            </div>
+          ) : (
+            <div>
+              <label className="block text-sm font-semibold text-black mb-2">Enlace directo de la imagen</label>
+              <input
+                type="url"
+                value={uploadUrl}
+                onChange={(e) => setUploadUrl(e.target.value)}
+                placeholder="https://sitio.com/imagen.jpg"
+                className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+                required
+              />
+              <p className="mt-2 text-xs text-gray">Pega un enlace que abra directamente un archivo de imagen.</p>
+            </div>
+          )}
 
           <div>
             <label className="block text-sm font-semibold text-black mb-2">Texto alternativo (opcional)</label>
