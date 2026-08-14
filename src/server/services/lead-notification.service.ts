@@ -17,10 +17,15 @@ export async function notifyNewLead(lead: Inquiry) {
 
   const property = lead.property?.title || 'Consulta general';
   const html = `<h2>Nuevo lead recibido</h2><p><strong>Nombre:</strong> ${escapeHtml(lead.name)}</p><p><strong>Correo:</strong> ${escapeHtml(lead.email)}</p><p><strong>Teléfono:</strong> ${escapeHtml(lead.phone)}</p><p><strong>Propiedad:</strong> ${escapeHtml(property)}</p><p><strong>Mensaje:</strong><br>${escapeHtml(lead.message).replace(/\n/g, '<br>')}</p>`;
-  const response = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ from, to: [to], reply_to: lead.email, subject: `Nuevo lead: ${lead.name}`, html }),
-  });
-  if (!response.ok) console.error('[Lead notification] Resend request failed:', await response.text());
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ from, to: [to], reply_to: lead.email, subject: `Nuevo lead: ${lead.name}`, html }),
+    });
+    if (!response.ok) console.error('[Lead notification] Resend request failed:', await response.text());
+  } catch (error) {
+    // A notification failure must never prevent a valid lead from being saved.
+    console.error('[Lead notification] Unable to reach Resend:', error);
+  }
 }
