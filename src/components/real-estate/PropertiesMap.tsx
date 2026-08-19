@@ -63,11 +63,12 @@ export function PropertiesMap({ properties }: { properties: Property[] }) {
         </div>
         <InteractivePropertyMap properties={mappedProperties} selectedSlug={selected?.slug} onSelect={setSelected} className="shadow-sm" viewport="miami" />
         {selected && (
-          <div className="mt-4 flex flex-col gap-4 rounded-xl border border-light-gray bg-white p-3 shadow-sm sm:flex-row sm:items-center sm:p-4">
+          <div className="mt-4 flex flex-col gap-4 rounded-xl border border-[#c8a03a] bg-white p-3 shadow-[0_10px_28px_rgba(104,77,17,0.12)] sm:flex-row sm:items-center sm:p-4" aria-live="polite">
             {selected.images[0] && (
               <img src={selected.images[0].url} alt={selected.images[0].alt || selected.title} className="h-20 w-full rounded-lg object-cover sm:w-28" />
             )}
             <div className="flex-1">
+              <p className="editorial-label mb-1 text-[#947421]">Propiedad seleccionada</p>
               <p className="font-semibold text-black">{selected.title}</p>
               <p className="mt-1 text-sm text-dark-gray">{selected.address}, {selected.city}</p>
             </div>

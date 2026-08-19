@@ -50,12 +50,14 @@ function MapViewport({ properties, selectedSlug, viewport, expanded }: { propert
   return null;
 }
 
-const markerIcon = divIcon({
-  className: "driven-property-marker",
-  html: '<span aria-hidden="true"></span>',
-  iconSize: [24, 24],
-  iconAnchor: [12, 12],
-});
+function getMarkerIcon(isSelected: boolean) {
+  return divIcon({
+    className: `driven-property-marker${isSelected ? " driven-property-marker-selected" : ""}`,
+    html: '<span aria-hidden="true"></span>',
+    iconSize: isSelected ? [32, 32] : [24, 24],
+    iconAnchor: isSelected ? [16, 16] : [12, 12],
+  });
+}
 
 export function InteractivePropertyMap({ properties, selectedSlug, onSelect, className = "", viewport = "properties", expanded = false, restrictToMiami = false }: InteractivePropertyMapProps) {
   const t = useTranslations("properties");
@@ -95,19 +97,23 @@ export function InteractivePropertyMap({ properties, selectedSlug, onSelect, cla
           updateWhenIdle
         />
         <MapViewport properties={mappedProperties} selectedSlug={selectedSlug} viewport={viewport} expanded={expanded} />
-        {mappedProperties.map((property) => (
-          <Marker
-            key={property.id}
-            position={[property.latitude, property.longitude]}
-            icon={markerIcon}
-            eventHandlers={{ click: () => onSelect?.(property) }}
-          >
-            <Popup>
-              <p className="font-semibold text-black">{property.title}</p>
-              <p className="mt-1 text-sm text-dark-gray">{property.city}</p>
-            </Popup>
-          </Marker>
-        ))}
+        {mappedProperties.map((property) => {
+          const isSelected = property.slug === selectedSlug;
+          return (
+            <Marker
+              key={property.id}
+              position={[property.latitude, property.longitude]}
+              icon={getMarkerIcon(isSelected)}
+              zIndexOffset={isSelected ? 1000 : 0}
+              eventHandlers={{ click: () => onSelect?.(property) }}
+            >
+              <Popup>
+                <p className="font-semibold text-black">{property.title}</p>
+                <p className="mt-1 text-sm text-dark-gray">{property.city}</p>
+              </Popup>
+            </Marker>
+          );
+        })}
       </MapContainer>
       <details className="absolute left-3 top-3 z-[1000] max-w-[14rem] rounded-lg border border-black/10 bg-white/95 text-xs text-dark-gray shadow-sm backdrop-blur-sm">
         <summary className="flex cursor-pointer list-none items-center gap-2 px-3 py-2 font-semibold text-black [&::-webkit-details-marker]:hidden">
