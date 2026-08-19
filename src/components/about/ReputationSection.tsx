@@ -6,12 +6,12 @@ const content = {
   es: {
     eyebrow: "PRINCIPIO CENTRAL",
     quote: "Al final, lo que cuenta es tu reputación.",
-    body: "Este principio guía cada decisión, cada alianza y cada interacción en Driven Group. Entendemos que en bienes raíces de lujo e inversión estratégica, la confianza es la moneda más valiosa. Construimos relaciones duraderas a través de integridad, transparencia y cumplimiento de promesas.",
+    body: "Este principio guía cada decisión, cada alianza y cada interacción en Driven Group. Entendemos que la confianza es la moneda más valiosa. Construimos relaciones duraderas a través de integridad, transparencia y cumplimiento de promesas.",
   },
   en: {
     eyebrow: "CORE PRINCIPLE",
     quote: "All said & done, it’s your reputation that counts.",
-    body: "This principle guides every decision, partnership, and interaction at Driven Group. We understand that in luxury real estate and strategic investment, trust is the most valuable currency. We build enduring relationships through integrity, transparency, and keeping our promises.",
+    body: "We understand that trust is the most valuable currency. We build enduring relationships through integrity, transparency, and keeping our promises.",
   },
 };
 
@@ -20,14 +20,15 @@ export function ReputationSection() {
   const t = content[locale === "en" ? "en" : "es"];
 
   return (
-    <section className="border-y border-light-gray bg-white py-20 sm:py-24 md:py-32">
-      <div className="mx-auto max-w-4xl px-6 text-center sm:px-8">
-        <p className="editorial-label mb-8 tracking-[0.15em] text-gray">{t.eyebrow}</p>
+    <section className="border-y border-light-gray bg-white py-20 sm:py-28 md:py-36">
+      <div className="mx-auto max-w-6xl px-6 text-center sm:px-8">
+        <p className="editorial-label mb-7 tracking-[0.18em] text-gray sm:mb-9">{t.eyebrow}</p>
         <blockquote>
-          <p className="mb-8 font-serif text-3xl italic leading-[1.3] tracking-tight text-black sm:text-4xl md:text-5xl">
+          <p className="mx-auto max-w-5xl text-balance font-serif text-3xl italic leading-[1.18] tracking-tight text-black sm:text-4xl md:text-5xl lg:text-6xl">
             “{t.quote}”
           </p>
-          <p className="text-lg font-light leading-relaxed text-dark-gray">{t.body}</p>
+          <div className="mx-auto my-8 h-px w-12 bg-black/20 sm:my-10" />
+          <p className="mx-auto max-w-3xl text-pretty text-base font-light leading-[1.8] text-dark-gray sm:text-lg">{t.body}</p>
         </blockquote>
       </div>
     </section>
