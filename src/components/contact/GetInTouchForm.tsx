@@ -6,11 +6,23 @@ import { sendContactAction } from "@/server/actions/contact.actions";
 
 type ContactSubject = "real-estate" | "business" | "academy" | "general";
 
+const countryCodes = [
+  { code: "+52", flag: "🇲🇽", label: "México" },
+  { code: "+1", flag: "🇺🇸", label: "Estados Unidos" },
+  { code: "+1", flag: "🇨🇦", label: "Canadá" },
+  { code: "+34", flag: "🇪🇸", label: "España" },
+  { code: "+57", flag: "🇨🇴", label: "Colombia" },
+  { code: "+54", flag: "🇦🇷", label: "Argentina" },
+  { code: "+55", flag: "🇧🇷", label: "Brasil" },
+  { code: "+44", flag: "🇬🇧", label: "Reino Unido" },
+] as const;
+
 export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { defaultSubject?: ContactSubject; sectionId?: string }) {
   const t = useTranslations("contactForm");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [countryCode, setCountryCode] = useState("+52");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -23,7 +35,7 @@ export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { default
       const result = await sendContactAction({
         name: String(formData.get("name")),
         email: String(formData.get("email")),
-        phone: String(formData.get("phone") || ""),
+        phone: formData.get("phone") ? `${countryCode} ${String(formData.get("phone")).trim()}` : "",
         subject: formData.get("subject") as ContactSubject,
         message: String(formData.get("message")),
       });
@@ -31,6 +43,7 @@ export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { default
       if (result.success) {
         setSubmitStatus("success");
         event.currentTarget.reset();
+        setCountryCode("+52");
       } else {
         setSubmitStatus("error");
         setErrorMessage(result.error || t("error"));
@@ -56,7 +69,20 @@ export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { default
           <Field id="email" type="email" label={t("email")} placeholder="you@email.com" required />
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <Field id="phone" type="tel" label={t("phone")} placeholder="+1 (305) 555-0000" />
+          <div className="flex flex-col">
+            <label htmlFor="phone" className="editorial-label mb-3 tracking-wide text-dark-gray">{t("phone")}</label>
+            <div className="flex overflow-hidden rounded-lg border border-light-gray bg-white transition-all focus-within:border-dark-gray focus-within:ring-4 focus-within:ring-dark-gray/10">
+              <select
+                aria-label="País y código telefónico"
+                value={countryCode}
+                onChange={(event) => setCountryCode(event.target.value)}
+                className="w-28 shrink-0 cursor-pointer border-r border-light-gray bg-light-gray/20 px-3 text-sm text-black outline-none sm:w-36"
+              >
+                {countryCodes.map((country) => <option key={`${country.label}-${country.code}`} value={country.code}>{country.flag} {country.code} · {country.label}</option>)}
+              </select>
+              <input id="phone" name="phone" type="tel" inputMode="tel" placeholder="33 3344 78420" className="min-w-0 flex-1 bg-transparent px-4 py-3 text-black placeholder-gray outline-none" />
+            </div>
+          </div>
           {defaultSubject ? (
             <input type="hidden" name="subject" value={defaultSubject} />
           ) : <div className="flex flex-col">
