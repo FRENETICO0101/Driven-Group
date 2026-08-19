@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { divIcon, latLngBounds } from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer, useMap, ZoomControl } from "react-leaflet";
 import { useTranslations } from "next-intl";
@@ -22,9 +22,17 @@ const MIAMI_BOUNDS: [[number, number], [number, number]] = [[25.68, -80.32], [25
 
 function MapViewport({ properties, selectedSlug, viewport, expanded }: { properties: MappedProperty[]; selectedSlug?: string; viewport: "properties" | "miami"; expanded: boolean }) {
   const map = useMap();
+  const previousSelectedSlug = useRef<string | undefined>(selectedSlug);
 
   useEffect(() => {
     if (viewport === "miami") {
+      const selectionChanged = previousSelectedSlug.current !== selectedSlug;
+      previousSelectedSlug.current = selectedSlug;
+      if (selectionChanged && selectedSlug) {
+        const selected = properties.find((property) => property.slug === selectedSlug);
+        if (selected) map.flyTo([selected.latitude, selected.longitude], 14, { duration: 0.6 });
+        return;
+      }
       map.setView(MIAMI_CENTER, 11);
       return;
     }
@@ -105,6 +113,7 @@ export function InteractivePropertyMap({ properties, selectedSlug, onSelect, cla
               position={[property.latitude, property.longitude]}
               icon={getMarkerIcon(isSelected)}
               zIndexOffset={isSelected ? 1000 : 0}
+              riseOnHover
               eventHandlers={{ click: () => onSelect?.(property) }}
             >
               <Popup>
