@@ -1,20 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { sendContactAction } from "@/server/actions/contact.actions";
 
 type ContactSubject = "real-estate" | "business" | "academy" | "general";
 
 const countryCodes = [
-  { code: "+52", flag: "🇲🇽", label: "México" },
-  { code: "+1", flag: "🇺🇸", label: "Estados Unidos" },
-  { code: "+1", flag: "🇨🇦", label: "Canadá" },
-  { code: "+34", flag: "🇪🇸", label: "España" },
-  { code: "+57", flag: "🇨🇴", label: "Colombia" },
-  { code: "+54", flag: "🇦🇷", label: "Argentina" },
-  { code: "+55", flag: "🇧🇷", label: "Brasil" },
-  { code: "+44", flag: "🇬🇧", label: "Reino Unido" },
+  { code: "+52", iso: "mx", label: "México" },
+  { code: "+1", iso: "us", label: "Estados Unidos" },
+  { code: "+1", iso: "ca", label: "Canadá" },
+  { code: "+34", iso: "es", label: "España" },
+  { code: "+57", iso: "co", label: "Colombia" },
+  { code: "+54", iso: "ar", label: "Argentina" },
+  { code: "+55", iso: "br", label: "Brasil" },
+  { code: "+56", iso: "cl", label: "Chile" },
+  { code: "+51", iso: "pe", label: "Perú" },
+  { code: "+44", iso: "gb", label: "Reino Unido" },
+  { code: "+33", iso: "fr", label: "Francia" },
+  { code: "+49", iso: "de", label: "Alemania" },
+  { code: "+971", iso: "ae", label: "Emiratos Árabes Unidos" },
 ] as const;
 
 export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { defaultSubject?: ContactSubject; sectionId?: string }) {
@@ -22,7 +28,7 @@ export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { default
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [countryCode, setCountryCode] = useState("+52");
+  const [country, setCountry] = useState<(typeof countryCodes)[number]>(countryCodes[0]);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -35,7 +41,7 @@ export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { default
       const result = await sendContactAction({
         name: String(formData.get("name")),
         email: String(formData.get("email")),
-        phone: formData.get("phone") ? `${countryCode} ${String(formData.get("phone")).trim()}` : "",
+        phone: formData.get("phone") ? `${country.code} ${String(formData.get("phone")).trim()}` : "",
         subject: formData.get("subject") as ContactSubject,
         message: String(formData.get("message")),
       });
@@ -43,7 +49,7 @@ export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { default
       if (result.success) {
         setSubmitStatus("success");
         event.currentTarget.reset();
-        setCountryCode("+52");
+        setCountry(countryCodes[0]);
       } else {
         setSubmitStatus("error");
         setErrorMessage(result.error || t("error"));
@@ -69,20 +75,7 @@ export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { default
           <Field id="email" type="email" label={t("email")} placeholder="you@email.com" required />
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <div className="flex flex-col">
-            <label htmlFor="phone" className="editorial-label mb-3 tracking-wide text-dark-gray">{t("phone")}</label>
-            <div className="flex overflow-hidden rounded-lg border border-light-gray bg-white transition-all focus-within:border-dark-gray focus-within:ring-4 focus-within:ring-dark-gray/10">
-              <select
-                aria-label="País y código telefónico"
-                value={countryCode}
-                onChange={(event) => setCountryCode(event.target.value)}
-                className="w-28 shrink-0 cursor-pointer border-r border-light-gray bg-light-gray/20 px-3 text-sm text-black outline-none sm:w-36"
-              >
-                {countryCodes.map((country) => <option key={`${country.label}-${country.code}`} value={country.code}>{country.flag} {country.code} · {country.label}</option>)}
-              </select>
-              <input id="phone" name="phone" type="tel" inputMode="tel" placeholder="33 3344 78420" className="min-w-0 flex-1 bg-transparent px-4 py-3 text-black placeholder-gray outline-none" />
-            </div>
-          </div>
+          <PhoneField country={country} onCountryChange={setCountry} label={t("phone")} />
           {defaultSubject ? (
             <input type="hidden" name="subject" value={defaultSubject} />
           ) : <div className="flex flex-col">
@@ -108,6 +101,39 @@ export function GetInTouchForm({ defaultSubject, sectionId = "form" }: { default
       </form>
     </section>
   );
+}
+
+function PhoneField({ country, onCountryChange, label }: { country: (typeof countryCodes)[number]; onCountryChange: (country: (typeof countryCodes)[number]) => void; label: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const closeMenu = (event: MouseEvent) => {
+      if (!menuRef.current?.contains(event.target as Node)) setIsOpen(false);
+    };
+    document.addEventListener("mousedown", closeMenu);
+    return () => document.removeEventListener("mousedown", closeMenu);
+  }, []);
+
+  return <div className="flex flex-col">
+    <label htmlFor="phone" className="editorial-label mb-3 tracking-wide text-dark-gray">{label}</label>
+    <div className="flex rounded-lg border border-light-gray bg-white transition-all focus-within:border-dark-gray focus-within:ring-4 focus-within:ring-dark-gray/10">
+      <div ref={menuRef} className="relative shrink-0 border-r border-light-gray">
+        <button type="button" onClick={() => setIsOpen((open) => !open)} aria-haspopup="listbox" aria-expanded={isOpen} className="flex h-full min-w-[7.5rem] items-center gap-2 px-3 text-sm font-medium text-black hover:bg-light-gray/30">
+          <Image src={`https://flagcdn.com/w40/${country.iso}.png`} alt="" width={20} height={15} className="rounded-sm shadow-sm" />
+          <span>{country.code}</span>
+          <span className="material-symbols-outlined text-base">expand_more</span>
+        </button>
+        {isOpen && <div role="listbox" aria-label="País y código telefónico" className="absolute left-0 top-[calc(100%+0.5rem)] z-20 max-h-72 w-72 overflow-y-auto rounded-xl border border-light-gray bg-white p-1.5 shadow-xl">
+          {countryCodes.map((option) => <button key={`${option.iso}-${option.code}`} type="button" role="option" aria-selected={option.iso === country.iso} onClick={() => { onCountryChange(option); setIsOpen(false); }} className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm transition-colors ${option.iso === country.iso ? "bg-black text-white" : "text-dark-gray hover:bg-light-gray"}`}>
+            <Image src={`https://flagcdn.com/w40/${option.iso}.png`} alt="" width={20} height={15} className="rounded-sm shadow-sm" />
+            <span className="w-11 tabular-nums">{option.code}</span><span>{option.label}</span>
+          </button>)}
+        </div>}
+      </div>
+      <input id="phone" name="phone" type="tel" inputMode="tel" placeholder="33 3344 78420" className="min-w-0 flex-1 rounded-r-lg bg-transparent px-4 py-3 text-black placeholder-gray outline-none" />
+    </div>
+  </div>;
 }
 
 function Field({ id, label, placeholder, type = "text", required = false }: { id: string; label: string; placeholder: string; type?: string; required?: boolean }) {
