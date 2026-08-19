@@ -212,7 +212,7 @@ export function Navbar() {
             </nav>
 
             <div className="mt-auto flex min-w-0 flex-col gap-6 pb-10 pt-8 sm:flex-row sm:items-center sm:justify-between sm:pb-12">
-              <a href="mailto:administracion@drivengroup.com.mx" title="administracion@drivengroup.com.mx" className="editorial-label block w-full max-w-full break-all text-[0.42rem] leading-relaxed tracking-[0.025em] text-gray transition-colors hover:text-black xl:text-[0.45rem] 2xl:text-[0.625rem] 2xl:tracking-[0.08em]">administracion@drivengroup.com.mx</a>
+              <a href="mailto:administracion@drivengroup.com.mx" title="administracion@drivengroup.com.mx" className="editorial-label block w-full max-w-full truncate whitespace-nowrap text-[clamp(0.3rem,0.45vw,0.625rem)] leading-relaxed tracking-[0.025em] text-gray transition-colors hover:text-black 2xl:tracking-[0.08em]">administracion@drivengroup.com.mx</a>
             </div>
           </div>
 
