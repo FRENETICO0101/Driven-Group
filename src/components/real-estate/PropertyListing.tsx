@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import type { Property } from "@/lib/types";
 import Link from "next/link";
+import Image from "next/image";
 
 interface PropertyListingProps {
   properties: Property[];
@@ -73,21 +74,44 @@ export function PropertyListing({ properties }: PropertyListingProps) {
 
             {/* Right: Curated image composition */}
             <div className="grid grid-cols-[1.12fr_0.88fr] gap-3 sm:gap-4">
-              <div className="aspect-[4/5] overflow-hidden rounded-xl bg-light-gray/20">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-light-gray/20">
                 {property.images[0] && (
-                  <img src={property.images[0].url} alt={property.images[0].alt || property.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <Image
+                    src={property.images[0].url}
+                    alt={property.images[0].alt || property.title}
+                    fill
+                    sizes="(max-width: 640px) 53vw, (max-width: 1024px) 42vw, 21rem"
+                    quality={75}
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                 )}
               </div>
               <div className="flex flex-col gap-3 sm:gap-4">
-                <div className="aspect-[4/3] overflow-hidden rounded-xl bg-light-gray/20">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-light-gray/20">
                   {property.images[1] && (
-                    <img src={property.images[1].url} alt={property.images[1].alt || `${property.title} - Image 2`} className="h-full w-full object-cover" />
+                    <Image
+                      src={property.images[1].url}
+                      alt={property.images[1].alt || `${property.title} - Image 2`}
+                      fill
+                      sizes="(max-width: 640px) 42vw, (max-width: 1024px) 34vw, 17rem"
+                      quality={75}
+                      className="object-cover"
+                    />
                   )}
                 </div>
                 <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   {[property.images[2], property.images[3]].map((image, idx) => (
-                    <div key={image?.url ?? `fallback-${idx}`} className="aspect-square overflow-hidden rounded-xl bg-light-gray/20">
-                      {image && <img src={image.url} alt={image.alt || `${property.title} - Image ${idx + 3}`} className="h-full w-full object-cover" />}
+                    <div key={image?.url ?? `fallback-${idx}`} className="relative aspect-square overflow-hidden rounded-xl bg-light-gray/20">
+                      {image && (
+                        <Image
+                          src={image.url}
+                          alt={image.alt || `${property.title} - Image ${idx + 3}`}
+                          fill
+                          sizes="(max-width: 640px) 20vw, (max-width: 1024px) 16vw, 8rem"
+                          quality={75}
+                          className="object-cover"
+                        />
+                      )}
                     </div>
                   ))}
                 </div>

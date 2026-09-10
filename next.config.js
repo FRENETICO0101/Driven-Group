@@ -9,7 +9,12 @@ const nextConfig = {
     // Hero carousels are the primary visual surface of the site. Keep their
     // optimized derivatives at source-like quality instead of the default
     // lossy setting used for smaller editorial images.
-    qualities: [90, 100],
+    qualities: [75, 85, 90, 100],
+    formats: ['image/avif', 'image/webp'],
+    // Property photos are reused across the listing, map and detail pages.
+    // Cache optimized variants at the edge so repeat visits do not reprocess
+    // the original source files.
+    minimumCacheTTL: 60 * 60 * 24 * 30,
     remotePatterns: [
       {
         protocol: 'https',

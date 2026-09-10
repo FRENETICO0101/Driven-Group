@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
@@ -65,7 +66,16 @@ export function PropertiesMap({ properties }: { properties: Property[] }) {
         {selected && (
           <div className="mt-4 flex flex-col gap-4 rounded-xl border border-[#c8a03a] bg-white p-3 shadow-[0_10px_28px_rgba(104,77,17,0.12)] transition-shadow duration-300 hover:shadow-[0_14px_34px_rgba(104,77,17,0.18)] sm:flex-row sm:items-center sm:p-4" aria-live="polite">
             {selected.images[0] && (
-              <img src={selected.images[0].url} alt={selected.images[0].alt || selected.title} className="h-20 w-full rounded-lg object-cover sm:w-28" />
+              <div className="relative h-20 w-full shrink-0 overflow-hidden rounded-lg sm:w-28">
+                <Image
+                  src={selected.images[0].url}
+                  alt={selected.images[0].alt || selected.title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 7rem"
+                  quality={75}
+                  className="object-cover"
+                />
+              </div>
             )}
             <div className="flex-1">
               <p className="editorial-label mb-1 flex items-center gap-1.5 text-[#947421]"><span className="inline-block size-1.5 rounded-full bg-[#c8a03a]" />Propiedad seleccionada</p>

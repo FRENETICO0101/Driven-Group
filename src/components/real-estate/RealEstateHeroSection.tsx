@@ -17,6 +17,7 @@ const AUTO_ADVANCE_DELAY = 3_000;
 
 export function RealEstateHeroSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const upcomingIndex = (activeIndex + 1) % slides.length;
 
   useEffect(() => {
     const timer = window.setInterval(() => setActiveIndex((index) => (index + 1) % slides.length), AUTO_ADVANCE_DELAY);
@@ -26,7 +27,25 @@ export function RealEstateHeroSection() {
   return (
     <header className="relative bg-white pt-16 sm:pt-20">
       <section className="relative h-[62svh] min-h-[31rem] overflow-hidden bg-black sm:h-[64svh] sm:min-h-[36rem] md:h-[68svh]" aria-roledescription="carousel" aria-label="Real estate properties">
-        {slides.map((slide, index) => <Image key={slide.src} src={slide.src} alt={slide.alt} fill priority={index === 0} quality={100} sizes="100vw" className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ease-in-out ${index === activeIndex ? "opacity-100" : "opacity-0"}`} />)}
+        {slides.map((slide, index) => {
+          // Keep the active slide plus the next one warm. Rendering every slide
+          // here makes the browser download the entire carousel on page load.
+          if (index !== activeIndex && index !== upcomingIndex) return null;
+
+          return (
+            <Image
+              key={slide.src}
+              src={slide.src}
+              alt={index === activeIndex ? slide.alt : ""}
+              aria-hidden={index !== activeIndex}
+              fill
+              priority={index === 0 && activeIndex === 0}
+              quality={85}
+              sizes="100vw"
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ease-in-out ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
+            />
+          );
+        })}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/30 to-transparent" />
         <div className="absolute bottom-5 right-6 z-10 flex items-center gap-2 sm:bottom-8 sm:right-8">
           {slides.map((slide, index) => <button key={slide.src} type="button" onClick={() => setActiveIndex(index)} aria-label={`Show image ${index + 1}`} aria-current={index === activeIndex ? "true" : undefined} className={`rounded-full shadow-[0_1px_3px_rgba(0,0,0,0.7)] transition-all duration-300 ${index === activeIndex ? "h-1.5 w-7 bg-white" : "h-1.5 w-1.5 bg-white/65 hover:bg-white"}`} />)}
