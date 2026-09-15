@@ -18,6 +18,7 @@ export const PropertyFormSchema = z.object({
   state: z.string().min(2, "Estado inválido"),
   zipCode: z.string().min(3, "Código postal inválido"),
   bedrooms: z.number().int().positive("Bedrooms debe ser positivo"),
+  bedroomsDisplay: z.string().trim().max(80, "La descripción de habitaciones no puede exceder 80 caracteres").optional(),
   bathrooms: z.number().positive("Bathrooms debe ser positivo"),
   squareFeet: z.number().positive("Square feet debe ser positivo"),
   lotSize: z.number().positive().optional(),

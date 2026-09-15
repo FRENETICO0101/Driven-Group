@@ -56,6 +56,7 @@ model Property {
   
   // Details
   bedrooms    Int
+  bedroomsDisplay String?
   bathrooms   Float
   squareFeet  Float
   lotSize     Float?

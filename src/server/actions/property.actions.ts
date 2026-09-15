@@ -21,6 +21,7 @@ const propertySchema = z.object({
   latitude: z.number().min(-90).max(90).optional(),
   longitude: z.number().min(-180).max(180).optional(),
   bedrooms: z.number().int().min(0),
+  bedroomsDisplay: z.string().trim().max(80, 'La descripción de habitaciones no puede exceder 80 caracteres').optional(),
   bathrooms: z.number().min(0),
   squareFeet: z.number().min(1, 'Square feet must be positive'),
   deliveryDate: z.string().trim().max(80, 'La fecha de entrega no puede exceder 80 caracteres').optional(),

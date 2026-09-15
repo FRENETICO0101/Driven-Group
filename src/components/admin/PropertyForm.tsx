@@ -22,7 +22,7 @@ interface PropertyFormState {
   zipCode: string;
   latitude: number | '';
   longitude: number | '';
-  bedrooms: number | '';
+  bedrooms: string;
   bathrooms: number | '';
   squareFeet: number | '';
   deliveryDate: string;
@@ -57,7 +57,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
     zipCode: initialData?.zipCode || '',
     latitude: initialData?.latitude ?? '',
     longitude: initialData?.longitude ?? '',
-    bedrooms: initialData?.bedrooms ?? '',
+    bedrooms: initialData?.bedroomsDisplay || (initialData?.bedrooms ? String(initialData.bedrooms) : ''),
     bathrooms: initialData?.bathrooms ?? '',
     squareFeet: initialData?.squareFeet ?? '',
     deliveryDate: initialData?.deliveryDate || '',
@@ -103,7 +103,8 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
         zipCode: formData.zipCode,
         latitude: formData.latitude === '' ? undefined : Number(formData.latitude),
         longitude: formData.longitude === '' ? undefined : Number(formData.longitude),
-        bedrooms: Number(formData.bedrooms),
+        bedrooms: Number(formData.bedrooms.match(/\d+/)?.[0] || 0),
+        bedroomsDisplay: formData.bedrooms.trim() || undefined,
         bathrooms: Number(formData.bathrooms),
         squareFeet: Number(formData.squareFeet),
         deliveryDate: formData.deliveryDate.trim() || undefined,
@@ -277,14 +278,16 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">Recámaras</label>
+            <label className="block text-sm font-semibold text-black mb-2">Habitaciones</label>
             <input
-              type="number"
-              min="0"
+              type="text"
               value={formData.bedrooms}
-              onChange={(e) => setFormData((prev) => ({ ...prev, bedrooms: e.target.value === '' ? '' : Number(e.target.value) }))}
+              onChange={(e) => setFormData((prev) => ({ ...prev, bedrooms: e.target.value }))}
+              placeholder="Ej. 2 o 4 habitaciones"
+              maxLength={80}
               className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
             />
+            <p className="mt-2 text-xs text-gray">Texto libre para mostrar opciones o rangos.</p>
           </div>
 
           <div>

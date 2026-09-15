@@ -46,6 +46,7 @@ export interface Property {
   latitude?: number | null;
   longitude?: number | null;
   bedrooms: number;
+  bedroomsDisplay?: string | null;
   bathrooms: number;
   squareFeet: number;
   lotSize?: number | null;
@@ -135,6 +136,7 @@ export interface PropertyFormData {
   state: string;
   zipCode: string;
   bedrooms: number;
+  bedroomsDisplay?: string;
   bathrooms: number;
   squareFeet: number;
   lotSize?: number;

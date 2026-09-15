@@ -84,6 +84,7 @@ export const propertyRepository = {
     latitude?: number;
     longitude?: number;
     bedrooms: number;
+    bedroomsDisplay?: string;
     bathrooms: number;
     squareFeet: number;
     deliveryDate?: string;
