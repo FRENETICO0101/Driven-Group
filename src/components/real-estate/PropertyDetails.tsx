@@ -8,7 +8,7 @@ interface PropertyDetailsProps {
 }
 
 const copy = {
-  es: { specifications: "Especificaciones", bedrooms: "Habitaciones", priceFrom: "Precio desde", surface: "Superficie", deliveryDate: "Fecha de entrega", toBeConfirmed: "Por confirmar", amenities: "Servicios y amenidades", description: "Descripción", floorplans: "Planos de planta", viewFloorplan: "Ver plano PDF", documents: "Brochures y documentos" },
+  es: { specifications: "Especificaciones", bedrooms: "Habitaciones", priceFrom: "Precio desde", surface: "Superficie desde", deliveryDate: "Fecha de entrega", toBeConfirmed: "Por confirmar", amenities: "Servicios y amenidades", description: "Descripción", floorplans: "Planos de planta", viewFloorplan: "Ver plano PDF", documents: "Brochures y documentos" },
   en: { specifications: "Specifications", bedrooms: "Bedrooms", priceFrom: "Price from", surface: "Surface", deliveryDate: "Delivery date", toBeConfirmed: "To be confirmed", amenities: "Amenities", description: "Description", floorplans: "Floor plans", viewFloorplan: "View floor plan PDF", documents: "Brochures and documents" },
 };
 
