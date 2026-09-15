@@ -224,6 +224,29 @@ export async function deletePropertyImageAction(imageId: string) {
   }
 }
 
+export async function updatePropertyImageAction(imageId: string, alt: string) {
+  try {
+    const session = await auth();
+    if (session?.user?.role !== 'ADMIN') {
+      return { success: false, error: 'Unauthorized' };
+    }
+
+    const parsed = z.string().trim().max(160, 'La descripción no puede exceder 160 caracteres').safeParse(alt);
+    if (!parsed.success) {
+      return { success: false, error: parsed.error.issues[0]?.message || 'Descripción inválida' };
+    }
+
+    const image = await propertyRepository.updateImage(imageId, {
+      alt: parsed.data || null,
+    });
+    revalidatePath('/real-estate');
+    return { success: true, data: image };
+  } catch (error) {
+    console.error('Error updating image:', error);
+    return { success: false, error: 'No fue posible actualizar la imagen' };
+  }
+}
+
 export async function reorderPropertyImagesAction(
   imageIds: string[],
 ) {

@@ -130,6 +130,13 @@ export const propertyRepository = {
     });
   },
 
+  async updateImage(imageId: string, data: { alt?: string | null }) {
+    return prisma.propertyImage.update({
+      where: { id: imageId },
+      data,
+    });
+  },
+
   async deleteImage(imageId: string) {
     return prisma.propertyImage.delete({
       where: { id: imageId },

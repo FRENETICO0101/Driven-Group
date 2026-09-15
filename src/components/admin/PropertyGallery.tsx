@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import {
   deletePropertyImageAction,
   reorderPropertyImagesAction,
+  updatePropertyImageAction,
   uploadPropertyImageFileAction,
   uploadPropertyImageAction,
 } from '@/server/actions/property.actions';
@@ -25,6 +26,22 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
   const [uploadAlt, setUploadAlt] = useState('');
   const [uploadFile, setUploadFile] = useState<File | null>(null);
   const [imageSource, setImageSource] = useState<ImageSource>('file');
+  const [filePreviewUrl, setFilePreviewUrl] = useState('');
+  const [viewingImage, setViewingImage] = useState<PropertyImage | null>(null);
+  const [editingImageId, setEditingImageId] = useState<string | null>(null);
+  const [editingAlt, setEditingAlt] = useState('');
+
+  useEffect(() => {
+    return () => {
+      if (filePreviewUrl) URL.revokeObjectURL(filePreviewUrl);
+    };
+  }, [filePreviewUrl]);
+
+  const handleFileChange = (file: File | null) => {
+    if (filePreviewUrl) URL.revokeObjectURL(filePreviewUrl);
+    setUploadFile(file);
+    setFilePreviewUrl(file ? URL.createObjectURL(file) : '');
+  };
 
   const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -55,6 +72,8 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
       setUploadUrl('');
       setUploadAlt('');
       setUploadFile(null);
+      if (filePreviewUrl) URL.revokeObjectURL(filePreviewUrl);
+      setFilePreviewUrl('');
       setImageSource('file');
       form.reset();
     } catch (err) {
@@ -65,8 +84,34 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
     }
   };
 
+  const handleEdit = (image: PropertyImage) => {
+    setEditingImageId(image.id);
+    setEditingAlt(image.alt || '');
+    setError(null);
+  };
+
+  const handleSaveEdit = async (imageId: string) => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const result = await updatePropertyImageAction(imageId, editingAlt);
+      if (!result.success || !result.data) {
+        setError(result.error || 'No fue posible actualizar la imagen');
+        return;
+      }
+      setImages((current) => current.map((image) => image.id === imageId ? result.data! : image));
+      setEditingImageId(null);
+      setEditingAlt('');
+    } catch (err) {
+      setError('Ocurrió un error inesperado');
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleDelete = async (imageId: string) => {
-    if (!confirm('Are you sure you want to delete this image?')) return;
+    if (!confirm('¿Deseas eliminar esta imagen?')) return;
 
     setError(null);
     setIsLoading(true);
@@ -75,7 +120,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
       const result = await deletePropertyImageAction(imageId);
 
       if (!result.success) {
-        setError(result.error || 'Failed to delete image');
+        setError(result.error || 'No fue posible eliminar la imagen');
         return;
       }
 
@@ -166,7 +211,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
                 name="file"
                 type="file"
                 accept="image/jpeg,image/png,image/webp,image/avif"
-                onChange={(e) => setUploadFile(e.target.files?.[0] || null)}
+                onChange={(e) => handleFileChange(e.target.files?.[0] || null)}
                 className="block w-full text-sm text-dark-gray file:mr-4 file:rounded-lg file:border-0 file:bg-black file:px-4 file:py-2.5 file:text-sm file:font-semibold file:text-white hover:file:bg-black/90"
               />
               <p className="mt-2 text-xs text-gray">JPG, PNG, WebP o AVIF; máximo 10 MB.</p>
@@ -183,6 +228,18 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
                 required
               />
               <p className="mt-2 text-xs text-gray">Pega un enlace que abra directamente un archivo de imagen.</p>
+            </div>
+          )}
+
+          {(filePreviewUrl || (imageSource === 'url' && uploadUrl.trim())) && (
+            <div className="rounded-xl border border-light-gray bg-light-gray/10 p-4">
+              <p className="mb-3 text-sm font-semibold text-black">Vista previa antes de guardar</p>
+              <div
+                role="img"
+                aria-label={uploadAlt || 'Vista previa de la imagen seleccionada'}
+                className="aspect-[16/9] w-full max-w-2xl rounded-lg bg-light-gray bg-cover bg-center bg-no-repeat shadow-sm"
+                style={{ backgroundImage: `url(${filePreviewUrl || uploadUrl.trim()})` }}
+              />
             </div>
           )}
 
@@ -219,37 +276,56 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
             <p className="text-dark-gray">Aún no hay imágenes. Agrega una arriba para comenzar.</p>
           </div>
         ) : (
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
             {images.map((image, index) => (
               <div
                 key={image.id}
-                className="border border-light-gray rounded-lg overflow-hidden hover:border-black/30 transition-colors"
+                className="overflow-hidden rounded-xl border border-light-gray bg-white transition-all hover:border-black/30 hover:shadow-sm"
               >
-                <div className="flex items-center gap-4 p-4">
-                  {/* Thumbnail */}
-                  <div className="relative w-24 h-24 flex-shrink-0 bg-light-gray rounded-lg overflow-hidden">
+                <button type="button" onClick={() => setViewingImage(image)} className="group relative block aspect-[16/10] w-full overflow-hidden bg-light-gray text-left" aria-label={`Ampliar ${image.alt || `imagen ${index + 1}`}`}>
                     <Image
                       src={image.url}
                       alt={image.alt || 'Imagen de propiedad'}
                       fill
-                      className="object-cover"
+                      sizes="(max-width: 1280px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                       onError={(e) => {
                         const img = e.target as HTMLImageElement;
                         img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect fill="%23f0f0f0" width="100" height="100"/%3E%3C/svg%3E';
                       }}
                     />
+                    <span className="absolute bottom-3 right-3 rounded-full bg-black/75 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm">Ampliar</span>
+                  </button>
+
+                <div className="space-y-4 p-4">
+                  <div className="min-w-0">
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="truncate text-sm font-semibold text-black">{image.alt || `Imagen ${index + 1}`}</p>
+                      <span className="shrink-0 rounded-full bg-light-gray/40 px-2.5 py-1 text-xs text-dark-gray">Orden {index + 1}</span>
+                    </div>
+                    <p className="mt-1 truncate text-xs text-gray" title={image.url}>{image.url}</p>
                   </div>
 
-                  {/* Info */}
-                  <div className="flex-grow min-w-0">
-                    <p className="text-sm font-semibold text-black truncate">{image.alt || 'Imagen'}</p>
-                    <p className="text-xs text-dark-gray truncate">{image.url}</p>
-                    <p className="text-xs text-gray mt-1">Orden: {image.order}</p>
-                  </div>
-
-                  {/* Actions */}
-                  <div className="flex items-center gap-2 flex-shrink-0">
+                  {editingImageId === image.id ? (
+                    <div className="rounded-lg border border-light-gray bg-light-gray/10 p-3">
+                      <label className="mb-2 block text-xs font-semibold text-black">Descripción de la imagen</label>
+                      <input
+                        type="text"
+                        value={editingAlt}
+                        onChange={(event) => setEditingAlt(event.target.value)}
+                        maxLength={160}
+                        autoFocus
+                        className="w-full rounded-lg border border-light-gray px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+                      />
+                      <div className="mt-3 flex gap-2">
+                        <button type="button" onClick={() => handleSaveEdit(image.id)} disabled={isLoading} className="rounded-lg bg-black px-3 py-2 text-xs font-semibold text-white disabled:opacity-50">Guardar cambios</button>
+                        <button type="button" onClick={() => setEditingImageId(null)} disabled={isLoading} className="rounded-lg border border-light-gray px-3 py-2 text-xs font-semibold text-black disabled:opacity-50">Cancelar</button>
+                      </div>
+                    </div>
+                  ) : (
+                  <div className="flex flex-wrap items-center gap-2">
                     <button
+                      type="button"
                       onClick={() => handleMoveUp(index)}
                       disabled={index === 0 || isLoading}
                       className="px-3 py-2 border border-light-gray rounded-lg text-xs font-semibold hover:bg-light-gray/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
@@ -259,6 +335,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
                     </button>
 
                     <button
+                      type="button"
                       onClick={() => handleMoveDown(index)}
                       disabled={index === images.length - 1 || isLoading}
                       className="px-3 py-2 border border-light-gray rounded-lg text-xs font-semibold hover:bg-light-gray/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
@@ -267,7 +344,12 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
                       ↓
                     </button>
 
+                    <button type="button" onClick={() => handleEdit(image)} disabled={isLoading} className="rounded-lg border border-light-gray px-3 py-2 text-xs font-semibold text-black transition-colors hover:bg-light-gray/40 disabled:opacity-50">
+                      Editar descripción
+                    </button>
+
                     <button
+                      type="button"
                       onClick={() => handleDelete(image.id)}
                       disabled={isLoading}
                       className="px-3 py-2 border border-red-200 text-red-700 rounded-lg text-xs font-semibold hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
@@ -275,12 +357,22 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
                       Eliminar
                     </button>
                   </div>
+                  )}
                 </div>
               </div>
             ))}
           </div>
         )}
       </div>
+
+      {viewingImage && (
+        <div className="fixed inset-0 z-[1600] flex items-center justify-center bg-black/85 p-4 sm:p-8" role="dialog" aria-modal="true" aria-label="Vista ampliada de la imagen" onClick={() => setViewingImage(null)}>
+          <div className="relative h-[85dvh] w-full max-w-6xl" onClick={(event) => event.stopPropagation()}>
+            <Image src={viewingImage.url} alt={viewingImage.alt || 'Imagen de propiedad'} fill sizes="100vw" className="object-contain" priority />
+            <button type="button" onClick={() => setViewingImage(null)} className="absolute right-2 top-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-lg">Cerrar</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
