@@ -25,7 +25,7 @@ interface PropertyFormState {
   bedrooms: number | '';
   bathrooms: number | '';
   squareFeet: number | '';
-  availableFrom: string;
+  deliveryDate: string;
   type: PropertyType;
   status: PropertyStatus;
   amenities: string[];
@@ -60,7 +60,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
     bedrooms: initialData?.bedrooms ?? '',
     bathrooms: initialData?.bathrooms ?? '',
     squareFeet: initialData?.squareFeet ?? '',
-    availableFrom: initialData?.availableFrom || '',
+    deliveryDate: initialData?.deliveryDate || '',
     type: initialData?.type || 'RESIDENTIAL',
     status: initialData?.status || 'ACTIVE',
     amenities: initialData?.amenities || [],
@@ -106,7 +106,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
         bedrooms: Number(formData.bedrooms),
         bathrooms: Number(formData.bathrooms),
         squareFeet: Number(formData.squareFeet),
-        availableFrom: formData.availableFrom.trim() || undefined,
+        deliveryDate: formData.deliveryDate.trim() || undefined,
         type: formData.type,
         status: formData.status,
         amenities: formData.amenities,
@@ -341,11 +341,11 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-black mb-2">Fecha desde</label>
+            <label className="block text-sm font-semibold text-black mb-2">Fecha de entrega</label>
             <input
               type="text"
-              value={formData.availableFrom}
-              onChange={(e) => setFormData((prev) => ({ ...prev, availableFrom: e.target.value }))}
+              value={formData.deliveryDate}
+              onChange={(e) => setFormData((prev) => ({ ...prev, deliveryDate: e.target.value }))}
               placeholder="Ej. Otoño 2027, Q2 2028 o Entrega inmediata"
               maxLength={80}
               className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"

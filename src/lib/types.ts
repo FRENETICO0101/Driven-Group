@@ -50,7 +50,7 @@ export interface Property {
   squareFeet: number;
   lotSize?: number | null;
   yearBuilt?: number | null;
-  availableFrom?: string | null;
+  deliveryDate?: string | null;
   type: PropertyType;
   status: PropertyStatus;
   amenities: string[];
@@ -139,7 +139,7 @@ export interface PropertyFormData {
   squareFeet: number;
   lotSize?: number;
   yearBuilt?: number;
-  availableFrom?: string;
+  deliveryDate?: string;
   type: PropertyType;
   amenities: string[];
   features?: string;

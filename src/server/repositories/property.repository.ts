@@ -86,7 +86,7 @@ export const propertyRepository = {
     bedrooms: number;
     bathrooms: number;
     squareFeet: number;
-    availableFrom?: string;
+    deliveryDate?: string;
     type: PropertyType;
     status: PropertyStatus;
     agentId: string;

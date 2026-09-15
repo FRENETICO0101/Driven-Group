@@ -23,7 +23,7 @@ const propertySchema = z.object({
   bedrooms: z.number().int().min(0),
   bathrooms: z.number().min(0),
   squareFeet: z.number().min(1, 'Square feet must be positive'),
-  availableFrom: z.string().trim().max(80, 'Available from must be 80 characters or fewer').optional(),
+  deliveryDate: z.string().trim().max(80, 'La fecha de entrega no puede exceder 80 caracteres').optional(),
   type: z.enum(['RESIDENTIAL', 'COMMERCIAL', 'LAND', 'MIXED_USE']),
   status: z.enum(['ACTIVE', 'SOLD', 'PENDING', 'INACTIVE']),
   amenities: z.array(z.string()).optional(),
