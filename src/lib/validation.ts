@@ -22,6 +22,7 @@ export const PropertyFormSchema = z.object({
   squareFeet: z.number().positive("Square feet debe ser positivo"),
   lotSize: z.number().positive().optional(),
   yearBuilt: z.number().int().positive().optional(),
+  availableFrom: z.string().trim().max(80, "La fecha desde no puede exceder 80 caracteres").optional(),
   type: z.enum(["RESIDENTIAL", "COMMERCIAL", "LAND", "MIXED_USE"]),
   amenities: z.array(z.string()).default([]),
   features: z.string().optional(),

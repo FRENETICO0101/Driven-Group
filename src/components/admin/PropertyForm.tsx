@@ -25,6 +25,7 @@ interface PropertyFormState {
   bedrooms: number | '';
   bathrooms: number | '';
   squareFeet: number | '';
+  availableFrom: string;
   type: PropertyType;
   status: PropertyStatus;
   amenities: string[];
@@ -59,6 +60,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
     bedrooms: initialData?.bedrooms ?? '',
     bathrooms: initialData?.bathrooms ?? '',
     squareFeet: initialData?.squareFeet ?? '',
+    availableFrom: initialData?.availableFrom || '',
     type: initialData?.type || 'RESIDENTIAL',
     status: initialData?.status || 'ACTIVE',
     amenities: initialData?.amenities || [],
@@ -104,6 +106,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
         bedrooms: Number(formData.bedrooms),
         bathrooms: Number(formData.bathrooms),
         squareFeet: Number(formData.squareFeet),
+        availableFrom: formData.availableFrom.trim() || undefined,
         type: formData.type,
         status: formData.status,
         amenities: formData.amenities,
@@ -309,7 +312,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <label className="block text-sm font-semibold text-black mb-2">Precio</label>
             <input
@@ -335,6 +338,19 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
               <option value="LAND">Terreno</option>
               <option value="MIXED_USE">Uso mixto</option>
             </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-black mb-2">Fecha desde</label>
+            <input
+              type="text"
+              value={formData.availableFrom}
+              onChange={(e) => setFormData((prev) => ({ ...prev, availableFrom: e.target.value }))}
+              placeholder="Ej. Otoño 2027, Q2 2028 o Entrega inmediata"
+              maxLength={80}
+              className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+            />
+            <p className="mt-2 text-xs text-gray">Texto libre; no requiere formato de fecha.</p>
           </div>
         </div>
 

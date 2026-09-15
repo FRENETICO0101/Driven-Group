@@ -23,6 +23,7 @@ const propertySchema = z.object({
   bedrooms: z.number().int().min(0),
   bathrooms: z.number().min(0),
   squareFeet: z.number().min(1, 'Square feet must be positive'),
+  availableFrom: z.string().trim().max(80, 'Available from must be 80 characters or fewer').optional(),
   type: z.enum(['RESIDENTIAL', 'COMMERCIAL', 'LAND', 'MIXED_USE']),
   status: z.enum(['ACTIVE', 'SOLD', 'PENDING', 'INACTIVE']),
   amenities: z.array(z.string()).optional(),
@@ -53,6 +54,8 @@ export async function savePropertyAction(id: string | null, data: z.infer<typeof
         type: parsed.data.type as PropertyType,
         status: parsed.data.status as PropertyStatus,
       });
+      revalidatePath('/real-estate');
+      revalidatePath(`/real-estate/${updated.slug}`);
       return { success: true, data: updated };
     } else {
       // Create new
@@ -62,6 +65,8 @@ export async function savePropertyAction(id: string | null, data: z.infer<typeof
         status: parsed.data.status as PropertyStatus,
         agentId: session.user.id,
       });
+      revalidatePath('/real-estate');
+      revalidatePath(`/real-estate/${created.slug}`);
       return { success: true, data: created };
     }
   } catch (error) {

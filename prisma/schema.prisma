@@ -60,6 +60,7 @@ model Property {
   squareFeet  Float
   lotSize     Float?
   yearBuilt   Int?
+  availableFrom String?
   
   // Property Type
   type      PropertyType @default(RESIDENTIAL)
