@@ -6,6 +6,10 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const nextConfig = {
   // Image Optimization
   images: {
+    // The property catalog already ships pre-compressed WebP assets. Serving
+    // them directly avoids making availability depend on Vercel's image
+    // transformation quota (which returns HTTP 402 when exhausted).
+    unoptimized: true,
     // Hero carousels are the primary visual surface of the site. Keep their
     // optimized derivatives at source-like quality instead of the default
     // lossy setting used for smaller editorial images.
