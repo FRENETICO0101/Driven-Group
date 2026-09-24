@@ -1,12 +1,19 @@
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import sharp from "sharp";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sourceRoot = path.join(root, "assets", "properties");
 const publicRoot = path.join(root, "public", "property-assets");
 const manifestPath = path.join(root, "src", "lib", "generated", "property-catalog.json");
 const imageExtensions = new Set([".avif", ".jpeg", ".jpg", ".png", ".webp"]);
+
+const imageVariants = [
+  { directory: "gallery", size: 1600, quality: 82 },
+  { directory: "gallery-previews", size: 960, quality: 78 },
+  { directory: "gallery-thumbnails", size: 240, quality: 72 },
+];
 
 function files(directory) {
   if (!existsSync(directory)) return [];
@@ -139,6 +146,38 @@ function buildProperty(district, slug) {
   };
 }
 
+async function generateImageVariants(properties) {
+  let generated = 0;
+
+  for (const property of properties) {
+    for (const image of property.images) {
+      const filename = decodeURIComponent(image.url.split("/gallery/").at(-1));
+      const source = path.join(sourceRoot, property.assetBase, "gallery", filename);
+      if (!existsSync(source)) continue;
+
+      const sourceBuffer = readFileSync(source);
+      for (const variant of imageVariants) {
+        const destination = path.join(publicRoot, property.assetBase, variant.directory, filename);
+        mkdirSync(path.dirname(destination), { recursive: true });
+        const output = await sharp(sourceBuffer)
+          .rotate()
+          .resize({
+            width: variant.size,
+            height: variant.size,
+            fit: "inside",
+            withoutEnlargement: true,
+          })
+          .webp({ quality: variant.quality, effort: 4 })
+          .toBuffer();
+        writeFileSync(destination, output);
+        generated += 1;
+      }
+    }
+  }
+
+  return generated;
+}
+
 if (!existsSync(sourceRoot)) throw new Error(`Property source directory not found: ${sourceRoot}`);
 rmSync(publicRoot, { recursive: true, force: true });
 mkdirSync(publicRoot, { recursive: true });
@@ -155,6 +194,8 @@ for (const district of readdirSync(sourceRoot)) {
   }
 }
 
+const generatedVariants = await generateImageVariants(properties);
+
 mkdirSync(path.dirname(manifestPath), { recursive: true });
 writeFileSync(manifestPath, `${JSON.stringify(properties, null, 2)}\n`);
-console.log(`Generated ${properties.length} catalog entries and ${properties.reduce((total, property) => total + property.assetFiles.length, 0)} static property assets.`);
+console.log(`Generated ${properties.length} catalog entries, ${properties.reduce((total, property) => total + property.assetFiles.length, 0)} static property assets and ${generatedVariants} responsive image variants.`);

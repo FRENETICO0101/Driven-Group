@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import type { Property } from "@/lib/types";
 import Link from "next/link";
 import Image from "next/image";
+import { getPropertyImageUrl } from "@/lib/property-image";
 
 interface PropertyListingProps {
   properties: Property[];
@@ -77,7 +78,7 @@ export function PropertyListing({ properties }: PropertyListingProps) {
               <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-light-gray/20">
                 {property.images[0] && (
                   <Image
-                    src={property.images[0].url}
+                    src={getPropertyImageUrl(property.images[0].url, "preview")}
                     alt={property.images[0].alt || property.title}
                     fill
                     sizes="(max-width: 640px) 53vw, (max-width: 1024px) 42vw, 21rem"
@@ -90,7 +91,7 @@ export function PropertyListing({ properties }: PropertyListingProps) {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-light-gray/20">
                   {property.images[1] && (
                     <Image
-                      src={property.images[1].url}
+                      src={getPropertyImageUrl(property.images[1].url, "preview")}
                       alt={property.images[1].alt || `${property.title} - Image 2`}
                       fill
                       sizes="(max-width: 640px) 42vw, (max-width: 1024px) 34vw, 17rem"
@@ -104,7 +105,7 @@ export function PropertyListing({ properties }: PropertyListingProps) {
                     <div key={image?.url ?? `fallback-${idx}`} className="relative aspect-square overflow-hidden rounded-xl bg-light-gray/20">
                       {image && (
                         <Image
-                          src={image.url}
+                          src={getPropertyImageUrl(image.url, "thumbnail")}
                           alt={image.alt || `${property.title} - Image ${idx + 3}`}
                           fill
                           sizes="(max-width: 640px) 20vw, (max-width: 1024px) 16vw, 8rem"

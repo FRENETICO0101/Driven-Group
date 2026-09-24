@@ -3,11 +3,27 @@ import test from "node:test";
 import { getCatalogProperties } from "../src/lib/property-catalog";
 import { mergePropertySources } from "../src/server/services/property-catalog-merge";
 import type { Property } from "../src/lib/types";
+import { getPropertyImageUrl } from "../src/lib/property-image";
 
 const catalog = getCatalogProperties();
 const sourceProperty = catalog.find((property) => property.slug === "viceroy-brickell")!;
 
 if (!sourceProperty) throw new Error("Expected Viceroy to be present in the local property catalog");
+
+test("property images use build-generated responsive variants", () => {
+  const source = "/property-assets/brickell/1428-brickell/gallery/hero.webp";
+
+  assert.equal(getPropertyImageUrl(source, "full"), source);
+  assert.equal(getPropertyImageUrl(source, "preview"), "/property-assets/brickell/1428-brickell/gallery-previews/hero.webp");
+  assert.equal(getPropertyImageUrl(source, "thumbnail"), "/property-assets/brickell/1428-brickell/gallery-thumbnails/hero.webp");
+});
+
+test("Cloudinary uploads receive delivery-time size transformations", () => {
+  const source = "https://res.cloudinary.com/demo/image/upload/v1/driven/property.webp";
+
+  assert.match(getPropertyImageUrl(source, "preview"), /f_auto,q_auto:eco,c_limit,w_960,h_960/);
+  assert.match(getPropertyImageUrl(source, "thumbnail"), /f_auto,q_auto:eco,c_fill,w_240,h_240/);
+});
 
 function databaseProperty(overrides: Partial<Property>): Property {
   return {

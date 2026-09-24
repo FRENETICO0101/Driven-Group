@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import type { Property } from "@/lib/types";
 import { Icon } from "@/components/ui/Icon";
+import { getPropertyImageUrl } from "@/lib/property-image";
 
 const InteractivePropertyMap = dynamic(
   () => import("./InteractivePropertyMap").then((module) => module.InteractivePropertyMap),
@@ -68,7 +69,7 @@ export function PropertiesMap({ properties }: { properties: Property[] }) {
             {selected.images[0] && (
               <div className="relative h-20 w-full shrink-0 overflow-hidden rounded-lg sm:w-28">
                 <Image
-                  src={selected.images[0].url}
+                  src={getPropertyImageUrl(selected.images[0].url, "thumbnail")}
                   alt={selected.images[0].alt || selected.title}
                   fill
                   sizes="(max-width: 640px) 100vw, 7rem"

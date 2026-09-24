@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import type { PropertyImage } from '@/lib/types';
 import type { CatalogProperty } from '@/lib/property-catalog';
 import { Icon } from '@/components/ui/Icon';
+import { getPropertyImageUrl } from '@/lib/property-image';
 
 interface PropertyGalleryProps {
   images: PropertyImage[];
@@ -99,7 +100,7 @@ export function PropertyGallery({ images, title, galleryDocuments = [] }: Proper
         }}
       >
         <Image
-          src={selected.url}
+          src={getPropertyImageUrl(selected.url, 'preview')}
           alt={selected.alt || title}
           className="object-cover"
           fill
@@ -156,7 +157,7 @@ export function PropertyGallery({ images, title, galleryDocuments = [] }: Proper
               aria-label={`Mostrar imagen ${idx + 1} de ${title}`}
               aria-current={idx === selectedIndex ? 'true' : undefined}
             >
-              <Image src={image.url} alt={image.alt || title} className="object-cover" fill sizes="100px" />
+              <Image src={getPropertyImageUrl(image.url, 'thumbnail')} alt={image.alt || title} className="object-cover" fill sizes="100px" />
             </button>
           ))}
         </div>
@@ -184,7 +185,7 @@ export function PropertyGallery({ images, title, galleryDocuments = [] }: Proper
 
             <div className="relative min-h-0 flex-1">
               <Image
-                src={selected.url}
+                src={getPropertyImageUrl(selected.url, 'full')}
                 alt={selected.alt || title}
                 className="object-contain p-3 sm:p-6"
                 fill
@@ -207,7 +208,7 @@ export function PropertyGallery({ images, title, galleryDocuments = [] }: Proper
               <div className="flex gap-2 overflow-x-auto border-t border-white/15 px-4 py-3 sm:px-6">
                 {images.map((image, index) => (
                   <button key={image.id} type="button" onClick={() => setSelectedIndex(index)} className={`relative h-12 w-16 shrink-0 overflow-hidden rounded border-2 ${index === selectedIndex ? 'border-white' : 'border-transparent opacity-60 hover:opacity-100'}`} aria-label={`Ir a imagen ${index + 1}`}>
-                    <Image src={image.url} alt="" className="object-cover" fill sizes="64px" />
+                    <Image src={getPropertyImageUrl(image.url, 'thumbnail')} alt="" className="object-cover" fill sizes="64px" />
                   </button>
                 ))}
               </div>

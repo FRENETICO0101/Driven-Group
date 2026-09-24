@@ -10,6 +10,7 @@ import {
   uploadPropertyImageAction,
 } from '@/server/actions/property.actions';
 import type { PropertyImage } from '@/lib/types';
+import { getPropertyImageUrl } from '@/lib/property-image';
 
 interface PropertyGalleryProps {
   propertyId: string;
@@ -284,7 +285,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
               >
                 <button type="button" onClick={() => setViewingImage(image)} className="group relative block aspect-[16/10] w-full overflow-hidden bg-light-gray text-left" aria-label={`Ampliar ${image.alt || `imagen ${index + 1}`}`}>
                     <Image
-                      src={image.url}
+                      src={getPropertyImageUrl(image.url, 'preview')}
                       alt={image.alt || 'Imagen de propiedad'}
                       fill
                       sizes="(max-width: 1280px) 100vw, 50vw"
@@ -368,7 +369,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
       {viewingImage && (
         <div className="fixed inset-0 z-[1600] flex items-center justify-center bg-black/85 p-4 sm:p-8" role="dialog" aria-modal="true" aria-label="Vista ampliada de la imagen" onClick={() => setViewingImage(null)}>
           <div className="relative h-[85dvh] w-full max-w-6xl" onClick={(event) => event.stopPropagation()}>
-            <Image src={viewingImage.url} alt={viewingImage.alt || 'Imagen de propiedad'} fill sizes="100vw" className="object-contain" priority />
+            <Image src={getPropertyImageUrl(viewingImage.url, 'full')} alt={viewingImage.alt || 'Imagen de propiedad'} fill sizes="100vw" className="object-contain" priority />
             <button type="button" onClick={() => setViewingImage(null)} className="absolute right-2 top-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-lg">Cerrar</button>
           </div>
         </div>

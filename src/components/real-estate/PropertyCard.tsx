@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { Icon } from "@/components/ui/Icon";
+import { getPropertyImageUrl } from "@/lib/property-image";
 
 interface PropertyCardProps {
   image: string;
@@ -21,7 +22,7 @@ export function PropertyCard({ image, imageAlt, title, slug, priority = false }:
           <Image
             alt={imageAlt}
             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-            src={image}
+            src={getPropertyImageUrl(image, "preview")}
             fill
             priority={priority}
             sizes="(max-width: 640px) 85vw, (max-width: 768px) 60vw, (max-width: 1024px) 45vw, 35vw"
