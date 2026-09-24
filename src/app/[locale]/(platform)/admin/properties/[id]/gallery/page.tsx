@@ -20,12 +20,37 @@ export default async function PropertyGalleryPage({
   }
 
   const { id: slug } = await params;
-  const property = await propertyRepository.getBySlug(slug);
+  const catalogProperty = getCatalogPropertyBySlug(slug);
+  let property = await propertyRepository.getBySlug(slug);
+
+  if (!property && catalogProperty) {
+    property = await propertyRepository.create({
+      title: catalogProperty.title,
+      slug: catalogProperty.slug,
+      description: catalogProperty.description || undefined,
+      price: catalogProperty.price,
+      address: catalogProperty.address,
+      city: catalogProperty.city,
+      state: catalogProperty.state,
+      zipCode: catalogProperty.zipCode || '00000',
+      latitude: catalogProperty.latitude ?? undefined,
+      longitude: catalogProperty.longitude ?? undefined,
+      bedrooms: catalogProperty.bedrooms,
+      bedroomsDisplay: catalogProperty.bedroomsDisplay ?? undefined,
+      bathrooms: catalogProperty.bathrooms,
+      squareFeet: catalogProperty.squareFeet || 1,
+      deliveryDate: catalogProperty.deliveryDate ?? undefined,
+      type: catalogProperty.type,
+      status: catalogProperty.status,
+      agentId: session.user.id,
+      amenities: catalogProperty.amenities,
+    });
+  }
+
   if (!property) {
     notFound();
   }
 
-  const catalogProperty = getCatalogPropertyBySlug(slug);
   const images = property.galleryManaged
     ? property.images
     : await propertyRepository.initializeGallery(property.id, catalogProperty?.images ?? property.images);

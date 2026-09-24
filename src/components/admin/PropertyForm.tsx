@@ -399,7 +399,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
         >
           Cancelar
         </button>
-        {propertyId && (
+        {initialData?.slug && (
           <Link href={`/admin/properties/${formData.slug}/gallery`} className="px-8 py-3 border border-light-gray text-black font-semibold rounded-lg hover:bg-light-gray/30 transition-colors">
             Gestionar galería
           </Link>

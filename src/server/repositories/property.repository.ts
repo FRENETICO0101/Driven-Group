@@ -95,7 +95,7 @@ export const propertyRepository = {
   }) {
     return prisma.property.create({
       data,
-      include: { images: true },
+      include: { images: true, agent: true },
     });
   },
 
