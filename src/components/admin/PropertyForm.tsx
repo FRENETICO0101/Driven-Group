@@ -28,7 +28,7 @@ interface PropertyFormState {
   deliveryDate: string;
   type: PropertyType;
   status: PropertyStatus;
-  amenities: string[];
+  amenitiesText: string;
 }
 
 function generateSlug(title: string): string {
@@ -63,7 +63,7 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
     deliveryDate: initialData?.deliveryDate || '',
     type: initialData?.type || 'RESIDENTIAL',
     status: initialData?.status || 'ACTIVE',
-    amenities: initialData?.amenities || [],
+    amenitiesText: (initialData?.amenities || []).join('\n'),
   });
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,17 +72,6 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
       ...prev,
       title: newTitle,
       slug: generateSlug(newTitle),
-    }));
-  };
-
-  const handleAmenitiesChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const amenities = e.target.value
-      .split(',')
-      .map((a) => a.trim())
-      .filter((a) => a);
-    setFormData((prev) => ({
-      ...prev,
-      amenities,
     }));
   };
 
@@ -110,7 +99,10 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
         deliveryDate: formData.deliveryDate.trim() || undefined,
         type: formData.type,
         status: formData.status,
-        amenities: formData.amenities,
+        amenities: formData.amenitiesText
+          .split(/\r?\n/)
+          .map((amenity) => amenity.trim())
+          .filter(Boolean),
       });
 
       if (!result.success || !result.data) {
@@ -378,15 +370,16 @@ export function PropertyForm({ propertyId, initialData }: PropertyFormProps) {
 
         <div>
           <label className="block text-sm font-semibold text-black mb-2">
-            Amenidades (separadas por comas)
+            Amenidades (una por línea)
           </label>
           <textarea
-            value={formData.amenities.join(', ')}
-            onChange={handleAmenitiesChange}
-            rows={3}
-            placeholder="Ej. alberca, gimnasio, estacionamiento, jardín"
+            value={formData.amenitiesText}
+            onChange={(event) => setFormData((previous) => ({ ...previous, amenitiesText: event.target.value }))}
+            rows={9}
+            placeholder={'Ej.\nAlberca en rooftop\nGimnasio privado\nConcierge 24/7'}
             className="w-full px-4 py-3 border border-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
           />
+          <p className="mt-2 text-xs text-gray">Escribe o pega una amenidad por línea. Los espacios, comas y símbolos se conservarán.</p>
         </div>
       </div>
 

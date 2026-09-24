@@ -33,7 +33,7 @@ export async function PropertyDetails({ property }: PropertyDetailsProps) {
         </div>
       </section>
 
-      {amenities.length > 0 && <section><h2 className="mb-4 text-xl font-bold text-black sm:mb-6 sm:text-2xl">{t.amenities}</h2><div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3">{amenities.map((amenity) => <div key={amenity} className="flex items-center gap-3 rounded-xl border border-light-gray bg-white p-3 sm:p-4"><span className="material-symbols-outlined shrink-0 text-lg text-primary/70">check_circle</span><span className="text-xs capitalize text-dark-gray sm:text-sm">{amenity}</span></div>)}</div></section>}
+      {amenities.length > 0 && <section><h2 className="mb-4 text-xl font-bold text-black sm:mb-6 sm:text-2xl">{t.amenities}</h2><div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3">{amenities.map((amenity) => <div key={amenity} className="flex items-center gap-3 rounded-xl border border-light-gray bg-white p-3 sm:p-4"><span className="material-symbols-outlined shrink-0 text-lg text-primary/70">check_circle</span><span className="text-xs text-dark-gray sm:text-sm">{amenity}</span></div>)}</div></section>}
 
       {property.description && <section><h2 className="mb-4 text-xl font-bold text-black sm:mb-6 sm:text-2xl">{t.description}</h2><div className="max-w-4xl border-l-2 border-dark-gray pl-5 sm:pl-6"><p className="whitespace-pre-wrap break-words text-justify text-base leading-[1.9] text-dark-gray [hyphens:auto] sm:text-lg">{property.description}</p></div></section>}
 
