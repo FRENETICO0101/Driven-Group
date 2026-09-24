@@ -3,6 +3,7 @@ import { redirect, notFound } from 'next/navigation';
 import Link from 'next/link';
 import { PropertyGallery } from '@/components/admin/PropertyGallery';
 import { propertyRepository } from '@/server/repositories/property.repository';
+import { getCatalogPropertyBySlug } from '@/lib/property-catalog';
 
 export const metadata = {
   title: 'Galería de propiedad | Administración',
@@ -23,6 +24,11 @@ export default async function PropertyGalleryPage({
   if (!property) {
     notFound();
   }
+
+  const catalogProperty = getCatalogPropertyBySlug(slug);
+  const images = property.galleryManaged
+    ? property.images
+    : await propertyRepository.initializeGallery(property.id, catalogProperty?.images ?? property.images);
 
   return (
     <main className="min-h-screen bg-light-gray/30">
@@ -49,7 +55,7 @@ export default async function PropertyGalleryPage({
             </div>
           </div>
 
-          <PropertyGallery propertyId={property.id} images={property.images} />
+          <PropertyGallery propertyId={property.id} images={images} />
       </div>
     </main>
   );

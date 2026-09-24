@@ -29,6 +29,14 @@ test("an editorial database override updates catalog metadata while preserving s
   assert.ok("resources" in (merged ?? {}));
 });
 
+test("an intentionally managed empty gallery does not restore catalog images", () => {
+  const override = databaseProperty({ galleryManaged: true, images: [] });
+  const properties = mergePropertySources(catalog, [override]);
+  const merged = properties.find((property) => property.slug === sourceProperty.slug);
+
+  assert.deepEqual(merged?.images, []);
+});
+
 test("an inactive override hides a source property from the public catalog", () => {
   const hidden = databaseProperty({ status: "INACTIVE" });
   const publicProperties = mergePropertySources(catalog, [hidden]);

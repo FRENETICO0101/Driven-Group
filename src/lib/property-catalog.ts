@@ -25,6 +25,7 @@ function hydrateProperty(record: CatalogRecord): CatalogProperty {
     status: record.status as PropertyStatus,
     type: record.type as Property["type"],
     images: record.images.map((image) => ({ ...image, createdAt: new Date(0) })),
+    galleryManaged: false,
     agent: defaultAgent,
     agentId: defaultAgent.id,
     createdAt: new Date(0),

@@ -57,6 +57,7 @@ export interface Property {
   amenities: string[];
   features?: string | null;
   images: PropertyImage[];
+  galleryManaged?: boolean;
   agent: User;
   agentId: string;
   createdAt: Date;

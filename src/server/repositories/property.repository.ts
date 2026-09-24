@@ -131,6 +131,41 @@ export const propertyRepository = {
     });
   },
 
+  async initializeGallery(
+    propertyId: string,
+    sourceImages: Array<{ url: string; alt?: string | null; order: number }>,
+  ) {
+    return prisma.$transaction(async (transaction) => {
+      const property = await transaction.property.findUnique({
+        where: { id: propertyId },
+        include: { images: { orderBy: { order: 'asc' } } },
+      });
+      if (!property) throw new Error('Property not found');
+      if (property.galleryManaged) return property.images;
+
+      if (property.images.length === 0 && sourceImages.length > 0) {
+        await transaction.propertyImage.createMany({
+          data: sourceImages.map((image, index) => ({
+            propertyId,
+            url: image.url,
+            alt: image.alt || null,
+            order: image.order ?? index,
+          })),
+        });
+      }
+
+      await transaction.property.update({
+        where: { id: propertyId },
+        data: { galleryManaged: true },
+      });
+
+      return transaction.propertyImage.findMany({
+        where: { propertyId },
+        orderBy: { order: 'asc' },
+      });
+    });
+  },
+
   async updateImage(imageId: string, data: { alt?: string | null }) {
     return prisma.propertyImage.update({
       where: { id: imageId },

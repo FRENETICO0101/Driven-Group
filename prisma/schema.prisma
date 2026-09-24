@@ -72,7 +72,8 @@ model Property {
   features  String?   // Detailed features
   
   // Media
-  images    PropertyImage[]
+  images         PropertyImage[]
+  galleryManaged Boolean         @default(false)
   
   // Relations
   agent     User      @relation("AgentProperties", fields: [agentId], references: [id])
