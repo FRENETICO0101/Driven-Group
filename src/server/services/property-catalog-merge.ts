@@ -3,6 +3,17 @@ import type { CatalogProperty } from "@/lib/property-catalog";
 
 export type PublicFilters = { type?: string; city?: string; cities?: readonly string[]; status?: string };
 
+function documentResources(property: Property, fallback?: CatalogProperty["resources"]): CatalogProperty["resources"] {
+  const documents = property.documents || [];
+  const managed = property.documentsManaged || documents.length > 0;
+  if (!managed && fallback) return fallback;
+  return {
+    floorplans: documents.filter((document) => document.type === "FLOORPLAN").map((document) => ({ name: document.name, documentUrl: document.url })),
+    brochures: documents.filter((document) => document.type === "BROCHURE").map((document) => ({ name: document.name, url: document.url })),
+    galleryDocuments: fallback?.galleryDocuments || [],
+  };
+}
+
 export function mergeCatalogProperty(catalogProperty: CatalogProperty, override: Property): CatalogProperty {
   return {
     ...catalogProperty,
@@ -10,7 +21,7 @@ export function mergeCatalogProperty(catalogProperty: CatalogProperty, override:
     // Admin-managed images take precedence, so gallery changes made in the
     // dashboard are reflected immediately for catalog-backed properties too.
     images: override.galleryManaged || override.images.length > 0 ? override.images : catalogProperty.images,
-    resources: catalogProperty.resources,
+    resources: documentResources(override, catalogProperty.resources),
     seo: catalogProperty.seo,
   };
 }
@@ -39,7 +50,9 @@ export function mergePropertySources(
     return override ? mergeCatalogProperty(property, override) : property;
   });
   const databaseOnly = includeDatabaseOnly
-    ? databaseProperties.filter((property) => !catalogSlugs.has(property.slug))
+    ? databaseProperties
+      .filter((property) => !catalogSlugs.has(property.slug))
+      .map((property) => ({ ...property, resources: documentResources(property) }))
     : [];
-  return [...mergedCatalog, ...databaseOnly].filter((property) => matchesFilters(property, filters, includeInactive));
+  return [...databaseOnly, ...mergedCatalog].filter((property) => matchesFilters(property, filters, includeInactive));
 }

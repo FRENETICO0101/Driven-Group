@@ -74,6 +74,8 @@ model Property {
   // Media
   images         PropertyImage[]
   galleryManaged Boolean         @default(false)
+  documents        PropertyDocument[]
+  documentsManaged Boolean            @default(false)
   
   // Relations
   agent     User      @relation("AgentProperties", fields: [agentId], references: [id])
@@ -115,6 +117,24 @@ model PropertyImage {
   createdAt DateTime @default(now())
   
   @@index([propertyId])
+}
+
+model PropertyDocument {
+  id         String               @id @default(uuid())
+  name       String
+  url        String
+  type       PropertyDocumentType
+  order      Int                  @default(0)
+  property   Property             @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId String
+  createdAt  DateTime             @default(now())
+
+  @@index([propertyId])
+}
+
+enum PropertyDocumentType {
+  FLOORPLAN
+  BROCHURE
 }
 
 // ============================================

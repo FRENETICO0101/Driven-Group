@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import {
   deletePropertyImageAction,
+  getCloudinaryUploadSignatureAction,
   reorderPropertyImagesAction,
   updatePropertyImageAction,
-  uploadPropertyImageFileAction,
   uploadPropertyImageAction,
 } from '@/server/actions/property.actions';
 import type { PropertyImage } from '@/lib/types';
@@ -25,29 +25,28 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
   const [error, setError] = useState<string | null>(null);
   const [uploadUrl, setUploadUrl] = useState('');
   const [uploadAlt, setUploadAlt] = useState('');
-  const [uploadFile, setUploadFile] = useState<File | null>(null);
+  const [uploadFiles, setUploadFiles] = useState<File[]>([]);
   const [imageSource, setImageSource] = useState<ImageSource>('file');
-  const [filePreviewUrl, setFilePreviewUrl] = useState('');
+  const [filePreviewUrls, setFilePreviewUrls] = useState<string[]>([]);
+  const [uploadProgress, setUploadProgress] = useState('');
   const [viewingImage, setViewingImage] = useState<PropertyImage | null>(null);
   const [editingImageId, setEditingImageId] = useState<string | null>(null);
   const [editingAlt, setEditingAlt] = useState('');
 
-  useEffect(() => {
-    return () => {
-      if (filePreviewUrl) URL.revokeObjectURL(filePreviewUrl);
-    };
-  }, [filePreviewUrl]);
+  useEffect(() => () => {
+    filePreviewUrls.forEach((url) => URL.revokeObjectURL(url));
+  }, [filePreviewUrls]);
 
-  const handleFileChange = (file: File | null) => {
-    if (filePreviewUrl) URL.revokeObjectURL(filePreviewUrl);
-    setUploadFile(file);
-    setFilePreviewUrl(file ? URL.createObjectURL(file) : '');
+  const handleFileChange = (files: File[]) => {
+    filePreviewUrls.forEach((url) => URL.revokeObjectURL(url));
+    setUploadFiles(files);
+    setFilePreviewUrls(files.map((file) => URL.createObjectURL(file)));
   };
 
   const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    if (imageSource === 'file' && !uploadFile) {
+    if (imageSource === 'file' && uploadFiles.length === 0) {
       setError('Selecciona una imagen para subir');
       return;
     }
@@ -60,27 +59,48 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
     setIsLoading(true);
 
     try {
-      const result = imageSource === 'file'
-        ? await uploadPropertyImageFileAction(propertyId, new FormData(form))
-        : await uploadPropertyImageAction(propertyId, uploadUrl, uploadAlt || undefined);
-
-      if (!result.success || !result.data) {
-        setError(result.error || 'No fue posible subir la imagen');
-        return;
+      if (imageSource === 'file') {
+        const invalid = uploadFiles.find((file) => !file.type.startsWith('image/') || file.size > 10 * 1024 * 1024);
+        if (invalid) throw new Error(`${invalid.name}: usa JPG, PNG, WebP o AVIF de máximo 10 MB`);
+        const signed = await getCloudinaryUploadSignatureAction('images');
+        if (!signed.success) throw new Error(signed.error);
+        const added: PropertyImage[] = [];
+        for (const [index, file] of uploadFiles.entries()) {
+          setUploadProgress(`Subiendo ${index + 1} de ${uploadFiles.length}: ${file.name}`);
+          const data = new FormData();
+          data.set('file', file);
+          data.set('api_key', signed.data.apiKey);
+          data.set('timestamp', String(signed.data.timestamp));
+          data.set('folder', signed.data.folder);
+          data.set('signature', signed.data.signature);
+          const response = await fetch(`https://api.cloudinary.com/v1_1/${signed.data.cloudName}/image/upload`, { method: 'POST', body: data });
+          const payload = await response.json() as { secure_url?: string; error?: { message?: string } };
+          if (!response.ok || !payload.secure_url) throw new Error(payload.error?.message || `No fue posible subir ${file.name}`);
+          const alt = uploadFiles.length === 1 && uploadAlt.trim()
+            ? uploadAlt.trim()
+            : file.name.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ');
+          const result = await uploadPropertyImageAction(propertyId, payload.secure_url, alt);
+          if (!result.success || !result.data) throw new Error(result.error || `No fue posible registrar ${file.name}`);
+          added.push(result.data);
+        }
+        setImages((current) => [...current, ...added]);
+      } else {
+        const result = await uploadPropertyImageAction(propertyId, uploadUrl, uploadAlt || undefined);
+        if (!result.success || !result.data) throw new Error(result.error || 'No fue posible registrar la imagen');
+        setImages((current) => [...current, result.data!]);
       }
-
-      setImages([...images, result.data]);
       setUploadUrl('');
       setUploadAlt('');
-      setUploadFile(null);
-      if (filePreviewUrl) URL.revokeObjectURL(filePreviewUrl);
-      setFilePreviewUrl('');
+      setUploadFiles([]);
+      filePreviewUrls.forEach((url) => URL.revokeObjectURL(url));
+      setFilePreviewUrls([]);
       setImageSource('file');
       form.reset();
     } catch (err) {
-      setError('Ocurrió un error inesperado');
+      setError(err instanceof Error ? err.message : 'Ocurrió un error inesperado');
       console.error(err);
     } finally {
+      setUploadProgress('');
       setIsLoading(false);
     }
   };
@@ -207,12 +227,12 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
 
           {imageSource === 'file' ? (
             <div>
-              <label className="block text-sm font-semibold text-black mb-2">Selecciona una imagen</label>
+              <label className="block text-sm font-semibold text-black mb-2">Selecciona una o varias imágenes</label>
               <input
-                name="file"
                 type="file"
+                multiple
                 accept="image/jpeg,image/png,image/webp,image/avif"
-                onChange={(e) => handleFileChange(e.target.files?.[0] || null)}
+                onChange={(e) => handleFileChange(Array.from(e.target.files || []))}
                 className="block w-full text-sm text-dark-gray file:mr-4 file:rounded-lg file:border-0 file:bg-black file:px-4 file:py-2.5 file:text-sm file:font-semibold file:text-white hover:file:bg-black/90"
               />
               <p className="mt-2 text-xs text-gray">JPG, PNG, WebP o AVIF; máximo 10 MB.</p>
@@ -232,15 +252,14 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
             </div>
           )}
 
-          {(filePreviewUrl || (imageSource === 'url' && uploadUrl.trim())) && (
+          {(filePreviewUrls.length > 0 || (imageSource === 'url' && uploadUrl.trim())) && (
             <div className="rounded-xl border border-light-gray bg-light-gray/10 p-4">
               <p className="mb-3 text-sm font-semibold text-black">Vista previa antes de guardar</p>
-              <div
-                role="img"
-                aria-label={uploadAlt || 'Vista previa de la imagen seleccionada'}
-                className="aspect-[16/9] w-full max-w-2xl rounded-lg bg-light-gray bg-cover bg-center bg-no-repeat shadow-sm"
-                style={{ backgroundImage: `url(${filePreviewUrl || uploadUrl.trim()})` }}
-              />
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+                {(filePreviewUrls.length ? filePreviewUrls : [uploadUrl.trim()]).map((url, index) => (
+                  <div key={url} role="img" aria-label={uploadAlt || `Vista previa ${index + 1}`} className="aspect-[4/3] rounded-lg bg-light-gray bg-cover bg-center bg-no-repeat shadow-sm" style={{ backgroundImage: `url(${url})` }} />
+                ))}
+              </div>
             </div>
           )}
 
@@ -261,7 +280,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
             disabled={isLoading}
             className="px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-black/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            {isLoading ? 'Subiendo...' : 'Agregar imagen'}
+            {isLoading ? (uploadProgress || 'Guardando...') : uploadFiles.length > 1 ? `Agregar ${uploadFiles.length} imágenes` : 'Agregar imagen'}
           </button>
         </form>
       </div>

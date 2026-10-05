@@ -23,6 +23,16 @@ export async function PropertyDetails({ property }: PropertyDetailsProps) {
     { label: t.deliveryDate, value: property.deliveryDate || t.toBeConfirmed },
   ];
   const amenities = property.amenities || [];
+  const catalogResources = "resources" in property ? property.resources : undefined;
+  const storedDocuments = "documents" in property ? (property.documents || []) : [];
+  const documentsManaged = "documentsManaged" in property && property.documentsManaged;
+  const useStoredDocuments = documentsManaged || storedDocuments.length > 0;
+  const floorplans = useStoredDocuments
+    ? storedDocuments.filter((document) => document.type === "FLOORPLAN").map((document) => ({ name: document.name, documentUrl: document.url }))
+    : (catalogResources?.floorplans || []);
+  const brochures = useStoredDocuments
+    ? storedDocuments.filter((document) => document.type === "BROCHURE").map((document) => ({ name: document.name, url: document.url }))
+    : (catalogResources?.brochures || []);
 
   return (
     <div className="space-y-10 sm:space-y-14">
@@ -37,9 +47,9 @@ export async function PropertyDetails({ property }: PropertyDetailsProps) {
 
       {property.description && <section><h2 className="mb-4 text-xl font-bold text-black sm:mb-6 sm:text-2xl">{t.description}</h2><div className="max-w-4xl border-l-2 border-dark-gray pl-5 sm:pl-6"><p className="whitespace-pre-wrap break-words text-justify text-base leading-[1.9] text-dark-gray [hyphens:auto] sm:text-lg">{property.description}</p></div></section>}
 
-      {"resources" in property && property.resources.floorplans.length > 0 && <section><h2 className="mb-4 text-xl font-bold text-black sm:mb-6 sm:text-2xl">{t.floorplans}</h2><div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">{property.resources.floorplans.map((floorplan) => <a key={floorplan.documentUrl} href={floorplan.documentUrl} target="_blank" rel="noreferrer" className="group flex items-center gap-4 rounded-xl border border-light-gray bg-white p-4 transition-all hover:border-dark-gray hover:shadow-sm sm:p-5"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-light-gray bg-white text-dark-gray"><span className="material-symbols-outlined leading-none">architecture</span></span><span className="min-w-0 flex-1"><span className="block truncate font-semibold text-black">{floorplan.name}</span><span className="mt-1 block text-sm text-dark-gray">{t.viewFloorplan}</span></span><span className="material-symbols-outlined text-dark-gray transition-transform group-hover:translate-x-1">arrow_forward</span></a>)}</div></section>}
+      {floorplans.length > 0 && <section><h2 className="mb-4 text-xl font-bold text-black sm:mb-6 sm:text-2xl">{t.floorplans}</h2><div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">{floorplans.map((floorplan) => <a key={floorplan.documentUrl} href={floorplan.documentUrl} target="_blank" rel="noreferrer" className="group flex items-center gap-4 rounded-xl border border-light-gray bg-white p-4 transition-all hover:border-dark-gray hover:shadow-sm sm:p-5"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-light-gray bg-white text-dark-gray"><span className="material-symbols-outlined leading-none">architecture</span></span><span className="min-w-0 flex-1"><span className="block truncate font-semibold text-black">{floorplan.name}</span><span className="mt-1 block text-sm text-dark-gray">{t.viewFloorplan}</span></span><span className="material-symbols-outlined text-dark-gray transition-transform group-hover:translate-x-1">arrow_forward</span></a>)}</div></section>}
 
-      {"resources" in property && property.resources.brochures.length > 0 && <section><h2 className="mb-4 text-xl font-bold text-black sm:mb-6 sm:text-2xl">{t.documents}</h2><div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">{property.resources.brochures.map((brochure) => <a key={brochure.url} href={brochure.url} target="_blank" rel="noreferrer" className="group flex items-center gap-4 rounded-xl border border-light-gray bg-white p-4 text-sm text-black transition-all hover:border-dark-gray hover:shadow-sm"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-light-gray bg-white text-dark-gray"><span className="material-symbols-outlined leading-none">article</span></span><span className="min-w-0 flex-1 truncate font-semibold">{brochure.name}</span><span className="material-symbols-outlined text-dark-gray transition-transform group-hover:translate-x-1">open_in_new</span></a>)}</div></section>}
+      {brochures.length > 0 && <section><h2 className="mb-4 text-xl font-bold text-black sm:mb-6 sm:text-2xl">{t.documents}</h2><div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">{brochures.map((brochure) => <a key={brochure.url} href={brochure.url} target="_blank" rel="noreferrer" className="group flex items-center gap-4 rounded-xl border border-light-gray bg-white p-4 text-sm text-black transition-all hover:border-dark-gray hover:shadow-sm"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-light-gray bg-white text-dark-gray"><span className="material-symbols-outlined leading-none">article</span></span><span className="min-w-0 flex-1 truncate font-semibold">{brochure.name}</span><span className="material-symbols-outlined text-dark-gray transition-transform group-hover:translate-x-1">open_in_new</span></a>)}</div></section>}
       <PropertyMap property={property} />
     </div>
   );

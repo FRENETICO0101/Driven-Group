@@ -2,6 +2,7 @@ import { auth } from '@/lib/auth';
 import { redirect, notFound } from 'next/navigation';
 import Link from 'next/link';
 import { PropertyGallery } from '@/components/admin/PropertyGallery';
+import { PropertyDocuments } from '@/components/admin/PropertyDocuments';
 import { propertyRepository } from '@/server/repositories/property.repository';
 import { getCatalogPropertyBySlug } from '@/lib/property-catalog';
 
@@ -54,6 +55,23 @@ export default async function PropertyGalleryPage({
   const images = property.galleryManaged
     ? property.images
     : await propertyRepository.initializeGallery(property.id, catalogProperty?.images ?? property.images);
+  const sourceDocuments = [
+    ...(catalogProperty?.resources.floorplans.map((document, order) => ({
+      name: document.name,
+      url: document.documentUrl,
+      type: 'FLOORPLAN' as const,
+      order,
+    })) ?? []),
+    ...(catalogProperty?.resources.brochures.map((document, index) => ({
+      name: document.name,
+      url: document.url,
+      type: 'BROCHURE' as const,
+      order: (catalogProperty.resources.floorplans.length || 0) + index,
+    })) ?? []),
+  ];
+  const documents = property.documentsManaged
+    ? property.documents
+    : await propertyRepository.initializeDocuments(property.id, sourceDocuments);
 
   return (
     <main className="min-h-screen bg-light-gray/30">
@@ -81,6 +99,9 @@ export default async function PropertyGalleryPage({
           </div>
 
           <PropertyGallery propertyId={property.id} images={images} />
+          <div className="mt-8">
+            <PropertyDocuments propertyId={property.id} documents={documents} />
+          </div>
       </div>
     </main>
   );

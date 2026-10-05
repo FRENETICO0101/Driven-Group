@@ -33,6 +33,17 @@ export interface PropertyImage {
   createdAt: Date;
 }
 
+export type PropertyDocumentType = "FLOORPLAN" | "BROCHURE";
+
+export interface PropertyDocument {
+  id: string;
+  name: string;
+  url: string;
+  type: PropertyDocumentType;
+  order: number;
+  createdAt: Date;
+}
+
 export interface Property {
   id: string;
   title: string;
@@ -58,6 +69,8 @@ export interface Property {
   features?: string | null;
   images: PropertyImage[];
   galleryManaged?: boolean;
+  documents?: PropertyDocument[];
+  documentsManaged?: boolean;
   agent: User;
   agentId: string;
   createdAt: Date;

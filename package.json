@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm run generate:property-assets && next dev",
+    "dev": "node scripts/generate-property-assets-dev.mjs && next dev",
     "build": "npm run generate:property-assets && next build",
     "generate:property-assets": "node scripts/generate-property-assets.mjs",
-    "test:unit": "tsx --test tests/property-catalog-merge.test.ts",
+    "test:unit": "tsx --test tests/*.test.ts",
     "start": "next start",
     "lint": "eslint",
     "seed": "prisma db seed",

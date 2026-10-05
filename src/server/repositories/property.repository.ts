@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma';
-import { PropertyType, PropertyStatus } from '@prisma/client';
+import { PropertyType, PropertyStatus, PropertyDocumentType } from '@prisma/client';
 
 export type PropertyFilters = {
   city?: string;
@@ -12,7 +12,7 @@ export type PropertyFilters = {
 export async function getFeaturedProperties(limit = 6) {
   return prisma.property.findMany({
     where: { status: 'ACTIVE' },
-    include: { images: { orderBy: { order: 'asc' } }, agent: { select: { id: true, name: true, email: true, role: true, createdAt: true, updatedAt: true } } },
+    include: { images: { orderBy: { order: 'asc' } }, documents: { orderBy: { order: 'asc' } }, agent: { select: { id: true, name: true, email: true, role: true, createdAt: true, updatedAt: true } } },
     orderBy: { createdAt: 'desc' },
     take: limit,
   });
@@ -35,7 +35,7 @@ export async function getAllProperties(filters?: PropertyFilters) {
         ],
       }),
     },
-    include: { images: { orderBy: { order: 'asc' } }, agent: { select: { id: true, name: true, email: true, role: true, createdAt: true, updatedAt: true } } },
+    include: { images: { orderBy: { order: 'asc' } }, documents: { orderBy: { order: 'asc' } }, agent: { select: { id: true, name: true, email: true, role: true, createdAt: true, updatedAt: true } } },
     orderBy: { createdAt: 'desc' },
   });
 }
@@ -43,7 +43,7 @@ export async function getAllProperties(filters?: PropertyFilters) {
 export async function getPropertyBySlug(slug: string) {
   return prisma.property.findUnique({
     where: { slug },
-    include: { images: { orderBy: { order: 'asc' } }, agent: true },
+    include: { images: { orderBy: { order: 'asc' } }, documents: { orderBy: { order: 'asc' } }, agent: true },
   });
 }
 
@@ -64,7 +64,7 @@ export const propertyRepository = {
   async getById(id: string) {
     return prisma.property.findUnique({
       where: { id },
-      include: { images: { orderBy: { order: 'asc' } }, agent: true, inquiries: true },
+      include: { images: { orderBy: { order: 'asc' } }, documents: { orderBy: { order: 'asc' } }, agent: true, inquiries: true },
     });
   },
 
@@ -95,7 +95,7 @@ export const propertyRepository = {
   }) {
     return prisma.property.create({
       data,
-      include: { images: true, agent: true },
+      include: { images: true, documents: true, agent: true },
     });
   },
 
@@ -103,7 +103,7 @@ export const propertyRepository = {
     return prisma.property.update({
       where: { id },
       data,
-      include: { images: { orderBy: { order: 'asc' } } },
+      include: { images: { orderBy: { order: 'asc' } }, documents: { orderBy: { order: 'asc' } } },
     });
   },
 
@@ -187,5 +187,56 @@ export const propertyRepository = {
       }),
     );
     await Promise.all(updates);
+  },
+
+  async initializeDocuments(
+    propertyId: string,
+    sourceDocuments: Array<{ name: string; url: string; type: PropertyDocumentType; order: number }>,
+  ) {
+    return prisma.$transaction(async (transaction) => {
+      const property = await transaction.property.findUnique({
+        where: { id: propertyId },
+        include: { documents: { orderBy: { order: 'asc' } } },
+      });
+      if (!property) throw new Error('Property not found');
+      if (property.documentsManaged) return property.documents;
+
+      if (property.documents.length === 0 && sourceDocuments.length > 0) {
+        await transaction.propertyDocument.createMany({
+          data: sourceDocuments.map((document, index) => ({
+            propertyId,
+            name: document.name,
+            url: document.url,
+            type: document.type,
+            order: document.order ?? index,
+          })),
+        });
+      }
+
+      await transaction.property.update({
+        where: { id: propertyId },
+        data: { documentsManaged: true },
+      });
+
+      return transaction.propertyDocument.findMany({
+        where: { propertyId },
+        orderBy: { order: 'asc' },
+      });
+    });
+  },
+
+  async addDocument(propertyId: string, data: { name: string; url: string; type: PropertyDocumentType; order: number }) {
+    return prisma.propertyDocument.create({ data: { propertyId, ...data } });
+  },
+
+  async deleteDocument(documentId: string) {
+    return prisma.propertyDocument.delete({ where: { id: documentId } });
+  },
+
+  async reorderDocuments(documentIds: string[]) {
+    await prisma.$transaction(documentIds.map((id, index) => prisma.propertyDocument.update({
+      where: { id },
+      data: { order: index + 1 },
+    })));
   },
 };
