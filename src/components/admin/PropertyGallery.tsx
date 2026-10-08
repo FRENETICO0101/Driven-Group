@@ -203,7 +203,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {error && (
         <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
           <p className="text-sm text-red-800">{error}</p>
@@ -211,9 +211,14 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
       )}
 
       {/* Upload Form */}
-      <div className="bg-white border border-light-gray rounded-xl p-8">
-        <h2 className="text-2xl font-serif text-black mb-2">Agregar imagen</h2>
-        <p className="mb-6 text-sm text-dark-gray">Elige cómo deseas agregar la imagen.</p>
+      <div className="rounded-xl border border-light-gray bg-white p-5 shadow-sm sm:p-6">
+        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="text-2xl font-serif text-black">Agregar imágenes</h2>
+            <p className="mt-1 text-sm text-dark-gray">Carga varias imágenes a la vez o agrega un enlace directo.</p>
+          </div>
+          <span className="text-xs font-semibold text-gray">JPG, PNG, WebP o AVIF · 10 MB máx.</span>
+        </div>
 
         <form onSubmit={handleUpload} className="space-y-4">
           <div className="inline-flex rounded-lg border border-light-gray bg-light-gray/30 p-1">
@@ -255,7 +260,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
           {(filePreviewUrls.length > 0 || (imageSource === 'url' && uploadUrl.trim())) && (
             <div className="rounded-xl border border-light-gray bg-light-gray/10 p-4">
               <p className="mb-3 text-sm font-semibold text-black">Vista previa antes de guardar</p>
-              <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-6">
                 {(filePreviewUrls.length ? filePreviewUrls : [uploadUrl.trim()]).map((url, index) => (
                   <div key={url} role="img" aria-label={uploadAlt || `Vista previa ${index + 1}`} className="aspect-[4/3] rounded-lg bg-light-gray bg-cover bg-center bg-no-repeat shadow-sm" style={{ backgroundImage: `url(${url})` }} />
                 ))}
@@ -286,28 +291,29 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
       </div>
 
       {/* Gallery */}
-      <div className="bg-white border border-light-gray rounded-xl p-8">
-        <h2 className="text-2xl font-serif text-black mb-6">
-          Galería ({images.length} imágenes)
-        </h2>
+      <div id="imagenes" className="scroll-mt-6 rounded-xl border border-light-gray bg-white p-5 shadow-sm sm:p-6">
+        <div className="mb-5 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+          <h2 className="text-2xl font-serif text-black">Galería ({images.length} imágenes)</h2>
+          <p className="text-xs text-gray">La primera imagen se muestra como portada. Usa las flechas para cambiar el orden.</p>
+        </div>
 
         {images.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-dark-gray">Aún no hay imágenes. Agrega una arriba para comenzar.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
             {images.map((image, index) => (
               <div
                 key={image.id}
                 className="overflow-hidden rounded-xl border border-light-gray bg-white transition-all hover:border-black/30 hover:shadow-sm"
               >
-                <button type="button" onClick={() => setViewingImage(image)} className="group relative block aspect-[16/10] w-full overflow-hidden bg-light-gray text-left" aria-label={`Ampliar ${image.alt || `imagen ${index + 1}`}`}>
+                <button type="button" onClick={() => setViewingImage(image)} className="group relative block aspect-[4/3] w-full overflow-hidden bg-light-gray text-left" aria-label={`Ampliar ${image.alt || `imagen ${index + 1}`}`}>
                     <Image
                       src={getPropertyImageUrl(image.url, 'preview')}
                       alt={image.alt || 'Imagen de propiedad'}
                       fill
-                      sizes="(max-width: 1280px) 100vw, 50vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1536px) 33vw, 25vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                       onError={(e) => {
                         const img = e.target as HTMLImageElement;
@@ -317,7 +323,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
                     <span className="absolute bottom-3 right-3 rounded-full bg-black/75 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm">Ampliar</span>
                   </button>
 
-                <div className="space-y-4 p-4">
+                <div className="space-y-3 p-3.5">
                   <div className="min-w-0">
                     <div className="flex items-center justify-between gap-3">
                       <p className="truncate text-sm font-semibold text-black">{image.alt || `Imagen ${index + 1}`}</p>

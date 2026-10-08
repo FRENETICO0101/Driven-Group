@@ -75,18 +75,29 @@ export default async function PropertyGalleryPage({
 
   return (
     <main className="min-h-screen bg-light-gray/30">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 py-12">
-          <div className="mb-8">
-            <div className="flex items-center gap-4 mb-2">
-            <h1 className="font-serif text-4xl md:text-5xl text-black">Galería</h1>
+      <div className="mx-auto max-w-[1500px] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+          <div className="mb-8 rounded-xl border border-light-gray bg-white p-5 shadow-sm sm:p-6">
+            <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-gray">Gestión de contenido</p>
+                <h1 className="font-serif text-3xl text-black md:text-4xl">Galería y documentos</h1>
+                <p className="mt-2 text-dark-gray">{property.title}</p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <a href="#imagenes" className="rounded-full border border-light-gray bg-light-gray/20 px-4 py-2 text-sm font-semibold text-black hover:border-dark-gray">
+                  {images.length} imágenes
+                </a>
+                <a href="#documentos" className="rounded-full border border-light-gray bg-light-gray/20 px-4 py-2 text-sm font-semibold text-black hover:border-dark-gray">
+                  {documents.length} documentos
+                </a>
+              </div>
             </div>
-            <p className="text-dark-gray mb-4">{property.title}</p>
-            <div className="flex gap-3">
+            <div className="mt-5 flex flex-wrap gap-3 border-t border-light-gray pt-4">
               <Link
                 href={`/admin/properties/${property.slug}`}
-                className="text-sm text-black hover:underline"
+                className="text-sm font-semibold text-black hover:underline"
               >
-                ← Back to property
+                ← Volver a la propiedad
               </Link>
               <span className="text-light-gray">•</span>
               <Link
