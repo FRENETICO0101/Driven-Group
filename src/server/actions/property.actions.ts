@@ -7,6 +7,7 @@ import { PropertyType, PropertyStatus, PropertyDocumentType } from '@prisma/clie
 import { getCatalogPropertyBySlug } from '@/lib/property-catalog';
 import { createHash } from 'crypto';
 import { revalidatePath } from 'next/cache';
+import { del } from '@vercel/blob';
 
 type UploadCategory = 'images' | 'documents';
 
@@ -289,7 +290,14 @@ export async function deletePropertyDocumentAction(documentId: string) {
   try {
     const session = await requireAdmin();
     if (!session) return { success: false, error: 'Unauthorized' };
-    await propertyRepository.deleteDocument(documentId);
+    const document = await propertyRepository.deleteDocument(documentId);
+    if (document.url.includes('.blob.vercel-storage.com/')) {
+      try {
+        await del(document.url);
+      } catch (blobError) {
+        console.error('Unable to delete Vercel Blob document:', blobError);
+      }
+    }
     revalidatePath('/real-estate');
     return { success: true };
   } catch (error) {

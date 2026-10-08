@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { upload as uploadToBlob } from '@vercel/blob/client';
 import {
   addPropertyDocumentAction,
   deletePropertyDocumentAction,
-  getCloudinaryUploadSignatureAction,
   reorderPropertyDocumentsAction,
 } from '@/server/actions/property.actions';
 import type { PropertyDocument, PropertyDocumentType } from '@/lib/types';
@@ -34,21 +34,20 @@ export function PropertyDocuments({ propertyId, documents: initialDocuments }: P
     setError(null);
     setIsLoading(true);
     try {
-      const signed = await getCloudinaryUploadSignatureAction('documents');
-      if (!signed.success) throw new Error(signed.error);
       const added: PropertyDocument[] = [];
       for (const [index, file] of files.entries()) {
         setProgress(`Subiendo ${index + 1} de ${files.length}: ${file.name}`);
-        const data = new FormData();
-        data.set('file', file);
-        data.set('api_key', signed.data.apiKey);
-        data.set('timestamp', String(signed.data.timestamp));
-        data.set('folder', signed.data.folder);
-        data.set('signature', signed.data.signature);
-        const response = await fetch(`https://api.cloudinary.com/v1_1/${signed.data.cloudName}/image/upload`, { method: 'POST', body: data });
-        const payload = await response.json() as { secure_url?: string; error?: { message?: string } };
-        if (!response.ok || !payload.secure_url) throw new Error(payload.error?.message || `No fue posible subir ${file.name}`);
-        const result = await addPropertyDocumentAction(propertyId, file.name.replace(/\.pdf$/i, ''), payload.secure_url, type);
+        const safeName = file.name.replace(/[^a-zA-Z0-9._-]+/g, '-');
+        const blob = await uploadToBlob(`property-documents/${propertyId}/${safeName}`, file, {
+          access: 'public',
+          handleUploadUrl: '/api/property-documents/upload',
+          clientPayload: JSON.stringify({ propertyId }),
+          multipart: file.size > 10 * 1024 * 1024,
+          onUploadProgress: ({ percentage }) => {
+            setProgress(`Subiendo ${index + 1} de ${files.length}: ${Math.round(percentage)}%`);
+          },
+        });
+        const result = await addPropertyDocumentAction(propertyId, file.name.replace(/\.pdf$/i, ''), blob.url, type);
         if (!result.success || !result.data) throw new Error(result.error || `No fue posible registrar ${file.name}`);
         added.push(result.data);
       }
