@@ -14,6 +14,9 @@ interface PropertyDocumentsProps {
   documents: PropertyDocument[];
 }
 
+const MAX_DOCUMENT_SIZE_MB = 50;
+const MAX_DOCUMENT_SIZE_BYTES = MAX_DOCUMENT_SIZE_MB * 1024 * 1024;
+
 export function PropertyDocuments({ propertyId, documents: initialDocuments }: PropertyDocumentsProps) {
   const [documents, setDocuments] = useState(initialDocuments);
   const [files, setFiles] = useState<File[]>([]);
@@ -26,8 +29,8 @@ export function PropertyDocuments({ propertyId, documents: initialDocuments }: P
     event.preventDefault();
     const form = event.currentTarget;
     if (!files.length) return setError('Selecciona uno o varios archivos PDF');
-    const invalid = files.find((file) => file.type !== 'application/pdf' || file.size > 20 * 1024 * 1024);
-    if (invalid) return setError(`${invalid.name}: debe ser PDF y pesar máximo 20 MB`);
+    const invalid = files.find((file) => file.type !== 'application/pdf' || file.size > MAX_DOCUMENT_SIZE_BYTES);
+    if (invalid) return setError(`${invalid.name}: debe ser PDF y pesar máximo ${MAX_DOCUMENT_SIZE_MB} MB`);
     setError(null);
     setIsLoading(true);
     try {
@@ -99,6 +102,7 @@ export function PropertyDocuments({ propertyId, documents: initialDocuments }: P
         </label>
         <label className="block text-sm font-semibold text-black">Archivos PDF
           <input type="file" multiple accept="application/pdf,.pdf" onChange={(event) => setFiles(Array.from(event.target.files || []))} className="mt-2 block w-full text-sm text-dark-gray file:mr-4 file:rounded-lg file:border-0 file:bg-black file:px-4 file:py-2.5 file:font-semibold file:text-white" />
+          <span className="mt-2 block text-xs font-normal text-gray">Máximo {MAX_DOCUMENT_SIZE_MB} MB por archivo.</span>
         </label>
         <button type="submit" disabled={isLoading} className="rounded-lg bg-black px-5 py-3 font-semibold text-white disabled:opacity-50">{isLoading ? (progress || 'Subiendo...') : files.length > 1 ? `Agregar ${files.length} documentos` : 'Agregar documento'}</button>
       </form>

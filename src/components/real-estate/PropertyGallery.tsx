@@ -93,37 +93,58 @@ export function PropertyGallery({ images, title, galleryDocuments = [] }: Proper
   return (
     <div className="space-y-3 sm:space-y-4">
       <div
-        className="group relative mx-auto w-full overflow-hidden rounded-xl border border-light-gray bg-light-gray/10"
+        className="relative mx-auto w-full px-12 sm:px-16"
         style={{
-          aspectRatio: imageAspectRatio,
-          maxWidth: `min(100%, ${Math.round(imageAspectRatio * 520)}px)`,
+          maxWidth: `min(100%, ${Math.round(imageAspectRatio * 520) + 128}px)`,
         }}
       >
-        <Image
-          src={getPropertyImageUrl(selected.url, 'preview')}
-          alt={selected.alt || title}
-          className="object-cover"
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 760px"
-          priority={selectedIndex === 0}
-          onLoad={(event) => {
-            const { naturalHeight, naturalWidth } = event.currentTarget;
-            if (naturalWidth > 0 && naturalHeight > 0) {
-              setImageAspectRatio(naturalWidth / naturalHeight);
-            }
-          }}
-        />
-        <button
-          type="button"
-          onClick={() => setIsLightboxOpen(true)}
-          className="absolute inset-0 flex items-end justify-end bg-black/0 p-3 text-white transition-colors hover:bg-black/10 focus-visible:bg-black/10 sm:p-4"
-          aria-label={`Ampliar imagen de ${title}`}
-        >
-          <span className="inline-flex items-center gap-2 rounded-lg bg-black/80 px-3 py-2 text-xs font-semibold opacity-100 shadow-sm backdrop-blur-sm transition-transform sm:translate-y-2 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
-            <Icon name="fullscreen" className="h-4 w-4" />
-            Ampliar imagen
-          </span>
-        </button>
+        <div className="group relative w-full overflow-hidden rounded-xl border border-light-gray bg-light-gray/10" style={{ aspectRatio: imageAspectRatio }}>
+          <Image
+            src={getPropertyImageUrl(selected.url, 'preview')}
+            alt={selected.alt || title}
+            className="object-cover"
+            fill
+            sizes="(max-width: 768px) 90vw, (max-width: 1200px) 60vw, 760px"
+            priority={selectedIndex === 0}
+            onLoad={(event) => {
+              const { naturalHeight, naturalWidth } = event.currentTarget;
+              if (naturalWidth > 0 && naturalHeight > 0) {
+                setImageAspectRatio(naturalWidth / naturalHeight);
+              }
+            }}
+          />
+          <button
+            type="button"
+            onClick={() => setIsLightboxOpen(true)}
+            className="absolute inset-0 flex items-end justify-end bg-black/0 p-3 text-white transition-colors hover:bg-black/10 focus-visible:bg-black/10 sm:p-4"
+            aria-label={`Ampliar imagen de ${title}`}
+          >
+            <span className="inline-flex items-center gap-2 rounded-lg bg-black/80 px-3 py-2 text-xs font-semibold opacity-100 shadow-sm backdrop-blur-sm transition-transform sm:translate-y-2 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
+              <Icon name="fullscreen" className="h-4 w-4" />
+              Ampliar imagen
+            </span>
+          </button>
+        </div>
+        {images.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={showPrevious}
+              className="absolute left-0 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-light-gray bg-white text-black shadow-[0_8px_24px_rgba(37,37,37,0.12)] transition-all hover:-translate-y-1/2 hover:scale-105 hover:border-dark-gray focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 sm:left-1 sm:h-12 sm:w-12"
+              aria-label="Mostrar imagen anterior"
+            >
+              <Icon name="chevron_left" className="h-6 w-6" />
+            </button>
+            <button
+              type="button"
+              onClick={showNext}
+              className="absolute right-0 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-light-gray bg-white text-black shadow-[0_8px_24px_rgba(37,37,37,0.12)] transition-all hover:-translate-y-1/2 hover:scale-105 hover:border-dark-gray focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 sm:right-1 sm:h-12 sm:w-12"
+              aria-label="Mostrar imagen siguiente"
+            >
+              <Icon name="chevron_right" className="h-6 w-6" />
+            </button>
+          </>
+        )}
       </div>
 
       <div className="flex items-center justify-between gap-3 text-xs text-dark-gray">
@@ -165,7 +186,7 @@ export function PropertyGallery({ images, title, galleryDocuments = [] }: Proper
 
       {isLightboxOpen && (
         <div
-          className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/80 p-3 backdrop-blur-sm sm:p-6"
+          className="fixed inset-0 z-[1600] flex items-center justify-center bg-black/85 p-3 backdrop-blur-sm sm:p-6"
           role="dialog"
           aria-modal="true"
           aria-label={`Galería ampliada de ${title}`}
