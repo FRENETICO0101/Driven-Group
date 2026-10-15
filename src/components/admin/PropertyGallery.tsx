@@ -19,6 +19,61 @@ interface PropertyGalleryProps {
 
 type ImageSource = 'file' | 'url';
 
+const MAX_SOURCE_IMAGE_SIZE_MB = 50;
+const MAX_SOURCE_IMAGE_SIZE_BYTES = MAX_SOURCE_IMAGE_SIZE_MB * 1024 * 1024;
+const MAX_UPLOAD_IMAGE_SIZE_BYTES = 10 * 1024 * 1024;
+const MAX_IMAGE_DIMENSION = 2560;
+const SUPPORTED_IMAGE_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/avif']);
+const SUPPORTED_IMAGE_EXTENSIONS = /\.(?:jpe?g|png|webp|avif)$/i;
+
+function isSupportedImage(file: File) {
+  return SUPPORTED_IMAGE_TYPES.has(file.type.toLowerCase())
+    || (!file.type && SUPPORTED_IMAGE_EXTENSIONS.test(file.name));
+}
+
+function canvasToBlob(canvas: HTMLCanvasElement, quality: number) {
+  return new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob(
+      (blob) => blob ? resolve(blob) : reject(new Error('No fue posible optimizar la imagen')),
+      'image/webp',
+      quality,
+    );
+  });
+}
+
+async function optimizeImageForUpload(file: File) {
+  if (file.type === 'image/webp' && file.size <= MAX_UPLOAD_IMAGE_SIZE_BYTES) return file;
+
+  try {
+    const bitmap = await createImageBitmap(file);
+    const scale = Math.min(1, MAX_IMAGE_DIMENSION / Math.max(bitmap.width, bitmap.height));
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+    canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+    const context = canvas.getContext('2d');
+    if (!context) throw new Error('No fue posible preparar la imagen');
+    context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    bitmap.close();
+
+    let quality = 0.84;
+    let optimized = await canvasToBlob(canvas, quality);
+    while (optimized.size > MAX_UPLOAD_IMAGE_SIZE_BYTES && quality > 0.5) {
+      quality -= 0.08;
+      optimized = await canvasToBlob(canvas, quality);
+    }
+    if (optimized.size > MAX_UPLOAD_IMAGE_SIZE_BYTES) {
+      throw new Error(`no se pudo reducir por debajo de 10 MB`);
+    }
+
+    const webpName = file.name.replace(/\.[^.]+$/, '') + '.webp';
+    return new File([optimized], webpName, { type: 'image/webp', lastModified: file.lastModified });
+  } catch (error) {
+    if (file.size <= MAX_UPLOAD_IMAGE_SIZE_BYTES) return file;
+    const reason = error instanceof Error ? error.message : 'no se pudo optimizar';
+    throw new Error(`${file.name}: ${reason}`);
+  }
+}
+
 export function PropertyGallery({ propertyId, images: initialImages }: PropertyGalleryProps) {
   const [images, setImages] = useState(initialImages);
   const [isLoading, setIsLoading] = useState(false);
@@ -60,15 +115,19 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
 
     try {
       if (imageSource === 'file') {
-        const invalid = uploadFiles.find((file) => !file.type.startsWith('image/') || file.size > 10 * 1024 * 1024);
-        if (invalid) throw new Error(`${invalid.name}: usa JPG, PNG, WebP o AVIF de máximo 10 MB`);
+        const unsupported = uploadFiles.find((file) => !isSupportedImage(file));
+        if (unsupported) throw new Error(`${unsupported.name}: usa JPG, PNG, WebP o AVIF`);
+        const oversized = uploadFiles.find((file) => file.size > MAX_SOURCE_IMAGE_SIZE_BYTES);
+        if (oversized) throw new Error(`${oversized.name}: el archivo original supera ${MAX_SOURCE_IMAGE_SIZE_MB} MB`);
         const signed = await getCloudinaryUploadSignatureAction('images');
         if (!signed.success) throw new Error(signed.error);
         const added: PropertyImage[] = [];
         for (const [index, file] of uploadFiles.entries()) {
+          setUploadProgress(`Optimizando ${index + 1} de ${uploadFiles.length}: ${file.name}`);
+          const uploadFile = await optimizeImageForUpload(file);
           setUploadProgress(`Subiendo ${index + 1} de ${uploadFiles.length}: ${file.name}`);
           const data = new FormData();
-          data.set('file', file);
+          data.set('file', uploadFile);
           data.set('api_key', signed.data.apiKey);
           data.set('timestamp', String(signed.data.timestamp));
           data.set('folder', signed.data.folder);
@@ -217,7 +276,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
             <h2 className="text-2xl font-serif text-black">Agregar imágenes</h2>
             <p className="mt-1 text-sm text-dark-gray">Carga varias imágenes a la vez o agrega un enlace directo.</p>
           </div>
-          <span className="text-xs font-semibold text-gray">JPG, PNG, WebP o AVIF · 10 MB máx.</span>
+          <span className="text-xs font-semibold text-gray">JPG, PNG, WebP o AVIF · optimización automática a WebP</span>
         </div>
 
         <form onSubmit={handleUpload} className="space-y-4">
@@ -240,7 +299,7 @@ export function PropertyGallery({ propertyId, images: initialImages }: PropertyG
                 onChange={(e) => handleFileChange(Array.from(e.target.files || []))}
                 className="block w-full text-sm text-dark-gray file:mr-4 file:rounded-lg file:border-0 file:bg-black file:px-4 file:py-2.5 file:text-sm file:font-semibold file:text-white hover:file:bg-black/90"
               />
-              <p className="mt-2 text-xs text-gray">JPG, PNG, WebP o AVIF; máximo 10 MB.</p>
+              <p className="mt-2 text-xs text-gray">JPG, PNG, WebP o AVIF; hasta {MAX_SOURCE_IMAGE_SIZE_MB} MB por original. Se optimizan a WebP antes de subir.</p>
             </div>
           ) : (
             <div>

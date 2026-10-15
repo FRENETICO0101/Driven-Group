@@ -1,4 +1,5 @@
 import { getLocale } from "next-intl/server";
+import { getDownloadUrl } from "@vercel/blob";
 import type { Property } from "@/lib/types";
 import type { CatalogProperty } from "@/lib/property-catalog";
 import { PropertyMap } from "./PropertyMap";
@@ -8,9 +9,17 @@ interface PropertyDetailsProps {
 }
 
 const copy = {
-  es: { specifications: "Especificaciones", bedrooms: "Habitaciones", priceFrom: "Precio desde", surface: "Superficie desde", deliveryDate: "Fecha de entrega", toBeConfirmed: "Por confirmar", amenities: "Servicios y amenidades", description: "Descripción", floorplans: "Planos de planta", viewFloorplan: "Ver plano PDF", documents: "Brochures y documentos" },
-  en: { specifications: "Specifications", bedrooms: "Bedrooms", priceFrom: "Price from", surface: "Surface", deliveryDate: "Delivery date", toBeConfirmed: "To be confirmed", amenities: "Amenities", description: "Description", floorplans: "Floor plans", viewFloorplan: "View floor plan PDF", documents: "Brochures and documents" },
+  es: { specifications: "Especificaciones", bedrooms: "Habitaciones", priceFrom: "Precio desde", surface: "Superficie desde", deliveryDate: "Fecha de entrega", toBeConfirmed: "Por confirmar", amenities: "Servicios y amenidades", description: "Descripción", floorplans: "Planos de planta", viewFloorplan: "Visualizar", downloadFloorplan: "Descargar", documents: "Brochures y documentos" },
+  en: { specifications: "Specifications", bedrooms: "Bedrooms", priceFrom: "Price from", surface: "Surface", deliveryDate: "Delivery date", toBeConfirmed: "To be confirmed", amenities: "Amenities", description: "Description", floorplans: "Floor plans", viewFloorplan: "View", downloadFloorplan: "Download", documents: "Brochures and documents" },
 };
+
+function documentDownloadUrl(url: string) {
+  if (url.includes(".blob.vercel-storage.com/")) return getDownloadUrl(url);
+  if (url.includes("res.cloudinary.com/") && url.includes("/upload/")) {
+    return url.replace("/upload/", "/upload/fl_attachment/");
+  }
+  return url;
+}
 
 export async function PropertyDetails({ property }: PropertyDetailsProps) {
   const locale = await getLocale();
@@ -47,7 +56,7 @@ export async function PropertyDetails({ property }: PropertyDetailsProps) {
 
       {property.description && <section><h2 className="mb-4 text-xl font-bold text-black sm:mb-6 sm:text-2xl">{t.description}</h2><div className="max-w-4xl border-l-2 border-dark-gray pl-5 sm:pl-6"><p className="whitespace-pre-wrap break-words text-justify text-base leading-[1.9] text-dark-gray [hyphens:auto] sm:text-lg">{property.description}</p></div></section>}
 
-      {floorplans.length > 0 && <section><h2 className="mb-4 text-xl font-bold text-black sm:mb-6 sm:text-2xl">{t.floorplans}</h2><div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">{floorplans.map((floorplan) => <a key={floorplan.documentUrl} href={floorplan.documentUrl} target="_blank" rel="noreferrer" className="group flex items-center gap-4 rounded-xl border border-light-gray bg-white p-4 transition-all hover:border-dark-gray hover:shadow-sm sm:p-5"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-light-gray bg-white text-dark-gray"><span className="material-symbols-outlined leading-none">architecture</span></span><span className="min-w-0 flex-1"><span className="block truncate font-semibold text-black">{floorplan.name}</span><span className="mt-1 block text-sm text-dark-gray">{t.viewFloorplan}</span></span><span className="material-symbols-outlined text-dark-gray transition-transform group-hover:translate-x-1">arrow_forward</span></a>)}</div></section>}
+      {floorplans.length > 0 && <section><h2 className="mb-4 text-xl font-bold text-black sm:mb-6 sm:text-2xl">{t.floorplans}</h2><div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">{floorplans.map((floorplan) => <article key={floorplan.documentUrl} className="flex min-w-0 flex-col gap-4 rounded-xl border border-light-gray bg-white p-4 transition-all hover:border-dark-gray hover:shadow-sm sm:p-5"><div className="flex min-w-0 items-center gap-4"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-light-gray bg-white text-dark-gray"><span className="material-symbols-outlined leading-none">architecture</span></span><span className="min-w-0 flex-1 truncate font-semibold text-black">{floorplan.name}</span></div><div className="grid grid-cols-2 gap-2"><a href={floorplan.documentUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-black px-3 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-80"><span className="material-symbols-outlined text-base">visibility</span>{t.viewFloorplan}</a><a href={documentDownloadUrl(floorplan.documentUrl)} className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-light-gray px-3 py-2 text-sm font-semibold text-black transition-colors hover:border-dark-gray"><span className="material-symbols-outlined text-base">download</span>{t.downloadFloorplan}</a></div></article>)}</div></section>}
 
       {brochures.length > 0 && <section><h2 className="mb-4 text-xl font-bold text-black sm:mb-6 sm:text-2xl">{t.documents}</h2><div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">{brochures.map((brochure) => <a key={brochure.url} href={brochure.url} target="_blank" rel="noreferrer" className="group flex items-center gap-4 rounded-xl border border-light-gray bg-white p-4 text-sm text-black transition-all hover:border-dark-gray hover:shadow-sm"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-light-gray bg-white text-dark-gray"><span className="material-symbols-outlined leading-none">article</span></span><span className="min-w-0 flex-1 truncate font-semibold">{brochure.name}</span><span className="material-symbols-outlined text-dark-gray transition-transform group-hover:translate-x-1">open_in_new</span></a>)}</div></section>}
       <PropertyMap property={property} />
