@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Property } from "@/lib/types";
 import { Icon } from "@/components/ui/Icon";
 
@@ -21,6 +21,7 @@ export function PropertyMap({ property }: PropertyMapProps) {
   const fullAddress = [property.address, property.city, property.state, property.zipCode].filter(Boolean).join(", ");
   const hasCoordinates = Number.isFinite(property.latitude) && Number.isFinite(property.longitude);
   const locationUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent(fullAddress)}`;
+  const mapProperties = useMemo(() => [property], [property]);
 
   useEffect(() => {
     if (!isExpanded) return;
@@ -52,7 +53,7 @@ export function PropertyMap({ property }: PropertyMapProps) {
         )}
       </div>
       {hasCoordinates ? (
-        <InteractivePropertyMap properties={[property]} selectedSlug={property.slug} restrictToMiami />
+        <InteractivePropertyMap properties={mapProperties} selectedSlug={property.slug} />
       ) : (
         <div className="flex min-h-64 flex-col items-center justify-center rounded-xl border border-light-gray bg-light-gray/10 p-6 text-center sm:min-h-80">
           <Icon name="location_on" className="mb-3 h-10 w-10 text-black" />
@@ -87,7 +88,7 @@ export function PropertyMap({ property }: PropertyMapProps) {
               </button>
             </div>
             <div className="min-h-0 flex-1">
-              <InteractivePropertyMap properties={[property]} selectedSlug={property.slug} className="h-full shadow-sm" expanded restrictToMiami />
+              <InteractivePropertyMap properties={mapProperties} selectedSlug={property.slug} className="h-full shadow-sm" expanded />
             </div>
           </div>
         </div>
